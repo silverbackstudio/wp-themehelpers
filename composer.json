@@ -1,0 +1,15 @@
+{
+    "name": "silverbackstudio/wp-themehelper",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Brando Meniconi",
+            "email": "b.meniconi@silverbackstudio.it"
+        }
+    ],
+    "version": "1.0.0",
+    "autoload": {
+        "psr-4": {"Svbk\\WP\\Helpers\\": "src/"}
+    },   
+    "require": {}
+}
