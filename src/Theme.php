@@ -9,27 +9,28 @@ class Theme {
     public $defer_scripts = ['iubenda-cookie', 'google-tag-manager'];
     protected $queued_script_methods = [];
     
-    function __construct($config_file='config.ini'){
+    function __construct($config_file='config.php'){
         $this->config = $this->load_config($config_file);
          
-        add_action('wp_enqueue_scripts', array($this, 'on_enqueue_scripts'), 10, 2 );
+        add_action('wp_enqueue_scripts', array($this, 'on_enqueue_scripts'), 11, 2 );
         add_filter('script_loader_tag', array($this, 'add_async_attributes'), 10, 2);  
         add_filter( 'bloginfo', array($this, 'extend_bloginfo'), 9, 2 );
         add_shortcode('bloginfo', array($this, 'bloginfo_shortcode') );
+        add_shortcode('privacy-link', array($this, 'get_privacy_link') );
     }
     
-    static function init($config_file='config.ini'){
+    static function init($config_file='config.php'){
         return new self($config_file);
     }
     
-    function load_config($config_file='config.ini'){
+    function load_config($config_file='config.php'){
         
         $newconfig = array();
         
         $file = locate_template($config_file, false);
         
         if(file_exists($file)){
-            $newconfig = parse_ini_file($file, true);
+            $newconfig = include_once( $file );
         }
         
         return $newconfig;
@@ -103,6 +104,32 @@ class Theme {
             $query = http_build_query($this->conf('googlemaps'));
             
         	wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?'.$query, null, null, true);
+        	
+        	$options = array();
+        	
+        	if($this->conf('googlemaps', 'styles')){
+        	    $options['styles'] = json_decode($this->conf('googlemaps', 'styles'));
+        	}
+        	
+        	if($this->conf('googlemaps', 'lat') && $this->conf('googlemaps', 'lng')){
+        	    $options['lat'] = $this->conf('googlemaps', 'lat');
+        	    $options['lng'] = $this->conf('googlemaps', 'lng');
+        	}
+
+        	if($this->conf('googlemaps', 'marker')){
+        	    $options['marker'] = $this->conf('googlemaps', 'marker');
+        	}
+        	
+        	if($this->conf('googlemaps', 'zoom')){
+        	    $options['zoom'] = $this->conf('googlemaps', 'zoom');
+        	}        	
+        	
+        	wp_localize_script( 'google-maps', 'googleMapsOptions', $options);
+        	
+        	wp_add_inline_script('google-maps', 
+        	'function initGMaps() { jQuery(document).ready(function(){ jQuery(\'.gmap-container\').trigger(\'gmaps-ready\'); }); }',
+        	'before');        	
+        	
         }          
         
     }
@@ -137,19 +164,20 @@ class Theme {
     	        
     	        wp_enqueue_script('iubenda-cookie', '//cdn.iubenda.com/cookie_solution/safemode/iubenda_cs.js'); 
     	        
-    	        "var _iub = _iub || [];
+    	        $code = "var _iub = _iub || [];
     			_iub.csConfiguration = {
     			  siteId: '".$this->conf('iubenda','siteId')."',
     			  lang: '".substr(get_bloginfo('language'), 0, 2)."',
 	              cookiePolicyId: '".$this->conf('iubenda','cookiePolicyId')."',
 			      banner: {
-				    slideDown: false
-				    ,applyStyles: false
-				    ,content: '".__('<p>Informativa sull&apos;utilizzo dei cookie</p><p>Questo sito o gli strumenti terzi da questo utilizzati si avvalgono di cookie necessari al funzionamento ed utili alle finalità illustrate nella cookie policy. Se vuoi saperne di più o negare il consenso a tutti o ad alcuni cookie, consulta la %{cookie_policy_link}. Chiudendo questo banner, scorrendo questa pagina, cliccando su un link o proseguendo la navigazione in altra maniera, acconsenti all’uso dei cookie.</p>','gazelle')."'
+				    slideDown: false,
+				    applyStyles: false
+				    //content: '".__('<p>Informativa sull&apos;utilizzo dei cookie</p><p>Questo sito o gli strumenti terzi da questo utilizzati si avvalgono di cookie necessari al funzionamento ed utili alle finalità illustrate nella cookie policy. Se vuoi saperne di più o negare il consenso a tutti o ad alcuni cookie, consulta la %{cookie_policy_link}. Chiudendo questo banner, scorrendo questa pagina, cliccando su un link o proseguendo la navigazione in altra maniera, acconsenti all’uso dei cookie.</p>','gazelle')."'
 			      },			  
 			      callback: {
 			        onConsentGiven: function(){
-			        dataLayer.push({'event': 'iubenda_consent_given'});
+			                dataLayer.push({'event': 'iubenda_consent_given'});
+			        }
 			      }
 			    };";
 			    
@@ -159,6 +187,16 @@ class Theme {
     		
         }        
         
+    }
+    
+    function get_privacy_link($attr, $link_name='Privacy Policy', $shortcode_tag){
+        
+        $attr = shortcode_atts( array(
+    		'no_style' => 1,
+    		'no_brand' => 1
+    	), $attr, $shortcode_tag );
+        
+        return '<a href="//www.iubenda.com/privacy-policy/' . $this->conf('iubenda','privacyPolicyId') . '" class="iubenda-nostyle no-brand iubenda-embed" title="'. esc_attr($link_name) .'">'. $link_name .'</a>';
     }
     
     function add_icons(){
@@ -244,7 +282,7 @@ class Theme {
     }
     
     function bloginfo_shortcode($attrs){
-	    return get_bloginfo($attrs['value']);
+	    return get_bloginfo($attrs['value'], 'display');
     }
     
 }
