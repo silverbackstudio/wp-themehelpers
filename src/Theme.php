@@ -213,10 +213,11 @@ class Theme {
         
         $this->register_cdn_script('waypoints', array('jquery.waypoints.min.js', 'shortcuts/sticky.min.js'), array('jquery'));
         $this->register_cdn_script('jquery.collapse', 'jquery.collapse.js', array('jquery'), '1.1');
-        $this->register_cdn_script('flickity', 'flickity.pkgd.min.js', array(), '1.2');
+        $this->register_cdn_script('flickity', 'flickity.pkgd.min.js', array(), '2.0');
+        
     	$this->register_cdn_script('masonry', 'masonry.pkgd.min.js', array(), '4.1');
     	$this->register_cdn_script('history.js', ['history.js', 'history.adapter.jquery.js'] , array('jquery'), '1.8' );  
-        
+    	
     }
   
     function add_analytics(){

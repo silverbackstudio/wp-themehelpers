@@ -4,29 +4,39 @@ namespace Svbk\WP\Helpers;
 
 class MetaBox {
 
-        public $name;
+    public $name;
 
-        public $args = array(
-            'title'=>'',
-            'post_type'=>'post',
-            'position'=>'side',
-            'priority'=>'default'
-        );
+    public $args = array(
+        'title'=>'',
+        'post_type'=>'post',
+        'position'=>'side',
+        'priority'=>'default'
+    );
+    
+    public $fields = array();
         
-        public $fields = array();
-            
-        public function __construct($name, $fields, $args='') {
-            $this->name = $name;
-            
-            foreach ($fields as $name=>$options){
-                $this->fields[] = new MetaBoxField($name, $options);
-            }
-            
-            $this->args = wp_parse_args($args, $this->args);
-            
-            add_action( 'add_meta_boxes', array( $this, 'add' ) );
-            add_action( 'save_post', array( $this, 'save' ) );
+    public function __construct($name, $fields, $args='') {
+        $this->name = $name;
+        
+        foreach ($fields as $name=>$options){
+            $this->fields[] = new MetaBoxField($name, $options);
         }
+        
+        $this->args = wp_parse_args($args, $this->args);
+        
+        add_action( 'add_meta_boxes', array( $this, 'add' ) );
+        add_action( 'save_post', array( $this, 'save' ) );
+        add_action('edit_form_after_title', array( $this, 'register_top_position' ));
+    }
+    
+    public function register_top_position(){
+
+      global $post, $wp_meta_boxes;
+      
+      do_meta_boxes(get_current_screen(), 'top', $post);
+      
+      unset($wp_meta_boxes[get_post_type($post)]['top']);
+    }
         
 	/**
 	 * Adds the meta box container.

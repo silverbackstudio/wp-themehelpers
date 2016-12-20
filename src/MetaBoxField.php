@@ -69,7 +69,7 @@ class MetaBoxField {
         } elseif('textarea' === $this->type) {
             $template = '<textarea id="%4$s" name="%2$s" %6$s/>%3$s</textarea><label for="%4$s" >%5$s</label>';
         } else { 
-           $template = '<label for="%4$s" >%5$s</label><input type="%1$s" id="%4$s" name="%2$s" value="%3$s"  />';
+           $template = '<label for="%4$s" ><strong>%5$s</strong></label><input type="%1$s" id="%4$s" name="%2$s" value="%3$s"  />';
         }
     
                 
