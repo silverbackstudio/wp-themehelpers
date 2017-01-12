@@ -6,6 +6,10 @@ class Flickity {
     
     static function gallery($html){
         
+        if(strpos($html, 'gallery-size-post-slider') === false){
+            return $html;
+        }
+        
     	$extra_data = array(
     		'data-flickity-options' => array(
                 'cellSelector'=>'.gallery-item',
@@ -30,7 +34,7 @@ class Flickity {
     	$custom_sizes = array(
     		'post-slider'	=>	'Post Slider'
     	);
-    	return array_merge( $sizes, $custom_sizes );
+    	return array_merge($custom_sizes, $sizes );
     }    
 
     static function register(){
