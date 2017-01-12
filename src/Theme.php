@@ -15,6 +15,7 @@ class Theme {
         add_action('wp_enqueue_scripts', array($this, 'on_enqueue_scripts'), 11, 2 );
         add_filter('script_loader_tag', array($this, 'add_async_attributes'), 10, 2);  
         add_filter( 'bloginfo', array($this, 'extend_bloginfo'), 9, 2 );
+        add_action('acf/init', array($this, 'acf_init'));    
         add_shortcode('bloginfo', array($this, 'bloginfo_shortcode') );
         add_shortcode('privacy-link', array($this, 'get_privacy_link') );
     }
@@ -80,8 +81,11 @@ class Theme {
         $this->call_on_enqueue_scripts('add_policies');
         $this->call_on_enqueue_scripts('add_instagram');
         $this->call_on_enqueue_scripts('add_icons');
-        $this->call_on_enqueue_scripts('add_analytics');
         $this->call_on_enqueue_scripts('register_common_scripts');
+    
+        add_action('wp_head', array($this, 'add_analytics'), 1);
+        add_action('after_body_tag', array($this, 'print_analytics_noscript'));
+        add_action('wp_footer', array($this, 'print_analytics_noscript'));
     
     }
     
@@ -99,39 +103,42 @@ class Theme {
     
     function add_google_maps(){
         
-        if( $this->conf('googlemaps', 'key') ) {
+        if( $this->conf('googlemaps') ) {
             
-            $query = http_build_query($this->conf('googlemaps'));
+            $script_options = array();
             
-        	wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?'.$query, null, null, true);
+            foreach (array('key', 'library', 'callback') as $key){
+                if($this->conf('googlemaps', $key)) {
+                    $script_options[$key] = $this->conf('googlemaps', $key);
+                }
+            }
+
+            $script = http_build_query($script_options);
+            
+        	wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?'.$script, null, null, true);
         	
-        	$options = array();
+        	$defaultOptions = array();
         	
-        	if($this->conf('googlemaps', 'styles')){
-        	    $options['styles'] = json_decode($this->conf('googlemaps', 'styles'));
+        	if($this->conf('googlemaps', 'mapOptions')){
+        	    wp_localize_script( 'google-maps', 'googleMapsOptions', $this->conf('googlemaps', 'mapOptions'));
         	}
         	
-        	if($this->conf('googlemaps', 'lat') && $this->conf('googlemaps', 'lng')){
-        	    $options['lat'] = $this->conf('googlemaps', 'lat');
-        	    $options['lng'] = $this->conf('googlemaps', 'lng');
+        	if($this->conf('googlemaps', 'markerOptions')){
+        	    wp_localize_script( 'google-maps', 'googleMapsMarkerOptions', $this->conf('googlemaps', 'markerOptions'));
         	}
 
-        	if($this->conf('googlemaps', 'marker')){
-        	    $options['marker'] = $this->conf('googlemaps', 'marker');
-        	}
-        	
-        	if($this->conf('googlemaps', 'zoom')){
-        	    $options['zoom'] = $this->conf('googlemaps', 'zoom');
-        	}        	
-        	
-        	wp_localize_script( 'google-maps', 'googleMapsOptions', $options);
-        	
         	wp_add_inline_script('google-maps', 
         	'function initGMaps() { jQuery(document).ready(function(){ jQuery(\'.gmap-container\').trigger(\'gmaps-ready\'); }); }',
         	'before');        	
         	
         }          
         
+    }
+    
+    function acf_init() {
+        if( $this->conf('googlemaps', 'key') ) {
+            acf_update_setting('google_api_key', $this->conf('googlemaps', 'key'));
+        }
     }
     
     function add_instagram(){
@@ -224,33 +231,28 @@ class Theme {
         
         if($this->conf('google-tag-manager', 'id')) {
             
-            $library = '//www.googletagmanager.com/gtm.js?id='.$this->conf('google-tag-manager', 'id');
-            
             $dataLayer = $this->conf('google-tag-manager', 'dataLayer') ?: 'dataLayer';
             
-            if($dataLayer != 'dataLayer'){
-                $library .= '&l='.$dataLayer;
-            }
+            ?>
+            <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','<?php echo $dataLayer; ?>','<?php echo $this->conf('google-tag-manager', 'id'); ?>');</script>   
             
-            wp_enqueue_script('google-tag-manager', $library, null, null, false);
+            <?php
             
-            wp_add_inline_script('google-tag-manager',
-            "
-            window['".$dataLayer."'] = window['".$dataLayer."'] || [];
-            window['".$dataLayer."'].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            ",
-            'before');
-            
-            add_action('wp_footer', array($this, 'add_analytics_noscript'));
-        
         }
         
     }
     
-    function add_analytics_noscript(){ ?>
+    function print_analytics_noscript(){ 
+        
+        if(did_action('after_body_tag')){
+            return;
+        }
+    
+        ?>
         <!-- Google Tag Manager -->
         <noscript><iframe src="//www.googletagmanager.com/ns.html?id=<?php echo $this->conf('google-tag-manager', 'id'); ?>" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>        
         <?php
