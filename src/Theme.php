@@ -37,7 +37,7 @@ class Theme {
     }         
     
     
-    function conf($group, $param=null){
+    function conf($group, $param=null, $default=null){
         
         if( $group && isset($this->config[$group]) ){
             
@@ -48,7 +48,7 @@ class Theme {
             return $this->config[$group];
         }
         
-        return false;
+        return $default;
 
     }
     
@@ -157,29 +157,32 @@ class Theme {
     
     function add_policies(){
         
-        if($this->conf('iubenda') && $this->conf('iubenda','siteId')) {
-    	    wp_enqueue_script('iubenda', '//cdn.iubenda.com/iubenda.js', null, null, true);
+        if($this->conf('iubenda')) {
+    	        
+    	        if($this->conf('iubenda','siteId')){
+    	            wp_enqueue_script('iubenda', '//cdn.iubenda.com/iubenda.js', null, null, true);
+    	        }
     	    
-    	    if($this->conf('iubenda','cookiePolicyId')) {
+    	       if($this->conf('iubenda','cookiePolicyId')){
     	        
-    	        wp_enqueue_script('iubenda-cookie', '//cdn.iubenda.com/cookie_solution/safemode/iubenda_cs.js'); 
+    	            wp_enqueue_script('iubenda-cookie', '//cdn.iubenda.com/cookie_solution/safemode/iubenda_cs.js'); 
     	        
-    	        $code = "var _iub = _iub || [];
-    			_iub.csConfiguration = {
-    			  siteId: '".$this->conf('iubenda','siteId')."',
-    			  lang: '".substr(get_bloginfo('language'), 0, 2)."',
-	              cookiePolicyId: '".$this->conf('iubenda','cookiePolicyId')."',
-			      banner: {
-				    slideDown: false,
-				    applyStyles: false
-				    //content: '".__('<p>Informativa sull&apos;utilizzo dei cookie</p><p>Questo sito o gli strumenti terzi da questo utilizzati si avvalgono di cookie necessari al funzionamento ed utili alle finalità illustrate nella cookie policy. Se vuoi saperne di più o negare il consenso a tutti o ad alcuni cookie, consulta la %{cookie_policy_link}. Chiudendo questo banner, scorrendo questa pagina, cliccando su un link o proseguendo la navigazione in altra maniera, acconsenti all’uso dei cookie.</p>','gazelle')."'
-			      },			  
-			      callback: {
+    	            $code = "var _iub = _iub || [];".PHP_EOL;
+    	            
+    	            $config = $this->conf('iubenda');
+    	            
+    	            $config['lang'] = substr(get_bloginfo('language'), 0, 2);
+    	            
+    	            $code .= "_iub.csConfiguration = ";
+    	            $code .= json_encode($config);
+    	            
+    	            $code .= "		  
+			        _iub.csConfiguration.callback =  {
 			        onConsentGiven: function(){
 			                dataLayer.push({'event': 'iubenda_consent_given'});
+			            }
 			        }
-			      }
-			    };";
+			        ";
 			    
 			    wp_add_inline_script('iubenda-cookie', $code,'before');	 
 			    
