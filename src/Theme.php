@@ -53,12 +53,12 @@ class Theme {
 
     }
     
-    function enqueue_cdn_script($package, $files, $deps = array(), $version='latest', $in_footer=true ){
-        $this->register_cdn_script($package, $files, $deps, $version, $in_footer );
+    static function enqueue_cdn_script( $package, $files, $deps = array(), $version='latest', $in_footer=true ){
+        self::register_cdn_script($package, $files, $deps, $version, $in_footer );
         wp_enqueue_script($package);
     }
     
-    function register_cdn_script($package, $files, $deps = array(), $version='latest', $in_footer=true ){
+    static function register_cdn_script($package, $files, $deps = array(), $version='latest', $in_footer=true ){
 	
     	if(is_array($files)){
     		$template = '//cdn.jsdelivr.net/g/%1$s@%3$s(%2$s)';
