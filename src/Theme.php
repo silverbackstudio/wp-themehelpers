@@ -2,6 +2,8 @@
 
 namespace Svbk\WP\Helpers;
 
+use Svbk\WP\Helpers\CdnScripts;
+
 class Theme {
     
     public $config;
@@ -53,23 +55,6 @@ class Theme {
 
     }
     
-    static function enqueue_cdn_script( $package, $files, $deps = array(), $version='latest', $in_footer=true ){
-        self::register_cdn_script($package, $files, $deps, $version, $in_footer );
-        wp_enqueue_script($package);
-    }
-    
-    static function register_cdn_script($package, $files, $deps = array(), $version='latest', $in_footer=true ){
-	
-    	if(is_array($files)){
-    		$template = '//cdn.jsdelivr.net/g/%1$s@%3$s(%2$s)';
-    		$files = implode('+', $files);
-    	} else {
-    		$template = '//cdn.jsdelivr.net/%1$s/%3$s/%2$s';		
-    	}
-
-	    wp_register_script($package, sprintf($template, $package, $files, $version), $deps, null, $in_footer);
-    }
-    
     function all(){
         
         if(empty($this->config)){
@@ -81,13 +66,10 @@ class Theme {
         $this->call_on_enqueue_scripts('add_policies');
         $this->call_on_enqueue_scripts('add_instagram');
         $this->call_on_enqueue_scripts('add_icons');
-        $this->call_on_enqueue_scripts('register_common_scripts');
+        
+        $this->register_common_scripts();
     
-        add_action('wp_head', array($this, 'add_analytics'), 1);
-        add_action('after_body_tag', array($this, 'print_analytics_noscript'));
-        add_action('wp_footer', array($this, 'print_analytics_noscript'));
-    
-    }
+    }    
     
     protected function call_on_enqueue_scripts($method){
         $this->queued_script_methods[] = $method;
@@ -101,6 +83,19 @@ class Theme {
         
     }
     
+    function add_async_attributes($tag, $handle) {
+        
+        if (in_array($handle, $this->async_scripts)){
+        	$tag = str_replace( ' src', ' async src', $tag );
+        } 
+        
+        if (in_array($handle, $this->defer_scripts)){
+        	$tag = str_replace( ' src', ' defer src', $tag );
+        }
+            
+        return $tag;
+    }        
+
     function add_google_maps(){
         
         if( $this->conf('googlemaps') ) {
@@ -221,12 +216,14 @@ class Theme {
     
     function register_common_scripts(){
         
-        $this->register_cdn_script('waypoints', array('jquery.waypoints.min.js', 'shortcuts/sticky.min.js'), array('jquery'));
-        $this->register_cdn_script('jquery.collapse', 'jquery.collapse.js', array('jquery'), '1.1');
-        $this->register_cdn_script('flickity', 'flickity.pkgd.min.js', array(), '2.0');
+        $cdn = new CdnScripts;
         
-    	$this->register_cdn_script('masonry', 'masonry.pkgd.min.js', array(), '4.1');
-    	$this->register_cdn_script('history.js', ['history.js', 'history.adapter.jquery.js'] , array('jquery'), '1.8' );  
+        $cdn->register_script('waypoints', array('jquery.waypoints.min.js', 'shortcuts/sticky.min.js'), array('jquery'), '4', true);
+        $cdn->register_script('jquery.collapse', 'jquery.collapse.js', array('jquery'), '1.1');
+        $cdn->register_script('flickity', 'flickity.pkgd.min.js', array(), '2.0');
+        
+    	$cdn->register_script('masonry', 'masonry.pkgd.min.js', array(), '4.1');
+    	$cdn->register_script('history.js', ['history.js', 'history.adapter.jquery.js'] , array('jquery'), '1.8' );  
     	
     }
   
@@ -259,19 +256,6 @@ class Theme {
         <!-- Google Tag Manager -->
         <noscript><iframe src="//www.googletagmanager.com/ns.html?id=<?php echo $this->conf('google-tag-manager', 'id'); ?>" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>        
         <?php
-    }
-    
-    function add_async_attributes($tag, $handle) {
-        
-        if (in_array($handle, $this->async_scripts)){
-        	$tag = str_replace( ' src', ' async src', $tag );
-        } 
-        
-        if (in_array($handle, $this->defer_scripts)){
-        	$tag = str_replace( ' src', ' defer src', $tag );
-        }
-            
-        return $tag;
     }
     
     function extend_bloginfo($output, $show){
