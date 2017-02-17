@@ -123,7 +123,22 @@ class Theme {
         	}
 
         	wp_add_inline_script('google-maps', 
-        	'function initGMaps() { jQuery(document).ready(function(){ jQuery(\'.gmap-container\').trigger(\'gmaps-ready\'); }); }',
+        	'function initGMaps() { 
+        	        
+                    var event, eventName = \'gmaps-ready\';
+                    var containers = document.getElementsByClassName(\'gmap-container\');
+                    
+                    if (window.CustomEvent) {
+                        event = new CustomEvent(eventName);
+                    } else {
+                        event = document.createEvent(\'CustomEvent\');
+                        event.initCustomEvent(eventName, true, true);
+                    }
+                    for (var i = 0, len = containers.length; i < len; i++) {
+                        containers[i].dispatchEvent(event);
+                    }
+        	    
+        	}',
         	'before');        	
         	
         }          
@@ -223,7 +238,8 @@ class Theme {
         $cdn->register_script('flickity', 'flickity.pkgd.min.js', array(), '2.0');
         
     	$cdn->register_script('masonry', 'masonry.pkgd.min.js', array(), '4.1');
-    	$cdn->register_script('history.js', ['history.js', 'history.adapter.jquery.js'] , array('jquery'), '1.8' );  
+    	wp_register_script('history.jquery.js', 'https://cdn.jsdelivr.net/history.js/1.8/history.adapter.jquery.js', array('jquery', 'history.js'), '1.8' );  
+    	$cdn->register_script('history.js', 'history.js', array('jquery'), '1.8' );  
     	
     }
   
