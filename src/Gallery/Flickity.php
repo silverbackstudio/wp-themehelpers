@@ -32,7 +32,7 @@ class Flickity {
     
     public static function custom_image_sizes( $sizes ){
     	$custom_sizes = array(
-    		'post-slider'	=>	'Post Slider'
+    		'post-slider'	=>	__('Post Slider','svbk-themehelper')
     	);
     	return array_merge($custom_sizes, $sizes );
     }    
