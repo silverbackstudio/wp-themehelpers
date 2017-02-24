@@ -2,6 +2,8 @@
 
 namespace Svbk\WP\Helpers\Gallery;
 
+use Svbk\WP\Helpers\CdnScripts;
+
 class Flickity {
     
     static function gallery($html){
@@ -36,8 +38,16 @@ class Flickity {
     	);
     	return array_merge($custom_sizes, $sizes );
     }    
+    
+    static function enqueue_script(){
+        wp_enqueue_script('flickity');
+        wp_enqueue_style('flickity');
+    }
 
     static function register(){
+        
+        add_action('wp_enqueue_scripts', array(__CLASS__, 'enqueue_script'), 12, 2 );
+        
         add_filter( 'gallery_style',  array(__CLASS__, 'gallery') );    
         add_filter( 'image_size_names_choose', array(__CLASS__, 'custom_image_sizes') );
         
