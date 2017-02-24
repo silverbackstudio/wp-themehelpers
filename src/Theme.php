@@ -67,8 +67,8 @@ class Theme {
         $this->call_on_enqueue_scripts('add_instagram');
         $this->call_on_enqueue_scripts('add_icons');
         
-        $this->register_common_scripts();
-    
+        $this->call_on_enqueue_scripts('register_common_scripts');
+        
     }    
     
     protected function call_on_enqueue_scripts($method){
@@ -236,6 +236,7 @@ class Theme {
         $cdn->register_script('waypoints', array('jquery.waypoints.min.js', 'shortcuts/sticky.min.js'), array('jquery'), '4', true);
         $cdn->register_script('jquery.collapse', 'jquery.collapse.js', array('jquery'), '1.1');
         $cdn->register_script('flickity', 'flickity.pkgd.min.js', array(), '2.0');
+        $cdn->register_style('flickity', 'flickity.min.css', array(), '2.0');
         
     	$cdn->register_script('masonry', 'masonry.pkgd.min.js', array(), '4.1');
     	wp_register_script('history.jquery.js', 'https://cdn.jsdelivr.net/history.js/1.8/history.adapter.jquery.js', array('jquery', 'history.js'), '1.8' );  
