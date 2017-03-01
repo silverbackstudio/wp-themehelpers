@@ -14,7 +14,7 @@ class Theme {
     function __construct($config_file='config.php'){
         $this->config = $this->load_config($config_file);
          
-        add_action('wp_enqueue_scripts', array($this, 'on_enqueue_scripts'), 11, 2 );
+        add_action('wp_enqueue_scripts', array($this, 'on_enqueue_scripts'), 8, 2 );
         add_filter('script_loader_tag', array($this, 'add_async_attributes'), 10, 2);  
         add_filter( 'bloginfo', array($this, 'extend_bloginfo'), 9, 2 );
         add_action('acf/init', array($this, 'acf_init'));    
