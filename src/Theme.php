@@ -49,7 +49,7 @@ class Theme {
         if( $group && isset(self::$config[$group]) ){
             
             if($param) {
-                return isset(self::$config[$group][$param])?self::$config[$group][$param]:false;
+                return isset(self::$config[$group][$param])?self::$config[$group][$param]:$default;
             } 
             
             return self::$config[$group];
@@ -106,11 +106,13 @@ class Theme {
             
             $script_options = array();
             
-            foreach (array('key', 'library', 'callback') as $key){
-                if($this->conf('googlemaps', $key)) {
-                    $script_options[$key] = $this->conf('googlemaps', $key);
-                }
-            }
+            $script_options['key'] = $this->conf('googlemaps', 'key');
+            $script_options['library'] = $this->conf('googlemaps', 'library');
+            $script_options['callback'] = $this->conf('googlemaps', 'callback', 'initGMaps');
+            
+            //$script_options = array_filter($script_options);
+
+            var_dump($script_options);
 
             $script = http_build_query($script_options);
             
@@ -125,25 +127,32 @@ class Theme {
         	if($this->conf('googlemaps', 'markerOptions')){
         	    wp_localize_script( 'google-maps', 'googleMapsMarkerOptions', $this->conf('googlemaps', 'markerOptions'));
         	}
+            
+            if(!$this->conf('googlemaps', 'callback', false)){
 
-        	wp_add_inline_script('google-maps', 
-        	'function initGMaps() { 
-        	        
-                    var event, eventName = \'gmaps-ready\';
-                    var containers = document.getElementsByClassName(\'gmap-container\');
-                    
-                    if (window.CustomEvent) {
-                        event = new CustomEvent(eventName);
-                    } else {
-                        event = document.createEvent(\'CustomEvent\');
-                        event.initCustomEvent(eventName, true, true);
-                    }
-                    for (var i = 0, len = containers.length; i < len; i++) {
-                        containers[i].dispatchEvent(event);
-                    }
-        	    
-        	}',
-        	'before');        	
+        	    wp_add_inline_script('google-maps',
+            	'function initGMaps() { 
+                        document.addEventListener(\'DOMContentLoaded\', function(){
+            	        
+                            var event, eventName = \'gmaps-ready\';
+                            
+                            if (window.CustomEvent) {
+                                event = new CustomEvent(eventName);
+                            } else {
+                                event = document.createEvent(\'CustomEvent\');
+                                event.initCustomEvent(eventName, true, true);
+                            }
+                            
+                            var containers = document.getElementsByClassName(\'gmap-container\');
+                            for (var i = 0, len = containers.length; i < len; i++) {
+                                containers[i].dispatchEvent(event);
+                            }
+                            
+                            document.body.dispatchEvent(event);
+            	        });
+            	}',
+            	'before');    
+            }
         	
         }          
         
