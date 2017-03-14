@@ -6,13 +6,13 @@ use Svbk\WP\Helpers\CdnScripts;
 
 class Theme {
     
-    public $config;
+    public static $config;
     public $async_scripts = ['google-maps', 'iubenda-cookie', 'google-tag-manager'];
     public $defer_scripts = ['iubenda-cookie', 'google-tag-manager'];
     protected $queued_script_methods = [];
     
     function __construct($config_file='config.php'){
-        $this->config = $this->load_config($config_file);
+        self::$config = $this->load_config($config_file);
          
         add_action('wp_enqueue_scripts', array($this, 'on_enqueue_scripts'), 8, 2 );
         add_filter('script_loader_tag', array($this, 'add_async_attributes'), 10, 2);  
@@ -46,13 +46,13 @@ class Theme {
     
     function conf($group, $param=null, $default=null){
         
-        if( $group && isset($this->config[$group]) ){
+        if( $group && isset(self::$config[$group]) ){
             
             if($param) {
-                return isset($this->config[$group][$param])?$this->config[$group][$param]:false;
+                return isset(self::$config[$group][$param])?self::$config[$group][$param]:false;
             } 
             
-            return $this->config[$group];
+            return self::$config[$group];
         }
         
         return $default;
@@ -61,7 +61,7 @@ class Theme {
     
     function all(){
         
-        if(empty($this->config)){
+        if(empty(self::$config)){
             return false;
         }
         
@@ -226,9 +226,9 @@ class Theme {
     function add_icons(){
         
         $path = $this->conf('icons', 'path');
-        
+
         if($path && file_exists( trailingslashit(get_template_directory()).$path )){
-            wp_enqueue_style('theme-icons', trailingslashit(get_template_directory_uri()).$path);        
+            wp_enqueue_style('theme-icons', get_theme_file_uri($path) );        
         } 
     
     }
