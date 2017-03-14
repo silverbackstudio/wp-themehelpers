@@ -112,8 +112,6 @@ class Theme {
             
             //$script_options = array_filter($script_options);
 
-            var_dump($script_options);
-
             $script = http_build_query($script_options);
             
         	wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?'.$script, null, null, true);
