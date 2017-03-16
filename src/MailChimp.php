@@ -10,8 +10,8 @@ class MailChimp extends \DrewM\MailChimp\MailChimp {
         
         if(empty(self::$errorTranslations)){
             self::$errorTranslations = array(
-            md5('You’ve already sent this email to the subscriber.') => __('You have already received this whitepaper, check your inbox, use another email or request it via email.', 'svbk-widgets'),
-            md5('The subscriber has already been triggered for this email.') => __('Your content is beeing delivered, please wait', 'svbk-widgets')
+            md5('You’ve already sent this email to the subscriber.') => __('You have already received this whitepaper, check your inbox, use another email or request it via email.', 'svbk-helpers'),
+            md5('The subscriber has already been triggered for this email.') => __('Your content is beeing delivered, please wait', 'svbk-helpers')
             );
         }
         
