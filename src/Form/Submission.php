@@ -2,6 +2,7 @@
 namespace Svbk\WP\Helpers\Form;
 
 use Svbk\WP\Helpers\MailChimp;
+use Svbk\WP\Helpers\Renderer;
 
 class Submission extends Form {
 
@@ -92,7 +93,7 @@ class Submission extends Form {
     public function insertInputField($fieldName, $fieldParams, $after=null){
         
         if($after){
-            $this->inputFields = $this->arrayInsert($this->inputFields, array($fieldName => $fieldParams), $after);
+            $this->inputFields = Renderer::arrayKeyInsert($this->inputFields, array($fieldName => $fieldParams), $after);
         } else {
             $this->inputFields[$fieldName] = $fieldParams;
         }
@@ -102,30 +103,6 @@ class Submission extends Form {
     public function getInput($field){
         return isset($this->inputData[$field]) ? $this->inputData[$field] : null;
     }
-
-    /**
-    * Insert an array into another array before/after a certain key
-    *
-    * @param array $array The initial array
-    * @param array $pairs The array to insert
-    * @param string $key The certain key
-    * @param string $position Wether to insert the array before or after the key
-    * @return array
-    */
-    protected static function arrayInsert( $array, $pairs, $key, $position = 'after' ) {
-        $key_pos = array_search( $key, array_keys( $array ) );
-        if ( 'after' == $position )
-        	$key_pos++;
-        if ( false !== $key_pos ) {
-        	$result = array_slice( $array, 0, $key_pos );
-        	$result = array_merge( $result, $pairs );
-        	$result = array_merge( $result, array_slice( $array, $key_pos ) );
-        }
-        else {
-        	$result = array_merge( $array, $pairs );
-        }
-        return $result;
-    }    
     
     public function processInput($input_filters=array()){
     
@@ -263,7 +240,6 @@ class Submission extends Form {
         if( count($this->policyParts) > 1) {
             
             $output['policy']['global'] = $this->renderField('policy_all', array( 'label' => $this->privacyNotice($attr), 'type'=>'checkbox', 'class'=>'policy-flags-all' )  );
-            
             $output['policy']['flags']['begin'] = '<div class="policy-flags" id="policy-flags-' . $this->index . '" style="display:none;" >';
             
             foreach($this->policyParts as $policy_part => $policyAttr ) {
