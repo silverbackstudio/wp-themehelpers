@@ -37,7 +37,7 @@ class Flickity {
         }         
         
         if(!$this->label){
-            $this->label = __('Post Slider','svbk-themehelper');
+            $this->label = __('Post Slider','svbk-helpers');
         }
         
         if(isset($properties['options'])){

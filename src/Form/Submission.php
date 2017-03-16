@@ -37,21 +37,21 @@ class Submission extends Form {
             array(
                 'fname' => array( 
                     'required' => true,
-                    'label' => __('First Name', 'svbk-shortcakes'), 
+                    'label' => __('First Name', 'svbk-helpers'), 
                     'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
-                    'error' => __('Please enter first name', 'svbk-shortcakes')
+                    'error' => __('Please enter first name', 'svbk-helpers')
                 ),
                 'lname' => array( 
                     'required' => true,
-                    'label' => __('Last Name', 'svbk-shortcakes'), 
+                    'label' => __('Last Name', 'svbk-helpers'), 
                     'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
-                    'error' => __('Please enter last name', 'svbk-shortcakes')
+                    'error' => __('Please enter last name', 'svbk-helpers')
                 ),                
                 'email' => array( 
                     'required' => true,
                     'label' => __('Email Address', 'svbk-shortcakes'), 
                     'filter' => FILTER_VALIDATE_EMAIL,
-                    'error' => __('Invalid email address', 'svbk-shortcakes')
+                    'error' => __('Invalid email address', 'svbk-helpers')
                 ),
             ), 
             $fields
@@ -65,20 +65,20 @@ class Submission extends Form {
         $this->policyParts = array_merge_recursive( 
              array(
                 'policy_service' => array(
-                    'label' => __('Ho letto e accetto le condizioni generali e l\'informativa della privacy.', 'svbk-shortcakes'),
+                    'label' => __('Ho letto e accetto le condizioni generali e l\'informativa della privacy.', 'svbk-helpers'),
                     'required' => true,
                     'type' => 'checkbox',
                     'error' => __('Policy terms must be accepted', 'svbk-shortcakes'),
                     'filter' => self::$defaultPolicyFilter,
                 ),
                 'policy_newsletter' => array(
-                    'label' => __('Accetto il trattamento dei dati di cui all\' articolo 4.1 dell\'informativa sulla privacy.', 'svbk-shortcakes'),
+                    'label' => __('Accetto il trattamento dei dati di cui all\' articolo 4.1 dell\'informativa sulla privacy.', 'svbk-helpers'),
                     'required' => false,
                     'type' => 'checkbox',
                     'filter' => self::$defaultPolicyFilter,
                 ),                    
                 'policy_directMarketing' => array(
-                    'label' => __('Accetto il trattamento dei dati di cui all\' articolo 4.2 dell\'informativa sulla privacy.', 'svbk-shortcakes'), 
+                    'label' => __('Accetto il trattamento dei dati di cui all\' articolo 4.2 dell\'informativa sulla privacy.', 'svbk-helpers'), 
                     'type' => 'checkbox',
                     'required' => false,
                     'filter' => self::$defaultPolicyFilter,
@@ -153,7 +153,7 @@ class Submission extends Form {
     }
     
     protected static function fieldError($field, $name=''){
-        return ( isset($field['error']) ? $field['error'] : sprintf( __('Empty or invalid field [%s]', 'svbk-shortcakes'), $name )  );
+        return ( isset($field['error']) ? $field['error'] : sprintf( __('Empty or invalid field [%s]', 'svbk-helpers'), $name )  );
     }    
     
     protected function validateInput(){
@@ -213,11 +213,11 @@ class Submission extends Form {
             $privacy = $label;
         }
         
-        $text = sprintf( __('I declare I have read and accept the %s notification and I consent to process my personal data.', 'svbk-shortcakes'), $privacy);
+        $text = sprintf( __('I declare I have read and accept the %s notification and I consent to process my personal data.', 'svbk-helpers'), $privacy);
         
         if(count($this->policyParts) > 1){
-            $flagsButton = '<a class="policy-flags-open" href="#policy-flags-' . $this->index . '">' . __('click here','svbk-shortcakes') . '</a>';
-            $text .= '</label><label>'.sprintf( __('To select the consents partially %s.', 'svbk-shortcakes'), $flagsButton);
+            $flagsButton = '<a class="policy-flags-open" href="#policy-flags-' . $this->index . '">' . __('click here','svbk-helpers') . '</a>';
+            $text .= '</label><label>'.sprintf( __('To select the consents partially %s.', 'svbk-helpers'), $flagsButton);
         }
         
         return $text;

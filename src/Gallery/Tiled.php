@@ -31,7 +31,7 @@ class Tiled {
     
     public static function custom_image_sizes($sizes) {
     	
-    	$sizes['tiled-gallery'] = __( "Tiled Gallery", 'svbk-themehelper');
+    	$sizes['tiled-gallery'] = __( "Tiled Gallery", 'svbk-helpers');
     	
     	return $sizes;
     }

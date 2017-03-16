@@ -46,17 +46,17 @@ class Contact extends Submission {
                 array(
                     'subject' => array( 
                         'required' => true,
-                        'label' => __('Subject', 'svbk-shortcakes'), 
+                        'label' => __('Subject', 'svbk-helpers'), 
                         'type' => 'text',
                         'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
-                        'error' => __('Please enter a subject', 'svbk-shortcakes')
+                        'error' => __('Please enter a subject', 'svbk-helpers')
                     ),                
                     'request' => array( 
                         'required' => true,
-                        'label' => __('Message', 'svbk-shortcakes'), 
+                        'label' => __('Message', 'svbk-helpers'), 
                         'type' => 'textarea',
                         'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
-                        'error' => __('Please write a brief description of your request', 'svbk-shortcakes')
+                        'error' => __('Please write a brief description of your request', 'svbk-helpers')
                     ),
                 ), 
                 $fields
@@ -70,10 +70,10 @@ class Contact extends Submission {
         $this->policyParts = array_merge_recursive( 
              array(
                 'policy_service' => array(
-                    'label' => __('Ho letto e accetto le condizioni generali e l\'informativa della privacy.', 'svbk-shortcakes'),
+                    'label' => __('Ho letto e accetto le condizioni generali e l\'informativa della privacy.', 'svbk-helpers'),
                     'required' => true,
                     'type' => 'checkbox',
-                    'error' => __('Policy terms must be accepted', 'svbk-shortcakes'),
+                    'error' => __('Policy terms must be accepted', 'svbk-helpers'),
                     'filter' => self::$defaultPolicyFilter,
                 ),
             ), 

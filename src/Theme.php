@@ -20,6 +20,7 @@ class Theme {
         add_action('acf/init', array($this, 'acf_init'));    
         add_shortcode('bloginfo', array($this, 'bloginfo_shortcode') );
         add_shortcode('privacy-link', array($this, 'get_privacy_link') );
+        add_action( 'after_setup_theme', array($this, 'load_texdomain') );
         
         add_action('wp_head', array($this, 'add_analytics'), 1);
         add_action('after_body_tag', array($this, 'print_analytics_noscript'));
@@ -29,6 +30,10 @@ class Theme {
     static function init($config_file='config.php'){
         return new self($config_file);
     }
+    
+    public function load_texdomain(){
+        load_textdomain( 'svbk-helpers', dirname(__DIR__).'/languages/svbk-helpers' . '-' . get_locale() . '.mo'   ); 
+    }    
     
     function load_config($config_file='config.php'){
         
