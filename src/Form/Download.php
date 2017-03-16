@@ -98,9 +98,7 @@ class Download extends Subscribe {
             'name' => 'DOWNLOAD_URL',
             'content' => esc_url( $this->getDownloadLink() )
         );
-        
-        var_dump($mergeTags);
-        
+    
         return $mergeTags;
     }
     
