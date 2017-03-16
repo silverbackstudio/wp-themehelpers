@@ -19,26 +19,6 @@ class Contact extends Submission {
     public $recipientEmail = 'webmaster@silverbackstudio.it';    
     public $recipientName = 'Webmaster';    
 
-    public $messageDefaults = array(
-        'html' => '<p>default HTML content</p>',
-        'text' => 'default TEXT content',        
-        'track_opens' => null,
-        'track_clicks' => null,
-        'auto_text' => null,
-        'auto_html' => true,
-        'inline_css' => null,
-        'url_strip_qs' => null,
-        'preserve_recipients' => null,
-        'view_content_link' => null,
-        'tracking_domain' => null,
-        'signing_domain' => null,
-        'return_path_domain' => null,
-        'merge' => true,
-        'merge_language' => 'mailchimp',
-        'tags' => array('download-request'),
-        'subaccount' => '',
-    );     
-    
     public function setInputFields($fields=array()){
         
         return parent::setInputFields(
@@ -129,7 +109,7 @@ class Contact extends Submission {
     protected function messageParams(){
         
         return array_merge_recursive(
-            $this->messageDefaults,
+            Mandrill::$messageDefaults,
             array(
                 'text' => $this->getInput('request'),
                 'subject' => $this->getInput('subject'),
@@ -137,7 +117,9 @@ class Contact extends Submission {
                 'global_merge_vars' => Mandrill::castMergeTags($this->inputData, 'INPUT_'),
                 'metadata' => array(
                     'website' => home_url( '/' )
-                )
+                ),
+                'merge' =>true,
+                'tags' => array('download-request'),
             )
         );        
     }    

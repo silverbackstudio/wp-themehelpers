@@ -24,7 +24,7 @@ class Mandrill extends NativeMandrill {
         'merge' => true,
         'merge_language' => 'mailchimp',
         'tags' => array('download-request'),
-        'subaccount' => '',
+        'subaccount' => null,
     ); 
 
     public static function castMergeTags($inputData, $prefix=''){

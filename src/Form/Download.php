@@ -10,26 +10,6 @@ class Download extends Subscribe {
     public $md_apikey = '';
     public $templateName = '';
     
-    public $messageDefaults = array(
-        'html' => 'default HTML content',
-        //'text' => 'default TEXT content',        
-        'track_opens' => null,
-        'track_clicks' => null,
-        'auto_text' => null,
-        'auto_html' => true,
-        'inline_css' => null,
-        'url_strip_qs' => null,
-        'preserve_recipients' => null,
-        'view_content_link' => null,
-        'tracking_domain' => null,
-        'signing_domain' => null,
-        'return_path_domain' => null,
-        'merge' => true,
-        'merge_language' => 'mailchimp',
-        'tags' => array('download-request'),
-        'subaccount' => '',
-    );  
-    
     public function processInput($input_filters=array()){
         
         $input_filters['fid'] = FILTER_VALIDATE_INT;
@@ -109,13 +89,15 @@ class Download extends Subscribe {
     protected function messageParams(){
         
         return array_merge_recursive(
-            $this->messageDefaults,
+            Mandrill::$messageDefaults,
             array(
                 'to' => $this->getRecipients(),
                 'global_merge_vars' => $this->getGlobalMergeTags(),
                 'metadata' => array(
                     'website' => home_url( '/' )
-                )
+                ),
+                'merge' =>true,
+                'tags' => array('download-request'),                
             )
         );        
     }
