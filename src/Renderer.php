@@ -38,8 +38,8 @@ class Renderer {
     * @param string $position Wether to insert the array before or after the key
     * @return array
     */
-    public static function arrayInsert( $array, $pairs, $value, $position = 'after' ) {
-        $key_pos = array_search( $value, $array );
+    public static function arrayInsert( $array, $values, $reference, $position = 'after' ) {
+        $key_pos = array_search( $reference, $array );
         
         if ( 'after' == $position ){
         	$key_pos++;
@@ -47,9 +47,9 @@ class Renderer {
         
         if ( false !== $key_pos ) {
             $result = $array;
-            array_splice($result, $key_pos, 0, $pairs);
+            array_splice($result, $key_pos, 0, $values);
         } else {
-        	$result = array_merge( $array, $pairs );
+        	$result = array_merge( $array, $values );
         }
         return $result;
     } 
