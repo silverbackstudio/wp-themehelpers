@@ -49,7 +49,7 @@ class Submission extends Form {
                 ),                
                 'email' => array( 
                     'required' => true,
-                    'label' => __('Email Address', 'svbk-shortcakes'), 
+                    'label' => __('Email Address', 'svbk-helpers'), 
                     'filter' => FILTER_VALIDATE_EMAIL,
                     'error' => __('Invalid email address', 'svbk-helpers')
                 ),
