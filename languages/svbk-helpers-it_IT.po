@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Silverback Helpers\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-16 14:55+0000\n"
-"PO-Revision-Date: 2017-03-16 16:42+0000\n"
+"POT-Creation-Date: 2017-03-20 08:21+0000\n"
+"PO-Revision-Date: 2017-03-20 08:22+0000\n"
 "Last-Translator: SilverbackStudio <webmaster@silverbackstudio.it>\n"
 "Language-Team: Italian\n"
 "Language: it-IT\n"
@@ -12,6 +12,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco - https://localise.biz/"
+
+#: src/Form/Submission.php:52
+msgid "Email Address"
+msgstr "Indirizzo E-mail"
 
 #: src/MailChimp.php:13
 msgid ""
@@ -109,7 +113,7 @@ msgstr "Per favore inserisci in tuo cognome"
 msgid "Invalid email address"
 msgstr "Indirizzo email assente o non valido "
 
-#: src/Form/Submission.php:68 src/Form/Contact.php:73
+#: src/Form/Submission.php:68 src/Form/Contact.php:53
 msgid ""
 "Ho letto e accetto le condizioni generali e l'informativa della privacy."
 msgstr ""
@@ -154,7 +158,7 @@ msgstr "clicca qui"
 msgid "To select the consents partially %s."
 msgstr "Per selezionare i consensi parzialmente %s."
 
-#: src/Form/Download.php:65 src/Form/Contact.php:102
+#: src/Form/Download.php:45 src/Form/Contact.php:82
 msgid ""
 "The requesto to our mail server failed, please try again later or contact "
 "the site owner."
@@ -162,30 +166,30 @@ msgstr ""
 "La richiesta di invio non è andata a buon fine, per favore riprova più tardi "
 "o contatta il proprietario del sito."
 
-#: src/Form/Download.php:139
+#: src/Form/Download.php:121
 msgid ""
 "The specified download doesn't exists anymore. Please contact site owner"
 msgstr ""
 "Il file specificato non è più disponibile. Per ottenerlo contatta il "
 "proprietario del sito."
 
-#: src/Form/Contact.php:49
+#: src/Form/Contact.php:29
 msgid "Subject"
 msgstr "Oggetto"
 
-#: src/Form/Contact.php:52
+#: src/Form/Contact.php:32
 msgid "Please enter a subject"
 msgstr "Per favore inserisci un oggetto"
 
-#: src/Form/Contact.php:56
+#: src/Form/Contact.php:36
 msgid "Message"
 msgstr "Messaggio"
 
-#: src/Form/Contact.php:59
+#: src/Form/Contact.php:39
 msgid "Please write a brief description of your request"
 msgstr "Per favore scrivi una breve descrizione della tua richesta"
 
-#: src/Form/Contact.php:76
+#: src/Form/Contact.php:56
 msgid "Policy terms must be accepted"
 msgstr "I termini di servizio devono essere accettati per poter procedere"
 
