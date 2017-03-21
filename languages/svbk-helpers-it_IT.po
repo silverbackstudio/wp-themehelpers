@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Silverback Helpers\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-20 08:21+0000\n"
-"PO-Revision-Date: 2017-03-20 08:22+0000\n"
+"POT-Creation-Date: 2017-03-21 11:01+0000\n"
+"PO-Revision-Date: 2017-03-21 11:03+0000\n"
 "Last-Translator: SilverbackStudio <webmaster@silverbackstudio.it>\n"
 "Language-Team: Italian\n"
 "Language: it-IT\n"
@@ -13,9 +13,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco - https://localise.biz/"
 
-#: src/Form/Submission.php:52
-msgid "Email Address"
-msgstr "Indirizzo E-mail"
+#: src/Form/Submission.php:68
+msgid ""
+"I have read and agree to the \"Terms and conditions\" and the \"Privacy "
+"Policy\""
+msgstr ""
+"Ho letto e accetto i \"Termini e le Condizioni del servizio\" contenuti "
+"nella \"Privacy policy\"."
+
+#: src/Form/Submission.php:71
+msgid "Privacy Policy terms must be accepted"
+msgstr "I termini della privacy policy devono essere accettati per proseguire"
+
+#: src/Form/Submission.php:75
+msgid ""
+"I accept the processing of the data referred to in Article 1 of the "
+"\"Privacy policy\""
+msgstr ""
+"Accetto il trattamento dei dati di cui all' articolo 1 dell'informativa "
+"sulla privacy"
+
+#: src/Form/Submission.php:81
+msgid ""
+"I accept the processing of the data referred to in Article 2 of the "
+"\"Privacy policy\""
+msgstr ""
+"Accetto il trattamento dei dati di cui all' articolo 2 dell'informativa "
+"sulla privacy"
 
 #: src/MailChimp.php:13
 msgid ""
@@ -109,31 +133,13 @@ msgstr "Cognome"
 msgid "Please enter last name"
 msgstr "Per favore inserisci in tuo cognome"
 
+#: src/Form/Submission.php:52
+msgid "Email Address"
+msgstr "Indirizzo E-mail"
+
 #: src/Form/Submission.php:54
 msgid "Invalid email address"
 msgstr "Indirizzo email assente o non valido "
-
-#: src/Form/Submission.php:68 src/Form/Contact.php:53
-msgid ""
-"Ho letto e accetto le condizioni generali e l'informativa della privacy."
-msgstr ""
-"Ho letto e accetto le condizioni generali e l'informativa della privacy."
-
-#: src/Form/Submission.php:75
-msgid ""
-"Accetto il trattamento dei dati di cui all' articolo 4.1 dell'informativa "
-"sulla privacy."
-msgstr ""
-"Accetto il trattamento dei dati di cui all' articolo 4.1 dell'informativa "
-"sulla privacy."
-
-#: src/Form/Submission.php:81
-msgid ""
-"Accetto il trattamento dei dati di cui all' articolo 4.2 dell'informativa "
-"sulla privacy."
-msgstr ""
-"Accetto il trattamento dei dati di cui all' articolo 4.2 dell'informativa "
-"sulla privacy."
 
 #: src/Form/Submission.php:156
 #, php-format
@@ -188,6 +194,12 @@ msgstr "Messaggio"
 #: src/Form/Contact.php:39
 msgid "Please write a brief description of your request"
 msgstr "Per favore scrivi una breve descrizione della tua richesta"
+
+#: src/Form/Contact.php:53
+msgid ""
+"Ho letto e accetto le condizioni generali e l'informativa della privacy."
+msgstr ""
+"Ho letto e accetto le condizioni generali e l'informativa della privacy."
 
 #: src/Form/Contact.php:56
 msgid "Policy terms must be accepted"
