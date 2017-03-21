@@ -65,20 +65,20 @@ class Submission extends Form {
         $this->policyParts = array_merge_recursive( 
              array(
                 'policy_service' => array(
-                    'label' => __('Ho letto e accetto le condizioni generali e l\'informativa della privacy.', 'svbk-helpers'),
+                    'label' => __('I have read and agree to the "Terms and conditions" and the "Privacy Policy"', 'svbk-helpers'),
                     'required' => true,
                     'type' => 'checkbox',
-                    'error' => __('Policy terms must be accepted', 'svbk-shortcakes'),
+                    'error' => __('Privacy Policy terms must be accepted', 'svbk-helpers'),
                     'filter' => self::$defaultPolicyFilter,
                 ),
                 'policy_newsletter' => array(
-                    'label' => __('Accetto il trattamento dei dati di cui all\' articolo 4.1 dell\'informativa sulla privacy.', 'svbk-helpers'),
+                    'label' => __('I accept the processing of the data referred to in Article 1 of the "Privacy policy"', 'svbk-helpers'),
                     'required' => false,
                     'type' => 'checkbox',
                     'filter' => self::$defaultPolicyFilter,
                 ),                    
                 'policy_directMarketing' => array(
-                    'label' => __('Accetto il trattamento dei dati di cui all\' articolo 4.2 dell\'informativa sulla privacy.', 'svbk-helpers'), 
+                    'label' => __('I accept the processing of the data referred to in Article 2 of the "Privacy policy"', 'svbk-helpers'), 
                     'type' => 'checkbox',
                     'required' => false,
                     'filter' => self::$defaultPolicyFilter,
