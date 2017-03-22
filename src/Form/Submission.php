@@ -13,6 +13,7 @@ class Submission extends Form {
     
     public $field_prefix = 'sub';
     public $action = 'svbk_submission';
+    public $submitUrl = '';
     
     public $inputFields = array();
     public $policyParts = array();
@@ -225,11 +226,9 @@ class Submission extends Form {
  
     public function renderParts($action, $attr=array()){
 
-        $admin_url = admin_url('admin-post.php');
-
         $output = array();
 
-        $output['formBegin'] = '<form class="svbk-form" action="'. esc_url( $admin_url ) .'" id="'.$this->field_prefix. self::PREFIX_SEPARATOR . $this->index . '" method="POST">';
+        $output['formBegin'] = '<form class="svbk-form" action="'. esc_url( $this->submitUrl ) .'" id="'.$this->field_prefix. self::PREFIX_SEPARATOR . $this->index . '" method="POST">';
         
         foreach($this->inputFields as $fieldName => $fieldAttr) {
             $output['input'][$fieldName] = $this->renderField($fieldName, $fieldAttr);
@@ -254,7 +253,7 @@ class Submission extends Form {
         
         $output['policy']['end'] = '</div>';
         
-        $output['input']['action'] = '<input type="hidden" name="action" value="' . $this->action . '" >';
+        //$output['input']['action'] = '<input type="hidden" name="action" value="' . $this->action . '" >';
         $output['input']['index']  = '<input type="hidden" name="index" value="' . $this->index . '" >';
         
         $output['submitButton'] = '<button type="submit" name="' . $this->fieldName('subscribe') . '" class="button">' . urldecode($attr['submit_button_label']) . '</button>';
