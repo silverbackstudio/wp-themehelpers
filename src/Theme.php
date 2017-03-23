@@ -255,6 +255,13 @@ class Theme {
         $cdn->register_style('flickity', 'flickity.min.css', array(), '2.0');
         
     	$cdn->register_script('masonry', 'masonry.pkgd.min.js', array(), '4.1');
+    	
+    	$cdn->register_script('jquery.localscroll', 'jquery.localScroll.min.js', array('jquery'), '1.4.0');
+    	$cdn->register_script('jquery.scrollto', 'jquery.scrollTo.min.js', array('jquery'), '2.1.2');
+    	
+    	wp_enqueue_script('object-fit-images', 'https://cdnjs.cloudflare.com/ajax/libs/object-fit-images/3.1.3/ofi.min.js', array('jquery'), '3.1.3', true );
+    	wp_add_inline_script( 'object-fit-images', 'objectFitImages();' );
+    	
     	wp_register_script('history.jquery.js', 'https://cdn.jsdelivr.net/history.js/1.8/history.adapter.jquery.js', array('jquery', 'history.js'), '1.8' );  
     	$cdn->register_script('history.js', 'history.js', array('jquery'), '1.8' );  
     	
