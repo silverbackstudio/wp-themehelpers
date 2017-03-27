@@ -80,6 +80,11 @@ class Theme {
         
     }    
     
+    public static function declareAjaxurl($script){
+        wp_localize_script($script, 'ajaxurl', admin_url( 'admin-ajax.php' ));
+    }
+    
+    
     protected function call_on_enqueue_scripts($method){
         $this->queued_script_methods[] = $method;
     }
