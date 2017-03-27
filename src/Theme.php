@@ -110,9 +110,7 @@ class Theme {
             $script_options['library'] = $this->conf('googlemaps', 'library');
             $script_options['callback'] = $this->conf('googlemaps', 'callback', 'initGMaps');
             
-            //$script_options = array_filter($script_options);
-
-            var_dump($script_options);
+            $script_options = array_filter($script_options);
 
             $script = http_build_query($script_options);
             
@@ -132,7 +130,8 @@ class Theme {
 
         	    wp_add_inline_script('google-maps',
             	'function initGMaps() { 
-                        document.addEventListener(\'DOMContentLoaded\', function(){
+            	
+            	        var triggerGmaps = function(){
             	        
                             var event, eventName = \'gmaps-ready\';
                             
@@ -149,7 +148,10 @@ class Theme {
                             }
                             
                             document.body.dispatchEvent(event);
-            	        });
+            	        };
+            	
+                        document.addEventListener(\'DOMContentLoaded\', triggerGmaps);
+                        triggerGmaps();
             	}',
             	'before');    
             }
