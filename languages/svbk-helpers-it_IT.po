@@ -1,0 +1,226 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Silverback Helpers\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-03-21 11:01+0000\n"
+"PO-Revision-Date: 2017-03-21 11:03+0000\n"
+"Last-Translator: SilverbackStudio <webmaster@silverbackstudio.it>\n"
+"Language-Team: Italian\n"
+"Language: it-IT\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco - https://localise.biz/"
+
+#: src/Form/Submission.php:68
+msgid ""
+"I have read and agree to the \"Terms and conditions\" and the \"Privacy "
+"Policy\""
+msgstr ""
+"Ho letto e accetto i \"Termini e le Condizioni del servizio\" contenuti "
+"nella \"Privacy policy\"."
+
+#: src/Form/Submission.php:71
+msgid "Privacy Policy terms must be accepted"
+msgstr "I termini della privacy policy devono essere accettati per proseguire"
+
+#: src/Form/Submission.php:75
+msgid ""
+"I accept the processing of the data referred to in Article 1 of the "
+"\"Privacy policy\""
+msgstr ""
+"Accetto il trattamento dei dati di cui all' articolo 1 dell'informativa "
+"sulla privacy"
+
+#: src/Form/Submission.php:81
+msgid ""
+"I accept the processing of the data referred to in Article 2 of the "
+"\"Privacy policy\""
+msgstr ""
+"Accetto il trattamento dei dati di cui all' articolo 2 dell'informativa "
+"sulla privacy"
+
+#: src/MailChimp.php:13
+msgid ""
+"You have already received this whitepaper, check your inbox, use another "
+"email or request it via email."
+msgstr ""
+"Hai già ricevuto questo documento, controlla la tua casella di posta oppure "
+"utilizza un altro indirizzo email."
+
+#: src/MailChimp.php:14
+msgid "Your content is beeing delivered, please wait"
+msgstr "Il contenuto richiesto sta per essere inviato, rimani in attesa."
+
+#: src/Mandrill.php:54
+msgid ""
+"This address has beed rejected, this sometimes is due to multiple tries to "
+"send to a full or disabled inbox. Please try again later"
+msgstr ""
+"Questo indirizzo è stato rifiutato. Questo spesso avviene a causa di troppi "
+"invii consecutivi a una casella disabilitata. Per favore riprova più tardi."
+
+#: src/Mandrill.php:57
+msgid ""
+"The mailbox is non existent or disabled. Please check your email address is "
+"correct or your contact your mailbox provider."
+msgstr ""
+"L'indirizzo di posta specificato è inesistente o non attivo. Per favore "
+"controlla che l'indirizzo sia corretto oppure contatta il tuo provider di "
+"posta."
+
+#: src/Mandrill.php:60
+msgid ""
+"Your mailbox isn't accepting our message. Please check your if mailbox your "
+"mailbox is full."
+msgstr ""
+"La tua casella di post non accetta il nostro messaggio. Per favore controlla "
+"se la tua casella è attiva ed ha spazio disponibile."
+
+#: src/Mandrill.php:63 src/Mandrill.php:82
+msgid "Your email address is invalid. Please check the address or use another."
+msgstr ""
+"Il tuo indirizzo email non è valido. Per favore controlla eventuali errori "
+"oppure utilizza un altro indirizzo."
+
+#: src/Mandrill.php:66
+msgid ""
+"Your mailbox is reporting our message as spam. Please add our domain to "
+"trusted senders or contact the website tech support"
+msgstr ""
+"La tua casella di posta ha rilevato il nostro indirizzo come spam. Per "
+"favore aggiungi il nostro dominio nella lista dei mittenti verificati o "
+"contatta il supporto tecnico."
+
+#: src/Mandrill.php:69
+msgid "This email address is a test account."
+msgstr "Questo indirizzo email è un account di prova."
+
+#: src/Mandrill.php:72
+msgid "The test mode sending limit is beeing reached."
+msgstr "E' stato raggiunto il limite di invio per l'account di test."
+
+#: src/Mandrill.php:75
+msgid ""
+"This email address has beeing rejected for an unknown reason. Please use "
+"another email address."
+msgstr ""
+"Questa indirizzo email è stata rifiutata per un motivo sconosciuto. Per "
+"favore utilizza un altro indirizzo email."
+
+#: src/Gallery/Tiled.php:34
+msgid "Tiled Gallery"
+msgstr "Galleria a Tile"
+
+#: src/Gallery/Flickity.php:40
+msgid "Post Slider"
+msgstr "Slider Articolo"
+
+#: src/Form/Submission.php:40
+msgid "First Name"
+msgstr "Nome"
+
+#: src/Form/Submission.php:42
+msgid "Please enter first name"
+msgstr "Per favore inserisci il tuo nome"
+
+#: src/Form/Submission.php:46
+msgid "Last Name"
+msgstr "Cognome"
+
+#: src/Form/Submission.php:48
+msgid "Please enter last name"
+msgstr "Per favore inserisci in tuo cognome"
+
+#: src/Form/Submission.php:52
+msgid "Email Address"
+msgstr "Indirizzo E-mail"
+
+#: src/Form/Submission.php:54
+msgid "Invalid email address"
+msgstr "Indirizzo email assente o non valido "
+
+#: src/Form/Submission.php:156
+#, php-format
+msgid "Empty or invalid field [%s]"
+msgstr "Campo non compilato correttamente [%s]"
+
+#: src/Form/Submission.php:216
+#, php-format
+msgid ""
+"I declare I have read and accept the %s notification and I consent to "
+"process my personal data."
+msgstr ""
+"Accetto l'informativa e tutte le clausole indicate nella %s. Non tutti i "
+"consensi sono obbligatori"
+
+#: src/Form/Submission.php:219
+msgid "click here"
+msgstr "clicca qui"
+
+#: src/Form/Submission.php:220
+#, php-format
+msgid "To select the consents partially %s."
+msgstr "Per selezionare i consensi parzialmente %s."
+
+#: src/Form/Download.php:45 src/Form/Contact.php:82
+msgid ""
+"The requesto to our mail server failed, please try again later or contact "
+"the site owner."
+msgstr ""
+"La richiesta di invio non è andata a buon fine, per favore riprova più tardi "
+"o contatta il proprietario del sito."
+
+#: src/Form/Download.php:121
+msgid ""
+"The specified download doesn't exists anymore. Please contact site owner"
+msgstr ""
+"Il file specificato non è più disponibile. Per ottenerlo contatta il "
+"proprietario del sito."
+
+#: src/Form/Contact.php:29
+msgid "Subject"
+msgstr "Oggetto"
+
+#: src/Form/Contact.php:32
+msgid "Please enter a subject"
+msgstr "Per favore inserisci un oggetto"
+
+#: src/Form/Contact.php:36
+msgid "Message"
+msgstr "Messaggio"
+
+#: src/Form/Contact.php:39
+msgid "Please write a brief description of your request"
+msgstr "Per favore scrivi una breve descrizione della tua richesta"
+
+#: src/Form/Contact.php:53
+msgid ""
+"Ho letto e accetto le condizioni generali e l'informativa della privacy."
+msgstr ""
+"Ho letto e accetto le condizioni generali e l'informativa della privacy."
+
+#: src/Form/Contact.php:56
+msgid "Policy terms must be accepted"
+msgstr "I termini di servizio devono essere accettati per poter procedere"
+
+#. Name of the plugin
+msgid "Silverback Helpers"
+msgstr "Silverback Helpers"
+
+#. Description of the plugin
+msgid "Silverback's  Helper Classes"
+msgstr "Silverback's  Helper Classes"
+
+#. URI of the plugin
+msgid "https://gitlab.com/silverbackstudio/wp-themehelper"
+msgstr "https://gitlab.com/silverbackstudio/wp-themehelper"
+
+#. Author of the plugin
+msgid "Silverback Studio"
+msgstr "Silverback Studio"
+
+#. Author URI of the plugin
+msgid "http://www.silverbackstudio.it/"
+msgstr "http://www.silverbackstudio.it/"

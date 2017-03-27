@@ -11,5 +11,8 @@
     "autoload": {
         "psr-4": {"Svbk\\WP\\Helpers\\": "src/"}
     },   
-    "require": {}
+    "require": {
+        "drewm/mailchimp-api": "^2.4",
+        "mandrill/mandrill": "^1.0"
+    }
 }

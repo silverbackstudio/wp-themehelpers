@@ -6,13 +6,13 @@ use Svbk\WP\Helpers\CdnScripts;
 
 class Theme {
     
-    public $config;
+    public static $config;
     public $async_scripts = ['google-maps', 'iubenda-cookie', 'google-tag-manager'];
     public $defer_scripts = ['iubenda-cookie', 'google-tag-manager'];
     protected $queued_script_methods = [];
     
     function __construct($config_file='config.php'){
-        $this->config = $this->load_config($config_file);
+        self::$config = $this->load_config($config_file);
          
         add_action('wp_enqueue_scripts', array($this, 'on_enqueue_scripts'), 8, 2 );
         add_filter('script_loader_tag', array($this, 'add_async_attributes'), 10, 2);  
@@ -20,6 +20,7 @@ class Theme {
         add_action('acf/init', array($this, 'acf_init'));    
         add_shortcode('bloginfo', array($this, 'bloginfo_shortcode') );
         add_shortcode('privacy-link', array($this, 'get_privacy_link') );
+        add_action( 'after_setup_theme', array($this, 'load_texdomain') );
         
         add_action('wp_head', array($this, 'add_analytics'), 1);
         add_action('after_body_tag', array($this, 'print_analytics_noscript'));
@@ -29,6 +30,10 @@ class Theme {
     static function init($config_file='config.php'){
         return new self($config_file);
     }
+    
+    public function load_texdomain(){
+        load_textdomain( 'svbk-helpers', dirname(__DIR__).'/languages/svbk-helpers' . '-' . get_locale() . '.mo'   ); 
+    }    
     
     function load_config($config_file='config.php'){
         
@@ -46,13 +51,13 @@ class Theme {
     
     function conf($group, $param=null, $default=null){
         
-        if( $group && isset($this->config[$group]) ){
+        if( $group && isset(self::$config[$group]) ){
             
             if($param) {
-                return isset($this->config[$group][$param])?$this->config[$group][$param]:$default;
+                return isset(self::$config[$group][$param])?self::$config[$group][$param]:$default;
             } 
             
-            return $this->config[$group];
+            return self::$config[$group];
         }
         
         return $default;
@@ -61,7 +66,7 @@ class Theme {
     
     function all(){
         
-        if(empty($this->config)){
+        if(empty(self::$config)){
             return false;
         }
         
@@ -237,9 +242,9 @@ class Theme {
     function add_icons(){
         
         $path = $this->conf('icons', 'path');
-        
+
         if($path && file_exists( trailingslashit(get_template_directory()).$path )){
-            wp_enqueue_style('theme-icons', trailingslashit(get_template_directory_uri()).$path);        
+            wp_enqueue_style('theme-icons', get_theme_file_uri($path) );        
         } 
     
     }
@@ -254,6 +259,13 @@ class Theme {
         $cdn->register_style('flickity', 'flickity.min.css', array(), '2.0');
         
     	$cdn->register_script('masonry', 'masonry.pkgd.min.js', array(), '4.1');
+    	
+    	$cdn->register_script('jquery.localscroll', 'jquery.localScroll.min.js', array('jquery'), '1.4.0');
+    	$cdn->register_script('jquery.scrollto', 'jquery.scrollTo.min.js', array('jquery'), '2.1.2');
+    	
+    	wp_enqueue_script('object-fit-images', 'https://cdnjs.cloudflare.com/ajax/libs/object-fit-images/3.1.3/ofi.min.js', array('jquery'), '3.1.3', true );
+    	wp_add_inline_script( 'object-fit-images', 'objectFitImages();' );
+    	
     	wp_register_script('history.jquery.js', 'https://cdn.jsdelivr.net/history.js/1.8/history.adapter.jquery.js', array('jquery', 'history.js'), '1.8' );  
     	$cdn->register_script('history.js', 'history.js', array('jquery'), '1.8' );  
     	

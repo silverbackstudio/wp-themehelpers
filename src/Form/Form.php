@@ -1,0 +1,104 @@
+<?php 
+
+namespace Svbk\WP\Helpers\Form;
+
+class Form {
+
+    public $index = 0;
+    
+    public static $salt = 's1v2b3k4';
+    public $field_prefix = 'frm';
+    public $antispam_timeout = 60;
+    
+    public $errors = array();
+    
+    const PREFIX_SEPARATOR = '-';
+    
+    protected function addError($error, $field=null){
+        
+        if($field){
+            $this->errors[$field][] = $error;
+        } else {
+            $this->errors[] = $error;
+        }
+        
+    }
+    
+    public function getErrors(){
+        return $this->errors;
+    }
+
+    public function processInput($fields){
+        
+        $hashed_fields = array();
+        $inputs = array();
+        
+        foreach($fields as $field => $filter){
+            $hashed_field_name = $this->fieldName($field);
+            $hashed_filters[ $hashed_field_name ] = $filter;
+            $input[ $field ] = $hashed_field_name;
+        }
+        
+        $hashed_inputs = filter_input_array( INPUT_POST, $hashed_filters );
+        
+        foreach($input as $field => $hashed_field_name){
+            $input[ $field ] = $hashed_inputs[ $hashed_field_name ];
+        }        
+        
+        return $input;
+    }
+    
+    public function fieldName($fieldName, $hash = true){
+        
+        $clearText =   $this->index . '_' . $fieldName;
+        
+        if( !$hash ){
+            return $this->field_prefix . '_' . $clearText;
+        }
+        
+        $clearText .= self::$salt;
+        
+        if($this->antispam_timeout > 0){
+            $clearText .= round( time() / ( $this->antispam_timeout * MINUTE_IN_SECONDS * 2 ) );
+        }
+        
+        return $this->field_prefix . md5( $clearText );
+    }
+
+    
+    public function renderField($fieldName, $fieldAttr, $errors = array()){
+        
+            $type = isset( $fieldAttr['type'] ) ? $fieldAttr['type'] : 'text';
+            $fieldLabel = isset( $fieldAttr['label'] ) ? $fieldAttr['label'] : 'text';
+            $value = isset( $fieldAttr['default'] ) ? $fieldAttr['default'] : '';
+            $classes = isset( $fieldAttr['class'] ) ? $fieldAttr['class'] : '';
+        
+            $fieldNameHash = esc_attr( $this->fieldName($fieldName) );
+            $fieldId =  esc_attr( $this->fieldName($fieldName, false) );
+        
+            $output = '<div class="' . esc_attr($this->field_prefix . self::PREFIX_SEPARATOR . $fieldName) . '-group ' . esc_attr($classes) . ' field-group">';
+            
+            if('checkbox' === $type){
+                    $output .= '<input type="' . esc_attr($type)  . '" name="' . $fieldNameHash . '" id="' . $fieldId . '" value="1" />'           
+                    .       '<label for="' . $fieldId . '">' . $fieldLabel .'</label>';                  
+            }
+            elseif('textarea' === $type){
+                    $output .=  '<label for="' . $fieldId . '">' . $fieldLabel .'</label>'
+                    .           '<textarea type="' . esc_attr($type)  . '" name="' . $fieldNameHash . '" id="' . $fieldId . '"  />'. esc_html($value) . '</textarea>';
+            } else {
+                    $output .= '<label for="' . $fieldId . '">' . $fieldLabel .'</label>'
+                    .       '<input type="' . esc_attr($type)  . '" name="' . $fieldNameHash . '" id="' . $fieldId . '" value="' . esc_attr($value) . '" />';
+            }
+                    
+            if($errors !== false){
+                $output .=  '<span class="field-errors"></span>';
+            }
+            
+            $output .=  '</div>';
+            
+            return $output;
+        
+    }        
+    
+    
+}
