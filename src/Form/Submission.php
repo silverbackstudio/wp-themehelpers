@@ -218,7 +218,7 @@ class Submission extends Form {
         
         if(count($this->policyParts) > 1){
             $flagsButton = '<a class="policy-flags-open" href="#policy-flags-' . $this->index . '">' . __('click here','svbk-helpers') . '</a>';
-            $text .= '</label><label>'.sprintf( __('To select the consents partially %s.', 'svbk-helpers'), $flagsButton);
+            $text .= '</label><label class="show-policy-parts">'.sprintf( __('To select the consents partially %s.', 'svbk-helpers'), $flagsButton);
         }
         
         return $text;
