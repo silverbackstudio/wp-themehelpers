@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Silverback Helpers\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-21 11:01+0000\n"
-"PO-Revision-Date: 2017-03-21 11:03+0000\n"
-"Last-Translator: SilverbackStudio <webmaster@silverbackstudio.it>\n"
+"POT-Creation-Date: 2017-04-07 09:07+0000\n"
+"PO-Revision-Date: 2017-04-07 09:07+0000\n"
+"Last-Translator: silverbackstudio <webmaster@silverbackstudio.it>\n"
 "Language-Team: Italian\n"
 "Language: it-IT\n"
 "Plural-Forms: nplurals=2; plural=n != 1\n"
@@ -13,35 +13,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco - https://localise.biz/"
 
-#: src/Form/Submission.php:68
-msgid ""
-"I have read and agree to the \"Terms and conditions\" and the \"Privacy "
-"Policy\""
-msgstr ""
-"Ho letto e accetto i \"Termini e le Condizioni del servizio\" contenuti "
-"nella \"Privacy policy\"."
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:231
+msgid "Required fields"
+msgstr "Campi richiesti"
 
-#: src/Form/Submission.php:71
-msgid "Privacy Policy terms must be accepted"
-msgstr "I termini della privacy policy devono essere accettati per proseguire"
-
-#: src/Form/Submission.php:75
-msgid ""
-"I accept the processing of the data referred to in Article 1 of the "
-"\"Privacy policy\""
-msgstr ""
-"Accetto il trattamento dei dati di cui all' articolo 1 dell'informativa "
-"sulla privacy"
-
-#: src/Form/Submission.php:81
-msgid ""
-"I accept the processing of the data referred to in Article 2 of the "
-"\"Privacy policy\""
-msgstr ""
-"Accetto il trattamento dei dati di cui all' articolo 2 dell'informativa "
-"sulla privacy"
-
-#: src/MailChimp.php:13
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/MailChimp.php:13
 msgid ""
 "You have already received this whitepaper, check your inbox, use another "
 "email or request it via email."
@@ -49,11 +25,11 @@ msgstr ""
 "Hai già ricevuto questo documento, controlla la tua casella di posta oppure "
 "utilizza un altro indirizzo email."
 
-#: src/MailChimp.php:14
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/MailChimp.php:14
 msgid "Your content is beeing delivered, please wait"
 msgstr "Il contenuto richiesto sta per essere inviato, rimani in attesa."
 
-#: src/Mandrill.php:54
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:54
 msgid ""
 "This address has beed rejected, this sometimes is due to multiple tries to "
 "send to a full or disabled inbox. Please try again later"
@@ -61,7 +37,7 @@ msgstr ""
 "Questo indirizzo è stato rifiutato. Questo spesso avviene a causa di troppi "
 "invii consecutivi a una casella disabilitata. Per favore riprova più tardi."
 
-#: src/Mandrill.php:57
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:57
 msgid ""
 "The mailbox is non existent or disabled. Please check your email address is "
 "correct or your contact your mailbox provider."
@@ -70,7 +46,7 @@ msgstr ""
 "controlla che l'indirizzo sia corretto oppure contatta il tuo provider di "
 "posta."
 
-#: src/Mandrill.php:60
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:60
 msgid ""
 "Your mailbox isn't accepting our message. Please check your if mailbox your "
 "mailbox is full."
@@ -78,13 +54,14 @@ msgstr ""
 "La tua casella di post non accetta il nostro messaggio. Per favore controlla "
 "se la tua casella è attiva ed ha spazio disponibile."
 
-#: src/Mandrill.php:63 src/Mandrill.php:82
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:63
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:82
 msgid "Your email address is invalid. Please check the address or use another."
 msgstr ""
 "Il tuo indirizzo email non è valido. Per favore controlla eventuali errori "
 "oppure utilizza un altro indirizzo."
 
-#: src/Mandrill.php:66
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:66
 msgid ""
 "Your mailbox is reporting our message as spam. Please add our domain to "
 "trusted senders or contact the website tech support"
@@ -93,15 +70,15 @@ msgstr ""
 "favore aggiungi il nostro dominio nella lista dei mittenti verificati o "
 "contatta il supporto tecnico."
 
-#: src/Mandrill.php:69
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:69
 msgid "This email address is a test account."
 msgstr "Questo indirizzo email è un account di prova."
 
-#: src/Mandrill.php:72
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:72
 msgid "The test mode sending limit is beeing reached."
 msgstr "E' stato raggiunto il limite di invio per l'account di test."
 
-#: src/Mandrill.php:75
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:75
 msgid ""
 "This email address has beeing rejected for an unknown reason. Please use "
 "another email address."
@@ -109,44 +86,99 @@ msgstr ""
 "Questa indirizzo email è stata rifiutata per un motivo sconosciuto. Per "
 "favore utilizza un altro indirizzo email."
 
-#: src/Gallery/Tiled.php:34
-msgid "Tiled Gallery"
-msgstr "Galleria a Tile"
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:29
+msgid "Subject"
+msgstr "Oggetto"
 
-#: src/Gallery/Flickity.php:40
-msgid "Post Slider"
-msgstr "Slider Articolo"
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:32
+msgid "Please enter a subject"
+msgstr "Per favore inserisci un oggetto"
 
-#: src/Form/Submission.php:40
-msgid "First Name"
-msgstr "Nome"
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:36
+msgid "Message"
+msgstr "Messaggio"
 
-#: src/Form/Submission.php:42
-msgid "Please enter first name"
-msgstr "Per favore inserisci il tuo nome"
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:39
+msgid "Please write a brief description of your request"
+msgstr "Per favore scrivi una breve descrizione della tua richesta"
 
-#: src/Form/Submission.php:46
-msgid "Last Name"
-msgstr "Cognome"
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:53
+msgid ""
+"Ho letto e accetto le condizioni generali e l'informativa della privacy."
+msgstr ""
+"Ho letto e accetto le condizioni generali e l'informativa della privacy."
 
-#: src/Form/Submission.php:48
-msgid "Please enter last name"
-msgstr "Per favore inserisci in tuo cognome"
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:56
+msgid "Policy terms must be accepted"
+msgstr "I termini di servizio devono essere accettati per poter procedere"
 
-#: src/Form/Submission.php:52
-msgid "Email Address"
-msgstr "Indirizzo E-mail"
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:82
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Download.php:45
+msgid ""
+"The requesto to our mail server failed, please try again later or contact "
+"the site owner."
+msgstr ""
+"La richiesta di invio non è andata a buon fine, per favore riprova più tardi "
+"o contatta il proprietario del sito."
 
-#: src/Form/Submission.php:54
-msgid "Invalid email address"
-msgstr "Indirizzo email assente o non valido "
-
-#: src/Form/Submission.php:156
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Form.php:73
 #, php-format
 msgid "Empty or invalid field [%s]"
 msgstr "Campo non compilato correttamente [%s]"
 
-#: src/Form/Submission.php:216
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:41
+msgid "First Name"
+msgstr "Nome"
+
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:43
+msgid "Please enter first name"
+msgstr "Per favore inserisci il tuo nome"
+
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:47
+msgid "Last Name"
+msgstr "Cognome"
+
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:49
+msgid "Please enter last name"
+msgstr "Per favore inserisci in tuo cognome"
+
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:53
+msgid "Email Address"
+msgstr "Indirizzo E-mail"
+
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:55
+msgid "Invalid email address"
+msgstr "Indirizzo email assente o non valido "
+
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:69
+msgid ""
+"I have read and agree to the \"Terms and conditions\" and the \"Privacy "
+"Policy\""
+msgstr ""
+"Ho letto e accetto i \"Termini e le Condizioni del servizio\" contenuti "
+"nella \"Privacy policy\"."
+
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:72
+msgid "Privacy Policy terms must be accepted"
+msgstr "I termini della privacy policy devono essere accettati per proseguire"
+
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:76
+msgid ""
+"I accept the processing of the data referred to in Article 1 of the "
+"\"Privacy policy\""
+msgstr ""
+"Accetto il trattamento dei dati di cui all' articolo 1 dell'informativa "
+"sulla privacy"
+
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:82
+msgid ""
+"I accept the processing of the data referred to in Article 2 of the "
+"\"Privacy policy\""
+msgstr ""
+"Accetto il trattamento dei dati di cui all' articolo 2 dell'informativa "
+"sulla privacy"
+
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:209
 #, php-format
 msgid ""
 "I declare I have read and accept the %s notification and I consent to "
@@ -155,55 +187,29 @@ msgstr ""
 "Accetto l'informativa e tutte le clausole indicate nella %s. Non tutti i "
 "consensi sono obbligatori"
 
-#: src/Form/Submission.php:219
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:212
 msgid "click here"
 msgstr "clicca qui"
 
-#: src/Form/Submission.php:220
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:213
 #, php-format
 msgid "To select the consents partially %s."
 msgstr "Per selezionare i consensi parzialmente %s."
 
-#: src/Form/Download.php:45 src/Form/Contact.php:82
-msgid ""
-"The requesto to our mail server failed, please try again later or contact "
-"the site owner."
-msgstr ""
-"La richiesta di invio non è andata a buon fine, per favore riprova più tardi "
-"o contatta il proprietario del sito."
-
-#: src/Form/Download.php:121
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Download.php:121
 msgid ""
 "The specified download doesn't exists anymore. Please contact site owner"
 msgstr ""
 "Il file specificato non è più disponibile. Per ottenerlo contatta il "
 "proprietario del sito."
 
-#: src/Form/Contact.php:29
-msgid "Subject"
-msgstr "Oggetto"
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Gallery/Flickity.php:40
+msgid "Post Slider"
+msgstr "Slider Articolo"
 
-#: src/Form/Contact.php:32
-msgid "Please enter a subject"
-msgstr "Per favore inserisci un oggetto"
-
-#: src/Form/Contact.php:36
-msgid "Message"
-msgstr "Messaggio"
-
-#: src/Form/Contact.php:39
-msgid "Please write a brief description of your request"
-msgstr "Per favore scrivi una breve descrizione della tua richesta"
-
-#: src/Form/Contact.php:53
-msgid ""
-"Ho letto e accetto le condizioni generali e l'informativa della privacy."
-msgstr ""
-"Ho letto e accetto le condizioni generali e l'informativa della privacy."
-
-#: src/Form/Contact.php:56
-msgid "Policy terms must be accepted"
-msgstr "I termini di servizio devono essere accettati per poter procedere"
+#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Gallery/Tiled.php:34
+msgid "Tiled Gallery"
+msgstr "Galleria a Tile"
 
 #. Name of the plugin
 msgid "Silverback Helpers"
