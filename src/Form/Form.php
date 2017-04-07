@@ -8,7 +8,7 @@ class Form {
     
     public static $salt = 's1v2b3k4';
     public $field_prefix = 'frm';
-    public $antispam_timeout = 60;
+    public $antispam_timeout = 0;
     
     public $errors = array();
     
