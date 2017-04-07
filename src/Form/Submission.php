@@ -228,6 +228,8 @@ class Submission extends Form {
             $output['input'][$fieldName] = $this->renderField($fieldName, $fieldAttr);
         }
         
+        $output['requiredNotice'] = '<div class="required-notice">'. __('Required fields', 'svbk-helpers') .'</div>';
+        
         $output['policy']['begin'] = '<div class="policy-agreements">';
         
         if( count($this->policyParts) > 1) {
@@ -247,7 +249,6 @@ class Submission extends Form {
         
         $output['policy']['end'] = '</div>';
         
-        //$output['input']['action'] = '<input type="hidden" name="action" value="' . $this->action . '" >';
         $output['input']['index']  = '<input type="hidden" name="index" value="' . $this->index . '" >';
         
         $output['submitButton'] = '<button type="submit" name="' . $this->fieldName('subscribe') . '" class="button">' . urldecode($attr['submit_button_label']) . '</button>';
