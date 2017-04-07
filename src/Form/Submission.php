@@ -149,14 +149,6 @@ class Submission extends Form {
         
     }
     
-    protected static function fieldRequired($field){
-        return (bool) ( isset($field['required']) ? $field['required'] : false );
-    }
-    
-    protected static function fieldError($field, $name=''){
-        return ( isset($field['error']) ? $field['error'] : sprintf( __('Empty or invalid field [%s]', 'svbk-helpers'), $name )  );
-    }    
-    
     protected function validateInput(){
         
         $policyFields = array_keys($this->policyParts);
@@ -228,7 +220,9 @@ class Submission extends Form {
 
         $output = array();
 
-        $output['formBegin'] = '<form class="svbk-form" action="'. esc_url( $this->submitUrl ) .'" id="'.$this->field_prefix. self::PREFIX_SEPARATOR . $this->index . '" method="POST">';
+        $form_id = $this->field_prefix. self::PREFIX_SEPARATOR . $this->index;
+
+        $output['formBegin'] = '<form class="svbk-form" action="'. esc_url( $this->submitUrl . '#' . $form_id) .'" id="' . esc_attr($form_id) . '" method="POST">';
         
         foreach($this->inputFields as $fieldName => $fieldAttr) {
             $output['input'][$fieldName] = $this->renderField($fieldName, $fieldAttr);
