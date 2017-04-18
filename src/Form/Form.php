@@ -8,7 +8,7 @@ class Form {
     
     public static $salt = 's1v2b3k4';
     public $field_prefix = 'frm';
-    public $antispam_timeout = 60;
+    public $antispam_timeout = 0;
     
     public $errors = array();
     
@@ -64,19 +64,37 @@ class Form {
         
         return $this->field_prefix . md5( $clearText );
     }
-
+    
+    protected static function fieldRequired($fieldAttr){
+        return (bool) ( isset($fieldAttr['required']) ? $fieldAttr['required'] : false );
+    }
+    
+    protected static function fieldError($fieldAttr, $name=''){
+        return ( isset($fieldAttr['error']) ? $fieldAttr['error'] : sprintf( __('Empty or invalid field [%s]', 'svbk-helpers'), $name )  );
+    }        
     
     public function renderField($fieldName, $fieldAttr, $errors = array()){
         
             $type = isset( $fieldAttr['type'] ) ? $fieldAttr['type'] : 'text';
             $fieldLabel = isset( $fieldAttr['label'] ) ? $fieldAttr['label'] : 'text';
             $value = isset( $fieldAttr['default'] ) ? $fieldAttr['default'] : '';
-            $classes = isset( $fieldAttr['class'] ) ? $fieldAttr['class'] : '';
+        
+            $classes = array_merge(
+                array( 
+                    $this->field_prefix . self::PREFIX_SEPARATOR . $fieldName . '-group',
+                    'field-group',
+                ),
+                isset( $fieldAttr['class'] ) ? (array)$fieldAttr['class'] : array()
+            );
+            
+            if( $this->fieldRequired($fieldAttr) ){
+                $classes[] = 'required';
+            }
         
             $fieldNameHash = esc_attr( $this->fieldName($fieldName) );
             $fieldId =  esc_attr( $this->fieldName($fieldName, false) );
         
-            $output = '<div class="' . esc_attr($this->field_prefix . self::PREFIX_SEPARATOR . $fieldName) . '-group ' . esc_attr($classes) . ' field-group">';
+            $output = '<div class="' . esc_attr( join(' ', $classes) ) . '">';
             
             if('checkbox' === $type){
                     $output .= '<input type="' . esc_attr($type)  . '" name="' . $fieldNameHash . '" id="' . $fieldId . '" value="1" />'           
