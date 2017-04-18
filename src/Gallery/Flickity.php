@@ -105,6 +105,14 @@ class Flickity {
     static function enqueue_script(){
         wp_enqueue_script('flickity');
         wp_enqueue_style('flickity');
+        wp_add_inline_script( 'flickity', '
+            (function($){ 
+                $(document.body).on( \'post-load\', function(){ 
+                    $(\'.js-flickity\').not(\'.flickity-enabled\').each( function(){ 
+                        $(this).flickity( $(this).data(\'flickityOptions\') );
+                    });  
+                });  
+            })(jQuery);', 'after');
     }
     
 }
