@@ -30,12 +30,12 @@ class Renderer {
     } 
 
     /**
-    * Insert an array into another array before/after a certain key
+    * Insert an array into another array before/after a certain value
     *
     * @param array $array The initial array
-    * @param array $pairs The array to insert
-    * @param string $key The certain key
-    * @param string $position Wether to insert the array before or after the key
+    * @param array $values The array to insert
+    * @param string $reference The reference value
+    * @param string $position Wether to insert the array before or after the value
     * @return array
     */
     public static function arrayInsert( $array, $values, $reference, $position = 'after' ) {
