@@ -7,6 +7,21 @@ use WP_Query;
 
 class Jetpack {
 
+    public static function contentShareRemove() {
+        add_action( 'loop_start', function(){
+            remove_filter( 'the_content', 'sharing_display', 19 );
+            if ( class_exists( 'Jetpack_Likes' ) ) {
+                remove_filter( 'the_content', array( Jetpack_Likes::init(), 'post_likes' ), 30, 1 );
+            }
+        });
+    }
+    
+    public static function excerptShareRemove() {
+        add_action( 'loop_start', function(){
+            remove_filter( 'the_excerpt', 'sharing_display', 19 );
+        });
+    }    
+
     public static function relatedPostsRemove(){
         add_filter( 'wp', function() {
             if ( class_exists( 'Jetpack_RelatedPosts' ) ) {
