@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Silverback Helpers\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-07 09:07+0000\n"
-"PO-Revision-Date: 2017-04-07 09:07+0000\n"
-"Last-Translator: silverbackstudio <webmaster@silverbackstudio.it>\n"
+"POT-Creation-Date: 2017-04-28 15:07+0000\n"
+"PO-Revision-Date: 2017-04-28 15:08+0000\n"
+"Last-Translator: Silverback Studio <webmaster@silverbackstudio.it>\n"
 "Language-Team: Italian\n"
 "Language: it-IT\n"
 "Plural-Forms: nplurals=2; plural=n != 1\n"
@@ -13,23 +13,971 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco - https://localise.biz/"
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:231
-msgid "Required fields"
-msgstr "Campi richiesti"
-
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/MailChimp.php:13
-msgid ""
-"You have already received this whitepaper, check your inbox, use another "
-"email or request it via email."
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:9
+msgid "Afghanistan"
 msgstr ""
-"Hai già ricevuto questo documento, controlla la tua casella di posta oppure "
-"utilizza un altro indirizzo email."
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/MailChimp.php:14
-msgid "Your content is beeing delivered, please wait"
-msgstr "Il contenuto richiesto sta per essere inviato, rimani in attesa."
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:10
+msgid "Albania"
+msgstr ""
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:54
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:11
+msgid "Algeria"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:12
+msgid "American Samoa"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:13
+msgid "Andorra"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:14
+msgid "Angola"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:15
+msgid "Anguilla"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:16
+msgid "Antarctica"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:17
+msgid "Antigua And Barbuda"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:18
+msgid "Argentina"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:19
+msgid "Armenia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:20
+msgid "Aruba"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:21
+msgid "Australia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:22
+msgid "Austria"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:23
+msgid "Azerbaijan"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:24
+msgid "Bahamas"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:25
+msgid "Bahrain"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:26
+msgid "Bangladesh"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:27
+msgid "Barbados"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:28
+msgid "Belarus"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:29
+msgid "Belgium"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:30
+msgid "Belize"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:31
+msgid "Benin"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:32
+msgid "Bermuda"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:33
+msgid "Bhutan"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:34
+msgid "Bolivia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:35
+msgid "Bosnia And Herzegovina"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:36
+msgid "Botswana"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:37
+msgid "Bouvet Island"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:38
+msgid "Brazil"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:39
+msgid "British Indian Ocean Territory"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:40
+msgid "Brunei Darussalam"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:41
+msgid "Bulgaria"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:42
+msgid "Burkina Faso"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:43
+msgid "Burundi"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:44
+msgid "Cambodia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:45
+msgid "Cameroon"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:46
+msgid "Canada"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:47
+msgid "Cape Verde"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:48
+msgid "Cayman Islands"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:49
+msgid "Central African Republic"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:50
+msgid "Chad"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:51
+msgid "Chile"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:52
+msgid "China"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:53
+msgid "Christmas Island"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:54
+msgid "Cocos (keeling) Islands"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:55
+msgid "Colombia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:56
+msgid "Comoros"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:57
+msgid "Congo"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:58
+msgid "Congo, The Democratic Republic Of The"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:59
+msgid "Cook Islands"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:60
+msgid "Costa Rica"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:61
+msgid "Cote D'ivoire"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:62
+msgid "Croatia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:63
+msgid "Cuba"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:64
+msgid "Cyprus"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:65
+msgid "Czech Republic"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:66
+msgid "Denmark"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:67
+msgid "Djibouti"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:68
+msgid "Dominica"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:69
+msgid "Dominican Republic"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:70
+msgid "East Timor"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:71
+msgid "Ecuador"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:72
+msgid "Egypt"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:73
+msgid "El Salvador"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:74
+msgid "Equatorial Guinea"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:75
+msgid "Eritrea"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:76
+msgid "Estonia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:77
+msgid "Ethiopia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:78
+msgid "Falkland Islands (malvinas)"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:79
+msgid "Faroe Islands"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:80
+msgid "Fiji"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:81
+msgid "Finland"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:82
+msgid "France"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:83
+msgid "French Guiana"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:84
+msgid "French Polynesia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:85
+msgid "French Southern Territories"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:86
+msgid "Gabon"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:87
+msgid "Gambia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:88
+msgid "Georgia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:89
+msgid "Germany"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:90
+msgid "Ghana"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:91
+msgid "Gibraltar"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:92
+msgid "Greece"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:93
+msgid "Greenland"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:94
+msgid "Grenada"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:95
+msgid "Guadeloupe"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:96
+msgid "Guam"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:97
+msgid "Guatemala"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:98
+msgid "Guinea"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:99
+msgid "Guinea-bissau"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:100
+msgid "Guyana"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:101
+msgid "Haiti"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:102
+msgid "Heard Island And Mcdonald Islands"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:103
+msgid "Holy See (vatican City State)"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:104
+msgid "Honduras"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:105
+msgid "Hong Kong"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:106
+msgid "Hungary"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:107
+msgid "Iceland"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:108
+msgid "India"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:109
+msgid "Indonesia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:110
+msgid "Iran, Islamic Republic Of"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:111
+msgid "Iraq"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:112
+msgid "Ireland"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:113
+msgid "Israel"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:114
+msgid "Italy"
+msgstr "Italia"
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:115
+msgid "Jamaica"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:116
+msgid "Japan"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:117
+msgid "Jordan"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:118
+msgid "Kazakstan"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:119
+msgid "Kenya"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:120
+msgid "Kiribati"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:121
+msgid "Korea, Democratic People's Republic Of"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:122
+msgid "Korea, Republic Of"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:123
+msgid "Kosovo"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:124
+msgid "Kuwait"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:125
+msgid "Kyrgyzstan"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:126
+msgid "Lao People's Democratic Republic"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:127
+msgid "Latvia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:128
+msgid "Lebanon"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:129
+msgid "Lesotho"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:130
+msgid "Liberia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:131
+msgid "Libyan Arab Jamahiriya"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:132
+msgid "Liechtenstein"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:133
+msgid "Lithuania"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:134
+msgid "Luxembourg"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:135
+msgid "Macau"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:136
+msgid "Macedonia, The Former Yugoslav Republic Of"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:137
+msgid "Madagascar"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:138
+msgid "Malawi"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:139
+msgid "Malaysia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:140
+msgid "Maldives"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:141
+msgid "Mali"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:142
+msgid "Malta"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:143
+msgid "Marshall Islands"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:144
+msgid "Martinique"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:145
+msgid "Mauritania"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:146
+msgid "Mauritius"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:147
+msgid "Mayotte"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:148
+msgid "Mexico"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:149
+msgid "Micronesia, Federated States Of"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:150
+msgid "Moldova, Republic Of"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:151
+msgid "Monaco"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:152
+msgid "Mongolia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:153
+msgid "Montserrat"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:154
+msgid "Montenegro"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:155
+msgid "Morocco"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:156
+msgid "Mozambique"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:157
+msgid "Myanmar"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:158
+msgid "Namibia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:159
+msgid "Nauru"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:160
+msgid "Nepal"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:161
+msgid "Netherlands"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:162
+msgid "Netherlands Antilles"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:163
+msgid "New Caledonia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:164
+msgid "New Zealand"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:165
+msgid "Nicaragua"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:166
+msgid "Niger"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:167
+msgid "Nigeria"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:168
+msgid "Niue"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:169
+msgid "Norfolk Island"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:170
+msgid "Northern Mariana Islands"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:171
+msgid "Norway"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:172
+msgid "Oman"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:173
+msgid "Pakistan"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:174
+msgid "Palau"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:175
+msgid "Palestinian Territory, Occupied"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:176
+msgid "Panama"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:177
+msgid "Papua New Guinea"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:178
+msgid "Paraguay"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:179
+msgid "Peru"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:180
+msgid "Philippines"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:181
+msgid "Pitcairn"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:182
+msgid "Poland"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:183
+msgid "Portugal"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:184
+msgid "Puerto Rico"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:185
+msgid "Qatar"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:186
+msgid "Reunion"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:187
+msgid "Romania"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:188
+msgid "Russian Federation"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:189
+msgid "Rwanda"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:190
+msgid "Saint Helena"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:191
+msgid "Saint Kitts And Nevis"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:192
+msgid "Saint Lucia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:193
+msgid "Saint Pierre And Miquelon"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:194
+msgid "Saint Vincent And The Grenadines"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:195
+msgid "Samoa"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:196
+msgid "San Marino"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:197
+msgid "Sao Tome And Principe"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:198
+msgid "Saudi Arabia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:199
+msgid "Senegal"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:200
+msgid "Serbia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:201
+msgid "Seychelles"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:202
+msgid "Sierra Leone"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:203
+msgid "Singapore"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:204
+msgid "Slovakia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:205
+msgid "Slovenia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:206
+msgid "Solomon Islands"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:207
+msgid "Somalia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:208
+msgid "South Africa"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:209
+msgid "South Georgia And The South Sandwich Islands"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:210
+msgid "Spain"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:211
+msgid "Sri Lanka"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:212
+msgid "Sudan"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:213
+msgid "Suriname"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:214
+msgid "Svalbard And Jan Mayen"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:215
+msgid "Swaziland"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:216
+msgid "Sweden"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:217
+msgid "Switzerland"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:218
+msgid "Syrian Arab Republic"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:219
+msgid "Taiwan, Province Of China"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:220
+msgid "Tajikistan"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:221
+msgid "Tanzania, United Republic Of"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:222
+msgid "Thailand"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:223
+msgid "Togo"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:224
+msgid "Tokelau"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:225
+msgid "Tonga"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:226
+msgid "Trinidad And Tobago"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:227
+msgid "Tunisia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:228
+msgid "Turkey"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:229
+msgid "Turkmenistan"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:230
+msgid "Turks And Caicos Islands"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:231
+msgid "Tuvalu"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:232
+msgid "Uganda"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:233
+msgid "Ukraine"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:234
+msgid "United Arab Emirates"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:235
+msgid "United Kingdom"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:236
+msgid "United States"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:237
+msgid "United States Minor Outlying Islands"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:238
+msgid "Uruguay"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:239
+msgid "Uzbekistan"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:240
+msgid "Vanuatu"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:241
+msgid "Venezuela"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:242
+msgid "Viet Nam"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:243
+msgid "Virgin Islands, British"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:244
+msgid "Virgin Islands, U.s."
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:245
+msgid "Wallis And Futuna"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:246
+msgid "Western Sahara"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:247
+msgid "Yemen"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:248
+msgid "Zambia"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:249
+msgid "Zimbabwe"
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:54
 msgid ""
 "This address has beed rejected, this sometimes is due to multiple tries to "
 "send to a full or disabled inbox. Please try again later"
@@ -37,7 +985,7 @@ msgstr ""
 "Questo indirizzo è stato rifiutato. Questo spesso avviene a causa di troppi "
 "invii consecutivi a una casella disabilitata. Per favore riprova più tardi."
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:57
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:57
 msgid ""
 "The mailbox is non existent or disabled. Please check your email address is "
 "correct or your contact your mailbox provider."
@@ -46,7 +994,7 @@ msgstr ""
 "controlla che l'indirizzo sia corretto oppure contatta il tuo provider di "
 "posta."
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:60
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:60
 msgid ""
 "Your mailbox isn't accepting our message. Please check your if mailbox your "
 "mailbox is full."
@@ -54,14 +1002,14 @@ msgstr ""
 "La tua casella di post non accetta il nostro messaggio. Per favore controlla "
 "se la tua casella è attiva ed ha spazio disponibile."
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:63
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:82
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:63
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:82
 msgid "Your email address is invalid. Please check the address or use another."
 msgstr ""
 "Il tuo indirizzo email non è valido. Per favore controlla eventuali errori "
 "oppure utilizza un altro indirizzo."
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:66
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:66
 msgid ""
 "Your mailbox is reporting our message as spam. Please add our domain to "
 "trusted senders or contact the website tech support"
@@ -70,15 +1018,15 @@ msgstr ""
 "favore aggiungi il nostro dominio nella lista dei mittenti verificati o "
 "contatta il supporto tecnico."
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:69
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:69
 msgid "This email address is a test account."
 msgstr "Questo indirizzo email è un account di prova."
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:72
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:72
 msgid "The test mode sending limit is beeing reached."
 msgstr "E' stato raggiunto il limite di invio per l'account di test."
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:75
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:75
 msgid ""
 "This email address has beeing rejected for an unknown reason. Please use "
 "another email address."
@@ -86,34 +1034,20 @@ msgstr ""
 "Questa indirizzo email è stata rifiutata per un motivo sconosciuto. Per "
 "favore utilizza un altro indirizzo email."
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:29
-msgid "Subject"
-msgstr "Oggetto"
-
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:32
-msgid "Please enter a subject"
-msgstr "Per favore inserisci un oggetto"
-
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:36
-msgid "Message"
-msgstr "Messaggio"
-
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:39
-msgid "Please write a brief description of your request"
-msgstr "Per favore scrivi una breve descrizione della tua richesta"
-
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:53
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/MailChimp.php:13
 msgid ""
-"Ho letto e accetto le condizioni generali e l'informativa della privacy."
+"You have already received this whitepaper, check your inbox, use another "
+"email or request it via email."
 msgstr ""
-"Ho letto e accetto le condizioni generali e l'informativa della privacy."
+"Hai già ricevuto questo documento, controlla la tua casella di posta oppure "
+"utilizza un altro indirizzo email."
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:56
-msgid "Policy terms must be accepted"
-msgstr "I termini di servizio devono essere accettati per poter procedere"
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/MailChimp.php:14
+msgid "Your content is beeing delivered, please wait"
+msgstr "Il contenuto richiesto sta per essere inviato, rimani in attesa."
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:82
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Download.php:45
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Download.php:45
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:82
 msgid ""
 "The requesto to our mail server failed, please try again later or contact "
 "the site owner."
@@ -121,36 +1055,43 @@ msgstr ""
 "La richiesta di invio non è andata a buon fine, per favore riprova più tardi "
 "o contatta il proprietario del sito."
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Form.php:73
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Download.php:121
+msgid ""
+"The specified download doesn't exists anymore. Please contact site owner"
+msgstr ""
+"Il file specificato non è più disponibile. Per ottenerlo contatta il "
+"proprietario del sito."
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Form.php:73
 #, php-format
 msgid "Empty or invalid field [%s]"
 msgstr "Campo non compilato correttamente [%s]"
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:41
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:41
 msgid "First Name"
 msgstr "Nome"
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:43
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:43
 msgid "Please enter first name"
 msgstr "Per favore inserisci il tuo nome"
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:47
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:47
 msgid "Last Name"
 msgstr "Cognome"
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:49
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:49
 msgid "Please enter last name"
 msgstr "Per favore inserisci in tuo cognome"
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:53
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:53
 msgid "Email Address"
 msgstr "Indirizzo E-mail"
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:55
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:55
 msgid "Invalid email address"
 msgstr "Indirizzo email assente o non valido "
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:69
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:69
 msgid ""
 "I have read and agree to the \"Terms and conditions\" and the \"Privacy "
 "Policy\""
@@ -158,11 +1099,11 @@ msgstr ""
 "Ho letto e accetto i \"Termini e le Condizioni del servizio\" contenuti "
 "nella \"Privacy policy\"."
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:72
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:72
 msgid "Privacy Policy terms must be accepted"
 msgstr "I termini della privacy policy devono essere accettati per proseguire"
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:76
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:76
 msgid ""
 "I accept the processing of the data referred to in Article 1 of the "
 "\"Privacy policy\""
@@ -170,7 +1111,7 @@ msgstr ""
 "Accetto il trattamento dei dati di cui all' articolo 1 dell'informativa "
 "sulla privacy"
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:82
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:82
 msgid ""
 "I accept the processing of the data referred to in Article 2 of the "
 "\"Privacy policy\""
@@ -178,7 +1119,7 @@ msgstr ""
 "Accetto il trattamento dei dati di cui all' articolo 2 dell'informativa "
 "sulla privacy"
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:209
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:209
 #, php-format
 msgid ""
 "I declare I have read and accept the %s notification and I consent to "
@@ -187,27 +1128,50 @@ msgstr ""
 "Accetto l'informativa e tutte le clausole indicate nella %s. Non tutti i "
 "consensi sono obbligatori"
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:212
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:212
 msgid "click here"
 msgstr "clicca qui"
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:213
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:213
 #, php-format
 msgid "To select the consents partially %s."
 msgstr "Per selezionare i consensi parzialmente %s."
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Form/Download.php:121
-msgid ""
-"The specified download doesn't exists anymore. Please contact site owner"
-msgstr ""
-"Il file specificato non è più disponibile. Per ottenerlo contatta il "
-"proprietario del sito."
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:231
+msgid "Required fields"
+msgstr "Campi richiesti"
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Gallery/Flickity.php:40
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:29
+msgid "Subject"
+msgstr "Oggetto"
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:32
+msgid "Please enter a subject"
+msgstr "Per favore inserisci un oggetto"
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:36
+msgid "Message"
+msgstr "Messaggio"
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:39
+msgid "Please write a brief description of your request"
+msgstr "Per favore scrivi una breve descrizione della tua richesta"
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:53
+msgid ""
+"Ho letto e accetto le condizioni generali e l'informativa della privacy."
+msgstr ""
+"Ho letto e accetto le condizioni generali e l'informativa della privacy."
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:56
+msgid "Policy terms must be accepted"
+msgstr "I termini di servizio devono essere accettati per poter procedere"
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Gallery/Flickity.php:40
 msgid "Post Slider"
 msgstr "Slider Articolo"
 
-#: ../../themes/studiolegalemauro/vendor/silverbackstudio/wp-themehelper/src/Gallery/Tiled.php:34
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Gallery/Tiled.php:34
 msgid "Tiled Gallery"
 msgstr "Galleria a Tile"
 
