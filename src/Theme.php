@@ -49,7 +49,7 @@ class Theme {
     }         
     
     
-    function conf($group, $param=null, $default=null){
+    public static function conf($group, $param=null, $default=null){
         
         if( $group && isset(self::$config[$group]) ){
             
