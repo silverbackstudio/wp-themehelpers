@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Silverback Helpers\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-28 15:07+0000\n"
-"PO-Revision-Date: 2017-04-28 15:08+0000\n"
+"PO-Revision-Date: 2017-05-02 13:36+0000\n"
 "Last-Translator: Silverback Studio <webmaster@silverbackstudio.it>\n"
 "Language-Team: Italian\n"
 "Language: it-IT\n"
@@ -432,10 +432,6 @@ msgstr ""
 #: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:113
 msgid "Israel"
 msgstr ""
-
-#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:114
-msgid "Italy"
-msgstr "Italia"
 
 #: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:115
 msgid "Jamaica"
@@ -977,6 +973,10 @@ msgstr ""
 msgid "Zimbabwe"
 msgstr ""
 
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Places.php:114
+msgid "Italy"
+msgstr "Italia"
+
 #: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mandrill.php:54
 msgid ""
 "This address has beed rejected, this sometimes is due to multiple tries to "
@@ -1125,8 +1125,7 @@ msgid ""
 "I declare I have read and accept the %s notification and I consent to "
 "process my personal data."
 msgstr ""
-"Accetto l'informativa e tutte le clausole indicate nella %s. Non tutti i "
-"consensi sono obbligatori"
+"Ho letto e accetto l'informativa e tutte le clausole indicate nella %s."
 
 #: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:212
 msgid "click here"
