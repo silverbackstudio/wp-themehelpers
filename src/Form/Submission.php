@@ -1,8 +1,7 @@
 <?php
 namespace Svbk\WP\Helpers\Form;
 
-use Svbk\WP\Helpers\MailChimp;
-use Svbk\WP\Helpers\Renderer;
+use Svbk\WP\Helpers;
 
 class Submission extends Form {
 
@@ -32,7 +31,7 @@ class Submission extends Form {
         $this->setPolicyParts($this->policyParts);        
     }
     
-    public function setInputFields($fields=array()){
+    public function setInputFields( $fields = array() ){
         
         $this->inputFields = array_merge( 
             array(
@@ -59,6 +58,14 @@ class Submission extends Form {
         );
         
         return $this->inputFields;
+    }    
+
+    public function addInputFields( $fields, $key = '', $position = 'after' ){
+        $this->inputFields = Helpers\Renderer::arraykeyInsert( $this->inputFields, $key, $position );
+    }
+    
+    public function removeInputFields() {
+        $this->inputFields = array();
     }    
 
     public function setPolicyParts($policyParts=array()){
@@ -94,7 +101,7 @@ class Submission extends Form {
     public function insertInputField($fieldName, $fieldParams, $after=null){
         
         if($after){
-            $this->inputFields = Renderer::arrayKeyInsert($this->inputFields, array($fieldName => $fieldParams), $after);
+            $this->inputFields = Helpers\Renderer::arrayKeyInsert($this->inputFields, array($fieldName => $fieldParams), $after);
         } else {
             $this->inputFields[$fieldName] = $fieldParams;
         }
