@@ -12,6 +12,7 @@
     },   
     "require": {
         "drewm/mailchimp-api": "^2.4",
-        "mandrill/mandrill": "^1.0"
+        "mandrill/mandrill": "^1.0",
+        "paypal/rest-api-sdk-php": "*"        
     }
 }
