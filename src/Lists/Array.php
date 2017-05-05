@@ -1,6 +1,6 @@
 <?php
 
-namespace Svbk\WP\Helpers\List;
+namespace Svbk\WP\Helpers\Lists;
 
 class Array {
 
