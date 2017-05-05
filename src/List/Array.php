@@ -1,8 +1,8 @@
 <?php
 
-namespace Svbk\WP\Helpers;
+namespace Svbk\WP\Helpers\List;
 
-class Renderer {
+class Array {
 
     /**
     * Insert an array into another array before/after a certain key
@@ -13,7 +13,7 @@ class Renderer {
     * @param string $position Wether to insert the array before or after the key
     * @return array
     */
-    public static function arrayKeyInsert( $array, $pairs, $key, $position = 'after' ) {
+    public static function keyInsert( $array, $pairs, $key, $position = 'after' ) {
         $key_pos = array_search( $key, array_keys( $array ) );
         
         if ( 'after' == $position ){
@@ -38,7 +38,7 @@ class Renderer {
     * @param string $position Wether to insert the array before or after the value
     * @return array
     */
-    public static function arrayInsert( $array, $values, $reference, $position = 'after' ) {
+    public static function insert( $array, $values, $reference, $position = 'after' ) {
         $key_pos = array_search( $reference, $array );
         
         if ( 'after' == $position ){

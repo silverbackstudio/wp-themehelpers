@@ -2,7 +2,7 @@
 
 namespace Svbk\WP\Helpers\Gallery;
 
-use Svbk\WP\Helpers\CdnScripts;
+use Svbk\WP\Helpers\Theme\CdnScripts;
 
 class Flickity {
     

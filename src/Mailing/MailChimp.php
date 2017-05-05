@@ -1,6 +1,6 @@
 <?php 
 
-namespace Svbk\WP\Helpers;
+namespace Svbk\WP\Helpers\Mailing;
 
 class MailChimp extends \DrewM\MailChimp\MailChimp {
     

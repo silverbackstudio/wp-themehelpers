@@ -1,7 +1,7 @@
 <?php
 namespace Svbk\WP\Helpers\Form;
 
-use Svbk\WP\Helpers\MailChimp;
+use Svbk\WP\Helpers\Mailing\MailChimp;
 
 class Subscribe extends Submission {
 

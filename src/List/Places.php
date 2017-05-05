@@ -1,6 +1,6 @@
 <?php
 
-namespace Svbk\WP\Helpers;
+namespace Svbk\WP\Helpers\List;
 
 class Places {
 

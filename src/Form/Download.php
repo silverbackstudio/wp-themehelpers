@@ -1,7 +1,7 @@
 <?php
 namespace Svbk\WP\Helpers\Form;
 
-use Svbk\WP\Helpers\Mandrill;
+use Svbk\WP\Helpers\Mailing\Mandrill;
 use Mandrill_Error;
 
 class Download extends Subscribe {

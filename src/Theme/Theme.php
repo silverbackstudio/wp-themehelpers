@@ -1,8 +1,8 @@
 <?php
 
-namespace Svbk\WP\Helpers;
+namespace Svbk\WP\Helpers\Theme;
 
-use Svbk\WP\Helpers\CdnScripts;
+use Svbk\WP\Helpers\Theme\CdnScripts;
 
 class Theme {
     

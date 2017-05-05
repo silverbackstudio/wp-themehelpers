@@ -1,6 +1,6 @@
 <?php
 
-namespace Svbk\WP\Helpers;
+namespace Svbk\WP\Helpers\Mailing;
 
 use Mandrill as NativeMandrill;
 use Mandrill_Error;
