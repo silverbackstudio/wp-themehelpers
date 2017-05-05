@@ -32,7 +32,7 @@ class Theme {
     }
     
     public function load_texdomain(){
-        load_textdomain( 'svbk-helpers', dirname(__DIR__).'/languages/svbk-helpers' . '-' . get_locale() . '.mo'   ); 
+        load_textdomain( 'svbk-helpers', dirname( dirname(__DIR__) ).'/languages/svbk-helpers' . '-' . get_locale() . '.mo'   ); 
     }    
     
     function load_config($config_file='config.php'){

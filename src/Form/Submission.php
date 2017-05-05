@@ -208,7 +208,7 @@ class Submission extends Form {
         if( shortcode_exists('privacy-link') ) {
             $privacy = do_shortcode( sprintf( '[privacy-link]%s[/privacy-link]', $label ));
         } elseif( isset($attr['privacy_link']) && $attr['privacy_link'] ) {
-            $privacy = sprintf( __('<a href="%s" target="_blank">%s</a>', 'svbk-shortcakes'), $attr['privacy_link'], $label);
+            $privacy = sprintf( __('<a href="%s" target="_blank">%s</a>', 'svbk-helpers'), $attr['privacy_link'], $label);
         } else {
             $privacy = $label;
         }
