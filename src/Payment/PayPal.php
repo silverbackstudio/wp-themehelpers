@@ -10,13 +10,18 @@ use WP_Error;
 use WP_REST_Request;
 
 class PayPal {
-    
-    public $use_sandbox = true;
+
     protected $apiContext;
+
+    public static $sandbox = true;
+
+    const BUTTON_ENDPOINT = 'https://www.%s/cgi-bin/webscr';
 
     const IPN_ENDPOINT = 'https://ipnpb.%s/cgi-bin/webscr';
     const IPN_VALID = 'VERIFIED';
     const IPN_INVALID = 'INVALID';
+
+    const MODE_SANDBOX = 'sandbox';
 
     public function __construct( $params ){
         
@@ -39,7 +44,7 @@ class PayPal {
 
     public static function getEndpointUrl( $map, $sandbox = true){
         
-        if( $sandbox ){
+        if( self::$sandbox ){
             return sprintf( $map, 'sandbox.paypal.com' );
         } else {
             return sprintf( $map, 'paypal.com' );
@@ -93,13 +98,13 @@ class PayPal {
         return true;
     }
 
-    public function verifyIPN( WP_REST_Request $request, $sandbox = true){
+    public function verifyIPN( WP_REST_Request $request ){
 
         $fp = fopen('request.log', 'a');
         fwrite($fp, "\n" . date('r') . " - Paypal IPN Request received" );    
         
         $response = wp_remote_post(
-            self::getEndpointUrl( self::IPN_ENDPOINT, $sandbox ),
+            self::getEndpointUrl( self::IPN_ENDPOINT ),
             array(
                 'body' => array_merge( 
                     array(
@@ -117,6 +122,7 @@ class PayPal {
         $result = wp_remote_retrieve_body( $response );
     
         fwrite($fp, ' -- STATUS: ' . $result );
+        fwrite($fp, print_r( $request->get_params(), true  ) );
         
         if( strcmp ($result, self::IPN_VALID ) == 0 ) {
             return true;
@@ -126,5 +132,22 @@ class PayPal {
             
         fclose($fp);  
     }    
+    
+    public static function buttonUrl( $button_id, $args = array() ){
+        
+        $endpoint = self::getEndpointUrl( self::BUTTON_ENDPOINT );
+        
+        return add_query_arg( 
+            array_merge( 
+                array(
+                    'cmd' => '_s-xclick',
+                    'hosted_button_id' => $button_id,
+                ),
+                $args
+            ),  
+            self::getEndpointUrl( self::BUTTON_ENDPOINT ) 
+        );
+        
+    }
         
 }
