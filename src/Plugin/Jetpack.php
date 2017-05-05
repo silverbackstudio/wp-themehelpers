@@ -1,6 +1,6 @@
 <?php 
 
-namespace Svbk\WP\Helpers\Plugins;
+namespace Svbk\WP\Helpers\Plugin;
 
 use Jetpack_RelatedPosts;
 use WP_Query;
