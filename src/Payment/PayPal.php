@@ -11,6 +11,8 @@ use WP_REST_Request;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use Psr\Log\LogLevel;
+use DateTime;
+
 
 class PayPal {
 
@@ -51,6 +53,10 @@ class PayPal {
 
     public function setLogger( LoggerInterface $logger ){
         $this->logger = $logger;
+    }
+
+    public static function parseDate( $date ){
+        return DateTime::createFromFormat('H:i:s M d, Y e', $date);
     }
 
     public static function getEndpointUrl( $map, $sandbox = true){
