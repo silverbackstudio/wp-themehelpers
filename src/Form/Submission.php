@@ -61,7 +61,7 @@ class Submission extends Form {
     }    
 
     public function addInputFields( $fields, $key = '', $position = 'after' ){
-        $this->inputFields = Helpers\Form\Renderer::arraykeyInsert( $this->inputFields, $key, $position );
+        $this->inputFields = Helpers\Form\Renderer::arraykeyInsert( $this->inputFields, $fields, $key, $position );
     }
     
     public function removeInputFields() {
