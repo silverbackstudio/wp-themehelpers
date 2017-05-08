@@ -103,6 +103,12 @@ class Form {
             elseif('textarea' === $type){
                     $output .=  '<label for="' . $fieldId . '">' . $fieldLabel .'</label>'
                     .           '<textarea type="' . esc_attr($type)  . '" name="' . $fieldNameHash . '" id="' . $fieldId . '"  />'. esc_html($value) . '</textarea>';
+            } elseif ( ('select' === $type) && !empty($fieldAttr['choices']) ){
+                    $output .=  '<label for="' . $fieldId . '">' . $fieldLabel .'</label>';
+                    $output .=  '<select name="' . $fieldNameHash . '" id="' . $fieldId . '" >';
+                    foreach( $fieldAttr['choices']  as $cValue => $cLabel)
+                    $output .=  '  <option value="' . esc_attr($cValue) . '" ' . selected( $value, $cValue, false ) . '  />'. esc_html($cLabel) . '</option>';
+                    $output .=  '</select>';
             } else {
                     $output .= '<label for="' . $fieldId . '">' . $fieldLabel .'</label>'
                     .       '<input type="' . esc_attr($type)  . '" name="' . $fieldNameHash . '" id="' . $fieldId . '" value="' . esc_attr($value) . '" />';
