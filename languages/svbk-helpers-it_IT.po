@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Silverback Helpers\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-05 18:23+0000\n"
-"PO-Revision-Date: 2017-05-05 18:23+0000\n"
+"POT-Creation-Date: 2017-05-08 16:33+0000\n"
+"PO-Revision-Date: 2017-05-08 16:34+0000\n"
 "Last-Translator: Silverback Studio <webmaster@silverbackstudio.it>\n"
 "Language-Team: Italian\n"
 "Language: it-IT\n"
@@ -973,10 +973,18 @@ msgstr ""
 msgid "Zimbabwe"
 msgstr ""
 
-#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:211
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mailing/Mandrill.php:75
+msgid "Invalid sender address."
+msgstr "Indirizzo del mittente non valido."
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mailing/Mandrill.php:78
 #, php-format
-msgid "<a href=\"%s\" target=\"_blank\">%s</a>"
-msgstr "<a href=\"%s\" target=\"_blank\">%s</a>"
+msgid ""
+"This email address has beeing rejected for an unknown reason [%s]. Please "
+"use another email address."
+msgstr ""
+"Questo indirizzo email é stato rifiutato per un motivo sconosciuto [%s]. Per "
+"favore utilizza un altro indirizzo email."
 
 #: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:114
 msgid "Italy"
@@ -1055,6 +1063,11 @@ msgstr ""
 "Accetto il trattamento dei dati di cui all' articolo 2 dell'informativa "
 "sulla privacy"
 
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:211
+#, php-format
+msgid "<a href=\"%s\" target=\"_blank\">%s</a>"
+msgstr "<a href=\"%s\" target=\"_blank\">%s</a>"
+
 #: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:216
 #, php-format
 msgid ""
@@ -1128,7 +1141,7 @@ msgstr ""
 "se la tua casella è attiva ed ha spazio disponibile."
 
 #: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mailing/Mandrill.php:63
-#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mailing/Mandrill.php:82
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mailing/Mandrill.php:84
 msgid "Your email address is invalid. Please check the address or use another."
 msgstr ""
 "Il tuo indirizzo email non è valido. Per favore controlla eventuali errori "
@@ -1150,14 +1163,6 @@ msgstr "Questo indirizzo email è un account di prova."
 #: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mailing/Mandrill.php:72
 msgid "The test mode sending limit is beeing reached."
 msgstr "E' stato raggiunto il limite di invio per l'account di test."
-
-#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mailing/Mandrill.php:75
-msgid ""
-"This email address has beeing rejected for an unknown reason. Please use "
-"another email address."
-msgstr ""
-"Questa indirizzo email è stata rifiutata per un motivo sconosciuto. Per "
-"favore utilizza un altro indirizzo email."
 
 #: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mailing/MailChimp.php:13
 msgid ""

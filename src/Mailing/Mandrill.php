@@ -71,16 +71,17 @@ class Mandrill extends NativeMandrill {
                     case 'test-mode-limit': 
                         $errors[] = __('The test mode sending limit is beeing reached.', 'svbk-helpers');
                         break;                         
+                    case 'invalid-sender': 
+                        $errors[] = __('Invalid sender address.', 'svbk-helpers');
+                        break;                         
                     default:
-                        $errors[] = __('This email address has beeing rejected for an unknown reason. Please use another email address.', 'svbk-helpers');
+                        $errors[] = sprintf( __('This email address has beeing rejected for an unknown reason [%s]. Please use another email address.', 'svbk-helpers'), $result['reject_reason'] );
     
                 }
-                return false;
             }
             
             if($result['status'] === 'invalid'){
                 $errors[] =  __('Your email address is invalid. Please check the address or use another.', 'svbk-helpers');
-                return false;
             }       
         
         }

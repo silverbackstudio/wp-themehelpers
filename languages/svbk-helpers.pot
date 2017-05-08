@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-05 18:23+0000\n"
+"POT-Creation-Date: 2017-05-08 16:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -1110,7 +1110,7 @@ msgid ""
 msgstr ""
 
 #: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mailing/Mandrill.php:63
-#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mailing/Mandrill.php:82
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mailing/Mandrill.php:84
 msgid "Your email address is invalid. Please check the address or use another."
 msgstr ""
 
@@ -1129,9 +1129,14 @@ msgid "The test mode sending limit is beeing reached."
 msgstr ""
 
 #: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mailing/Mandrill.php:75
+msgid "Invalid sender address."
+msgstr ""
+
+#: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mailing/Mandrill.php:78
+#, php-format
 msgid ""
-"This email address has beeing rejected for an unknown reason. Please use "
-"another email address."
+"This email address has beeing rejected for an unknown reason [%s]. Please "
+"use another email address."
 msgstr ""
 
 #: ../../themes/property-manager/vendor/silverbackstudio/wp-themehelper/src/Mailing/MailChimp.php:13
