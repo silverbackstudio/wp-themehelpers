@@ -28,6 +28,7 @@ class PayPal {
     const IPN_INVALID = 'INVALID';
 
     const MODE_SANDBOX = 'sandbox';
+    const MODE_LIVE = 'live';
 
     public function __construct( $params ){
         
