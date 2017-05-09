@@ -260,7 +260,7 @@ class Submission extends Form {
         
         $output['submitButton'] = '<button type="submit" name="' . $this->fieldName('subscribe') . '" class="button">' . urldecode($attr['submit_button_label']) . '</button>';
         
-        $output['messages'] ='<ul class="messages"></ul>';
+        $output['messages'] ='<div class="messages"><div class="close"><span>' . __( 'Close', 'svbk-shortcakes' ) . '</span></div><ul></ul></div>';
         $output['formEnd'] = '</form>';        
         
         return $output;
