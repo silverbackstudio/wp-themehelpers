@@ -17,7 +17,7 @@ class Theme {
         add_action('wp_enqueue_scripts', array($this, 'on_enqueue_scripts'), 8, 2 );
         add_filter('script_loader_tag', array($this, 'add_async_attributes'), 10, 2);  
         add_filter( 'bloginfo', array($this, 'extend_bloginfo'), 9, 2 );
-        add_action('acf/init', array($this, 'acf_init'));    
+        add_filter('acf/fields/google_map/api', array($this, 'acf_maps_api'));        
         add_shortcode('bloginfo', array($this, 'bloginfo_shortcode') );
         add_shortcode('privacy-link', array($this, 'get_privacy_link') );
         add_action( 'after_setup_theme', array($this, 'load_texdomain') );
@@ -124,21 +124,21 @@ class Theme {
 
             $script = http_build_query($script_options);
             
-        	wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?'.$script, null, null, true);
-        	
+    	    wp_enqueue_script('googlemaps', 'https://maps.googleapis.com/maps/api/js?'.$script, null, null, true);
+
         	$defaultOptions = array();
         	
         	if($this->conf('googlemaps', 'mapOptions')){
-        	    wp_localize_script( 'google-maps', 'googleMapsOptions', $this->conf('googlemaps', 'mapOptions'));
+        	    wp_localize_script( 'googlemaps', 'googleMapsOptions', $this->conf('googlemaps', 'mapOptions'));
         	}
         	
         	if($this->conf('googlemaps', 'markerOptions')){
-        	    wp_localize_script( 'google-maps', 'googleMapsMarkerOptions', $this->conf('googlemaps', 'markerOptions'));
+        	    wp_localize_script( 'googlemaps', 'googleMapsMarkerOptions', $this->conf('googlemaps', 'markerOptions'));
         	}
             
             if(!$this->conf('googlemaps', 'callback', false)){
 
-        	    wp_add_inline_script('google-maps',
+        	    wp_add_inline_script('googlemaps',
             	'function initGMaps() { 
             	
             	        var triggerGmaps = function(){
@@ -170,10 +170,29 @@ class Theme {
         
     }
     
-    function acf_init() {
-        if( $this->conf('googlemaps', 'key') ) {
-            acf_update_setting('google_api_key', $this->conf('googlemaps', 'key'));
+    function acf_maps_api( $api ) {
+        
+	   	if( $this->conf('googlemaps', 'key') ) {
+            $api['key'] = $this->conf('googlemaps', 'key');
         }
+        
+	   	if( $this->conf('googlemaps', 'client') ) {
+            $api['client'] = $this->conf('googlemaps', 'client');
+        }    
+        
+	   	if( $this->conf('googlemaps', 'libraries') ) {
+            $api['libraries'] = $this->conf('googlemaps', 'libraries');
+        }  
+        
+	   	if( $this->conf('googlemaps', 'ver') ) {
+            $api['ver'] = $this->conf('googlemaps', 'ver');
+        }     
+        
+	   	if( $this->conf('googlemaps', 'callback') ) {
+            $api['callback'] = $this->conf('googlemaps', 'callback');
+        }             
+
+	   	return $api;
     }
     
     function add_instagram(){
