@@ -116,6 +116,9 @@ class Contact extends Submission {
             array(
                 'text' => $this->getInput('request'),
                 'subject' => $this->getInput('subject'),
+                'headers' => array(
+                    "Reply-To" => $this->getInput('email'),
+                ),
                 'to' => $this->getRecipients(),
                 'global_merge_vars' => Mandrill::castMergeTags($this->inputData, 'INPUT_'),
                 'metadata' => array(
