@@ -9,6 +9,7 @@ class Download extends Subscribe {
     public $field_prefix = 'dl';
     public $md_apikey = '';
     public $templateName = '';
+    public $messageDefaults = array();
     
     public function processInput($input_filters=array()){
         
