@@ -112,7 +112,7 @@ class Contact extends Submission {
         
         return array_merge_recursive(
             Mandrill::$messageDefaults,
-            $this->messageDefaults,
+            (array) $this->messageDefaults,
             array(
                 'text' => $this->getInput('request'),
                 'subject' => $this->getInput('subject'),

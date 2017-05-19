@@ -38,10 +38,10 @@ class Download extends Subscribe {
                 if($this->templateName){
                     $results = $mandrill->messages->sendTemplate($this->templateName, array(), $this->messageParams());
                 } else {
-                    $results = $mandrill->messages->send($this->messageParams());
+                    $results = $mandrill->messages->send( $this->messageParams() );
                 }
                 
-                   if( !is_array($results) || !isset($results[0]['status']) ){
+                if( !is_array($results) || !isset($results[0]['status']) ){
                     throw new Mandrill_Error( __('The requesto to our mail server failed, please try again later or contact the site owner.', 'svbk-helpers') );
                 } 
                 
@@ -90,7 +90,7 @@ class Download extends Subscribe {
         
         return array_merge_recursive(
             Mandrill::$messageDefaults,
-            $this->messageDefaults,
+            (array) $this->messageDefaults,
             array(
                 'to' => $this->getRecipients(),
                 'global_merge_vars' => $this->getGlobalMergeTags(),
