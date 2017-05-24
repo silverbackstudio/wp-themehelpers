@@ -11,6 +11,8 @@ class Theme {
     public $defer_scripts = ['iubenda-cookie', 'google-tag-manager'];
     protected $queued_script_methods = [];
     
+    public static $gtm_noscript_printed = false;
+    
     function __construct($config_file='config.php'){
         self::$config = $this->load_config($config_file);
          
@@ -317,8 +319,10 @@ class Theme {
     
     function print_analytics_noscript(){ 
         
-        if(did_action('after_body_tag')){
-            return;
+        if( !self::$gtm_noscript_printed ){
+           self::$gtm_noscript_printed = true;
+        } else {
+           return;
         }
     
         ?>
