@@ -9,13 +9,14 @@ class Subscribe extends Submission {
     public $action = 'svbk_subscribe';
     
     public $mc_apikey = '';
+    public $mc_subscribe_update = false;
     
     protected function mainAction(){
         
         if( !empty( $this->mc_apikey ) && !empty( $this->mc_list_id )){
             $mc = new MailChimp( $this->mc_apikey );
             
-            $errors = $mc->subscribe( $this->mc_list_id, $this->getInput('email'), $this->subscribeAttributes() );
+            $errors = $mc->subscribe( $this->mc_list_id, $this->getInput('email'), $this->subscribeAttributes(), $this->mc_subscribe_update);
             
             array_walk($errors, array($this, 'addError'));
         }

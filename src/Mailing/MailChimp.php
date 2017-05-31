@@ -33,39 +33,48 @@ class MailChimp extends \DrewM\MailChimp\MailChimp {
         
     }    
     
-    public function subscribe($list_id, $email, $args=array()){
+    public function subscribe($list_id, $email, $args=array(), $update = false){
 
             $errors = array();
-
             $subscriber_hash = $this->subscriberHash($email);
-    
             $user_info = $this->get("lists/$list_id/members/$subscriber_hash");
             
-            if(!$this->success()){
+            if( $this->success() ){
                 
-                $user_info = $this->post("lists/$list_id/members", array_merge_recursive( array(
-                    'email_address' => $email,
-                    'status'        => 'subscribed',
-                    'ip_signup'     => $_SERVER['REMOTE_ADDR'],
-                    'ip_opt'        => $_SERVER['REMOTE_ADDR'],
-                    'language'      => substr(get_locale(), 0, 2),
-                ), $args) );     
-                
-                if(!$this->success()){
-                    $errors[] = $this->getLastError();
+                if( !$update ) {
+                    $args = array();
                 }
-            } 
+
+                if( isset($user_info['status']) && ( $user_info['status'] === 'unsubscribed' ) ) {
+                    $args['status'] = 'subscribed';
+                }                
+                
+                if( $args ) {
+                    $user_info = $this->patch("lists/$list_id/members/$subscriber_hash", $args);          
+                    
+                    if( ! $this->success() ){
+                        $errors[] = $this->getLastError();
+                    }                
+                }
             
-            if( isset($user_info['status']) && ( $user_info['status'] === 'unsubscribed' ) ) {
+            }  else {
                 
-                $user_info = $this->patch("lists/$list_id/members/$subscriber_hash", [
-                    'status' => 'subscribed',
-                ]);     
+                $user_info = $this->post("lists/$list_id/members", wp_parse_args(
+                    $args, 
+                    array(
+                        'email_address' => $email,
+                        'status'        => 'subscribed',
+                        'ip_signup'     => $_SERVER['REMOTE_ADDR'],
+                        'ip_opt'        => $_SERVER['REMOTE_ADDR'],
+                        'language'      => substr(get_locale(), 0, 2),
+                        )
+                    ) 
+                );     
                 
                 if(!$this->success()){
                     $errors[] = $this->getLastError();
                 }
-                
+           
             }
             
             return $errors;
