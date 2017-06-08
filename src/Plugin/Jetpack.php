@@ -39,9 +39,9 @@ class Jetpack {
         }    
     }
     
-    public static function relatedPosts($options = array()){
+    public static function relatedPosts( $options = array() ){
         
-        $options = wp_parse_args($options, array( 'size' => 3 ));
+        $options = shortcode_atts( array( 'size' => 3 ), $options );
         
         if ( class_exists( 'Jetpack_RelatedPosts' ) && method_exists( 'Jetpack_RelatedPosts', 'init_raw' ) ) {
             return Jetpack_RelatedPosts::init_raw()
@@ -55,9 +55,30 @@ class Jetpack {
         return array();
     }  
     
-    public static function relatedPostsPrint($template_slug, $template_name='',  $options = array()){
+    public static function relatedPostsPrint( $args = array() , $_deprecated_slug = null, $_deprecated_name = '' ){
 
-        $related =  self::relatedPosts($options);
+        $defaults = array(
+            'template_slug' => 'template-parts/thumb',
+            'template_name' => '',
+            'before' => '',
+            'after' => '',
+            'size'=> 3,
+        );
+
+
+        //Backward compatibility
+        if( !is_array( $args ) ){ 
+            
+            _deprecated_argument( __FUNCTION__, '3.0.0', 'Using Helpers/Jetpack with deprecated arguments' );
+            
+            $defaults['template_slug'] = $args;
+            $defaults['template_name'] = $_deprecated_slug;
+            $args = $_deprecated_name;
+        }
+
+        $params = wp_parse_args( $args, $defaults );
+
+        $related =  self::relatedPosts( $params );
     
         if(empty($related)){
             return;
@@ -66,9 +87,13 @@ class Jetpack {
         $related_ids = wp_list_pluck($related, 'id');
         $related_query = new WP_Query( array('post__in' => $related_ids, 'posts_per_page' => -1 ) );
         
+        echo $params['before'];
+        
         while ( $related_query->have_posts() ) : $related_query->the_post();
-            get_template_part($template_slug, $template_name);
+            get_template_part($params['template_slug'], $params['template_name'] ?: get_post_type() );
         endwhile;
+        
+        echo $params['after'];
         
         wp_reset_query();
         wp_reset_postdata();        
