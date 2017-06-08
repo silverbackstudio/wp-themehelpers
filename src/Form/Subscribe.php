@@ -7,6 +7,7 @@ class Subscribe extends Submission {
 
     public $field_prefix = 'sbs';
     public $action = 'svbk_subscribe';
+    public $subscribeAttributes = array();
     
     public $mc_apikey = '';
     public $mc_subscribe_update = false;
@@ -24,12 +25,15 @@ class Subscribe extends Submission {
     }    
     
     protected function subscribeAttributes(){
-        return array( 
-            'merge_fields' => [ 
-                'FNAME'=> $this->getInput('fname'), 
-                'LNAME' => $this->getInput('lname'),
-                'MARKETING' => $this->getInput('policy_directMarketing') ? 'yes' : 'no',
-            ] 
+        return array_merge_recursive(
+            $this->subscribeAttributes,
+            array( 
+                'merge_fields' => [ 
+                    'FNAME'=> $this->getInput('fname'), 
+                    'LNAME' => $this->getInput('lname'),
+                    'MARKETING' => $this->getInput('policy_directMarketing') ? 'yes' : 'no',
+                ] 
+            ) 
         );
     }
  
