@@ -15,10 +15,13 @@ class Jetpack {
 
     public static function addSharingJS() {
         wp_enqueue_script( 'sharing-js', WP_SHARING_PLUGIN_URL . 'sharing.js', array( ), 4 );
-        $sharing_js_options = array(
-            'lang'   => get_base_recaptcha_lang_code(),
-            'counts' => apply_filters( 'jetpack_sharing_counts', true )
-        );
+        
+        if( function_exists('get_base_recaptcha_lang_code') ) { 
+            $sharing_js_options = array(
+                'lang'   => get_base_recaptcha_lang_code(),
+                'counts' => apply_filters( 'jetpack_sharing_counts', true )
+            );
+        }
         wp_localize_script( 'sharing-js', 'sharing_js_options', $sharing_js_options );
     }
 
