@@ -284,7 +284,7 @@ class Theme {
         $cdn->register_script('flickity', 'flickity.pkgd.min.js', array(), '2.0');
         $cdn->register_style('flickity', 'flickity.min.css', array(), '2.0');
         
-    	$cdn->register_script('masonry', 'masonry.pkgd.min.js', array(), '4.1');
+    	$cdn->register_script('masonry', 'masonry.pkgd.min.js', array(), '4.2');
     	
     	$cdn->register_script('jquery.localscroll', 'jquery.localScroll.min.js', array('jquery'), '1.4.0');
     	$cdn->register_script('jquery.scrollto', 'jquery.scrollTo.min.js', array('jquery'), '2.1.2');
