@@ -39,6 +39,12 @@ class CdnScripts {
 
 	    wp_register_style($package, $url, $deps, null, $media);
     }    
+    
+    static function enqueue_style( $package, $files='', $deps = array(), $version='latest', $media='all', $overwrite=false){
+        self::register_script($package, $files, $deps, $version, $media, $overwrite );
+        
+        wp_enqueue_style($package);
+    }    
 
 	static function getUrl($package, $files, $version='latest'){
 		
