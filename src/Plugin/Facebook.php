@@ -30,7 +30,7 @@ class Facebook {
           var js, fjs = d.getElementsByTagName(s)[0];
           if (d.getElementById(id)) return;
           js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.9&appId=<?php echo Helpers\Theme\Theme::conf('facebook', 'app_id') ?>"
+          js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.9&appId=<?php echo Helpers\Theme\Config::get('facebook', 'app_id') ?>"
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
     <?php

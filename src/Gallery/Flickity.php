@@ -2,8 +2,6 @@
 
 namespace Svbk\WP\Helpers\Gallery;
 
-use Svbk\WP\Helpers\Theme\CdnScripts;
-
 class Flickity {
     
     public $width = 1320;

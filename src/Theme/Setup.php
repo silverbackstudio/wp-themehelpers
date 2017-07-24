@@ -2,117 +2,78 @@
 
 namespace Svbk\WP\Helpers\Theme;
 
-use Svbk\WP\Helpers\Theme\CdnScripts;
+use Svbk\WP\Helpers\Theme\Script;
+use Svbk\WP\Helpers\CDN\JsDelivr;
 
-class Theme {
-    
-    public static $config;
-    public $async_scripts = ['google-maps', 'iubenda-cookie', 'google-tag-manager'];
-    public $defer_scripts = ['iubenda-cookie', 'google-tag-manager'];
-    protected $queued_script_methods = [];
+class Setup {
     
     public static $gtm_noscript_printed = false;
+
+    public function __construct(){
+        $this->register_hooks();
+        $this->register_shortcodes();
+    }
     
-    function __construct($config_file='config.php'){
-        self::$config = $this->load_config($config_file);
-         
-        add_action('wp_enqueue_scripts', array($this, 'on_enqueue_scripts'), 8, 2 );
-        add_filter('script_loader_tag', array($this, 'add_async_attributes'), 10, 2);  
-        add_filter( 'bloginfo', array($this, 'extend_bloginfo'), 9, 2 );
-        add_filter('acf/fields/google_map/api', array($this, 'acf_maps_api'));        
-        add_shortcode('bloginfo', array($this, 'bloginfo_shortcode') );
-        add_shortcode('privacy-link', array($this, 'get_privacy_link') );
+    public static function run(){
+        return new self();
+    }    
+    
+    public function register_hooks() {
+
         add_action( 'after_setup_theme', array($this, 'load_texdomain') );
         
         add_action('wp_head', array($this, 'add_analytics'), 1);
         add_action('after_body_tag', array($this, 'print_analytics_noscript'));
-        add_action('wp_footer', array($this, 'print_analytics_noscript'));        
+        add_action('wp_footer', array($this, 'print_analytics_noscript'));            
+        
+        add_action('wp_enqueue_scripts', array($this, 'register_scripts'), 8 );
+        
+        add_action('wp_enqueue_scripts', array($this, 'add_fonts'), 8 );
+        add_action('wp_enqueue_scripts', array($this, 'add_google_maps'), 8 );
+        add_action('wp_enqueue_scripts', array($this, 'add_policies'), 8 );
+        add_action('wp_enqueue_scripts', array($this, 'add_instagram'), 8 );
+        add_action('wp_enqueue_scripts', array($this, 'add_icons'), 8 );
+        
+        add_filter( 'bloginfo', array($this, 'extend_bloginfo'), 9, 2 );
+        add_filter('acf/fields/google_map/api', array($this, 'acf_maps_api'));   
     }
     
-    static function init($config_file='config.php'){
-        return new self($config_file);
+    public function register_shortcodes(){
+        add_shortcode('bloginfo', array($this, 'bloginfo_shortcode') );
+        add_shortcode('privacy-link', array($this, 'get_privacy_link') );
     }
     
+    public function register_scripts(){
+        
+        Script::register( 'waypoints', array('jquery.waypoints.min.js', 'shortcuts/sticky.min.js'), array('jquery') );
+        Script::register( 'jquery.collapse', array( 'jquery.collapse', 'jquery.collapse.js' ), array('jquery'), '1.1');
+        Script::register( 'flickity', 'flickity.pkgd.min.js', array(), '2');
+        Script::register( 'masonry', 'masonry.pkgd.min.js', array(), '4.2');
+        Script::register( 'jquery.localscroll', 'jquery.localScroll.min.js', array('jquery'), '1.4');
+        Script::register( 'jquery.scrollto', 'jquery.localScroll.min.js', array('jquery'), '2.1');
+
+        Script::enqueue( 'object-fit-images',  'ofi.min.js', array(), '3.2.3', '\Svbk\Helpers\CDN\CdnJs');
+ 		wp_add_inline_script( 'object-fit-images', 'objectFitImages();' );  
+
+       	wp_register_script('history.jquery.js', Script::getUrl('history.js', 'history.adapter.jquery.js', '1.8'), array('jquery', 'history.js'), '1.8' );  
+        Script::register( 'history.js',  'history.js', array(), '1.8');
+
+        Script::register_style( 'flickity', 'flickity.pkgd.min.js', array(), '2' );
+    }
+
     public function load_texdomain(){
         load_textdomain( 'svbk-helpers', dirname( dirname(__DIR__) ).'/languages/svbk-helpers' . '-' . get_locale() . '.mo'   ); 
     }    
-    
-    function load_config($config_file='config.php'){
-        
-        $newconfig = array();
-        
-        $file = locate_template($config_file, false);
-        
-        if(file_exists($file)){
-            $newconfig = include_once( $file );
-        }
-        
-        return $newconfig;
-    }         
-    
-    
-    public static function conf($group, $param=null, $default=null){
-        
-        if( $group && isset(self::$config[$group]) ){
-            
-            if($param) {
-                return isset(self::$config[$group][$param])?self::$config[$group][$param]:$default;
-            } 
-            
-            return self::$config[$group];
-        }
-        
-        return $default;
 
+    protected function conf($group, $param=null, $default=null){
+        return Config::get( $group, $param, $default);
     }
-    
-    function all(){
-        
-        if(empty(self::$config)){
-            return false;
-        }
-        
-        $this->call_on_enqueue_scripts('add_fonts');
-        $this->call_on_enqueue_scripts('add_google_maps');
-        $this->call_on_enqueue_scripts('add_policies');
-        $this->call_on_enqueue_scripts('add_instagram');
-        $this->call_on_enqueue_scripts('add_icons');
-        
-        $this->call_on_enqueue_scripts('register_common_scripts');
-        
-    }    
-    
-    public static function declareAjaxurl($script){
-        wp_localize_script($script, 'ajaxurl', admin_url( 'admin-ajax.php' ));
-    }
-    
-    
-    protected function call_on_enqueue_scripts($method){
-        $this->queued_script_methods[] = $method;
-    }
-    
-    public function on_enqueue_scripts(){
-        
-        foreach($this->queued_script_methods as $method){
-            call_user_func(array($this, $method));
-        }
-        
-    }
-    
-    function add_async_attributes($tag, $handle) {
-        
-        if (in_array($handle, $this->async_scripts)){
-        	$tag = str_replace( ' src', ' async src', $tag );
-        } 
-        
-        if (in_array($handle, $this->defer_scripts)){
-        	$tag = str_replace( ' src', ' defer src', $tag );
-        }
-            
-        return $tag;
-    }        
 
-    function add_google_maps(){
+    public static function declareAjaxurl( $script ){
+        wp_localize_script( $script, 'ajaxurl', admin_url( 'admin-ajax.php' ) );
+    }
+    
+    public function add_google_maps(){
         
         if( $this->conf('googlemaps') ) {
             
@@ -127,6 +88,7 @@ class Theme {
             $script = http_build_query($script_options);
             
     	    wp_enqueue_script('googlemaps', 'https://maps.googleapis.com/maps/api/js?'.$script, null, null, true);
+            Script::set_async( 'googlemaps' );
 
         	$defaultOptions = array();
         	
@@ -172,7 +134,7 @@ class Theme {
         
     }
     
-    function acf_maps_api( $api ) {
+    public function acf_maps_api( $api ) {
         
 	   	if( $this->conf('googlemaps', 'key') ) {
             $api['key'] = $this->conf('googlemaps', 'key');
@@ -197,7 +159,7 @@ class Theme {
 	   	return $api;
     }
     
-    function add_instagram(){
+    public function add_instagram(){
 
          if(apply_filters('show_instagram_footer', is_front_page()) && $this->conf('instagram')) {
     		wp_enqueue_cdn_script('instafeed.js', 'instafeed.min.js', null, '1.4', true );
@@ -206,7 +168,7 @@ class Theme {
         
     }
     
-    function add_fonts(){
+    public function add_fonts(){
     	
     	if($this->conf('google-fonts', 'fonts')){
         	wp_enqueue_style('google-font', 'https://fonts.googleapis.com/css?family='.$this->conf('google-fonts', 'fonts'));
@@ -218,7 +180,7 @@ class Theme {
         
     }
     
-    function add_policies(){
+    public function add_policies(){
         
         if($this->conf('iubenda')) {
     	        
@@ -229,6 +191,8 @@ class Theme {
     	       if($this->conf('iubenda','cookiePolicyId')){
     	        
     	            wp_enqueue_script('iubenda-cookie', '//cdn.iubenda.com/cookie_solution/safemode/iubenda_cs.js'); 
+    	            Script::set_async( 'iubenda-cookie' );
+    	            Script::set_defer( 'iubenda-cookie' );
     	        
     	            $code = "var _iub = _iub || [];".PHP_EOL;
     	            
@@ -255,17 +219,7 @@ class Theme {
         
     }
     
-    function get_privacy_link($attr, $link_name='Privacy Policy', $shortcode_tag){
-        
-        $attr = shortcode_atts( array(
-    		'no_style' => 1,
-    		'no_brand' => 1
-    	), $attr, $shortcode_tag );
-        
-        return '<a href="//www.iubenda.com/privacy-policy/' . $this->conf('iubenda','privacyPolicyId') . '" class="iubenda-nostyle no-brand iubenda-embed" title="'. esc_attr($link_name) .'">'. $link_name .'</a>';
-    }
-    
-    function add_icons(){
+    public function add_icons(){
         
         $path = $this->conf('icons', 'path');
 
@@ -275,29 +229,7 @@ class Theme {
     
     }
     
-    function register_common_scripts(){
-        
-        $cdn = new CdnScripts;
-        
-        $cdn->register_script('waypoints', array('jquery.waypoints.min.js', 'shortcuts/sticky.min.js'), array('jquery'), '4', true);
-        $cdn->register_script('jquery.collapse', 'jquery.collapse.js', array('jquery'), '1.1');
-        $cdn->register_script('flickity', 'flickity.pkgd.min.js', array(), '2.0');
-        $cdn->register_style('flickity', 'flickity.min.css', array(), '2.0');
-        
-    	$cdn->register_script('masonry', 'masonry.pkgd.min.js', array(), '4.2');
-    	
-    	$cdn->register_script('jquery.localscroll', 'jquery.localScroll.min.js', array('jquery'), '1.4.0');
-    	$cdn->register_script('jquery.scrollto', 'jquery.scrollTo.min.js', array('jquery'), '2.1.2');
-    	
-    	wp_enqueue_script('object-fit-images', 'https://cdnjs.cloudflare.com/ajax/libs/object-fit-images/3.1.3/ofi.min.js', array('jquery'), '3.1.3', true );
-    	wp_add_inline_script( 'object-fit-images', 'objectFitImages();' );
-    	
-    	wp_register_script('history.jquery.js', 'https://cdn.jsdelivr.net/history.js/1.8/history.adapter.jquery.js', array('jquery', 'history.js'), '1.8' );  
-    	$cdn->register_script('history.js', 'history.js', array('jquery'), '1.8' );  
-    	
-    }
-  
-    function add_analytics(){
+    public function add_analytics(){
         
         if($this->conf('google-tag-manager', 'id')) {
             
@@ -317,7 +249,7 @@ class Theme {
         
     }
     
-    function print_analytics_noscript(){ 
+    public function print_analytics_noscript(){ 
         
         if( !self::$gtm_noscript_printed ){
            self::$gtm_noscript_printed = true;
@@ -332,7 +264,7 @@ class Theme {
         <?php
     }
     
-    function extend_bloginfo($output, $show){
+    public function extend_bloginfo($output, $show){
     	
     	if(substr( $show, 0, 8 ) == 'contact_') {
     		
@@ -345,8 +277,19 @@ class Theme {
     	return $output;
     }
     
-    function bloginfo_shortcode($attrs){
+    public function bloginfo_shortcode($attrs){
 	    return get_bloginfo($attrs['value'], 'display');
     }
+    
+    public function get_privacy_link($attr, $link_name='Privacy Policy', $shortcode_tag){
+        
+        $attr = shortcode_atts( array(
+    		'no_style' => 1,
+    		'no_brand' => 1
+    	), $attr, $shortcode_tag );
+        
+        return '<a href="//www.iubenda.com/privacy-policy/' . $this->conf('iubenda','privacyPolicyId') . '" class="iubenda-nostyle no-brand iubenda-embed" title="'. esc_attr($link_name) .'">'. $link_name .'</a>';
+    }
+        
     
 }
