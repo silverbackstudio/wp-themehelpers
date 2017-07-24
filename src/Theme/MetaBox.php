@@ -4,39 +4,39 @@ namespace Svbk\WP\Helpers\Theme;
 
 class MetaBox {
 
-    public $name;
+	public $name;
 
-    public $args = array(
-        'title'=>'',
-        'post_type'=>'post',
-        'position'=>'side',
-        'priority'=>'default'
-    );
-    
-    public $fields = array();
-        
-    public function __construct($name, $fields, $args='') {
-        $this->name = $name;
-        
-        foreach ($fields as $name=>$options){
-            $this->fields[] = new MetaBoxField($name, $options);
-        }
-        
-        $this->args = wp_parse_args($args, $this->args);
-        
-        add_action( 'add_meta_boxes', array( $this, 'add' ) );
-        add_action( 'save_post', array( $this, 'save' ) );
-        add_action( 'edit_form_after_title', array( $this, 'register_top_position' ));
-    }
-    
-    public function register_top_position(){
-      global $post, $wp_meta_boxes;
-      
-      do_meta_boxes( get_current_screen(), 'top', $post );
-      
-      unset( $wp_meta_boxes[get_post_type($post)]['top'] );
-    }
-        
+	public $args = array(
+		'title' => '',
+		'post_type' => 'post',
+		'position' => 'side',
+		'priority' => 'default',
+	);
+
+	public $fields = array();
+
+	public function __construct( $name, $fields, $args = '' ) {
+		$this->name = $name;
+
+		foreach ( $fields as $name => $options ) {
+			$this->fields[] = new MetaBoxField( $name, $options );
+		}
+
+		$this->args = wp_parse_args( $args, $this->args );
+
+		add_action( 'add_meta_boxes', array( $this, 'add' ) );
+		add_action( 'save_post', array( $this, 'save' ) );
+		add_action( 'edit_form_after_title', array( $this, 'register_top_position' ) );
+	}
+
+	public function register_top_position() {
+		global $post, $wp_meta_boxes;
+
+		do_meta_boxes( get_current_screen(), 'top', $post );
+
+		unset( $wp_meta_boxes[ get_post_type( $post ) ]['top'] );
+	}
+
 	/**
 	 * Adds the meta box container.
 	 */
@@ -48,45 +48,46 @@ class MetaBox {
 			$this->args['post_type'],
 			$this->args['position'],
 			$this->args['priority']
-		);              
+		);
 	}
 
-    public static function has_permission($post_id){
-	// If this is an autosave, our form has not been submitted, so we don't want to do anything.
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
-		return false;
-
-	// Check the user's permissions.
-	if ( 'page' == $_POST['post_type'] ) {
-
-		if ( ! current_user_can( 'edit_page', $post_id ) )
+	public static function has_permission( $post_id ) {
+		// If this is an autosave, our form has not been submitted, so we don't want to do anything.
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return false;
+		}
 
-	} else {
+		// Check the user's permissions.
+		if ( 'page' == $_POST['post_type'] ) {
 
-		if ( ! current_user_can( 'edit_post', $post_id ) )
-			return false;
-	}            
-            
-            return true;
-    }
-        
+			if ( ! current_user_can( 'edit_page', $post_id ) ) {
+				return false;
+			}
+		} else {
+
+			if ( ! current_user_can( 'edit_post', $post_id ) ) {
+				return false;
+			}
+		}
+
+						return true;
+	}
+
 	/**
 	 * Save the meta when the post is saved.
 	 *
 	 * @param int $post_id The ID of the post being saved.
 	 */
 	public function save( $post_id ) {
-	
-        foreach($this->fields as $field){
-            if(!$field->verify_nonce() || !self::has_permission($post_id)){
-                continue;
-            }
-            
-            $field->save($post_id);
-            
-        }
-            
+
+		foreach ( $this->fields as $field ) {
+			if ( ! $field->verify_nonce() || ! self::has_permission( $post_id ) ) {
+				continue;
+			}
+
+			$field->save( $post_id );
+		}
+
 	}
 
 
@@ -96,13 +97,13 @@ class MetaBox {
 	 * @param WP_Post $post The post object.
 	 */
 	public  function render( $post ) {
-        
-        foreach($this->fields as $field){
-        
-            $field->render($post->ID);
-        
-        }
-                
+
+		foreach ( $this->fields as $field ) {
+
+			$field->render( $post->ID );
+
+		}
+
 	}
 }
 
