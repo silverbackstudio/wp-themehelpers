@@ -12,13 +12,13 @@ class Script {
 
 	public static $default_cdn = '\Svbk\WP\Helpers\CDN\JsDelivr';
 
-	public static function enqueue( $package, $files = '', $deps = array(), $version = 'latest', $in_footer = true, $overwrite = false ) {
-		self::register( $package, $files, $deps, $version, $in_footer, $overwrite );
+	public static function enqueue( $package, $files = '', $deps = array(), $version = 'latest', $in_footer = true, $overwrite = false, $cdn_class = null ) {
+		self::register( $package, $files, $deps, $version, $in_footer, $overwrite, $cdn_class );
 
 		wp_enqueue_script( $package );
 	}
 
-	public static function register( $package, $files, $deps = array(), $version = 'latest', $in_footer = true, $overwrite = false ) {
+	public static function register( $package, $files, $deps = array(), $version = 'latest', $in_footer = true, $overwrite = false, $cdn_class = null ) {
 
 		if ( wp_script_is( $package , 'registered' ) ) {
 			if ( $overwrite ) {
@@ -28,15 +28,14 @@ class Script {
 			}
 		}
 
-		$url = self::getUrl( $package, $files, $version );
+		$url = self::getUrl( $package, $files, $version, $cdn_class );
 
 		if ( $url ) {
-			
 			wp_register_script( $package, $url, $deps, null, $in_footer );
 		}
 	}
 
-	public static function register_style( $package, $files, $deps = array(), $version = 'latest', $media = 'all', $overwrite = false ) {
+	public static function register_style( $package, $files, $deps = array(), $version = 'latest', $media = 'all', $overwrite = false, $cdn_class = null ) {
 
 		if ( wp_style_is( $package, 'registered' ) ) {
 			if ( $overwrite ) {
@@ -46,7 +45,7 @@ class Script {
 			}
 		}
 
-		$url = self::getUrl( $package, $files, $version );
+		$url = self::getUrl( $package, $files, $version, $cdn_class );
 
 		if ( $url ) {
 			wp_register_style( $package, $url, $deps, null, $media );

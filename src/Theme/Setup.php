@@ -52,7 +52,7 @@ class Setup {
 		Script::register( 'jquery.localscroll', 'jquery.localScroll.min.js', array( 'jquery' ), '1.4' );
 		Script::register( 'jquery.scrollto', 'jquery.localScroll.min.js', array( 'jquery' ), '2.1' );
 
-		Script::enqueue( 'object-fit-images',  'ofi.min.js', array(), '3.2.3', '\Svbk\WP\Helpers\CDN\CdnJs' );
+		Script::enqueue( 'object-fit-images',  'ofi.min.js', array(), '3.2.3', true, true, '\Svbk\WP\Helpers\CDN\CdnJs' );
 		wp_add_inline_script( 'object-fit-images', 'objectFitImages();' );
 
 		wp_register_script( 'history.jquery.js', Script::getUrl( 'history.js', 'history.adapter.jquery.js', '1.8' ), array( 'jquery', 'history.js' ), '1.8' );
