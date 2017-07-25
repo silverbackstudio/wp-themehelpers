@@ -22,19 +22,19 @@ class Setup {
 
 		add_action( 'after_setup_theme', array( $this, 'load_texdomain' ) );
 
-			add_action( 'wp_head', array( $this, 'add_analytics' ), 1 );
+		add_action( 'wp_head', array( $this, 'add_analytics' ), 1 );
 		add_action( 'after_body_tag', array( $this, 'print_analytics_noscript' ) );
 		add_action( 'wp_footer', array( $this, 'print_analytics_noscript' ) );
 
-			add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ), 8 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ), 8 );
 
-			add_action( 'wp_enqueue_scripts', array( $this, 'add_fonts' ), 8 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'add_fonts' ), 8 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_google_maps' ), 8 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_policies' ), 8 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_instagram' ), 8 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_icons' ), 8 );
 
-			add_filter( 'bloginfo', array( $this, 'extend_bloginfo' ), 9, 2 );
+		add_filter( 'bloginfo', array( $this, 'extend_bloginfo' ), 9, 2 );
 		add_filter( 'acf/fields/google_map/api', array( $this, 'acf_maps_api' ) );
 	}
 
@@ -45,14 +45,14 @@ class Setup {
 
 	public function register_scripts() {
 
-			Script::register( 'waypoints', array( 'jquery.waypoints.min.js', 'shortcuts/sticky.min.js' ), array( 'jquery' ) );
+		Script::register( 'waypoints', array( 'jquery.waypoints.min.js', 'shortcuts/sticky.min.js' ), array( 'jquery' ) );
 		Script::register( 'jquery.collapse', array( 'jquery.collapse', 'jquery.collapse.js' ), array( 'jquery' ), '1.1' );
 		Script::register( 'flickity', 'flickity.pkgd.min.js', array(), '2' );
 		Script::register( 'masonry', 'masonry.pkgd.min.js', array(), '4.2' );
 		Script::register( 'jquery.localscroll', 'jquery.localScroll.min.js', array( 'jquery' ), '1.4' );
 		Script::register( 'jquery.scrollto', 'jquery.localScroll.min.js', array( 'jquery' ), '2.1' );
 
-		Script::enqueue( 'object-fit-images',  'ofi.min.js', array(), '3.2.3', '\Svbk\Helpers\CDN\CdnJs' );
+		Script::enqueue( 'object-fit-images',  'ofi.min.js', array(), '3.2.3', '\Svbk\WP\Helpers\CDN\CdnJs' );
 		wp_add_inline_script( 'object-fit-images', 'objectFitImages();' );
 
 		wp_register_script( 'history.jquery.js', Script::getUrl( 'history.js', 'history.adapter.jquery.js', '1.8' ), array( 'jquery', 'history.js' ), '1.8' );
@@ -77,17 +77,17 @@ class Setup {
 
 		if ( $this->conf( 'googlemaps' ) ) {
 
-				$script_options = array();
+			$script_options = array();
 
-				$script_options['key'] = $this->conf( 'googlemaps', 'key' );
+			$script_options['key'] = $this->conf( 'googlemaps', 'key' );
 			$script_options['library'] = $this->conf( 'googlemaps', 'library' );
 			$script_options['callback'] = $this->conf( 'googlemaps', 'callback', 'initGMaps' );
 
-				$script_options = array_filter( $script_options );
+			$script_options = array_filter( $script_options );
 
 			$script = http_build_query( $script_options );
 
-				wp_enqueue_script( 'googlemaps', 'https://maps.googleapis.com/maps/api/js?' . $script, null, null, true );
+			wp_enqueue_script( 'googlemaps', 'https://maps.googleapis.com/maps/api/js?' . $script, null, null, true );
 			Script::set_async( 'googlemaps' );
 
 			$defaultOptions = array();
@@ -104,32 +104,31 @@ class Setup {
 
 				wp_add_inline_script('googlemaps',
 				'function initGMaps() { 
-            	
-            	        var triggerGmaps = function(){
-            	        
-                            var event, eventName = \'gmaps-ready\';
-                            
-                            if (window.CustomEvent) {
-                                event = new CustomEvent(eventName);
-                            } else {
-                                event = document.createEvent(\'CustomEvent\');
-                                event.initCustomEvent(eventName, true, true);
-                            }
-                            
-                            var containers = document.getElementsByClassName(\'gmap-container\');
-                            for (var i = 0, len = containers.length; i < len; i++) {
-                                containers[i].dispatchEvent(event);
-                            }
-                            
-                            document.body.dispatchEvent(event);
-            	        };
-            	
-                        document.addEventListener(\'DOMContentLoaded\', triggerGmaps);
-                        triggerGmaps();
+        	        var triggerGmaps = function(){
+        	        
+                        var event, eventName = \'gmaps-ready\';
+                        
+                        if (window.CustomEvent) {
+                            event = new CustomEvent(eventName);
+                        } else {
+                            event = document.createEvent(\'CustomEvent\');
+                            event.initCustomEvent(eventName, true, true);
+                        }
+                        
+                        var containers = document.getElementsByClassName(\'gmap-container\');
+                        for (var i = 0, len = containers.length; i < len; i++) {
+                            containers[i].dispatchEvent(event);
+                        }
+                        
+                        document.body.dispatchEvent(event);
+        	        };
+        	
+                    document.addEventListener(\'DOMContentLoaded\', triggerGmaps);
+                    triggerGmaps();
             	}',
 				'before');
 			}
-		}// End if().
+		}
 
 	}
 
@@ -155,7 +154,7 @@ class Setup {
 			 $api['callback'] = $this->conf( 'googlemaps', 'callback' );
 		}
 
-				return $api;
+		return $api;
 	}
 
 	public function add_instagram() {
@@ -189,20 +188,17 @@ class Setup {
 
 			if ( $this->conf( 'iubenda','cookiePolicyId' ) ) {
 
-				  wp_enqueue_script( 'iubenda-cookie', '//cdn.iubenda.com/cookie_solution/safemode/iubenda_cs.js' );
+				wp_enqueue_script( 'iubenda-cookie', '//cdn.iubenda.com/cookie_solution/safemode/iubenda_cs.js' );
 				Script::set_async( 'iubenda-cookie' );
 				Script::set_defer( 'iubenda-cookie' );
 
-				  $code = 'var _iub = _iub || [];' . PHP_EOL;
+				$code = 'var _iub = _iub || [];' . PHP_EOL;
+				$config = $this->conf( 'iubenda' );
+				$config['lang'] = substr( get_bloginfo( 'language' ), 0, 2 );
 
-					  $config = $this->conf( 'iubenda' );
-
-					  $config['lang'] = substr( get_bloginfo( 'language' ), 0, 2 );
-
-					  $code .= '_iub.csConfiguration = ';
+				$code .= '_iub.csConfiguration = ';
 				$code .= json_encode( $config );
-
-					  $code .= "		  
+				$code .= "		  
 			        _iub.csConfiguration.callback =  {
 			        onConsentGiven: function(){
 			                dataLayer.push({'event': 'iubenda_consent_given'});
@@ -219,7 +215,7 @@ class Setup {
 
 	public function add_icons() {
 
-			$path = $this->conf( 'icons', 'path' );
+		$path = $this->conf( 'icons', 'path' );
 
 		if ( $path && file_exists( trailingslashit( get_template_directory() ) . $path ) ) {
 			wp_enqueue_style( 'theme-icons', get_theme_file_uri( $path ) );
@@ -230,10 +226,8 @@ class Setup {
 	public function add_analytics() {
 
 		if ( $this->conf( 'google-tag-manager', 'id' ) ) {
-
-				$dataLayer = $this->conf( 'google-tag-manager', 'dataLayer' ) ?: 'dataLayer';
-
-				?>
+			$dataLayer = $this->conf( 'google-tag-manager', 'dataLayer' ) ?: 'dataLayer';
+		?>
 			<!-- Google Tag Manager -->
 			<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -255,7 +249,7 @@ class Setup {
 			return;
 		}
 
-			?>
+		?>
 		<!-- Google Tag Manager -->
 		<noscript><iframe src="//www.googletagmanager.com/ns.html?id=<?php echo $this->conf( 'google-tag-manager', 'id' ); ?>" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<!-- End Google Tag Manager -->
@@ -265,11 +259,8 @@ class Setup {
 	public function extend_bloginfo( $output, $show ) {
 
 		if ( substr( $show, 0, 8 ) == 'contact_' ) {
-
 			$show = substr( $show, 8 );
-
 			$output = $this->conf( 'contact', $show ) ?: '';
-
 		}
 
 		return $output;
@@ -281,12 +272,14 @@ class Setup {
 
 	public function get_privacy_link( $attr, $link_name = 'Privacy Policy', $shortcode_tag ) {
 
-			$attr = shortcode_atts( array(
-		'no_style' => 1,
-		'no_brand' => 1,
-			), $attr, $shortcode_tag );
+		$attr = shortcode_atts( 
+			array(
+				'no_style' => 1,
+				'no_brand' => 1,
+			), 
+		$attr, $shortcode_tag );
 
-			return '<a href="//www.iubenda.com/privacy-policy/' . $this->conf( 'iubenda','privacyPolicyId' ) . '" class="iubenda-nostyle no-brand iubenda-embed" title="' . esc_attr( $link_name ) . '">' . $link_name . '</a>';
+		return '<a href="//www.iubenda.com/privacy-policy/' . $this->conf( 'iubenda','privacyPolicyId' ) . '" class="iubenda-nostyle no-brand iubenda-embed" title="' . esc_attr( $link_name ) . '">' . $link_name . '</a>';
 	}
 
 

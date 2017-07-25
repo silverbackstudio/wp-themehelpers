@@ -10,7 +10,7 @@ class Script {
 	public static $async_scripts = array();
 	public static $defer_scripts = array();
 
-	public static $default_cdn = '\Svbk\Helpers\CDN\JsDelivr';
+	public static $default_cdn = '\Svbk\WP\Helpers\CDN\JsDelivr';
 
 	public static function enqueue( $package, $files = '', $deps = array(), $version = 'latest', $in_footer = true, $overwrite = false ) {
 		self::register( $package, $files, $deps, $version, $in_footer, $overwrite );
@@ -31,6 +31,7 @@ class Script {
 		$url = self::getUrl( $package, $files, $version );
 
 		if ( $url ) {
+			
 			wp_register_script( $package, $url, $deps, null, $in_footer );
 		}
 	}
@@ -55,12 +56,12 @@ class Script {
 
 	public static function getUrl( $package, $files, $version = 'latest', $cdn_class = null ) {
 
-		if ( ! $cdn_class ) {
+		if ( ! $cdn_class || ! class_exists( $cdn_class ) ) {
 			$cdn_class = self::$default_cdn;
 		}
 
 		if ( class_exists( $cdn_class ) ) {
-			return $cdn_class::get_script_url();
+			return $cdn_class::get_script_url( $package, $files, $version );
 		}
 
 	}
