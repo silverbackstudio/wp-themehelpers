@@ -21,7 +21,6 @@
 
 	<!-- Include the WordPress ruleset, with exclusions. -->
 	<rule ref="WordPress">
-		<exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
 		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
 		<exclude name="Squiz.Commenting.ClassComment.Missing" />
 		<exclude name="Squiz.Commenting.FileComment.Missing" />
