@@ -97,7 +97,7 @@ class GetResponse  {
 
 			$addResult = $this->client->addContact( $args );
 			
-            if ( 200 !== $this->client->http_status ) { 
+            if ( 202 !== $this->client->http_status ) { 
                 $errors[] =  __('Unable to subscribe the contact', 'svbk-helpers');
             }			
 			
