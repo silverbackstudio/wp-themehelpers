@@ -46,7 +46,7 @@ class Download extends Subscribe {
 					throw new Mandrill_Error( __( 'The requesto to our mail server failed, please try again later or contact the site owner.', 'svbk-helpers' ) );
 				}
 
-					$errors = $mandrill->getResponseErrors( $results );
+				$errors = $mandrill->getResponseErrors( $results );
 
 				foreach ( $errors as $error ) {
 					$this->addError( $error, 'email' );
