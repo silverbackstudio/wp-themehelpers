@@ -17,6 +17,7 @@ use \WP_Error;
  */
 class IpAddress {
 
+	public static $trusted_proxies = array( );
 	public static $private_ranges = array( '10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16' );
 
 	/**
@@ -29,7 +30,7 @@ class IpAddress {
 	 *
 	 * @return string|WP_Error The IP address or WP_Error on failure.
 	 */
-	public static function getClientAddress( $trusted_proxies = array(), $proxy_header = 'HTTP_X_FORWARDED_FOR' ) {
+	public static function getClientAddress( $proxy_header = 'HTTP_X_FORWARDED_FOR' ) {
 
 		// Nothing to do without any reliable information
 		if ( ! isset( $_SERVER['REMOTE_ADDR'] ) || ! filter_var( $_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP ) ) {
@@ -37,6 +38,7 @@ class IpAddress {
 		}
 
 		$in_private_range = false;
+		$is_trusted_proxy = false;
 
 		foreach ( self::$private_ranges as $range ) {
 			if ( self::inRange( $_SERVER['REMOTE_ADDR'], $range ) ) {
@@ -45,7 +47,11 @@ class IpAddress {
 			}
 		}
 
-		if ( $in_private_range || in_array( $_SERVER['REMOTE_ADDR'], $trusted_proxies ) ) {
+		if ( in_array( $_SERVER['REMOTE_ADDR'], self::$trusted_proxies ) ) {
+			$is_trusted_proxy = true;
+		}
+
+		if ( $in_private_range || $is_trusted_proxy ) {
 
 			// Get the IP address of the client behind trusted proxy.
 			if ( array_key_exists( $proxy_header, $_SERVER ) ) {
