@@ -58,7 +58,8 @@ class IpAddress {
 
 				// Header can contain multiple IP-s of proxies that are passed through.
 				// Only the IP added by the last proxy (last IP in the list) can be trusted.
-				$client_ip = trim( end( explode( ',', $_SERVER[ $proxy_header ] ) ) );
+				$ips_from_proxy = $_SERVER[ $proxy_header ];
+				$client_ip = trim( end( explode( ',', $ips_from_proxy ) ) );
 
 				// Validate just in case.
 				if ( filter_var( $client_ip, FILTER_VALIDATE_IP ) ) {
