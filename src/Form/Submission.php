@@ -71,7 +71,7 @@ class Submission extends Form {
 	public function setPolicyParts( $policyParts = array() ) {
 
 		$this->policyParts = array_merge_recursive(
-			 array(
+			array(
 				'policy_service' => array(
 					'label' => __( 'I have read and agree to the "Terms and conditions" and the "Privacy Policy"', 'svbk-helpers' ),
 					'required' => true,
@@ -102,7 +102,7 @@ class Submission extends Form {
 
 		if ( $after ) {
 			$this->inputFields = Helpers\Form\Renderer::arrayKeyInsert( $this->inputFields, array(
-			$fieldName => $fieldParams,
+				$fieldName => $fieldParams,
 			), $after );
 		} else {
 			$this->inputFields[ $fieldName ] = $fieldParams;
@@ -134,8 +134,8 @@ class Submission extends Form {
 
 		if ( $this->policyParts ) {
 			$input_filters = array_merge(
-			$input_filters,
-			wp_list_pluck( $this->policyParts, 'filter' )
+				$input_filters,
+				wp_list_pluck( $this->policyParts, 'filter' )
 			);
 		}
 

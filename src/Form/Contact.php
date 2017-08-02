@@ -50,7 +50,7 @@ class Contact extends Submission {
 	public function setPolicyParts( $policyParts = array() ) {
 
 		$this->policyParts = array_merge_recursive(
-			 array(
+			array(
 				'policy_service' => array(
 					'label' => __( 'Ho letto e accetto le condizioni generali e l\'informativa della privacy.', 'svbk-helpers' ),
 					'required' => true,
@@ -126,7 +126,7 @@ class Contact extends Submission {
 					'contact-request'
 					),
 				)
-			);
+		);
 	}
 
 }

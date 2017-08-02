@@ -68,8 +68,8 @@ class Jetpack {
 			return Jetpack_RelatedPosts::init_raw()
 			->set_query_name( 'svbk-jetpack-helper' )
 			->get_for_post_id(
-			get_the_ID(),
-			$options
+				get_the_ID(),
+				$options
 			);
 		}
 

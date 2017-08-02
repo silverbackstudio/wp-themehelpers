@@ -17,7 +17,7 @@ use \WP_Error;
  */
 class IpAddress {
 
-	public static $trusted_proxies = array( );
+	public static $trusted_proxies = array();
 	public static $private_ranges = array( '10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16' );
 
 	/**

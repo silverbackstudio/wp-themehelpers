@@ -35,11 +35,11 @@ class PayPal {
 		if ( ! empty( $params['clientId'] ) && ! empty( $params['clientSecret'] ) ) {
 
 				$this->apiContext = new ApiContext(
-			new OAuthTokenCredential(
-			$params['clientId'],
-			$params['clientSecret']
-				)
-			);
+					new OAuthTokenCredential(
+						$params['clientId'],
+						$params['clientSecret']
+					)
+				);
 
 		}
 
@@ -88,7 +88,7 @@ class PayPal {
 			$log .= ' -- INVALID HEADERS!';
 			$this->logger->debug( $log );
 			return new WP_Error( 'invalid_request', 'Not a valid WebHook request', array(
-			'status' => 500,
+				'status' => 500,
 			) );
 		}
 
@@ -114,7 +114,7 @@ class PayPal {
 			$log .= ' -- NOT VALIDATED: ' . $output->getVerificationStatus();
 			$this->logger->debug( $log );
 			return new WP_Error( 'invalid_payment_info', 'Invalid Payment Info'  , array(
-			'status' => 200,
+				'status' => 200,
 			) );
 		}
 

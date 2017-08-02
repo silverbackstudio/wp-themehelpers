@@ -98,7 +98,7 @@ class Download extends Subscribe {
 				'merge' => true,
 				'tags' => array( 'download-request' ),
 					)
-			);
+		);
 	}
 
 	public function renderParts( $action, $attr = array() ) {

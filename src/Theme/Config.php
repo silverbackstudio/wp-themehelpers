@@ -52,13 +52,12 @@ class Config {
 		}
 
 		if ( $group ) {
-	
+
 			if ( $param ) {
 				$config[ $group ][ $param ] = $value;
 			} else {
 				$config[ $group ] = $value;
 			}
-			
 		} else {
 			$config = $value;
 		}

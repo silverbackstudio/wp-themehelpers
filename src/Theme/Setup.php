@@ -103,7 +103,7 @@ class Setup {
 			if ( ! $this->conf( 'googlemaps', 'callback', false ) ) {
 
 				wp_add_inline_script('googlemaps',
-				'function initGMaps() { 
+					'function initGMaps() { 
         	        var triggerGmaps = function(){
         	        
                         var event, eventName = \'gmaps-ready\';
@@ -128,7 +128,7 @@ class Setup {
             	}',
 				'before');
 			}
-		}
+		}// End if().
 
 	}
 
@@ -272,11 +272,11 @@ class Setup {
 
 	public function get_privacy_link( $attr, $link_name = 'Privacy Policy', $shortcode_tag ) {
 
-		$attr = shortcode_atts( 
+		$attr = shortcode_atts(
 			array(
 				'no_style' => 1,
 				'no_brand' => 1,
-			), 
+			),
 		$attr, $shortcode_tag );
 
 		return '<a href="//www.iubenda.com/privacy-policy/' . $this->conf( 'iubenda','privacyPolicyId' ) . '" class="iubenda-nostyle no-brand iubenda-embed" title="' . esc_attr( $link_name ) . '">' . $link_name . '</a>';
