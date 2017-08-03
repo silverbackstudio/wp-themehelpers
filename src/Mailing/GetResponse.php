@@ -44,13 +44,13 @@ class GetResponse {
 	 */
 	public function subscriberId( $email, $campaignId ) {
 
-				$user_info = (array) $this->client->getContacts(array(
-					'query' => array(
-					'email' => $email,
-					'campaignId' => $campaignId,
-					),
-					'fields' => 'contactId',
-				));
+		$user_info = (array) $this->client->getContacts(array(
+			'query' => array(
+			'email' => $email,
+			'campaignId' => $campaignId,
+			),
+			'fields' => 'contactId',
+		));
 
 		if ( 200 !== $this->client->http_status ) {
 			return false;
@@ -60,7 +60,7 @@ class GetResponse {
 			return $user_info[0]->contactId;
 		}
 
-				return false;
+		return false;
 	}
 
 	/**
@@ -85,17 +85,18 @@ class GetResponse {
 
 		if ( $subscriberId && $update ) {
 
-					$updateResult = $this->client->updateContact( $subscriberId, $args );
+			$updateResult = $this->client->updateContact( $subscriberId, $args );
 
 			if ( 200 !== $this->client->http_status ) {
 				$errors[] = __( 'Unable to update the contact', 'svbk-helpers' );
 			}
+			
 		} elseif ( ! $subscriberId ) {
 
 			$args['email'] = $email;
 			$args['dayOfCycle'] = 0;
 
-						$ip_address = Networking\IpAddress::getClientAddress();
+			$ip_address = Networking\IpAddress::getClientAddress();
 
 			if ( $ip_address && ! is_wp_error( $ip_address ) ) {
 				$args['ipAddress'] = $ip_address;
