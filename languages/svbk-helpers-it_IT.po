@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Silverback Helpers\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-01 17:29+0000\n"
-"PO-Revision-Date: 2017-08-01 17:30+0000\n"
-"Last-Translator: Silverback Studio <webmaster@silverbackstudio.it>\n"
+"PO-Revision-Date: 2017-08-07 11:54+0000\n"
+"Last-Translator: Silverback <webmaster@silverbackstudio.it>\n"
 "Language-Team: Italian\n"
 "Language: it-IT\n"
 "Plural-Forms: nplurals=2; plural=n != 1\n"
@@ -1094,15 +1094,14 @@ msgstr "Errore inserimento dati"
 
 #: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:205
 msgid "Privacy policy"
-msgstr "Politiche Privacy"
+msgstr "Privacy "
 
 #: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:215
 #, php-format
 msgid ""
 "I declare I have read and accept the %s notification and I consent to "
 "process my personal data."
-msgstr ""
-"Ho letto e accetto l'informativa e tutte le clausole indicate nella %s."
+msgstr "Rispettiamo la tua %s. I tuoi dati non saranno mai ceduti a terzi. "
 
 #: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:218
 msgid "click here"
