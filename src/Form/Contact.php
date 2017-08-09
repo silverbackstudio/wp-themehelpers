@@ -16,6 +16,7 @@ class Contact extends Submission {
 
 	public $md_apikey = '';
 	public $templateName = '';
+	public $senderTemplateName = '';
 	public $recipientEmail = 'webmaster@silverbackstudio.it';
 	public $recipientName = 'Webmaster';
 
@@ -88,6 +89,22 @@ class Contact extends Submission {
 				foreach ( $errors as $error ) {
 					$this->addError( $error, 'email' );
 				}
+				
+				if ( $this->senderTemplateName ) {
+					$results = $mandrill->messages->sendTemplate( $this->senderTemplateName, array(), $this->senderMessageParams() );
+				} else {
+					$results = $mandrill->messages->send( $this->senderMessageParams() );
+				}
+
+				if ( ! is_array( $results ) || ! isset( $results[0]['status'] ) ) {
+					throw new Mandrill_Error( __( 'The requesto to our mail server failed, please try again later or contact the site owner.', 'svbk-helpers' ) );
+				}
+
+				$errors = $mandrill->getResponseErrors( $results );
+
+				foreach ( $errors as $error ) {
+					$this->addError( $error, 'email' );
+				}				
 			} catch ( Mandrill_Error $e ) {
 				$this->addError( $e->getMessage() );
 			}
@@ -128,5 +145,31 @@ class Contact extends Submission {
 				)
 		);
 	}
+	
+	protected function senderMessageParams() {
+
+		return array_merge_recursive(
+			Mandrill::$messageDefaults,
+			(array) $this->messageDefaults,
+			array(
+				'text' => __( 'Thanks! We will contact you as soon as possible.', 'svbk-helpers' ),
+				'to' => array(
+					array(
+						'email' => $this->getInput( 'email' ),
+						'name' => $this->getInput( 'fname' ) . ' ' . $this->getInput( 'lname' ),
+						'type' => 'to',
+					),
+				),
+				'global_merge_vars' => Mandrill::castMergeTags( $this->inputData, 'INPUT_' ),
+				'metadata' => array(
+					'website' => home_url( '/' ),
+					),
+				'merge' => true,
+				'tags' => array(
+					'contact-autoreply'
+					),
+				)
+		);
+	}	
 
 }
