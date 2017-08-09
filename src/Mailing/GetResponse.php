@@ -90,7 +90,6 @@ class GetResponse {
 			if ( 200 !== $this->client->http_status ) {
 				$errors[] = __( 'Unable to update the contact', 'svbk-helpers' );
 			}
-			
 		} elseif ( ! $subscriberId ) {
 
 			$args['email'] = $email;
