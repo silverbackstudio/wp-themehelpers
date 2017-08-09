@@ -10,7 +10,7 @@ use \Svbk\WP\Helpers;
  * @package wp-themehelper
  * @subpackage Affiliate
  * @author Brando Meniconi <b.meniconi@silverbackstudio.it>
- * @since 3.1.15*
+ * @since 3.1.15
  */
 class IDevAffiliate implements AffiliateInterface {
 
