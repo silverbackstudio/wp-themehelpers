@@ -89,7 +89,7 @@ class Contact extends Submission {
 				foreach ( $errors as $error ) {
 					$this->addError( $error, 'email' );
 				}
-				
+
 				if ( $this->senderTemplateName ) {
 					$results = $mandrill->messages->sendTemplate( $this->senderTemplateName, array(), $this->senderMessageParams() );
 				} else {
@@ -104,11 +104,11 @@ class Contact extends Submission {
 
 				foreach ( $errors as $error ) {
 					$this->addError( $error, 'email' );
-				}				
+				}
 			} catch ( Mandrill_Error $e ) {
 				$this->addError( $e->getMessage() );
-			}
-		}
+			}// End try().
+		}// End if().
 
 	}
 
@@ -145,7 +145,7 @@ class Contact extends Submission {
 				)
 		);
 	}
-	
+
 	protected function senderMessageParams() {
 
 		return array_merge_recursive(
@@ -156,7 +156,7 @@ class Contact extends Submission {
 				'to' => array(
 					array(
 						'email' => $this->getInput( 'email' ),
-						'name' => $this->getInput( 'fname' ) . ' ' . $this->getInput( 'lname' ),
+						'name' => trim( $this->getInput( 'fname' ) . ' ' . $this->getInput( 'lname' ) ),
 						'type' => 'to',
 					),
 				),
@@ -170,6 +170,6 @@ class Contact extends Submission {
 					),
 				)
 		);
-	}	
+	}
 
 }

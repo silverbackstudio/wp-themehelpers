@@ -10,6 +10,7 @@ class Subscribe extends Submission {
 	public $subscribeAttributes = array();
 
 	public $mc_apikey = '';
+	public $mc_list_id = '';
 	public $mc_subscribe_update = false;
 
 	protected function mainAction() {
