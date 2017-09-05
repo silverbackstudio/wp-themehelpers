@@ -250,9 +250,9 @@ class Setup {
 		}
 
 		?>
-		<!-- Google Tag Manager -->
+		<!-- Google Tag Manager (noscript) -->
 		<noscript><iframe src="//www.googletagmanager.com/ns.html?id=<?php echo $this->conf( 'google-tag-manager', 'id' ); ?>" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-		<!-- End Google Tag Manager -->
+		<!-- End Google Tag Manager (noscript) -->
 		<?php
 	}
 
