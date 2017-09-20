@@ -4,13 +4,38 @@ namespace Svbk\WP\Helpers\CDN;
 
 class CdnJs {
 
-	static function get_script_url( $package, $files, $version = '1.0.0' ) {
+	public $package;
+	public $version;
 
-		if ( 'latest' === $version ) {
-			return null;
+	public function __construct($package, $options ){
+		$this->package = $package;
+
+		foreach ( $options as $option => $value ) {
+			if ( ! property_exists( $this, $option ) ) {
+				continue;
+			}
+
+			$this->$option = $value;
 		}
 
-		return sprintf( '//cdnjs.cloudflare.com/ajax/libs/%1$s/%3$s/%2$s', $package, $files, $version );
 	}
+
+	static function get( $package, $options = array() ){
+		return new self($package, $options);
+	}
+
+	function url( $file ) {
+		
+		if ( 'latest' === $this->version ) {
+			return null;
+		}		
+		
+		return 'https://cdnjs.cloudflare.com/' . self::path( $file ); 
+	}	
+	
+	function path( $file ) {
+		// ajax/libs/flickity/2.0.6/flickity.css
+		return 'ajax/libs/' . $this->package . '/' . $this->version . '/' . $file ;
+	}	
 
 }

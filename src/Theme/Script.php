@@ -4,6 +4,7 @@ namespace Svbk\WP\Helpers\Theme;
 
 use Svbk\Helpers\CDN\JsDelivr;
 use Svbk\Helpers\CDN\CdnJs;
+use Exception;
 
 class Script {
 
@@ -18,52 +19,49 @@ class Script {
 		wp_enqueue_script( $package );
 	}
 
-	public static function register( $package, $files, $deps = array(), $version = 'latest', $in_footer = true, $overwrite = false, $cdn_class = null ) {
+	public static function register( $package, $files, $options = array(), $cdn_class = null ) {
+
+		$defaults = array(
+			'deps' => array(), 
+			'package' => $package,
+			'version' => 'latest', 
+			'in_footer' => true, 
+			'overwrite' => false
+		);
+		
+		$opt = array_merge($defaults, $options);
 
 		if ( wp_script_is( $package , 'registered' ) ) {
-			if ( $overwrite ) {
+			if ( $opt['overwrite'] ) {
 				wp_deregister_script( $package );
 			} else {
 				return false;
 			}
 		}
 
-		$url = self::getUrl( $package, $files, $version, $cdn_class );
-
-		if ( $url ) {
-			wp_register_script( $package, $url, $deps, null, $in_footer );
-		}
-	}
-
-	public static function register_style( $package, $files, $deps = array(), $version = 'latest', $media = 'all', $overwrite = false, $cdn_class = null ) {
-
-		if ( wp_style_is( $package, 'registered' ) ) {
-			if ( $overwrite ) {
-				wp_deregister_style( $package );
-			} else {
-				return false;
-			}
-		}
-
-		$url = self::getUrl( $package, $files, $version, $cdn_class );
-
-		if ( $url ) {
-			wp_register_style( $package, $url, $deps, null, $media );
-		}
-	}
-
-
-	public static function getUrl( $package, $files, $version = 'latest', $cdn_class = null ) {
-
 		if ( ! $cdn_class || ! class_exists( $cdn_class ) ) {
 			$cdn_class = self::$default_cdn;
 		}
 
 		if ( class_exists( $cdn_class ) ) {
-			return $cdn_class::get_script_url( $package, $files, $version );
+			$cdn = $cdn_class::get( $opt['package'], $options );
+		} else {
+			throw new Exception('CDN Class doesn\'t exists');
 		}
 
+		$files = (array)$files;
+
+		if( ( count( $files ) > 1 ) && method_exists($cdn, 'combine') ) {
+			$url = $cdn->combine( $files );
+		} else {
+			$url = $cdn->url( reset( $files ) );
+		}
+
+		if ( $url ) {
+			wp_register_script( $package, $url, $opt['deps'], $opt['version'], $opt['in_footer'] );
+		}
 	}
+
 
 	public static function set_async( $handle ) {
 

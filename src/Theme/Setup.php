@@ -3,7 +3,7 @@
 namespace Svbk\WP\Helpers\Theme;
 
 use Svbk\WP\Helpers\Theme\Script;
-use Svbk\WP\Helpers\CDN\JsDelivr;
+use Svbk\WP\Helpers\Theme\Style;
 
 class Setup {
 
@@ -44,21 +44,22 @@ class Setup {
 	}
 
 	public function register_scripts() {
+		
+		Script::register( 'waypoints', [ '/lib/jquery.waypoints.js', '/lib/shortcuts/sticky.js' ], [ 'version' => '4', 'deps' => 'jquery' ] );
+		Script::register( 'jquery.collapse', '/lib/jquery.waypoints.js', [ 'version' => '1.1', 'deps' => 'jquery', 'package' => 'jquery-collapse' ] );
+		
+		Script::register( 'flickity', 'dist/flickity.pkgd.js', [ 'version' => '2'] );
+		Style::register( 'flickity',  'dist/flickity.css' , [ 'version' => '2' ] );
+		
+		Script::register( 'masonry', 'masonry.pkgd.js', ['version' => '4', 'package' => 'masonry-layout' ] );
+		Script::register( 'jquery.localscroll', 'jquery.localScrolljs', ['version' => '2', 'deps' => 'jquery']);
+		Script::register( 'jquery.scrollto', 'jquery.scrollTo.js', [ 'version' => '2.1', 'deps' => 'jquery' ] );
 
-		Script::register( 'waypoints', array( 'jquery.waypoints.min.js', 'shortcuts/sticky.min.js' ), array( 'jquery' ) );
-		Script::register( 'jquery.collapse', array( 'jquery.collapse', 'jquery.collapse.js' ), array( 'jquery' ), '1.1' );
-		Script::register( 'flickity', 'flickity.pkgd.min.js', array(), '2' );
-		Script::register( 'masonry', 'masonry.pkgd.min.js', array(), '4.2' );
-		Script::register( 'jquery.localscroll', 'jquery.localScroll.min.js', array( 'jquery' ), '1.4' );
-		Script::register( 'jquery.scrollto', 'jquery.localScroll.min.js', array( 'jquery' ), '2.1' );
-
-		Script::enqueue( 'object-fit-images',  'ofi.min.js', array(), '3.2.3', true, true, '\Svbk\WP\Helpers\CDN\CdnJs' );
+		Script::enqueue( 'object-fit-images', 'dist/ofi.js' , [ 'version' => '3' ] );
 		wp_add_inline_script( 'object-fit-images', 'objectFitImages();' );
 
-		wp_register_script( 'history.jquery.js', Script::getUrl( 'history.js', 'history.adapter.jquery.js', '1.8' ), array( 'jquery', 'history.js' ), '1.8' );
-		Script::register( 'history.js',  'history.js', array(), '1.8' );
-
-		Script::register_style( 'flickity', 'flickity.pkgd.min.js', array(), '2' );
+		Script::register( 'history.js', 'scripts/bundled/html4+html5/jquery.history.js', [ 'version' => '1.8', 'package' => 'historyjs', 'deps' => 'jquery' ] );
+	
 	}
 
 	public function load_texdomain() {
