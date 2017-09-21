@@ -45,8 +45,9 @@ class Setup {
 
 	public function register_scripts() {
 		
-		Script::register( 'waypoints', [ '/lib/jquery.waypoints.js', '/lib/shortcuts/sticky.js' ], [ 'version' => '4', 'deps' => 'jquery' ] );
-		Script::register( 'jquery.collapse', '/lib/jquery.waypoints.js', [ 'version' => '1.1', 'deps' => 'jquery', 'package' => 'jquery-collapse' ] );
+		Script::register( 'waypoints', 'lib/jquery.waypoints.js', [ 'version' => '4', 'deps' => 'jquery' ] );
+		Script::register( 'waypoints-sticky', 'lib/shortcuts/sticky.js', [ 'version' => '4', 'deps' => ['jquery', 'waypoints'], 'package' => 'waypoints' ] );
+		Script::register( 'jquery.collapse', 'src/jquery.collapse.js', [ 'version' => '1', 'deps' => 'jquery', 'package' => 'jquery-collapse' ] );
 		
 		Script::register( 'flickity', 'dist/flickity.pkgd.js', [ 'version' => '2'] );
 		Style::register( 'flickity',  'dist/flickity.css' , [ 'version' => '2' ] );
