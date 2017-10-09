@@ -76,34 +76,31 @@ class Contact extends Submission {
 
 				if ( $this->templateName ) {
 					$results = $mandrill->messages->sendTemplate( $this->templateName, array(), $this->messageParams() );
-				} else {
-					$results = $mandrill->messages->send( $this->messageParams() );
-				}
-
-				if ( ! is_array( $results ) || ! isset( $results[0]['status'] ) ) {
-					throw new Mandrill_Error( __( 'The requesto to our mail server failed, please try again later or contact the site owner.', 'svbk-helpers' ) );
-				}
-
-				$errors = $mandrill->getResponseErrors( $results );
-
-				foreach ( $errors as $error ) {
-					$this->addError( $error, 'email' );
-				}
+				
+					if ( ! is_array( $results ) || ! isset( $results[0]['status'] ) ) {
+						throw new Mandrill_Error( __( 'The requesto to our mail server failed, please try again later or contact the site owner.', 'svbk-helpers' ) );
+					}
+	
+					$errors = $mandrill->getResponseErrors( $results );
+	
+					foreach ( $errors as $error ) {
+						$this->addError( $error, 'email' );
+					}
+					
+				} 					
 
 				if ( $this->senderTemplateName ) {
 					$results = $mandrill->messages->sendTemplate( $this->senderTemplateName, array(), $this->senderMessageParams() );
-				} else {
-					$results = $mandrill->messages->send( $this->senderMessageParams() );
-				}
-
-				if ( ! is_array( $results ) || ! isset( $results[0]['status'] ) ) {
-					throw new Mandrill_Error( __( 'The requesto to our mail server failed, please try again later or contact the site owner.', 'svbk-helpers' ) );
-				}
-
-				$errors = $mandrill->getResponseErrors( $results );
-
-				foreach ( $errors as $error ) {
-					$this->addError( $error, 'email' );
+				
+					if ( ! is_array( $results ) || ! isset( $results[0]['status'] ) ) {
+						throw new Mandrill_Error( __( 'The requesto to our mail server failed, please try again later or contact the site owner.', 'svbk-helpers' ) );
+					}
+	
+					$errors = $mandrill->getResponseErrors( $results );
+	
+					foreach ( $errors as $error ) {
+						$this->addError( $error, 'email' );
+					}
 				}
 			} catch ( Mandrill_Error $e ) {
 				$this->addError( $e->getMessage() );

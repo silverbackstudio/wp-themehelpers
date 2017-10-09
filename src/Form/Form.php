@@ -103,8 +103,10 @@ class Form {
 		$fieldId = preg_replace( '/\[(\d+)\]/i', '-$1', $fieldId );
 		$fieldId = preg_replace( '/\[(\w+)\]/i', '-$1', $fieldId );
 
-		$output = '<div class="' . esc_attr( join( ' ', $classes ) ) . '">';
 		$labelElement = '<label for="' . $fieldId . '">' . $fieldLabel . '</label>';
+
+		$output = '<div class="' . esc_attr( join( ' ', $classes ) ) . '">';
+		$output .= apply_filters('svbk_form_before_field', '', $fieldName, $fieldAttr, $this);
 
 		if ( 'hidden' === $type ) {
 			$output .= '<input type="' . esc_attr( $type ) . '" name="' . $fieldNameHash . '" id="' . $fieldId . '" value="' . esc_attr( $value ) . '" />';
@@ -129,6 +131,16 @@ class Form {
 				$output .= '  </div>';
 			}
 			$output .= '</div>';
+		} elseif ( ('radio' === $type) && ! empty( $fieldAttr['choices'] ) ) {
+			$output .= '<label >' . $fieldLabel . '</label>';
+			$output .= '<div name="' . $fieldNameHash . '" id="' . $fieldId . '" >';
+			foreach ( $fieldAttr['choices']  as $cValue => $cLabel ) {
+				$output .= '  <div class="radio field-pair">';
+				$output .= '  <input id="' . $fieldId . '_' . esc_attr( $cValue ) . '"  name="' . $fieldNameHash . '" type="radio" value="' . esc_attr($cValue) . '" ' . selected( $value, $cValue, false ) . '  />';
+				$output .= '  <label for="' . $fieldId . '_' . esc_attr( $cValue ) . '">' . esc_html( $cLabel ) . '</label>';
+				$output .= '  </div>';
+			}
+			$output .= '</div>';
 		} elseif ( 'image' === $type ) {
 			$output .= $labelElement . '<input type="file" name="' . $fieldNameHash . '" id="' . $fieldId . '" />';
 			$output .= wp_get_attachment_image( $value, 'thumb' );
@@ -140,6 +152,7 @@ class Form {
 			$output .= '<span class="field-errors"></span>';
 		}
 
+		$output .= apply_filters('svbk_form_after_field', '', $fieldName, $fieldAttr, $this);
 		$output .= '</div>';
 
 		return $output;
