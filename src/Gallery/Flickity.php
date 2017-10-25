@@ -76,7 +76,7 @@ class Flickity {
 			$options = array_merge( self::$_options, $options );
 		}
 
-		return "data-flickity-options='" . esc_attr( json_encode( $options ) ) . "' ";
+		return "data-flickity='" . esc_attr( json_encode( $options ) ) . "' ";
 	}
 
 	public static function gallery( $image_ids, $options = array() ) {
