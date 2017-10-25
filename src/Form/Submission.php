@@ -50,7 +50,7 @@ class Submission extends Form {
 				'email' => array(
 					'required' => true,
 					'label' => __( 'Email Address', 'svbk-helpers' ),
-					'filter' => FILTER_VALIDATE_EMAIL,
+					'filter' => FILTER_SANITIZE_EMAIL,
 					'error' => __( 'Invalid email address', 'svbk-helpers' ),
 				),
 			),
