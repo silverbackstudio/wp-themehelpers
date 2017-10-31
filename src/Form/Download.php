@@ -62,7 +62,7 @@ class Download extends Subscribe {
 		return array(
 			array(
 				'email' => trim( $this->getInput( 'email' ) ),
-				'name' => ucfirst( $this->getInput( 'fname' ) ) . ' ' . ucfirst( $this->getInput( 'lname' ) ),
+				'name' => ucfirst( $this->getInput( 'fname' ) ),
 				'type' => 'to',
 			),
 		);

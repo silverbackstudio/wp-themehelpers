@@ -31,7 +31,6 @@ class Subscribe extends Submission {
 			array(
 				'merge_fields' => [
 					'FNAME' => $this->getInput( 'fname' ),
-					'LNAME' => $this->getInput( 'lname' ),
 					'MARKETING' => $this->getInput( 'policy_directMarketing' ) ? 'yes' : 'no',
 				],
 			)

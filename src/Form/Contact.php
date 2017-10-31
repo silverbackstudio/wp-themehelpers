@@ -153,7 +153,7 @@ class Contact extends Submission {
 				'to' => array(
 					array(
 						'email' => $this->getInput( 'email' ),
-						'name' => trim( $this->getInput( 'fname' ) . ' ' . $this->getInput( 'lname' ) ),
+						'name' => trim( $this->getInput( 'fname' ) ),
 						'type' => 'to',
 					),
 				),
