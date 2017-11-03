@@ -27,13 +27,6 @@ class Contact extends Submission {
 		return parent::setInputFields(
 			array_merge(
 				array(
-					'subject' => array(
-						'required' => true,
-						'label' => __( 'Subject', 'svbk-helpers' ),
-						'type' => 'text',
-						'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
-						'error' => __( 'Please enter a subject', 'svbk-helpers' ),
-					),
 					'request' => array(
 						'required' => true,
 						'label' => __( 'Message', 'svbk-helpers' ),
@@ -126,7 +119,6 @@ class Contact extends Submission {
 			(array) $this->messageDefaults,
 			array(
 				'text' => $this->getInput( 'request' ),
-				'subject' => $this->getInput( 'subject' ),
 				'headers' => array(
 					'Reply-To' => trim( $this->getInput( 'email' ) ),
 					),
