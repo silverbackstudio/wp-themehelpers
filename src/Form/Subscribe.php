@@ -18,7 +18,7 @@ class Subscribe extends Submission {
 		if ( ! empty( $this->mc_apikey ) && ! empty( $this->mc_list_id ) ) {
 			$mc = new MailChimp( $this->mc_apikey );
 
-			$errors = $mc->subscribe( $this->mc_list_id, $this->getInput( 'email' ), $this->subscribeAttributes(), $this->mc_subscribe_update );
+			$errors = $mc->subscribe( $this->mc_list_id, trim( $this->getInput( 'email' ) ), $this->subscribeAttributes(), $this->mc_subscribe_update );
 
 			array_walk( $errors, array( $this, 'addError' ) );
 		}
@@ -31,7 +31,6 @@ class Subscribe extends Submission {
 			array(
 				'merge_fields' => [
 					'FNAME' => $this->getInput( 'fname' ),
-					'LNAME' => $this->getInput( 'lname' ),
 					'MARKETING' => $this->getInput( 'policy_directMarketing' ) ? 'yes' : 'no',
 				],
 			)

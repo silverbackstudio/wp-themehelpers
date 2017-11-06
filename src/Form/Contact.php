@@ -27,13 +27,6 @@ class Contact extends Submission {
 		return parent::setInputFields(
 			array_merge(
 				array(
-					'subject' => array(
-						'required' => true,
-						'label' => __( 'Subject', 'svbk-helpers' ),
-						'type' => 'text',
-						'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
-						'error' => __( 'Please enter a subject', 'svbk-helpers' ),
-					),
 					'request' => array(
 						'required' => true,
 						'label' => __( 'Message', 'svbk-helpers' ),
@@ -115,7 +108,7 @@ class Contact extends Submission {
 	protected function getRecipients() {
 		return array(
 			array(
-				'email' => $this->recipientEmail,
+				'email' => trim( $this->recipientEmail ),
 				'name' => $this->recipientName,
 				'type' => 'to',
 			),
@@ -129,9 +122,8 @@ class Contact extends Submission {
 			(array) $this->messageDefaults,
 			array(
 				'text' => $this->getInput( 'request' ),
-				'subject' => $this->getInput( 'subject' ),
 				'headers' => array(
-					'Reply-To' => $this->getInput( 'email' ),
+					'Reply-To' => trim( $this->getInput( 'email' ) ),
 					),
 				'to' => $this->getRecipients(),
 				'global_merge_vars' => Mandrill::castMergeTags( $this->inputData, 'INPUT_' ),
@@ -156,7 +148,7 @@ class Contact extends Submission {
 				'to' => array(
 					array(
 						'email' => $this->getInput( 'email' ),
-						'name' => trim( $this->getInput( 'fname' ) . ' ' . $this->getInput( 'lname' ) ),
+						'name' => trim( $this->getInput( 'fname' ) ),
 						'type' => 'to',
 					),
 				),

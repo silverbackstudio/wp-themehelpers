@@ -41,16 +41,10 @@ class Submission extends Form {
 					'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
 					'error' => __( 'Please enter first name', 'svbk-helpers' ),
 				),
-				'lname' => array(
-					'required' => true,
-					'label' => __( 'Last Name', 'svbk-helpers' ),
-					'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
-					'error' => __( 'Please enter last name', 'svbk-helpers' ),
-				),
 				'email' => array(
 					'required' => true,
 					'label' => __( 'Email Address', 'svbk-helpers' ),
-					'filter' => FILTER_VALIDATE_EMAIL,
+					'filter' => FILTER_SANITIZE_EMAIL,
 					'error' => __( 'Invalid email address', 'svbk-helpers' ),
 				),
 			),

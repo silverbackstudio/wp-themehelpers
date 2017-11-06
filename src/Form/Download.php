@@ -61,8 +61,8 @@ class Download extends Subscribe {
 	protected function getRecipients() {
 		return array(
 			array(
-				'email' => $this->getInput( 'email' ),
-				'name' => ucfirst( $this->getInput( 'fname' ) ) . ' ' . ucfirst( $this->getInput( 'lname' ) ),
+				'email' => trim( $this->getInput( 'email' ) ),
+				'name' => ucfirst( $this->getInput( 'fname' ) ),
 				'type' => 'to',
 			),
 		);
@@ -94,10 +94,10 @@ class Download extends Subscribe {
 				'global_merge_vars' => $this->getGlobalMergeTags(),
 				'metadata' => array(
 					'website' => home_url( '/' ),
-					),
+				),
 				'merge' => true,
 				'tags' => array( 'download-request' ),
-					)
+			)
 		);
 	}
 
