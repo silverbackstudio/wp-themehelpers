@@ -41,6 +41,7 @@ class Setup {
 	public function register_shortcodes() {
 		add_shortcode( 'bloginfo', array( $this, 'bloginfo_shortcode' ) );
 		add_shortcode( 'privacy-link', array( $this, 'get_privacy_link' ) );
+		add_shortcode( 'cookie-policy-link', array( $this, 'get_cookie_policy_link' ) );
 	}
 
 	public function register_scripts() {
@@ -276,13 +277,24 @@ class Setup {
 
 		$attr = shortcode_atts(
 			array(
-				'no_style' => 1,
-				'no_brand' => 1,
+				'style' => 'nostyle',
+				'no_brand' => '1',
 			),
 		$attr, $shortcode_tag );
 
-		return '<a href="//www.iubenda.com/privacy-policy/' . $this->conf( 'iubenda','privacyPolicyId' ) . '" class="iubenda-nostyle no-brand iubenda-embed" title="' . esc_attr( $link_name ) . '">' . $link_name . '</a>';
+		return '<a href="//www.iubenda.com/privacy-policy/' . esc_attr( $this->conf( 'iubenda','privacyPolicyId' ) ) . '" class="iubenda-'. esc_attr( $attr['style'] ) ." ". ( $attr['no_brand'] ? "no-brand" : "" ) ." ".'iubenda-embed" title="' . esc_attr( $link_name ) . '">' . $link_name . '</a>';
 	}
+	
+    public function get_cookie_policy_link( $attr, $link_name = 'Cookie Policy', $shortcode_tag ) {    
 
+		$attr = shortcode_atts(
+			array(
+				'style' => 'nostyle',
+				'no_brand' => '1',
+			),
+		$attr, $shortcode_tag );
 
+		return '<a href="//www.iubenda.com/privacy-policy/' . esc_attr ( $this->conf( 'iubenda','cookiePolicyId' ) )."/cookie-policy?ifr=true&amp;height=800" .'"class="iubenda-'. esc_attr( $attr['style'] ) ." ". ( $attr['no_brand'] ? "no-brand" : "" ) ." ".'iubenda-embed" title="' . esc_attr( $link_name ) . '">' . $link_name . '</a>';
+	}
+	
 }
