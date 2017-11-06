@@ -7,7 +7,7 @@ class Flickity {
 	public $width = 1320;
 	public $height = 400;
 	public $crop = false;
-	public $name = 'post-slider';
+	public $name = 'post-slider';   // format to select in Admin Gallery Editor
 	public $label;
 
 	public static $_options = array(
@@ -57,10 +57,10 @@ class Flickity {
 		add_image_size( $this->name, $this->width, $this->height, $this->crop );
 	}
 
-	public function post_gallery( $html ) {
+	public function post_gallery( $html ) {     // $html yet structured
 
-		if ( strpos( $html, 'gallery-size-' . $this->name ) === false ) {
-			return $html;
+		if ( strpos( $html, 'gallery-size-' . $this->name ) === false ) {   // if $html does NOT contain 'gallery-size-post-slider' => user has NOT selected that format
+			return $html;   // exit (use Wordpress default gallery)
 		}
 
 		$html = str_replace( 'gallery ', 'gallery js-flickity ', $html );
@@ -76,7 +76,7 @@ class Flickity {
 			$options = array_merge( self::$_options, $options );
 		}
 
-		return "data-flickity-options='" . esc_attr( json_encode( $options ) ) . "' ";
+		return "data-flickity='" . esc_attr( json_encode( $options ) ) . "' ";
 	}
 
 	public static function gallery( $image_ids, $options = array() ) {
