@@ -51,6 +51,22 @@ class Download extends Subscribe {
 				foreach ( $errors as $error ) {
 					$this->addError( $error, 'email' );
 				}
+				
+				if ( $this->senderTemplateName ) {
+					
+					$results = $mandrill->messages->sendTemplate( $this->senderTemplateName, array(), $this->senderMessageParams() );
+	
+					if ( ! is_array( $results ) || ! isset( $results[0]['status'] ) ) {
+						throw new Mandrill_Error( __( 'The requesto to our mail server failed, please try again later or contact the site owner.', 'svbk-helpers' ) );
+					}
+	
+					$errors = $mandrill->getResponseErrors( $results );
+	
+					foreach ( $errors as $error ) {
+						$this->addError( $error, 'email' );
+					}
+					
+				} 				
 			} catch ( Mandrill_Error $e ) {
 					$this->addError( $e->getMessage() );
 			}
@@ -90,6 +106,7 @@ class Download extends Subscribe {
 			Mandrill::$messageDefaults,
 			(array) $this->messageDefaults,
 			array(
+				'html' => sprintf( __(' Thanks for your request, please download your file <a href="%s">here</a>', 'svbk-helpers' ) , $this->getDownloadLink() ),
 				'to' => $this->getRecipients(),
 				'global_merge_vars' => $this->getGlobalMergeTags(),
 				'metadata' => array(
