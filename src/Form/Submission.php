@@ -44,7 +44,8 @@ class Submission extends Form {
 				'email' => array(
 					'required' => true,
 					'label' => __( 'Email Address', 'svbk-helpers' ),
-					'filter' => FILTER_SANITIZE_EMAIL,
+					'type' => 'email', 
+					'filter' => FILTER_VALIDATE_EMAIL,
 					'error' => __( 'Invalid email address', 'svbk-helpers' ),
 				),
 			),
@@ -138,7 +139,7 @@ class Submission extends Form {
 				wp_list_pluck( $this->policyParts, 'filter' )
 			);
 		}
-
+		
 		$this->inputData = parent::processInput( $input_filters );
 
 		$this->validateInput();

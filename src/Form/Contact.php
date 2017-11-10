@@ -82,7 +82,7 @@ class Contact extends Submission {
 				foreach ( $errors as $error ) {
 					$this->addError( $error, 'email' );
 				}
-
+				
 				if ( $this->senderTemplateName ) {
 					
 					$results = $mandrill->messages->sendTemplate( $this->senderTemplateName, array(), $this->senderMessageParams() );
@@ -98,6 +98,7 @@ class Contact extends Submission {
 					}
 					
 				} 
+				
 			} catch ( Mandrill_Error $e ) {
 				$this->addError( $e->getMessage() );
 			}// End try().
