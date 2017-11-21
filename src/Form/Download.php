@@ -7,9 +7,7 @@ use Mandrill_Error;
 class Download extends Subscribe {
 
 	public $field_prefix = 'dl';
-	public $md_apikey = '';
-	public $templateName = '';
-	public $messageDefaults = array();
+	public $action = 'svbk_download';
 
 	public function processInput( $input_filters = array() ) {
 
@@ -17,76 +15,10 @@ class Download extends Subscribe {
 
 		return parent::processInput( $input_filters );
 	}
-
-	public function processSubmission() {
-
-		parent::processSubmission();
-
-		if ( empty( $this->errors ) && $this->checkPolicy( 'policy_newsletter' ) ) {
-			parent::mainAction();
-		}
-
-	}
-
-	protected function mainAction() {
-
-		if ( ! empty( $this->md_apikey ) ) {
-			$mc = new Mandrill( $this->md_apikey );
-
-			try {
-				$mandrill = new Mandrill( $this->md_apikey );
-
-				if ( $this->templateName ) {
-					$results = $mandrill->messages->sendTemplate( $this->templateName, array(), $this->messageParams() );
-				} else {
-					$results = $mandrill->messages->send( $this->messageParams() );
-				}
-
-				if ( ! is_array( $results ) || ! isset( $results[0]['status'] ) ) {
-					throw new Mandrill_Error( __( 'The requesto to our mail server failed, please try again later or contact the site owner.', 'svbk-helpers' ) );
-				}
-
-				$errors = $mandrill->getResponseErrors( $results );
-
-				foreach ( $errors as $error ) {
-					$this->addError( $error, 'email' );
-				}
-				
-				if ( $this->senderTemplateName ) {
-					
-					$results = $mandrill->messages->sendTemplate( $this->senderTemplateName, array(), $this->senderMessageParams() );
 	
-					if ( ! is_array( $results ) || ! isset( $results[0]['status'] ) ) {
-						throw new Mandrill_Error( __( 'The requesto to our mail server failed, please try again later or contact the site owner.', 'svbk-helpers' ) );
-					}
-	
-					$errors = $mandrill->getResponseErrors( $results );
-	
-					foreach ( $errors as $error ) {
-						$this->addError( $error, 'email' );
-					}
-					
-				} 				
-			} catch ( Mandrill_Error $e ) {
-					$this->addError( $e->getMessage() );
-			}
-		}
-
-	}
-
-	protected function getRecipients() {
-		return array(
-			array(
-				'email' => trim( $this->getInput( 'email' ) ),
-				'name' => ucfirst( $this->getInput( 'fname' ) ),
-				'type' => 'to',
-			),
-		);
-	}
-
 	protected function getGlobalMergeTags() {
 
-		$mergeTags = Mandrill::castMergeTags( $this->inputData, 'INPUT_' );
+		$mergeTags = parent::getGlobalMergeTags();
 
 		$mergeTags[] = array(
 			'name' => 'DOWNLOAD_URL',
@@ -96,26 +28,28 @@ class Download extends Subscribe {
 		return $mergeTags;
 	}
 
+	protected function mainAction() {
+
+		if ( empty( $this->errors ) && $this->checkPolicy( 'policy_newsletter' ) )	{
+			parent::mainAction();
+		} else {
+			$this->mandrillSend( $this->senderTemplateName, $this->senderMessageParams() );
+		}
+		
+	}
+
 	protected function getDownloadLink() {
 		return wp_get_attachment_url( $this->getInput( 'fid' ) );
 	}
 
-	protected function messageParams() {
+	protected function senderMessageParams() {
 
-		return array_merge_recursive(
-			Mandrill::$messageDefaults,
-			(array) $this->messageDefaults,
-			array(
-				'html' => sprintf( __(' Thanks for your request, please download your file <a href="%s">here</a>', 'svbk-helpers' ) , $this->getDownloadLink() ),
-				'to' => $this->getRecipients(),
-				'global_merge_vars' => $this->getGlobalMergeTags(),
-				'metadata' => array(
-					'website' => home_url( '/' ),
-				),
-				'merge' => true,
-				'tags' => array( 'download-request' ),
-			)
-		);
+		$messageParams = parent::senderMessageParams();
+		
+		$messageParams['html'] = sprintf( __(' Thanks for your request, please download your file <a href="%s">here</a>', 'svbk-helpers' ) , $this->getDownloadLink() );
+		$messageParams['tags'] = array( 'download-request' );
+		
+		return $messageParams;
 	}
 
 	public function renderParts( $action, $attr = array() ) {
@@ -125,7 +59,6 @@ class Download extends Subscribe {
 
 		return $output;
 	}
-
 
 	protected function validateInput() {
 
