@@ -67,7 +67,9 @@ class Subscribe extends Submission {
 			} catch ( Mandrill_Error $e ) {
 				$this->addError( $e->getMessage() );
 			}			
-		}	
+		} else {
+			$this->addError( __( 'Unable to send email messages, please contact the site owner.', 'svbk-helpers' ) );
+		}
 		
 	}
 
