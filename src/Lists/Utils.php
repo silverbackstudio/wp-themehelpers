@@ -2,7 +2,7 @@
 
 namespace Svbk\WP\Helpers\Lists;
 
-class array {
+class Utils {
 
 	/**
 	 * Insert an array into another array before/after a certain key.
