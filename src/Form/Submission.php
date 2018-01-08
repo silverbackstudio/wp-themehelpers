@@ -111,7 +111,12 @@ class Submission extends Form {
 
 	}
 
-	public function getInput( $field ) {
+	public function getInput( $field = null ) {
+		
+		if (null === $field){
+			return $this->inputData;
+		}
+		
 		return isset( $this->inputData[ $field ] ) ? $this->inputData[ $field ] : null;
 	}
 
