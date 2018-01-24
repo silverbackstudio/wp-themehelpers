@@ -6,9 +6,12 @@ use Svbk\WP\Helpers;
 
 class Facebook {
 
+	public static $appId = "";
+	public static $sdkVersion = '2.11';
+
 	public static function enableComments() {
+		self::enableSDK();
 		add_filter( 'comments_template', array( __CLASS__, 'templateFile' ), 11 );
-		add_action( 'after_body_tag', array( __CLASS__, 'printFbRoot' ) );
 	}
 
 	public static function templateFile( $theme_template ) {
@@ -23,16 +26,39 @@ class Facebook {
 		echo '<div class="fb-comments" data-href="' . esc_attr( home_url( add_query_arg( null, null ) ) ) . '" data-numposts="5" data-width="100%"></div>';
 	}
 
-	public static function printFbRoot() {
+	public static function enableSDK ($appId = null, $version = null) {
+		
+		if( $appId ) {
+			self::$appId = $appId;
+		}
+		
+		if( $version ) {
+			self::$sdkVersion = $version;
+		}		
+		
+		add_action( 'after_body_tag', array( __CLASS__, 'printSDK' ) );
+	}
+
+	public static function printSDK() {
 	?>
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.9&appId=<?php echo esc_attr( Helpers\Theme\Config::get( 'facebook', 'app_id' ) ) ?>"
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
+		<script>
+		  window.fbAsyncInit = function() {
+		    FB.init({
+		      appId            : '<?php echo esc_attr(self::$appId); ?>',
+		      autoLogAppEvents : true,
+		      xfbml            : true,
+		      version          : 'v<?php echo self::$sdkVersion; ?>'
+		    });
+		  };
+		
+		  (function(d, s, id){
+		     var js, fjs = d.getElementsByTagName(s)[0];
+		     if (d.getElementById(id)) {return;}
+		     js = d.createElement(s); js.id = id;
+		     js.src = "https://connect.facebook.net/<?php echo esc_attr(get_bloginfo('language'))?>/sdk.js";
+		     fjs.parentNode.insertBefore(js, fjs);
+		   }(document, 'script', 'facebook-jssdk'));
+		</script>
 	<?php
 	}
 
