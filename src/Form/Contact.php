@@ -34,7 +34,16 @@ class Contact extends Subscribe {
 	}
 
 	protected function mainAction() {
-		$this->mandrillSend($this->templateName, $this->messageParams(), true);
+		
+		$messageParams = $this->messageParams();
+		
+		if( !$this->templateName ) {
+			$messageParams['subject'] = __('Contact Request (no-template)', 'svbk-helpers');
+			$messageParams['from_name'] = 'Website';
+			$messageParams['from_email'] = get_bloginfo('admin_email');
+		}
+		
+		$this->mandrillSend($this->templateName, $messageParams, true);
 		
 		if ( empty( $this->errors ) && $this->checkPolicy( 'policy_newsletter' ) )	{
 			parent::mainAction();
@@ -61,6 +70,7 @@ class Contact extends Subscribe {
 			(array) $this->messageDefaults,
 			array(
 				'text' => $this->getInput( 'request' ),
+				'html' => $this->getInput( 'request' ),
 				'headers' => array(
 					'Reply-To' => trim( $this->getInput( 'email' ) ),
 					),

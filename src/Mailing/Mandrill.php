@@ -8,7 +8,7 @@ use Mandrill_Error;
 class Mandrill extends NativeMandrill {
 
 	public static $messageDefaults = array(
-		'html' => 'default HTML content',
+		//'html' => 'default HTML content',
 		// 'text' => 'default TEXT content',
 		'track_opens' => null,
 		'track_clicks' => null,
