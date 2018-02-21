@@ -1,6 +1,6 @@
 <?php
 
-namespace Svbk\WP\Helpers\Theme;
+namespace Svbk\WP\Helpers\Post;
 
 class MetaBox {
 
@@ -15,6 +15,9 @@ class MetaBox {
 
 	public $fields = array();
 
+    /**
+     * Constructor.
+     */
 	public function __construct( $name, $fields, $args = '' ) {
 		$this->name = $name;
 
@@ -24,11 +27,24 @@ class MetaBox {
 
 		$this->args = wp_parse_args( $args, $this->args );
 
-		add_action( 'add_meta_boxes', array( $this, 'add' ) );
-		add_action( 'save_post', array( $this, 'save' ) );
-		add_action( 'edit_form_after_title', array( $this, 'register_top_position' ) );
+        if ( is_admin() ) {
+            add_action( 'load-post.php',     array( $this, 'init_metabox' ) );
+            add_action( 'load-post-new.php', array( $this, 'init_metabox' ) );
+			add_action( 'edit_form_after_title', array( $this, 'register_top_position' ) );            
+        }
 	}
 
+    /**
+     * Meta box initialization.
+     */
+    public function init_metabox() {
+        add_action( 'add_meta_boxes', array( $this, 'add'  )        );
+        add_action( 'save_post',      array( $this, 'save' ), 10, 2 );
+    }
+
+    /**
+     * Print MetaBox in Top position
+     */
 	public function register_top_position() {
 		global $post, $wp_meta_boxes;
 
@@ -51,15 +67,11 @@ class MetaBox {
 		);
 	}
 
-	public static function has_permission( $post_id ) {
+	public static function has_permission( $post_id, $post_type = 'post' ) {
 		// If this is an autosave, our form has not been submitted, so we don't want to do anything.
-		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-			return false;
-		}
-
+	
 		// Check the user's permissions.
-		if ( 'page' == $_POST['post_type'] ) {
-
+		if ( 'page' === $post_type ) {
 			if ( ! current_user_can( 'edit_page', $post_id ) ) {
 				return false;
 			}
@@ -70,7 +82,7 @@ class MetaBox {
 			}
 		}
 
-						return true;
+		return true;
 	}
 
 	/**
@@ -80,11 +92,27 @@ class MetaBox {
 	 */
 	public function save( $post_id ) {
 
-		foreach ( $this->fields as $field ) {
-			if ( ! $field->verify_nonce() || ! self::has_permission( $post_id ) ) {
-				continue;
-			}
+		if( empty( $_POST ) ) {
+			return;
+		}
 
+		if ( wp_is_post_autosave( $post_id ) || wp_is_post_revision( $post_id ) ) {
+			return;
+		}
+
+		if( !self::has_permission( $post_id ) ) {
+			return;
+		}
+		
+		if( ! in_array( get_post_type( $post_id ), (array) $this->args['post_type'] ) ) {
+			return;
+		}
+		
+		if( ! check_admin_referer( 'metabox_save', 'metabox_' . $this->name ) ) {
+			return;
+		}		
+
+		foreach ( $this->fields as $field ) {
 			$field->save( $post_id );
 		}
 
@@ -98,10 +126,10 @@ class MetaBox {
 	 */
 	public  function render( $post ) {
 
+		wp_nonce_field( 'metabox_save' , 'metabox_' . $this->name  );
+
 		foreach ( $this->fields as $field ) {
-
 			$field->render( $post->ID );
-
 		}
 
 	}

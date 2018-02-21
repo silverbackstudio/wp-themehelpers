@@ -1,13 +1,12 @@
 <?php
 
-namespace Svbk\WP\Helpers\Theme;
+namespace Svbk\WP\Helpers\Post;
 
 class MetaBoxField {
 
 	public $id;
 	public $type = 'text';
 	public $name;
-	public $nonce;
 	public $label;
 	public $default;
 
@@ -29,30 +28,21 @@ class MetaBoxField {
 			$this->id = $this->name;
 		}
 
-		if ( empty( $this->nonce ) ) {
-			$this->nonce = $this->name . '_nonce';
-		}
-	}
-
-	public function verify_nonce() {
-		// Verify that the nonce is valid.
-		return isset( $_POST[ $this->nonce ] ) && wp_verify_nonce( $_POST[ $this->nonce ], $this->name );
 	}
 
 	public function save( $post_id ) {
 
 		if ( 'checkbox' !== $this->type ) {
-			return update_post_meta( $post_id, $this->name, $_POST[ $this->name ] );
+			$value = filter_input(INPUT_POST, $this->name, FILTER_SANITIZE_SPECIAL_CHARS );
+			return update_post_meta( $post_id, $this->name, $value );
 		} else {
-			return update_post_meta( $post_id, $this->name, (int) isset( $_POST[ $this->name ] ) );
+			$value = filter_input(INPUT_POST, $this->name, FILTER_VALIDATE_BOOLEAN );
+			return update_post_meta( $post_id, $this->name, $value );
 		}
 
 	}
 
 	public function render( $post_id ) {
-
-		// Add an nonce field so we can check for it later.
-		wp_nonce_field( $this->name, $this->nonce );
 
 		$values = get_post_meta( $post_id, $this->name );
 
