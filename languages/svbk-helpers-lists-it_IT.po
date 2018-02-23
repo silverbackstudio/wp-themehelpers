@@ -1,0 +1,978 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Silverback Helpers Lists\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-23 10:25+0000\n"
+"PO-Revision-Date: 2018-02-23 10:27+0000\n"
+"Last-Translator: SilverbackStudio <test-email-vdt@silverbackstudio.it>\n"
+"Language-Team: Italian\n"
+"Language: it_IT\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/"
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:9
+msgid "Afghanistan"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:10
+msgid "Albania"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:11
+msgid "Algeria"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:12
+msgid "American Samoa"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:13
+msgid "Andorra"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:14
+msgid "Angola"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:15
+msgid "Anguilla"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:16
+msgid "Antarctica"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:17
+msgid "Antigua And Barbuda"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:18
+msgid "Argentina"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:19
+msgid "Armenia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:20
+msgid "Aruba"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:21
+msgid "Australia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:22
+msgid "Austria"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:23
+msgid "Azerbaijan"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:24
+msgid "Bahamas"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:25
+msgid "Bahrain"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:26
+msgid "Bangladesh"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:27
+msgid "Barbados"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:28
+msgid "Belarus"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:29
+msgid "Belgium"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:30
+msgid "Belize"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:31
+msgid "Benin"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:32
+msgid "Bermuda"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:33
+msgid "Bhutan"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:34
+msgid "Bolivia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:35
+msgid "Bosnia And Herzegovina"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:36
+msgid "Botswana"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:37
+msgid "Bouvet Island"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:38
+msgid "Brazil"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:39
+msgid "British Indian Ocean Territory"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:40
+msgid "Brunei Darussalam"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:41
+msgid "Bulgaria"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:42
+msgid "Burkina Faso"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:43
+msgid "Burundi"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:44
+msgid "Cambodia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:45
+msgid "Cameroon"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:46
+msgid "Canada"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:47
+msgid "Cape Verde"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:48
+msgid "Cayman Islands"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:49
+msgid "Central African Republic"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:50
+msgid "Chad"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:51
+msgid "Chile"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:52
+msgid "China"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:53
+msgid "Christmas Island"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:54
+msgid "Cocos (keeling) Islands"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:55
+msgid "Colombia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:56
+msgid "Comoros"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:57
+msgid "Congo"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:58
+msgid "Congo, The Democratic Republic Of The"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:59
+msgid "Cook Islands"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:60
+msgid "Costa Rica"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:61
+msgid "Cote D'ivoire"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:62
+msgid "Croatia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:63
+msgid "Cuba"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:64
+msgid "Cyprus"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:65
+msgid "Czech Republic"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:66
+msgid "Denmark"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:67
+msgid "Djibouti"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:68
+msgid "Dominica"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:69
+msgid "Dominican Republic"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:70
+msgid "East Timor"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:71
+msgid "Ecuador"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:72
+msgid "Egypt"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:73
+msgid "El Salvador"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:74
+msgid "Equatorial Guinea"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:75
+msgid "Eritrea"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:76
+msgid "Estonia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:77
+msgid "Ethiopia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:78
+msgid "Falkland Islands (malvinas)"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:79
+msgid "Faroe Islands"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:80
+msgid "Fiji"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:81
+msgid "Finland"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:82
+msgid "France"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:83
+msgid "French Guiana"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:84
+msgid "French Polynesia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:85
+msgid "French Southern Territories"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:86
+msgid "Gabon"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:87
+msgid "Gambia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:88
+msgid "Georgia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:89
+msgid "Germany"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:90
+msgid "Ghana"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:91
+msgid "Gibraltar"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:92
+msgid "Greece"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:93
+msgid "Greenland"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:94
+msgid "Grenada"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:95
+msgid "Guadeloupe"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:96
+msgid "Guam"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:97
+msgid "Guatemala"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:98
+msgid "Guinea"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:99
+msgid "Guinea-bissau"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:100
+msgid "Guyana"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:101
+msgid "Haiti"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:102
+msgid "Heard Island And Mcdonald Islands"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:103
+msgid "Holy See (vatican City State)"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:104
+msgid "Honduras"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:105
+msgid "Hong Kong"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:106
+msgid "Hungary"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:107
+msgid "Iceland"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:108
+msgid "India"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:109
+msgid "Indonesia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:110
+msgid "Iran, Islamic Republic Of"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:111
+msgid "Iraq"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:112
+msgid "Ireland"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:113
+msgid "Israel"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:114
+msgid "Italy"
+msgstr "Italia"
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:115
+msgid "Jamaica"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:116
+msgid "Japan"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:117
+msgid "Jordan"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:118
+msgid "Kazakstan"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:119
+msgid "Kenya"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:120
+msgid "Kiribati"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:121
+msgid "Korea, Democratic People's Republic Of"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:122
+msgid "Korea, Republic Of"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:123
+msgid "Kosovo"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:124
+msgid "Kuwait"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:125
+msgid "Kyrgyzstan"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:126
+msgid "Lao People's Democratic Republic"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:127
+msgid "Latvia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:128
+msgid "Lebanon"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:129
+msgid "Lesotho"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:130
+msgid "Liberia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:131
+msgid "Libyan Arab Jamahiriya"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:132
+msgid "Liechtenstein"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:133
+msgid "Lithuania"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:134
+msgid "Luxembourg"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:135
+msgid "Macau"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:136
+msgid "Macedonia, The Former Yugoslav Republic Of"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:137
+msgid "Madagascar"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:138
+msgid "Malawi"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:139
+msgid "Malaysia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:140
+msgid "Maldives"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:141
+msgid "Mali"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:142
+msgid "Malta"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:143
+msgid "Marshall Islands"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:144
+msgid "Martinique"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:145
+msgid "Mauritania"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:146
+msgid "Mauritius"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:147
+msgid "Mayotte"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:148
+msgid "Mexico"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:149
+msgid "Micronesia, Federated States Of"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:150
+msgid "Moldova, Republic Of"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:151
+msgid "Monaco"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:152
+msgid "Mongolia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:153
+msgid "Montserrat"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:154
+msgid "Montenegro"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:155
+msgid "Morocco"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:156
+msgid "Mozambique"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:157
+msgid "Myanmar"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:158
+msgid "Namibia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:159
+msgid "Nauru"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:160
+msgid "Nepal"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:161
+msgid "Netherlands"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:162
+msgid "Netherlands Antilles"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:163
+msgid "New Caledonia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:164
+msgid "New Zealand"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:165
+msgid "Nicaragua"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:166
+msgid "Niger"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:167
+msgid "Nigeria"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:168
+msgid "Niue"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:169
+msgid "Norfolk Island"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:170
+msgid "Northern Mariana Islands"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:171
+msgid "Norway"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:172
+msgid "Oman"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:173
+msgid "Pakistan"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:174
+msgid "Palau"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:175
+msgid "Palestinian Territory, Occupied"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:176
+msgid "Panama"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:177
+msgid "Papua New Guinea"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:178
+msgid "Paraguay"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:179
+msgid "Peru"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:180
+msgid "Philippines"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:181
+msgid "Pitcairn"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:182
+msgid "Poland"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:183
+msgid "Portugal"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:184
+msgid "Puerto Rico"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:185
+msgid "Qatar"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:186
+msgid "Reunion"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:187
+msgid "Romania"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:188
+msgid "Russian Federation"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:189
+msgid "Rwanda"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:190
+msgid "Saint Helena"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:191
+msgid "Saint Kitts And Nevis"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:192
+msgid "Saint Lucia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:193
+msgid "Saint Pierre And Miquelon"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:194
+msgid "Saint Vincent And The Grenadines"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:195
+msgid "Samoa"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:196
+msgid "San Marino"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:197
+msgid "Sao Tome And Principe"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:198
+msgid "Saudi Arabia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:199
+msgid "Senegal"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:200
+msgid "Serbia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:201
+msgid "Seychelles"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:202
+msgid "Sierra Leone"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:203
+msgid "Singapore"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:204
+msgid "Slovakia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:205
+msgid "Slovenia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:206
+msgid "Solomon Islands"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:207
+msgid "Somalia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:208
+msgid "South Africa"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:209
+msgid "South Georgia And The South Sandwich Islands"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:210
+msgid "Spain"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:211
+msgid "Sri Lanka"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:212
+msgid "Sudan"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:213
+msgid "Suriname"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:214
+msgid "Svalbard And Jan Mayen"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:215
+msgid "Swaziland"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:216
+msgid "Sweden"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:217
+msgid "Switzerland"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:218
+msgid "Syrian Arab Republic"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:219
+msgid "Taiwan, Province Of China"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:220
+msgid "Tajikistan"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:221
+msgid "Tanzania, United Republic Of"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:222
+msgid "Thailand"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:223
+msgid "Togo"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:224
+msgid "Tokelau"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:225
+msgid "Tonga"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:226
+msgid "Trinidad And Tobago"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:227
+msgid "Tunisia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:228
+msgid "Turkey"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:229
+msgid "Turkmenistan"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:230
+msgid "Turks And Caicos Islands"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:231
+msgid "Tuvalu"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:232
+msgid "Uganda"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:233
+msgid "Ukraine"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:234
+msgid "United Arab Emirates"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:235
+msgid "United Kingdom"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:236
+msgid "United States"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:237
+msgid "United States Minor Outlying Islands"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:238
+msgid "Uruguay"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:239
+msgid "Uzbekistan"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:240
+msgid "Vanuatu"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:241
+msgid "Venezuela"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:242
+msgid "Viet Nam"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:243
+msgid "Virgin Islands, British"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:244
+msgid "Virgin Islands, U.s."
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:245
+msgid "Wallis And Futuna"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:246
+msgid "Western Sahara"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:247
+msgid "Yemen"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:248
+msgid "Zambia"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Lists/Places.php:249
+msgid "Zimbabwe"
+msgstr ""
