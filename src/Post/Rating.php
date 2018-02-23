@@ -26,7 +26,8 @@ class Rating  {
 		
 		add_action( 'init', array( $this, 'init'), 100 );
 		add_filter( 'preprocess_comment', array( $this, 'maybe_convert_to_rating') );
-		
+		add_filter( 'pre_wp_update_comment_count_now', array( $this, 'comment_count_exclude_ratings'), 10, 3 ); 
+
 		if( is_admin() ){
 			add_filter( 'get_comment_text', array( $this, 'admin_render_rating' ), 10 ,2 );
 		}
@@ -164,31 +165,31 @@ class Rating  {
 		
 		return false;
 	}
+
+	public function average( $ratings ){
+		$ratings_count = count( $ratings );
+		
+		if( $ratings_count > 0 ) {
+			$ratings = array_map('intval', $ratings);
+			$average = ceil( array_sum( $ratings ) / count( $ratings ) );
+			return $average;
+		} else  {
+			return 0;
+		}
+	}
 	
-	public function average( $post_id, $args = array() ){
+	public function render( $post_id, $args = array() ) {
 
 		$defaults = array(
 			'post_id' => $post_id
 		);
 		
 		$ratings = $this->get_all( wp_parse_args( $args, $defaults ) );
-		$ratings_count = count( $ratings );
 		
-		if( $ratings_count > 0 ) {
-			return ceil( array_sum( $ratings ) / count( $ratings ) );
-		} else  {
-			return null;
-		}
-	}
+		$ratings_count	= apply_filters( 'post_ratings_render_count', count( $ratings ), $post_id, $ratings, $this );		
+		$avg_rating		= apply_filters( 'post_ratings_render_average', $this->average( $ratings ), $post_id, $ratings, $this );
 	
-	public function render( $post_id ) {
-		$avg_rating = $this->average( $post_id );
-	
-		if( null === $avg_rating ) {
-			return null;
-		} 
-	
-		echo $this->render_rating( $avg_rating );
+		echo $this->render_rating( $avg_rating, $ratings_count );
 	}
 	
 	public function admin_render_rating( $rating, $comment ) {
@@ -200,11 +201,28 @@ class Rating  {
 		return $this->render_rating( intval($rating) );
 	}
 	
-	public function render_rating( $rating ) { 
-		return '<div id="rating" class="rating ' . esc_attr( $this->post_type ) .'-rating type-'. esc_attr( $this->type ) .' rating-'. esc_attr( $rating ). '" >' .
-			 sprintf( __('Rating: %d Stars', 'svbk-helper'), $rating ) . 
-		'</div>';
+	public function render_rating( $rating, $count = null ) { 
+		
+		$output =  '<div id="rating" class="rating ' . esc_attr( $this->post_type ) .'-rating type-'. esc_attr( $this->type ) .' rating-'. esc_attr( $rating ). '" >' ;
+		$output .= '<span class="rating-value">' . sprintf( __('Rating: %d Stars', 'svbk-helper'), $rating ) . '</span>';
+		
+		if( null !== $count ) {
+			$output .= '&nbsp;<span class="rating-count">(' . $count . ')</span>';
+		}
+		
+		$output .= '</div>';
+		
+		return $output;
 	}	
 
+	public function comment_count_exclude_ratings($new, $old, $post_id){
+		global $wpdb;
+		
+		if( $this->post_type == get_post_type( $post_id ) ) {
+			$new = (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM $wpdb->comments WHERE comment_post_ID = %d AND comment_approved = '1' AND comment_type != '$this->type'", $post_id ) );
+		}
+
+		return $new;
+	}
 
 }
