@@ -22,8 +22,8 @@ class Facebook {
 		return $theme_template;
 	}
 
-	public static function printComments() {
-		echo '<div class="fb-comments" data-href="' . esc_attr( home_url( add_query_arg( null, null ) ) ) . '" data-numposts="5" data-width="100%"></div>';
+	public static function printComments( $count = 5 ) {
+		echo '<div class="fb-comments" data-href="' . esc_attr( home_url( add_query_arg( null, null ) ) ) . '" data-numposts="' . esc_attr($count) . '" data-width="100%"></div>';
 	}
 
 	public static function enableSDK ($appId = null, $version = null) {
