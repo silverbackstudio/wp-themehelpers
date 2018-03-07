@@ -1,18 +1,18 @@
 <?php
 namespace Svbk\WP\Helpers\Form;
 
-use Svbk\WP\Helpers\Mailing\Mandrill;
-use Mandrill_Error;
+use Svbk\WP\Email;
+use Exception;
 
 class Contact extends Subscribe {
 
 	public $field_prefix = 'cnt';
 	public $action = 'svbk_contact';
 
-	public $templateName = '';
+	public $admin_subject = '';
+	public $admin_template = '';
 	
-	public $recipientEmail = 'webmaster@silverbackstudio.it';
-	public $recipientName = 'Webmaster';
+	public $recipient;
 
 	public function setInputFields( $fields = array() ) {
 
@@ -33,58 +33,69 @@ class Contact extends Subscribe {
 
 	}
 
-	protected function mainAction() {
+	protected function mainAction( $flags = array() ) {
 		
-		$messageParams = $this->messageParams();
+		$this->sendAdminEmail( array('contact-form') );
+		$this->sendUserEmail( array('contact-form') );			
+
+		if ( empty( $this->errors ) ){
+			parent::mainAction( array( 'disable_user_email' => true ) );
+		} 
 		
-		if( !$this->templateName ) {
-			$messageParams['subject'] = __('Contact Request (no-template)', 'svbk-helpers');
-			$messageParams['from_name'] = 'Website';
-			$messageParams['from_email'] = get_bloginfo('admin_email');
+	}
+
+	protected function sendAdminEmail( $tags = array() ){
+		
+		if( !$this->transactional ) {
+			$this->addError( __( 'Unable to send email, please contact the website owner', 'svbk-helpers' ) );
+			return;
 		}
 		
-		$this->mandrillSend($this->templateName, $messageParams, true);
+		if( !$this->recipient ) {
+			$this->recipient = new Email\Contact( 
+				[
+					'email' => get_bloginfo('admin_email'),
+					'first_name' => 'Website Admin',
+				]
+			);
+		}		
 		
-		if ( empty( $this->errors ) && $this->checkPolicy( 'policy_newsletter' ) )	{
-			parent::mainAction();
+		$email = $this->getEmail();
+		$email->tags = array_merge( $email->tags, $tags, array('admin-email') );
+		$email->to = $this->recipient;
+		$email->reply_to = $this->getUser();
+		
+		if( $this->admin_template ) {
+	
+			try { 
+				$this->transactional->sendTemplate( $email, $this->admin_template );
+			} catch( Exception $e ) {
+				$this->addError( $e->getMessage() );
+			}		
+			
 		} else {
-			$this->mandrillSend( $this->senderTemplateName, $this->senderMessageParams() );
-		}
+			
+			$email->subject = $this->admin_subject ?: __('Contact Request (no-template)', 'svbk-helpers');
+			$email->text_body = $this->getInput('request');
+			$email->html_body = '<p>' . $this->getInput('request') .  '</p>';
+			
+			if( $email->from ) {
+				$email->from = new Email\Contact(
+					[
+						'email' => $_SERVER['SERVER_ADMIN'] ?: 'webmaster@silverbackstudio.it',
+						'first_name' => 'Website Admin',
+					]				
+				);
+			}
+
+			try { 
+				$this->transactional->send( $email );
+			} catch( Exception $e ) {
+				$this->addError( $e->getMessage() );
+			}			
+			
+		}		
 		
-	}
-
-	protected function getRecipients() {
-		return array(
-			array(
-				'email' => trim( $this->recipientEmail ),
-				'name' => $this->recipientName,
-				'type' => 'to',
-			),
-		);
-	}
-
-	protected function messageParams() {
-
-		return array_merge_recursive(
-			Mandrill::$messageDefaults,
-			(array) $this->messageDefaults,
-			array(
-				'text' => $this->getInput( 'request' ),
-				'html' => $this->getInput( 'request' ),
-				'headers' => array(
-					'Reply-To' => trim( $this->getInput( 'email' ) ),
-					),
-				'to' => $this->getRecipients(),
-				'global_merge_vars' => $this->getGlobalMergeTags(),
-				'metadata' => array(
-					'website' => home_url( '/' ),
-					),
-				'merge' => true,
-				'tags' => array(
-					'contact-request'
-				),
-			)
-		);
 	}
 
 }

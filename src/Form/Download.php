@@ -1,8 +1,8 @@
 <?php
 namespace Svbk\WP\Helpers\Form;
 
-use Svbk\WP\Helpers\Mailing\Mandrill;
-use Mandrill_Error;
+use Exception;
+use Svbk\WP\Email;
 
 class Download extends Subscribe {
 
@@ -16,41 +16,61 @@ class Download extends Subscribe {
 		return parent::processInput( $input_filters );
 	}
 	
-	protected function getGlobalMergeTags() {
+	protected function getEmail() {
 
-		$mergeTags = parent::getGlobalMergeTags();
+		$email = parent::getEmail();
 
-		$mergeTags[] = array(
-			'name' => 'DOWNLOAD_URL',
-			'content' => esc_url( $this->getDownloadLink() ),
-		);
+		$email->attributes['DOWNLOAD_URL'] = esc_url( $this->getDownloadLink() );
 
-		return $mergeTags;
+		return $email;
 	}
 
-	protected function mainAction() {
-
-		if ( empty( $this->errors ) && $this->checkPolicy( 'policy_newsletter' ) )	{
-			parent::mainAction();
-		} else {
-			$this->mandrillSend( $this->senderTemplateName, $this->senderMessageParams() );
-		}
-		
-	}
 
 	protected function getDownloadLink() {
 		return wp_get_attachment_url( $this->getInput( 'fid' ) );
 	}
 
-	protected function senderMessageParams() {
+	protected function sendUserEmail( $tags = array() ){
+		
+		if( !$this->transactional ) {
+			$this->addError( __( 'Unable to send email, please contact the website owner', 'svbk-helpers' ) );
+			return;
+		}
+		
+		$tags = array( 'download-request' );		
+		
+		if( !$this->user_template ) {
 
-		$messageParams = parent::senderMessageParams();
-		
-		$messageParams['html'] = sprintf( __(' Thanks for your request, please download your file <a href="%s">here</a>', 'svbk-helpers' ) , $this->getDownloadLink() );
-		$messageParams['tags'] = array( 'download-request' );
-		
-		return $messageParams;
+			$email = $thia->getEmail();
+			$email->subject = $this->admin_subject ?: __('Contact Request (no-template)', 'svbk-helpers');
+			
+			$body = sprintf( __(' Thanks for your request, please download your file <a href="%s">here</a>', 'svbk-helpers' ) , $this->getDownloadLink() );
+			
+			$email->text_body = $body;
+			$email->html_body = '<p>' . $body .  '</p>';
+			$email->tags = array_merge( $email->tags, $tags, array('user-email') );	
+			
+			if( $email->from ) {
+				$email->from = new Email\Contact(
+					[
+						'email' => $_SERVER['SERVER_ADMIN'] ?: 'webmaster@silverbackstudio.it',
+						'first_name' => 'Website Admin',
+					]				
+				);
+			}
+
+			try { 
+				$this->transactional->send( $email );
+			} catch( Exception $e ) {
+				$this->addError( $e->getMessage() );
+			}		
+			
+		} else {
+			return parent::sendUserEmail( $tags );
+		}
+	
 	}
+
 
 	public function renderParts( $action, $attr = array() ) {
 
