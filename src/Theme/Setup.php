@@ -228,20 +228,37 @@ class Setup {
 
 	public function add_analytics() {
 
-		if ( $this->conf( 'google-tag-manager', 'id' ) ) {
-			$dataLayer = $this->conf( 'google-tag-manager', 'dataLayer' ) ?: 'dataLayer';
-		?>
-			<!-- Google Tag Manager -->
-			<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-			})(window,document,'script','<?php echo $dataLayer; ?>','<?php echo $this->conf( 'google-tag-manager', 'id' ); ?>');</script>
-			<!-- End Google Tag Manager -->
-			<?php
+		$gtm_id = apply_filters('gtm_container_id', $this->conf( 'google-tag-manager', 'id' ) );
 
+		if ( !$gtm_id ) {
+			return;
 		}
-
+		
+		$dataLayer = apply_filters('gtm_datalayer_name', 'dataLayer' );
+		$dataLayerVars = array();
+		
+		if( is_user_logged_in() ) {
+			$dataLayerVars['userId'] = get_current_user_id(); 
+		}
+	
+		$dataLayerVars = apply_filters('gtm_datalayer_vars', $dataLayerVars);
+		?>
+		
+		<?php if( !empty( $dataLayerVars ) ) : ?>
+		<script>
+		  <?php echo $dataLayer; ?> = [<?php echo json_encode($dataLayerVars); ?>];
+		</script>		
+		<?php endif; ?>
+	
+		<!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','<?php echo $dataLayer; ?>','<?php echo $gtm_id ?>');</script>
+		<!-- End Google Tag Manager -->
+		<?php
+		
 	}
 
 	public function print_analytics_noscript() {
