@@ -8,14 +8,14 @@ class Facebook {
 
 	public static $appId = "";
 	public static $sdkVersion = '2.11';
-
+	
 	public static function enableComments() {
 		self::enableSDK();
 		add_filter( 'comments_template', array( __CLASS__, 'templateFile' ), 11 );
 	}
 
 	public static function templateFile( $theme_template ) {
-		if ( file_exists( STYLESHEETPATH . '/comments-facebook.php' ) ) {
+		if ( apply_filters( 'show_facebook_comments', true ) && file_exists( STYLESHEETPATH . '/comments-facebook.php' ) ) {
 			return STYLESHEETPATH . '/comments-facebook.php';
 		}
 
