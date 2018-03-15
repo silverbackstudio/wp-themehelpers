@@ -53,7 +53,8 @@ class Setup {
 		Script::register( 'flickity', 'dist/flickity.pkgd.js', [ 'version' => '2'] );
 		Style::register( 'flickity',  'dist/flickity.css' , [ 'version' => '2' ] );
 		
-		Script::register( 'masonry', 'masonry.pkgd.js', ['version' => '4', 'package' => 'masonry-layout' ] );
+		Script::register( 'masonry-native', 'dist/masonry.pkgd.min.js', ['version' => '4', 'package' => 'masonry-layout' ] );
+		Script::register( 'imagesloaded', 'imagesloaded.pkgd.min.js', ['version' => '4', 'package' => 'imagesloaded' ] );
 		Script::register( 'jquery.localscroll', 'jquery.localScrolljs', ['version' => '2', 'deps' => 'jquery']);
 		Script::register( 'jquery.scrollto', 'jquery.scrollTo.js', [ 'version' => '2.1', 'deps' => 'jquery' ] );
 
