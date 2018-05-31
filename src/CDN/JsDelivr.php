@@ -5,7 +5,7 @@ namespace Svbk\WP\Helpers\CDN;
 class JsDelivr {
 
 	public $package;
-	public $version;
+	public $version = 'latest';
 	public $source = 'npm';
 
 	public function __construct($package, $options ){
