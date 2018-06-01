@@ -27,11 +27,7 @@ class Iubenda {
 	            "backgroundColor" => "#5A5A5A",
 	            "innerHtmlCloseBtn" => __( "Accept", 'svbk-helpers' ),
 	            "cookiePolicyLinkCaption" => __( "Cookie Policy", 'svbk-helpers' ),
-	            "content" => __( "<p>Information</p>\n<p>This site uses
-					third party cookies necessary for the operation of the site
-					and profiling cookies that keep track of the pages visits to understand your interests and provide customized informations. If you want to learn more or deny consent to
-					all or some cookies, see %{cookie_policy_link}. </p> \n
-					<p> By accepting or closing this banner, you consent to use	cookies including profiling. </p>", 'svbk-helpers' )
+	            "content" => __( "<p>Information</p><p>This site uses third party cookies necessary for the operation of the site and profiling cookies that keep track of the pages visits to understand your interests and provide customized informations. If you want to learn more or deny consent to all or some cookies, see %{cookie_policy_link}.</p><p> By accepting or closing this banner, you consent to use cookies including profiling. </p>", 'svbk-helpers' )
 	        ],
 		);
 

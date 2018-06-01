@@ -3,23 +3,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-23 10:26+0000\n"
+"POT-Creation-Date: 2018-06-01 13:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
 "Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco https://localise.biz/"
+"X-Generator: Loco - https://localise.biz/"
 
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Mailing/GetResponse.php:91
-msgid "Unable to update the contact"
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Gallery/Tiled.php:31
+msgid "Tiled Gallery"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Mailing/GetResponse.php:107
-msgid "Unable to subscribe the contact"
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Gallery/Flickity.php:38
+msgid "Post Slider"
 msgstr ""
 
 #: ../../../../vendor/silverbackstudio/wp-themehelper/src/Mailing/Mandrill.php:54
@@ -80,30 +80,17 @@ msgstr ""
 msgid "Your content is beeing delivered, please wait"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Ads/AdSense.php:16
-msgid "Adaptive"
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Mailing/GetResponse.php:91
+msgid "Unable to update the contact"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Ads/AdSense.php:17
-msgid "Leaderboard"
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Mailing/GetResponse.php:107
+msgid "Unable to subscribe the contact"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Ads/AdSense.php:18
-msgid "Large Rectangle"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Ads/AdSense.php:19
-msgid "Large SkyScraper"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Post/Rating.php:59
-msgctxt "save the rating"
-msgid "Save"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Post/Rating.php:59
-msgctxt "submit the rating"
-msgid "Rate"
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Form.php:73
+#, php-format
+msgid "Empty or invalid field [%s]"
 msgstr ""
 
 #: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:40
@@ -181,17 +168,6 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Download.php:49
-#, php-format
-msgid ""
-" Thanks for your request, please download your file <a href=\"%s\">here</a>"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Download.php:70
-msgid ""
-"The specified download doesn't exists anymore. Please contact site owner"
-msgstr ""
-
 #: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Subscribe.php:58
 msgid ""
 "The requesto to our mail server failed, please try again later or contact "
@@ -218,17 +194,59 @@ msgstr ""
 msgid "Contact Request (no-template)"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Form.php:73
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Download.php:49
 #, php-format
-msgid "Empty or invalid field [%s]"
+msgid ""
+" Thanks for your request, please download your file <a href=\"%s\">here</a>"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Gallery/Tiled.php:31
-msgid "Tiled Gallery"
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Download.php:70
+msgid ""
+"The specified download doesn't exists anymore. Please contact site owner"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Gallery/Flickity.php:38
-msgid "Post Slider"
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Compliance/Iubenda.php:28
+msgid "Accept"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Compliance/Iubenda.php:29
+msgid "Cookie Policy"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Compliance/Iubenda.php:30
+msgid ""
+"<p>Information</p><p>This site uses third party cookies necessary for the "
+"operation of the site and profiling cookies that keep track of the pages "
+"visits to understand your interests and provide customized informations. If "
+"you want to learn more or deny consent to all or some cookies, see "
+"%{cookie_policy_link}.</p><p> By accepting or closing this banner, you "
+"consent to use cookies including profiling. </p>"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Post/Rating.php:59
+msgctxt "save the rating"
+msgid "Save"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Post/Rating.php:59
+msgctxt "submit the rating"
+msgid "Rate"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Ads/AdSense.php:16
+msgid "Adaptive"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Ads/AdSense.php:17
+msgid "Leaderboard"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Ads/AdSense.php:18
+msgid "Large Rectangle"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Ads/AdSense.php:19
+msgid "Large SkyScraper"
 msgstr ""
 
 #. Name of the plugin
