@@ -20,11 +20,11 @@ class CdnJs {
 
 	}
 
-	static function get( $package, $options = array() ){
+	public static function get( $package, $options = array() ){
 		return new self($package, $options);
 	}
 
-	function url( $file ) {
+	public function url( $file ) {
 		
 		if ( 'latest' === $this->version ) {
 			return null;
@@ -33,7 +33,7 @@ class CdnJs {
 		return 'https://cdnjs.cloudflare.com/' . self::path( $file ); 
 	}	
 	
-	function path( $file ) {
+	public function path( $file ) {
 		// ajax/libs/flickity/2.0.6/flickity.css
 		return 'ajax/libs/' . $this->package . '/' . $this->version . '/' . $file ;
 	}	

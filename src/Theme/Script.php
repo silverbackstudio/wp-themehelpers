@@ -10,23 +10,29 @@ class Script {
 
 	public static $async_scripts = array();
 	public static $defer_scripts = array();
+	public static $tracking_scripts = array();
 
 	public static $default_cdn = '\Svbk\WP\Helpers\CDN\JsDelivr';
 
-	public static function enqueue( $package, $files = '', $deps = array(), $version = 'latest', $in_footer = true, $overwrite = false, $cdn_class = null ) {
-		self::register( $package, $files, $deps, $version, $in_footer, $overwrite, $cdn_class );
+	public static function enqueue( $package, $files = '', $options = array() ) {
+			
+		self::register( $package, $files, $options );
 
 		wp_enqueue_script( $package );
 	}
 
-	public static function register( $package, $files, $options = array(), $cdn_class = null ) {
-
+	public static function register( $package, $files, $options = array() ) {
+		
 		$defaults = array(
 			'deps' => array(), 
 			'package' => $package,
 			'version' => 'latest', 
 			'in_footer' => true, 
-			'overwrite' => false
+			'overwrite' => false,
+			'cdn_class' => self::$default_cdn,
+			'async' => false,
+			'defer' => false,
+			'profiling' => false,
 		);
 		
 		$opt = array_merge($defaults, $options);
@@ -39,46 +45,47 @@ class Script {
 			}
 		}
 
-		if ( ! $cdn_class || ! class_exists( $cdn_class ) ) {
-			$cdn_class = self::$default_cdn;
-		}
+		$cdn_class = $opt['cdn_class'];
 
-		if ( class_exists( $cdn_class ) ) {
-			$cdn = $cdn_class::get( $opt['package'], $options );
+		if ( false === $cdn_class ) {
+			$url = $files;
+		} elseif ( class_exists( $cdn_class ) ) {
+			$cdn = new $cdn_class( $opt['package'], $options );
+			$url = $cdn->url( $files );
 		} else {
-			throw new Exception('CDN Class doesn\'t exists');
+			throw new Exception('CDN Class ' . $cdn_class . ' doesn\'t exists');
 		}
-
-		$files = (array)$files;
-
-		if( ( count( $files ) > 1 ) && method_exists($cdn, 'combine') ) {
-			$url = $cdn->combine( $files );
-		} else {
-			$url = $cdn->url( reset( $files ) );
+		
+		if ( !$url ) {
+			return;
 		}
-
-		if ( $url ) {
-			wp_register_script( $package, $url, $opt['deps'], $opt['version'], $opt['in_footer'] );
+		
+		wp_register_script( $package, $url, $opt['deps'], $opt['version'], $opt['in_footer'] );
+		
+		if ( $opt['async'] ) {
+			self::set_async( $package );
 		}
+		
+		if ( $opt['defer'] ) {
+			self::set_defer( $package );
+		}		
+		
+		if ( $opt['profiling'] ) {
+			self::set_tracking( $package );
+		}		
 	}
 
 
 	public static function set_async( $handle ) {
-
-		if ( ! has_filter( 'script_loader_tag', array( __CLASS__, 'add_script_attributes' ) ) ) {
-			add_filter( 'script_loader_tag', array( __CLASS__, 'add_script_attributes' ), 10, 2 );
-		}
-
 		self::$async_scripts = array_merge( self::$async_scripts, (array) $handle );
 	}
 
 	public static function set_defer( $handle ) {
-
-		if ( ! has_filter( 'script_loader_tag', array( __CLASS__, 'add_script_attributes' ) ) ) {
-			add_filter( 'script_loader_tag', array( __CLASS__, 'add_script_attributes' ), 10, 2 );
-		}
-
 		self::$defer_scripts = array_merge( self::$defer_scripts, (array) $handle );
+	}
+
+	public static function set_tracking( $handle ) {
+		self::$tracking_scripts = array_merge( self::$tracking_scripts, (array) $handle );
 	}
 
 	public static function add_script_attributes( $tag, $handle ) {
@@ -90,8 +97,14 @@ class Script {
 		if ( in_array( $handle, self::$defer_scripts ) ) {
 			$tag = str_replace( ' src', ' defer src', $tag );
 		}
+		
+		if ( in_array( $handle, self::$tracking_scripts ) ) {
+			$tag = apply_filters( 'svbk_script_setup_tracking', $tag, $handle );
+		}		
 
 		return $tag;
 	}
 
 }
+
+add_filter( 'script_loader_tag', array( Script::class, 'add_script_attributes' ), 10, 2 );

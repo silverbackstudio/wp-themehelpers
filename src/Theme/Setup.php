@@ -4,6 +4,7 @@ namespace Svbk\WP\Helpers\Theme;
 
 use Svbk\WP\Helpers\Theme\Script;
 use Svbk\WP\Helpers\Theme\Style;
+use Svbk\WP\Helpers\Compliance;
 
 class Setup {
 
@@ -30,7 +31,6 @@ class Setup {
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_fonts' ), 8 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_google_maps' ), 8 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'add_policies' ), 8 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_instagram' ), 8 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_icons' ), 8 );
 
@@ -91,8 +91,7 @@ class Setup {
 
 			$script = http_build_query( $script_options );
 
-			wp_enqueue_script( 'googlemaps', 'https://maps.googleapis.com/maps/api/js?' . $script, null, null, true );
-			Script::set_async( 'googlemaps' );
+			Script::enqueue( 'googlemaps', 'https://maps.googleapis.com/maps/api/js?' . $script, array( 'cdn_class' => false, 'async' => true ) );
 
 			$defaultOptions = array();
 
@@ -181,42 +180,7 @@ class Setup {
 		}
 
 	}
-
-	public function add_policies() {
-
-		if ( $this->conf( 'iubenda' ) ) {
-
-			if ( $this->conf( 'iubenda','siteId' ) ) {
-				wp_enqueue_script( 'iubenda', '//cdn.iubenda.com/iubenda.js', null, null, true );
-			}
-
-			if ( $this->conf( 'iubenda','cookiePolicyId' ) ) {
-
-				wp_enqueue_script( 'iubenda-cookie', '//cdn.iubenda.com/cookie_solution/safemode/iubenda_cs.js' );
-				Script::set_async( 'iubenda-cookie' );
-				Script::set_defer( 'iubenda-cookie' );
-
-				$code = 'var _iub = _iub || [];' . PHP_EOL;
-				$config = $this->conf( 'iubenda' );
-				$config['lang'] = substr( get_bloginfo( 'language' ), 0, 2 );
-
-				$code .= '_iub.csConfiguration = ';
-				$code .= json_encode( $config );
-				$code .= "		  
-			        _iub.csConfiguration.callback =  {
-			        onConsentGiven: function(){
-			                dataLayer.push({'event': 'iubenda_consent_given'});
-			            }
-			        }
-			        ";
-
-				wp_add_inline_script( 'iubenda-cookie', $code,'before' );
-
-			}
-		}
-
-	}
-
+	
 	public function add_icons() {
 
 		$path = $this->conf( 'icons', 'path' );

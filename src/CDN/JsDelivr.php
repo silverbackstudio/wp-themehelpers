@@ -21,15 +21,26 @@ class JsDelivr {
 
 	}
 
-	static function get( $package, $options = array() ){
+	public static function get( $package, $options = array() ){
 		return new self($package, $options);
 	}
 
-	function url( $file ) {
-		return '//cdn.jsdelivr.net/' . self::path( $file ); 
+	public function url( $files ) {
+		
+		if ( ! is_array( $files ) ) {
+			return '//cdn.jsdelivr.net/' . self::path( $files );
+		}
+		
+		if( count( $files ) > 1 ) {
+			$url = $cdn->combine( $files );
+		} else {
+			$url = self::url( reset( $files ) );
+		}
+		
+		return  $url;
 	}	
 	
-	function combine( $files ) {
+	public function combine( $files ) {
 
 		$combined_files = array();
 			
@@ -40,7 +51,7 @@ class JsDelivr {
 		return '//cdn.jsdelivr.net/combine/' . implode( ',', $combined_files);
 	}		
 
-	function path( $file ) {
+	public function path( $file ) {
 		
 		if( ! defined('SCRIPT_DEBUG') || ! SCRIPT_DEBUG ) {
 			$file = preg_replace("/\.js$/i",".min.js", $file);		
