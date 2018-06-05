@@ -104,9 +104,9 @@ class Iubenda {
         $url .= $params['policy_id'];
         $cache_key .= '_' . $params['policy_id'];
         
-        if( $params['policy_type'] && ( 'privacy-policy' !== $type ) ) {
-            $url .= '/' . $type;
-            $cache_key .= '_' . str_replace('-', '_', $type );
+        if( $params['policy_type'] && ( 'privacy-policy' !== $params['policy_type'] ) ) {
+            $url .= '/' . $params['policy_type'];
+            $cache_key .= '_' . str_replace('-', '_', $params['policy_type'] );
         }
         
         if( $params['remove_styles'] ) {
