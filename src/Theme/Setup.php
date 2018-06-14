@@ -5,6 +5,7 @@ namespace Svbk\WP\Helpers\Theme;
 use Svbk\WP\Helpers\Theme\Script;
 use Svbk\WP\Helpers\Theme\Style;
 use Svbk\WP\Helpers\Compliance;
+use Svbk\WP\Helpers\Menu;
 
 class Setup {
 
@@ -13,6 +14,8 @@ class Setup {
 	public function __construct() {
 		$this->register_hooks();
 		$this->register_shortcodes();
+		
+		add_action( 'init', array( $this, 'register_compliance_menu_items' ), 10, 2 );
 	}
 
 	public static function run() {
@@ -40,8 +43,7 @@ class Setup {
 
 	public function register_shortcodes() {
 		add_shortcode( 'bloginfo', array( $this, 'bloginfo_shortcode' ) );
-		add_shortcode( 'privacy-link', array( $this, 'get_privacy_link' ) );
-		add_shortcode( 'cookie-policy-link', array( $this, 'get_cookie_policy_link' ) );
+		add_shortcode( 'policy-link', array( __CLASS__, 'get_policy_link' ) );
 	}
 
 	public function register_scripts() {
@@ -63,6 +65,33 @@ class Setup {
 
 		Script::register( 'history.js', 'scripts/bundled/html4+html5/jquery.history.js', [ 'version' => '1.8', 'package' => 'historyjs', 'deps' => 'jquery' ] );
 	
+	}
+	
+	public function register_compliance_menu_items(){
+		
+		new Menu\ItemGroup( 
+			'compliance', 
+			__( 'Compliance', 'wp-themehelper' ), 
+			array(
+				new Menu\Item( 
+					'privacypolicy', 
+					'Privacy Policy', 
+					array( 
+						'target' => '_blank',
+						'frontend_url' => get_privacy_policy_url() 
+					)
+				),
+				new Menu\Item( 
+					'cookiepolicy', 
+					'Cookie Policy', 
+					array( 
+						'target' => '_blank',
+						'frontend_url' => apply_filters( 'cookie_policy_url', '' ) 
+					) 
+				),
+			)
+		);
+		
 	}
 
 	public function load_texdomain() {
@@ -238,28 +267,9 @@ class Setup {
 		return get_bloginfo( $attrs['value'], 'display' );
 	}
 
-	public function get_privacy_link( $attr, $link_name = 'Privacy Policy', $shortcode_tag ) {
-
-		$attr = shortcode_atts(
-			array(
-				'style' => 'nostyle',
-				'no_brand' => '1',
-			),
-		$attr, $shortcode_tag );
-
-		return '<a href="//www.iubenda.com/privacy-policy/' . esc_attr( $this->conf( 'iubenda','privacyPolicyId' ) ) . '" class="iubenda-'. esc_attr( $attr['style'] ) ." ". ( $attr['no_brand'] ? "no-brand" : "" ) ." ".'iubenda-embed" title="' . esc_attr( $link_name ) . '">' . $link_name . '</a>';
+	public static function get_policy_link( $attr, $link_name = 'Privacy Policy', $shortcode_tag ) {
+		return apply_filters( 'policy_link', '', $link_name, $attr );
 	}
-	
-    public function get_cookie_policy_link( $attr, $link_name = 'Cookie Policy', $shortcode_tag ) {    
 
-		$attr = shortcode_atts(
-			array(
-				'style' => 'nostyle',
-				'no_brand' => '1',
-			),
-		$attr, $shortcode_tag );
-
-		return '<a href="//www.iubenda.com/privacy-policy/' . esc_attr ( $this->conf( 'iubenda','cookiePolicyId' ) )."/cookie-policy?ifr=true&amp;height=800" .'"class="iubenda-'. esc_attr( $attr['style'] ) ." ". ( $attr['no_brand'] ? "no-brand" : "" ) ." ".'iubenda-embed" title="' . esc_attr( $link_name ) . '">' . $link_name . '</a>';
-	}
 	
 }
