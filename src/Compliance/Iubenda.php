@@ -6,7 +6,8 @@ use Svbk\WP\Helpers\Theme\Script;
 
 class Iubenda {
 
-	public $config = array();	
+	public $config = array();
+	public $linkDefaults = array();
 	
 	public static $instance = null;
 	
@@ -33,10 +34,19 @@ class Iubenda {
 
 		$this->config = wp_parse_args( $config, $defaults );	
 		
+		$this->linkDefaults = array(
+			'style' => 'nostyle',
+			'remove_branding' => true,
+			'class' => 'iubenda-embed',
+			'type' => 'privacy-policy',
+		);
+		
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ) ); 
-		add_filter( 'policy_link', array( $this, 'append_policy_link' ), 10, 3 );
-		add_filter( 'privacy_policy_url', array( $this, 'append_privacy_policy_url' ), 10 );
-		add_filter( 'cookie_policy_url', array( $this, 'append_cookie_policy_url' ), 10 );
+		
+		add_filter( 'the_privacy_policy_link', array( $this, 'maybe_replace_privacy_policy_link' ), 10, 2 );
+		add_filter( 'the_cookie_policy_link', array( $this, 'maybe_replace_cookie_policy_link' ), 10, 2 );
+		add_filter( 'privacy_policy_url', array( $this, 'maybe_replace_privacy_policy_url' ), 10 );
+		add_filter( 'cookie_policy_url', array( $this, 'maybe_replace_cookie_policy_url' ), 10 );
 	}
 	
 	public static function setConfig( $config ){
@@ -137,35 +147,49 @@ class Iubenda {
         return $policy_html;
 	}
 	
-	public function append_privacy_policy_url( $policy_link ) {
+	public function maybe_replace_privacy_policy_url( $policy_url ) {
 		
-		if ( ! $policy_link ) {
-			$policy_link = $this->getPolicyUrl();
+		if ( ! $policy_url ) {
+			$policy_url = $this->getPolicyUrl();
 		}
 		
+		return $policy_url;
+	}
+	
+	public function maybe_replace_cookie_policy_url( $policy_url ) {
+		
+		if ( ! $policy_url ) {
+			$policy_url = $this->getPolicyUrl( array( 'type' => 'cookie-policy' ) );
+		}
+		
+		return $policy_url;
+	}	
+
+	public function maybe_replace_privacy_policy_link( $policy_link, $policy_url ) {
+		
+		// if we are using iubenda policy, apply the styles
+		if ( $policy_url === $this->getPolicyUrl() ) {
+			$policy_link = $this->getPolicyLink( __( 'Privacy Policy', 'wp-themehelper') );
+		}
+
 		return $policy_link;
 	}
 	
-	public function append_cookie_policy_url( $policy_link ) {
+	public function maybe_replace_cookie_policy_link( $policy_link, $policy_url ) {
 		
-		if ( ! $policy_link ) {
-			$policy_link = $this->getPolicyUrl( array( 'type' => 'cookie-policy' ) );
+		// if we are using iubenda policy, apply the styles
+		if ( $policy_url === $this->getPolicyUrl( array( 'type' => 'cookie-policy' ) ) ) {
+			$policy_link = $this->getPolicyLink( __( 'Cookie Policy', 'wp-themehelper'), array( 'type' => 'cookie-policy' ) );
 		}
-		
+
 		return $policy_link;
-	}	
+	}
+		
 	
 	public function getPolicyLink( $link_name, $params = array() ){
 	   
-		$defaults = array(
-			'style' => 'nostyle',
-			'remove_branding' => true,
-			'class' => 'iubenda-embed',
-		);
-	   
-   		$params = wp_parse_args($params, $defaults);
-	   
-        $params['class'] .= ' iubenda-' . $params['style'];
+		$params = wp_parse_args($params, $this->linkDefaults);
+        $params['class'] .= ' ' . $params['type'] . '-link iubenda-' . $params['style'];
         
         if( $params['remove_branding'] ) {
             $params['class'] .= ' no-brand';
