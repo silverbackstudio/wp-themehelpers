@@ -71,7 +71,7 @@ class Setup {
 		
 		new Menu\ItemGroup( 
 			'compliance', 
-			__( 'Compliance', 'wp-themehelper' ), 
+			__( 'Compliance', 'svbk-helpers' ), 
 			array(
 				new Menu\Item( 
 					'privacypolicy', 

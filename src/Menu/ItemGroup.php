@@ -46,7 +46,7 @@ class ItemGroup {
 			</div>
 			<p class="button-controls">
 				<span class="add-to-menu">
-					<input type="submit"<?php disabled( $nav_menu_selected_id, 0 ); ?> class="button-secondary submit-add-to-menu right" value="<?php esc_attr_e( 'Add to Menu', 'wp-themehelper' ); ?>" name="add-<?php echo esc_attr($this->id); ?>-links-menu-item" id="submit-<?php echo esc_attr($this->id); ?>-links" />
+					<input type="submit"<?php disabled( $nav_menu_selected_id, 0 ); ?> class="button-secondary submit-add-to-menu right" value="<?php esc_attr_e( 'Add to Menu', 'svbk-helpers' ); ?>" name="add-<?php echo esc_attr($this->id); ?>-links-menu-item" id="submit-<?php echo esc_attr($this->id); ?>-links" />
 					<span class="spinner"></span>
 				</span>
 			</p>

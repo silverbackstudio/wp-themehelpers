@@ -32,7 +32,7 @@ class Iubenda {
 	        ],
 		);
 
-		$this->config = wp_parse_args( $config, $defaults );	
+		$this->config = array_replace_recursive ( $defaults, $config );	
 		
 		$this->linkDefaults = array(
 			'style' => 'nostyle',
@@ -169,7 +169,7 @@ class Iubenda {
 		
 		// if we are using iubenda policy, apply the styles
 		if ( $policy_url === $this->getPolicyUrl() ) {
-			$policy_link = $this->getPolicyLink( __( 'Privacy Policy', 'wp-themehelper') );
+			$policy_link = $this->getPolicyLink( __( 'Privacy Policy', 'svbk-helpers') );
 		}
 
 		return $policy_link;
@@ -179,7 +179,7 @@ class Iubenda {
 		
 		// if we are using iubenda policy, apply the styles
 		if ( $policy_url === $this->getPolicyUrl( array( 'type' => 'cookie-policy' ) ) ) {
-			$policy_link = $this->getPolicyLink( __( 'Cookie Policy', 'wp-themehelper'), array( 'type' => 'cookie-policy' ) );
+			$policy_link = $this->getPolicyLink( __( 'Cookie Policy', 'svbk-helpers'), array( 'type' => 'cookie-policy' ) );
 		}
 
 		return $policy_link;
