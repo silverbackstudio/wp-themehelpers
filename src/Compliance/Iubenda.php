@@ -13,6 +13,20 @@ class Iubenda {
 	
 	public function __construct( $config = array() ) {
 		
+		$this->config = $config;
+		
+		add_action( 'init', array( $this, 'init') );
+		
+		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ) ); 
+		
+		add_filter( 'the_privacy_policy_link', array( $this, 'maybe_replace_privacy_policy_link' ), 10, 2 );
+		add_filter( 'the_cookie_policy_link', array( $this, 'maybe_replace_cookie_policy_link' ), 10, 2 );
+		add_filter( 'privacy_policy_url', array( $this, 'maybe_replace_privacy_policy_url' ), 10 );
+		add_filter( 'cookie_policy_url', array( $this, 'maybe_replace_cookie_policy_url' ), 10 );
+	}
+	
+	public function init() {
+		
 		$defaults = array(
 	        "siteId" => '',
 	        "cookiePolicyId" => '',
@@ -32,21 +46,15 @@ class Iubenda {
 	        ],
 		);
 
-		$this->config = wp_parse_args( $config, $defaults );	
+		$this->config = array_replace_recursive ( $defaults, $this->config );	
 		
 		$this->linkDefaults = array(
 			'style' => 'nostyle',
 			'remove_branding' => true,
 			'class' => 'iubenda-embed',
 			'type' => 'privacy-policy',
-		);
+		);		
 		
-		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ) ); 
-		
-		add_filter( 'the_privacy_policy_link', array( $this, 'maybe_replace_privacy_policy_link' ), 10, 2 );
-		add_filter( 'the_cookie_policy_link', array( $this, 'maybe_replace_cookie_policy_link' ), 10, 2 );
-		add_filter( 'privacy_policy_url', array( $this, 'maybe_replace_privacy_policy_url' ), 10 );
-		add_filter( 'cookie_policy_url', array( $this, 'maybe_replace_cookie_policy_url' ), 10 );
 	}
 	
 	public static function setConfig( $config ){
