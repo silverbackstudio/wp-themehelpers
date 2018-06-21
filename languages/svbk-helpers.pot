@@ -3,217 +3,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-01 13:59+0000\n"
+"POT-Creation-Date: 2018-06-21 15:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
 "Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco - https://localise.biz/"
+"X-Generator: Loco https://localise.biz/"
 
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Gallery/Tiled.php:31
-msgid "Tiled Gallery"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Gallery/Flickity.php:38
-msgid "Post Slider"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Mailing/Mandrill.php:54
-msgid ""
-"This address has beed rejected, this sometimes is due to multiple tries to "
-"send to a full or disabled inbox. Please try again later"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Mailing/Mandrill.php:57
-msgid ""
-"The mailbox is non existent or disabled. Please check your email address is "
-"correct or your contact your mailbox provider."
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Mailing/Mandrill.php:60
-msgid ""
-"Your mailbox isn't accepting our message. Please check your if mailbox your "
-"mailbox is full."
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Mailing/Mandrill.php:63
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Mailing/Mandrill.php:84
-msgid "Your email address is invalid. Please check the address or use another."
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Mailing/Mandrill.php:66
-msgid ""
-"Your mailbox is reporting our message as spam. Please add our domain to "
-"trusted senders or contact the website tech support"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Mailing/Mandrill.php:69
-msgid "This email address is a test account."
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Mailing/Mandrill.php:72
-msgid "The test mode sending limit is beeing reached."
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Mailing/Mandrill.php:75
-msgid "Invalid sender address."
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Mailing/Mandrill.php:78
-#, php-format
-msgid ""
-"This email address has beeing rejected for an unknown reason [%s]. Please "
-"use another email address."
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Mailing/MailChimp.php:13
-msgid ""
-"You have already received this whitepaper, check your inbox, use another "
-"email or request it via email."
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Mailing/MailChimp.php:14
-msgid "Your content is beeing delivered, please wait"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Mailing/GetResponse.php:91
-msgid "Unable to update the contact"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Mailing/GetResponse.php:107
-msgid "Unable to subscribe the contact"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Form.php:73
-#, php-format
-msgid "Empty or invalid field [%s]"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:40
-msgid "First Name"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:42
-msgid "Please enter first name"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:46
-msgid "Email Address"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:49
-msgid "Invalid email address"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:77
-msgid ""
-"I have read and agree to the \"Terms and conditions\" and the \"Privacy "
-"Policy\""
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:80
-msgid "Privacy Policy terms must be accepted"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:84
-msgid ""
-"I accept the processing of the data referred to in Article 1 of the "
-"\"Privacy policy\""
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:90
-msgid ""
-"I accept the processing of the data referred to in Article 2 of the "
-"\"Privacy policy\""
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:128
-msgid "Input data error"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:211
-msgid "Privacy policy"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:216
-#, php-format
-msgid "<a href=\"%1$s\" target=\"_blank\">%2$s</a>"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:221
-#, php-format
-msgid ""
-"I declare I have read and accept the %s notification and I consent to "
-"process my personal data."
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:224
-msgid "click here"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:225
-#, php-format
-msgid "To select the consents partially %s."
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:243
-msgid "Required fields"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:274
-msgid "Close"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Subscribe.php:58
-msgid ""
-"The requesto to our mail server failed, please try again later or contact "
-"the site owner."
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Subscribe.php:71
-msgid "Unable to send email messages, please contact the site owner."
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Subscribe.php:98
-msgid "Thanks! We will contact you as soon as possible."
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:24
-msgid "Message"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:27
-msgid "Please write a brief description of your request"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:41
-msgid "Contact Request (no-template)"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Download.php:49
-#, php-format
-msgid ""
-" Thanks for your request, please download your file <a href=\"%s\">here</a>"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Download.php:70
-msgid ""
-"The specified download doesn't exists anymore. Please contact site owner"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Compliance/Iubenda.php:28
+#: src/Compliance/Iubenda.php:29
 msgid "Accept"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Compliance/Iubenda.php:29
+#: src/Compliance/Iubenda.php:30 src/Compliance/Iubenda.php:182
 msgid "Cookie Policy"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Compliance/Iubenda.php:30
+#: src/Compliance/Iubenda.php:31
 msgid ""
 "<p>Information</p><p>This site uses third party cookies necessary for the "
 "operation of the site and profiling cookies that keep track of the pages "
@@ -223,29 +32,231 @@ msgid ""
 "consent to use cookies including profiling. </p>"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Post/Rating.php:59
+#: src/Compliance/Iubenda.php:172
+msgid "Privacy Policy"
+msgstr ""
+
+#: src/Menu/ItemGroup.php:49
+msgid "Add to Menu"
+msgstr ""
+
+#: src/Post/Rating.php:59
 msgctxt "save the rating"
 msgid "Save"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Post/Rating.php:59
+#: src/Post/Rating.php:59
 msgctxt "submit the rating"
 msgid "Rate"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Ads/AdSense.php:16
+#: src/Form/Form.php:73
+#, php-format
+msgid "Empty or invalid field [%s]"
+msgstr ""
+
+#: src/Form/Submission.php:40
+msgid "First Name"
+msgstr ""
+
+#: src/Form/Submission.php:42
+msgid "Please enter first name"
+msgstr ""
+
+#: src/Form/Submission.php:46
+msgid "Email Address"
+msgstr ""
+
+#: src/Form/Submission.php:49
+msgid "Invalid email address"
+msgstr ""
+
+#: src/Form/Submission.php:77
+msgid ""
+"I have read and agree to the \"Terms and conditions\" and the \"Privacy "
+"Policy\""
+msgstr ""
+
+#: src/Form/Submission.php:80
+msgid "Privacy Policy terms must be accepted"
+msgstr ""
+
+#: src/Form/Submission.php:84
+msgid ""
+"I accept the processing of the data referred to in Article 1 of the "
+"\"Privacy policy\""
+msgstr ""
+
+#: src/Form/Submission.php:90
+msgid ""
+"I accept the processing of the data referred to in Article 2 of the "
+"\"Privacy policy\""
+msgstr ""
+
+#: src/Form/Submission.php:128
+msgid "Input data error"
+msgstr ""
+
+#: src/Form/Submission.php:211
+msgid "Privacy policy"
+msgstr ""
+
+#: src/Form/Submission.php:216
+#, php-format
+msgid "<a href=\"%1$s\" target=\"_blank\">%2$s</a>"
+msgstr ""
+
+#: src/Form/Submission.php:221
+#, php-format
+msgid ""
+"I declare I have read and accept the %s notification and I consent to "
+"process my personal data."
+msgstr ""
+
+#: src/Form/Submission.php:224
+msgid "click here"
+msgstr ""
+
+#: src/Form/Submission.php:225
+#, php-format
+msgid "To select the consents partially %s."
+msgstr ""
+
+#: src/Form/Submission.php:243
+msgid "Required fields"
+msgstr ""
+
+#: src/Form/Submission.php:274
+msgid "Close"
+msgstr ""
+
+#: src/Form/Download.php:49
+#, php-format
+msgid ""
+" Thanks for your request, please download your file <a href=\"%s\">here</a>"
+msgstr ""
+
+#: src/Form/Download.php:70
+msgid ""
+"The specified download doesn't exists anymore. Please contact site owner"
+msgstr ""
+
+#: src/Form/Subscribe.php:58
+msgid ""
+"The requesto to our mail server failed, please try again later or contact "
+"the site owner."
+msgstr ""
+
+#: src/Form/Subscribe.php:71
+msgid "Unable to send email messages, please contact the site owner."
+msgstr ""
+
+#: src/Form/Subscribe.php:98
+msgid "Thanks! We will contact you as soon as possible."
+msgstr ""
+
+#: src/Form/Contact.php:24
+msgid "Message"
+msgstr ""
+
+#: src/Form/Contact.php:27
+msgid "Please write a brief description of your request"
+msgstr ""
+
+#: src/Form/Contact.php:41
+msgid "Contact Request (no-template)"
+msgstr ""
+
+#: src/Gallery/Flickity.php:38
+msgid "Post Slider"
+msgstr ""
+
+#: src/Gallery/Tiled.php:31
+msgid "Tiled Gallery"
+msgstr ""
+
+#: src/Theme/Setup.php:74
+msgid "Compliance"
+msgstr ""
+
+#: src/Mailing/MailChimp.php:13
+msgid ""
+"You have already received this whitepaper, check your inbox, use another "
+"email or request it via email."
+msgstr ""
+
+#: src/Mailing/MailChimp.php:14
+msgid "Your content is beeing delivered, please wait"
+msgstr ""
+
+#: src/Mailing/GetResponse.php:91
+msgid "Unable to update the contact"
+msgstr ""
+
+#: src/Mailing/GetResponse.php:107
+msgid "Unable to subscribe the contact"
+msgstr ""
+
+#: src/Mailing/Mandrill.php:54
+msgid ""
+"This address has beed rejected, this sometimes is due to multiple tries to "
+"send to a full or disabled inbox. Please try again later"
+msgstr ""
+
+#: src/Mailing/Mandrill.php:57
+msgid ""
+"The mailbox is non existent or disabled. Please check your email address is "
+"correct or your contact your mailbox provider."
+msgstr ""
+
+#: src/Mailing/Mandrill.php:60
+msgid ""
+"Your mailbox isn't accepting our message. Please check your if mailbox your "
+"mailbox is full."
+msgstr ""
+
+#: src/Mailing/Mandrill.php:63 src/Mailing/Mandrill.php:84
+msgid "Your email address is invalid. Please check the address or use another."
+msgstr ""
+
+#: src/Mailing/Mandrill.php:66
+msgid ""
+"Your mailbox is reporting our message as spam. Please add our domain to "
+"trusted senders or contact the website tech support"
+msgstr ""
+
+#: src/Mailing/Mandrill.php:69
+msgid "This email address is a test account."
+msgstr ""
+
+#: src/Mailing/Mandrill.php:72
+msgid "The test mode sending limit is beeing reached."
+msgstr ""
+
+#: src/Mailing/Mandrill.php:75
+msgid "Invalid sender address."
+msgstr ""
+
+#: src/Mailing/Mandrill.php:78
+#, php-format
+msgid ""
+"This email address has beeing rejected for an unknown reason [%s]. Please "
+"use another email address."
+msgstr ""
+
+#: src/Ads/AdSense.php:16
 msgid "Adaptive"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Ads/AdSense.php:17
+#: src/Ads/AdSense.php:17
 msgid "Leaderboard"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Ads/AdSense.php:18
+#: src/Ads/AdSense.php:18
 msgid "Large Rectangle"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Ads/AdSense.php:19
+#: src/Ads/AdSense.php:19
 msgid "Large SkyScraper"
 msgstr ""
 
