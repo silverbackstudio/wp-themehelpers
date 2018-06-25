@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-21 15:04+0000\n"
+"POT-Creation-Date: 2018-06-25 14:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -14,30 +14,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/"
 
-#: src/Compliance/Iubenda.php:29
-msgid "Accept"
+#: src/Theme/Setup.php:74
+msgid "Compliance"
 msgstr ""
 
-#: src/Compliance/Iubenda.php:30 src/Compliance/Iubenda.php:182
-msgid "Cookie Policy"
+#: src/Gallery/Flickity.php:38
+msgid "Post Slider"
 msgstr ""
 
-#: src/Compliance/Iubenda.php:31
-msgid ""
-"<p>Information</p><p>This site uses third party cookies necessary for the "
-"operation of the site and profiling cookies that keep track of the pages "
-"visits to understand your interests and provide customized informations. If "
-"you want to learn more or deny consent to all or some cookies, see "
-"%{cookie_policy_link}.</p><p> By accepting or closing this banner, you "
-"consent to use cookies including profiling. </p>"
-msgstr ""
-
-#: src/Compliance/Iubenda.php:172
-msgid "Privacy Policy"
-msgstr ""
-
-#: src/Menu/ItemGroup.php:49
-msgid "Add to Menu"
+#: src/Gallery/Tiled.php:31
+msgid "Tiled Gallery"
 msgstr ""
 
 #: src/Post/Rating.php:59
@@ -48,11 +34,6 @@ msgstr ""
 #: src/Post/Rating.php:59
 msgctxt "submit the rating"
 msgid "Rate"
-msgstr ""
-
-#: src/Form/Form.php:73
-#, php-format
-msgid "Empty or invalid field [%s]"
 msgstr ""
 
 #: src/Form/Submission.php:40
@@ -130,17 +111,6 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: src/Form/Download.php:49
-#, php-format
-msgid ""
-" Thanks for your request, please download your file <a href=\"%s\">here</a>"
-msgstr ""
-
-#: src/Form/Download.php:70
-msgid ""
-"The specified download doesn't exists anymore. Please contact site owner"
-msgstr ""
-
 #: src/Form/Subscribe.php:58
 msgid ""
 "The requesto to our mail server failed, please try again later or contact "
@@ -155,6 +125,22 @@ msgstr ""
 msgid "Thanks! We will contact you as soon as possible."
 msgstr ""
 
+#: src/Form/Download.php:49
+#, php-format
+msgid ""
+" Thanks for your request, please download your file <a href=\"%s\">here</a>"
+msgstr ""
+
+#: src/Form/Download.php:70
+msgid ""
+"The specified download doesn't exists anymore. Please contact site owner"
+msgstr ""
+
+#: src/Form/Form.php:73
+#, php-format
+msgid "Empty or invalid field [%s]"
+msgstr ""
+
 #: src/Form/Contact.php:24
 msgid "Message"
 msgstr ""
@@ -167,26 +153,24 @@ msgstr ""
 msgid "Contact Request (no-template)"
 msgstr ""
 
-#: src/Gallery/Flickity.php:38
-msgid "Post Slider"
+#: src/Ads/AdSense.php:16
+msgid "Adaptive"
 msgstr ""
 
-#: src/Gallery/Tiled.php:31
-msgid "Tiled Gallery"
+#: src/Ads/AdSense.php:17
+msgid "Leaderboard"
 msgstr ""
 
-#: src/Theme/Setup.php:74
-msgid "Compliance"
+#: src/Ads/AdSense.php:18
+msgid "Large Rectangle"
 msgstr ""
 
-#: src/Mailing/MailChimp.php:13
-msgid ""
-"You have already received this whitepaper, check your inbox, use another "
-"email or request it via email."
+#: src/Ads/AdSense.php:19
+msgid "Large SkyScraper"
 msgstr ""
 
-#: src/Mailing/MailChimp.php:14
-msgid "Your content is beeing delivered, please wait"
+#: src/Menu/ItemGroup.php:49
+msgid "Add to Menu"
 msgstr ""
 
 #: src/Mailing/GetResponse.php:91
@@ -244,20 +228,40 @@ msgid ""
 "use another email address."
 msgstr ""
 
-#: src/Ads/AdSense.php:16
-msgid "Adaptive"
+#: src/Mailing/MailChimp.php:13
+msgid ""
+"You have already received this whitepaper, check your inbox, use another "
+"email or request it via email."
 msgstr ""
 
-#: src/Ads/AdSense.php:17
-msgid "Leaderboard"
+#: src/Mailing/MailChimp.php:14
+msgid "Your content is beeing delivered, please wait"
 msgstr ""
 
-#: src/Ads/AdSense.php:18
-msgid "Large Rectangle"
+#: src/Compliance/Iubenda.php:50 src/Compliance/Iubenda.php:191
+msgid "Cookie Policy"
 msgstr ""
 
-#: src/Ads/AdSense.php:19
-msgid "Large SkyScraper"
+#: src/Compliance/Iubenda.php:51
+msgid ""
+"<p>Information</p><p>This site uses third party cookies necessary for the "
+"operation of the site and profiling cookies that keep track of the pages "
+"visits to understand your interests and provide customized informations. If "
+"you want to learn more or deny consent to all or some cookies, see "
+"%{cookie_policy_link}.</p><p> By accepting or closing this banner, you "
+"consent to use cookies including profiling. </p>"
+msgstr ""
+
+#: src/Compliance/Iubenda.php:52
+msgid "Accept"
+msgstr ""
+
+#: src/Compliance/Iubenda.php:53
+msgid "View the full policy"
+msgstr ""
+
+#: src/Compliance/Iubenda.php:181
+msgid "Privacy Policy"
 msgstr ""
 
 #. Name of the plugin

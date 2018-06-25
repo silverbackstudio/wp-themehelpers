@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Silverback Helpers\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-21 15:04+0000\n"
-"PO-Revision-Date: 2018-06-21 15:06+0000\n"
+"POT-Creation-Date: 2018-06-25 14:16+0000\n"
+"PO-Revision-Date: 2018-06-25 14:17+0000\n"
 "Last-Translator: SilverbackStudio <webmaster@silverbackstudio.it>\n"
-"Language-Team: Italiano\n"
+"Language-Team: Italian\n"
 "Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
@@ -13,38 +13,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/"
 
-#: src/Compliance/Iubenda.php:29
-msgid "Accept"
-msgstr "Accetto"
+#: src/Theme/Setup.php:74
+msgid "Compliance"
+msgstr "Conformità"
 
-#: src/Compliance/Iubenda.php:30 src/Compliance/Iubenda.php:182
-msgid "Cookie Policy"
-msgstr "Informativa Cookie"
+#: src/Gallery/Flickity.php:38
+msgid "Post Slider"
+msgstr "Slider Articolo"
 
-#: src/Compliance/Iubenda.php:31
-msgid ""
-"<p>Information</p><p>This site uses third party cookies necessary for the "
-"operation of the site and profiling cookies that keep track of the pages "
-"visits to understand your interests and provide customized informations. If "
-"you want to learn more or deny consent to all or some cookies, see "
-"%{cookie_policy_link}.</p><p> By accepting or closing this banner, you "
-"consent to use cookies including profiling. </p>"
-msgstr ""
-"<p>Informativa</p><p>Questo sito utilizza cookie anche di terze parti "
-"necessari al funzionamento del sito e cookie di profilazione che tengono "
-"traccia delle pagine che visiti per comprendere i tuoi interessi ed offrirti "
-"informazioni personalizzate. Se vuoi saperne di più o negare il consenso a "
-"tutti o ad alcuni cookie, consulta l’%{cookie_policy_link}.</p><p>Accettando "
-"o chiudendo questo banner, acconsenti all’uso dei cookie inclusa la "
-"profilazione.</p>"
-
-#: src/Compliance/Iubenda.php:172
-msgid "Privacy Policy"
-msgstr "Informativa sulla privacy"
-
-#: src/Menu/ItemGroup.php:49
-msgid "Add to Menu"
-msgstr "Aggiungi al Menu"
+#: src/Gallery/Tiled.php:31
+msgid "Tiled Gallery"
+msgstr "Galleria a Tile"
 
 #: src/Post/Rating.php:59
 msgctxt "save the rating"
@@ -55,11 +34,6 @@ msgstr "Salva"
 msgctxt "submit the rating"
 msgid "Rate"
 msgstr "Valuta"
-
-#: src/Form/Form.php:73
-#, php-format
-msgid "Empty or invalid field [%s]"
-msgstr "Campo non compilato correttamente [%s]"
 
 #: src/Form/Submission.php:40
 msgid "First Name"
@@ -142,20 +116,6 @@ msgstr "Campi richiesti"
 msgid "Close"
 msgstr "Chiudi"
 
-#: src/Form/Download.php:49
-#, php-format
-msgid ""
-" Thanks for your request, please download your file <a href=\"%s\">here</a>"
-msgstr ""
-"Grazie per la tua richiesta, scarica il tuo file <a href=\"%s\">qui</a>"
-
-#: src/Form/Download.php:70
-msgid ""
-"The specified download doesn't exists anymore. Please contact site owner"
-msgstr ""
-"Il file specificato non è più disponibile. Per ottenerlo contatta il "
-"proprietario del sito."
-
 #: src/Form/Subscribe.php:58
 msgid ""
 "The requesto to our mail server failed, please try again later or contact "
@@ -174,6 +134,25 @@ msgstr ""
 msgid "Thanks! We will contact you as soon as possible."
 msgstr "Grazie! Verrai contattato prima possibile."
 
+#: src/Form/Download.php:49
+#, php-format
+msgid ""
+" Thanks for your request, please download your file <a href=\"%s\">here</a>"
+msgstr ""
+"Grazie per la tua richiesta, scarica il tuo file <a href=\"%s\">qui</a>"
+
+#: src/Form/Download.php:70
+msgid ""
+"The specified download doesn't exists anymore. Please contact site owner"
+msgstr ""
+"Il file specificato non è più disponibile. Per ottenerlo contatta il "
+"proprietario del sito."
+
+#: src/Form/Form.php:73
+#, php-format
+msgid "Empty or invalid field [%s]"
+msgstr "Campo non compilato correttamente [%s]"
+
 #: src/Form/Contact.php:24
 msgid "Message"
 msgstr "Messaggio"
@@ -186,29 +165,25 @@ msgstr "Per favore scrivi una breve descrizione della tua richesta"
 msgid "Contact Request (no-template)"
 msgstr "Richiesta Contatto (senza-template)"
 
-#: src/Gallery/Flickity.php:38
-msgid "Post Slider"
-msgstr "Slider Articolo"
+#: src/Ads/AdSense.php:16
+msgid "Adaptive"
+msgstr "Adattabile"
 
-#: src/Gallery/Tiled.php:31
-msgid "Tiled Gallery"
-msgstr "Galleria a Tile"
+#: src/Ads/AdSense.php:17
+msgid "Leaderboard"
+msgstr "Leaderboard"
 
-#: src/Theme/Setup.php:74
-msgid "Compliance"
-msgstr "Conformità"
+#: src/Ads/AdSense.php:18
+msgid "Large Rectangle"
+msgstr "Rettangolo grande"
 
-#: src/Mailing/MailChimp.php:13
-msgid ""
-"You have already received this whitepaper, check your inbox, use another "
-"email or request it via email."
-msgstr ""
-"Hai già ricevuto questo documento, controlla la tua casella di posta oppure "
-"utilizza un altro indirizzo email."
+#: src/Ads/AdSense.php:19
+msgid "Large SkyScraper"
+msgstr "Skyscraper grande"
 
-#: src/Mailing/MailChimp.php:14
-msgid "Your content is beeing delivered, please wait"
-msgstr "Il contenuto richiesto sta per essere inviato, rimani in attesa."
+#: src/Menu/ItemGroup.php:49
+msgid "Add to Menu"
+msgstr "Aggiungi al Menu"
 
 #: src/Mailing/GetResponse.php:91
 msgid "Unable to update the contact"
@@ -279,21 +254,50 @@ msgstr ""
 "Questo indirizzo email é stato rifiutato per un motivo sconosciuto [%s]. Per "
 "favore utilizza un altro indirizzo email."
 
-#: src/Ads/AdSense.php:16
-msgid "Adaptive"
-msgstr "Adattabile"
+#: src/Mailing/MailChimp.php:13
+msgid ""
+"You have already received this whitepaper, check your inbox, use another "
+"email or request it via email."
+msgstr ""
+"Hai già ricevuto questo documento, controlla la tua casella di posta oppure "
+"utilizza un altro indirizzo email."
 
-#: src/Ads/AdSense.php:17
-msgid "Leaderboard"
-msgstr "Leaderboard"
+#: src/Mailing/MailChimp.php:14
+msgid "Your content is beeing delivered, please wait"
+msgstr "Il contenuto richiesto sta per essere inviato, rimani in attesa."
 
-#: src/Ads/AdSense.php:18
-msgid "Large Rectangle"
-msgstr "Rettangolo grande"
+#: src/Compliance/Iubenda.php:50 src/Compliance/Iubenda.php:191
+msgid "Cookie Policy"
+msgstr "Informativa Cookie"
 
-#: src/Ads/AdSense.php:19
-msgid "Large SkyScraper"
-msgstr "Skyscraper grande"
+#: src/Compliance/Iubenda.php:51
+msgid ""
+"<p>Information</p><p>This site uses third party cookies necessary for the "
+"operation of the site and profiling cookies that keep track of the pages "
+"visits to understand your interests and provide customized informations. If "
+"you want to learn more or deny consent to all or some cookies, see "
+"%{cookie_policy_link}.</p><p> By accepting or closing this banner, you "
+"consent to use cookies including profiling. </p>"
+msgstr ""
+"<p>Informativa</p><p>Questo sito utilizza cookie anche di terze parti "
+"necessari al funzionamento del sito e cookie di profilazione che tengono "
+"traccia delle pagine che visiti per comprendere i tuoi interessi ed offrirti "
+"informazioni personalizzate. Se vuoi saperne di più o negare il consenso a "
+"tutti o ad alcuni cookie, consulta l’%{cookie_policy_link}.</p><p>Accettando "
+"o chiudendo questo banner, acconsenti all’uso dei cookie inclusa la "
+"profilazione.</p>"
+
+#: src/Compliance/Iubenda.php:52
+msgid "Accept"
+msgstr "Accetto"
+
+#: src/Compliance/Iubenda.php:53
+msgid "View the full policy"
+msgstr "Leggi l'informativa completa"
+
+#: src/Compliance/Iubenda.php:181
+msgid "Privacy Policy"
+msgstr "Informativa sulla privacy"
 
 #. Name of the plugin
 msgid "Silverback Helpers"

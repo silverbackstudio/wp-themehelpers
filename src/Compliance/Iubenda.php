@@ -27,6 +27,13 @@ class Iubenda {
 	
 	public function init() {
 		
+		$this->linkDefaults = array(
+			'style' => 'nostyle',
+			'remove_branding' => true,
+			'class' => 'iubenda-embed',
+			'type' => 'privacy-policy',
+		);			
+		
 		$defaults = array(
 	        "siteId" => '',
 	        "cookiePolicyId" => '',
@@ -41,18 +48,13 @@ class Iubenda {
 	            "textColor" => "#dadada",
 	            "backgroundColor" => "#5A5A5A",
 	            "cookiePolicyLinkCaption" => __( "Cookie Policy", 'svbk-helpers' ),
-	            "content" => __( "<p>Information</p><p>This site uses third party cookies necessary for the operation of the site and profiling cookies that keep track of the pages visits to understand your interests and provide customized informations. If you want to learn more or deny consent to all or some cookies, see %{cookie_policy_link}.</p><p> By accepting or closing this banner, you consent to use cookies including profiling. </p>", 'svbk-helpers' ) . '<a class="iubenda-cs-close-btn" href="javascript:void(0)">' . __( "Accept", 'svbk-helpers' ) . '</a>'	        
+	            "content" => __( "<p>Information</p><p>This site uses third party cookies necessary for the operation of the site and profiling cookies that keep track of the pages visits to understand your interests and provide customized informations. If you want to learn more or deny consent to all or some cookies, see %{cookie_policy_link}.</p><p> By accepting or closing this banner, you consent to use cookies including profiling. </p>", 'svbk-helpers' ) .
+	            	'<a class="iubenda-cs-close-btn" href="javascript:void(0)">' . __( "Accept", 'svbk-helpers' ) . '</a>'	        .
+					 $this->getPolicyLink( __('View the full policy', 'svbk-helpers'  ), array( 'type' =>  'cookie-policy' ) ) 
            ],
 		);
 
 		$this->config = array_replace_recursive ( $defaults, $this->config );	
-
-		$this->linkDefaults = array(
-			'style' => 'nostyle',
-			'remove_branding' => true,
-			'class' => 'iubenda-embed',
-			'type' => 'privacy-policy',
-		);		
 		
 	}
 	
