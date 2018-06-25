@@ -1,6 +1,6 @@
 {
     "name": "silverbackstudio/wp-themehelper",
-    "type": "library",
+    "type": "wordpress-muplugin",
     "authors": [
         {
             "name": "Brando Meniconi",
@@ -10,6 +10,9 @@
     "autoload": {
         "psr-4": {"Svbk\\WP\\Helpers\\": "src/"}
     },   
+    "suggest": {
+        "cloudflare/cf-ip-rewrite": "Allows automatic recognition of CloudFlare IPs",
+    }      
     "require": {
         "drewm/mailchimp-api": "^2.4",
         "mandrill/mandrill": "^1.0",

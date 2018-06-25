@@ -49,6 +49,9 @@ class IpAddress {
 
 		if ( in_array( $_SERVER['REMOTE_ADDR'], self::$trusted_proxies ) ) {
 			$is_trusted_proxy = true;
+		} else if( class_exists( Cloudflare\IpRewrite::class ) && CloudFlare\IpRewrite::isCloudFlare() ) {
+			$proxy_header = 'HTTP_CF_CONNECTING_IP';
+			$is_trusted_proxy = true;
 		}
 
 		if ( $in_private_range || $is_trusted_proxy ) {
