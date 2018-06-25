@@ -12,7 +12,7 @@
     },   
     "suggest": {
         "cloudflare/cf-ip-rewrite": "Allows automatic recognition of CloudFlare IPs"
-    }      
+    },
     "require": {
         "drewm/mailchimp-api": "^2.4",
         "mandrill/mandrill": "^1.0",
