@@ -1,6 +1,6 @@
 {
-    "name": "silverback/wp-helpers",
-    "type": "wordpress-muplugin",
+    "name": "silverbackstudio/wp-themehelper",
+    "type": "library",
     "authors": [
         {
             "name": "Brando Meniconi",
@@ -13,9 +13,7 @@
     "suggest": {
         "cloudflare/cf-ip-rewrite": "Allows automatic recognition of CloudFlare IPs",
         "paypal/rest-api-sdk-php": "Required to use PayPal Payment platform"
-    },
-    "replace": {
-        "silverbackstudio/wp-themehelper": "4.1.*"
+
     },
     "require": {
         "psr/log": "^1.0"

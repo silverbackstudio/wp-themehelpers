@@ -7,7 +7,7 @@
 
 /**
 Plugin Name: Silverback Helpers
-Plugin URI: https://github.com/silverbackstudio/wp-helpers
+Plugin URI: https://github.com/silverbackstudio/wp-themehelpers
 Description: Silverback's Helper Classes
 Author: Silverback Studio
 Version: 1.1
