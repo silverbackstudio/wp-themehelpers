@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Silverback Helpers\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-25 14:16+0000\n"
-"PO-Revision-Date: 2018-06-25 14:17+0000\n"
+"POT-Creation-Date: 2018-06-26 12:31+0000\n"
+"PO-Revision-Date: 2018-06-26 12:32+0000\n"
 "Last-Translator: SilverbackStudio <webmaster@silverbackstudio.it>\n"
-"Language-Team: Italian\n"
+"Language-Team: Italiano\n"
 "Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
@@ -13,17 +13,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/"
 
-#: src/Theme/Setup.php:74
-msgid "Compliance"
-msgstr "Conformità"
+#: src/Compliance/Iubenda.php:50 src/Compliance/Iubenda.php:191
+msgid "Cookie Policy"
+msgstr "Informativa Cookie"
 
-#: src/Gallery/Flickity.php:38
-msgid "Post Slider"
-msgstr "Slider Articolo"
+#: src/Compliance/Iubenda.php:51
+msgid ""
+"<p>Information</p><p>This site uses third party cookies necessary for the "
+"operation of the site and profiling cookies that keep track of the pages "
+"visits to understand your interests and provide customized informations. If "
+"you want to learn more or deny consent to all or some cookies, see "
+"%{cookie_policy_link}.</p><p> By accepting or closing this banner, you "
+"consent to use cookies including profiling. </p>"
+msgstr ""
+"<p>Informativa</p><p>Questo sito utilizza cookie anche di terze parti "
+"necessari al funzionamento del sito e cookie di profilazione che tengono "
+"traccia delle pagine che visiti per comprendere i tuoi interessi ed offrirti "
+"informazioni personalizzate. Se vuoi saperne di più o negare il consenso a "
+"tutti o ad alcuni cookie, consulta l’%{cookie_policy_link}.</p><p>Accettando "
+"o chiudendo questo banner, acconsenti all’uso dei cookie inclusa la "
+"profilazione.</p>"
 
-#: src/Gallery/Tiled.php:31
-msgid "Tiled Gallery"
-msgstr "Galleria a Tile"
+#: src/Compliance/Iubenda.php:52
+msgid "Accept"
+msgstr "Accetto"
+
+#: src/Compliance/Iubenda.php:53
+msgid "View the full policy"
+msgstr "Leggi l'informativa completa"
+
+#: src/Compliance/Iubenda.php:181
+msgid "Privacy Policy"
+msgstr "Informativa sulla privacy"
+
+#: src/Menu/ItemGroup.php:49
+msgid "Add to Menu"
+msgstr "Aggiungi al Menu"
+
+#: src/Post/Rating.php:56
+#, php-format
+msgid "%d Stars"
+msgstr "%D Stelle"
 
 #: src/Post/Rating.php:59
 msgctxt "save the rating"
@@ -34,6 +64,16 @@ msgstr "Salva"
 msgctxt "submit the rating"
 msgid "Rate"
 msgstr "Valuta"
+
+#: src/Post/Rating.php:207
+#, php-format
+msgid "Rating: %d Stars"
+msgstr "Valutazione: %d Stelle"
+
+#: src/Form/Form.php:73
+#, php-format
+msgid "Empty or invalid field [%s]"
+msgstr "Campo non compilato correttamente [%s]"
 
 #: src/Form/Submission.php:40
 msgid "First Name"
@@ -116,6 +156,20 @@ msgstr "Campi richiesti"
 msgid "Close"
 msgstr "Chiudi"
 
+#: src/Form/Download.php:49
+#, php-format
+msgid ""
+" Thanks for your request, please download your file <a href=\"%s\">here</a>"
+msgstr ""
+"Grazie per la tua richiesta, scarica il tuo file <a href=\"%s\">qui</a>"
+
+#: src/Form/Download.php:70
+msgid ""
+"The specified download doesn't exists anymore. Please contact site owner"
+msgstr ""
+"Il file specificato non è più disponibile. Per ottenerlo contatta il "
+"proprietario del sito."
+
 #: src/Form/Subscribe.php:58
 msgid ""
 "The requesto to our mail server failed, please try again later or contact "
@@ -134,25 +188,6 @@ msgstr ""
 msgid "Thanks! We will contact you as soon as possible."
 msgstr "Grazie! Verrai contattato prima possibile."
 
-#: src/Form/Download.php:49
-#, php-format
-msgid ""
-" Thanks for your request, please download your file <a href=\"%s\">here</a>"
-msgstr ""
-"Grazie per la tua richiesta, scarica il tuo file <a href=\"%s\">qui</a>"
-
-#: src/Form/Download.php:70
-msgid ""
-"The specified download doesn't exists anymore. Please contact site owner"
-msgstr ""
-"Il file specificato non è più disponibile. Per ottenerlo contatta il "
-"proprietario del sito."
-
-#: src/Form/Form.php:73
-#, php-format
-msgid "Empty or invalid field [%s]"
-msgstr "Campo non compilato correttamente [%s]"
-
 #: src/Form/Contact.php:24
 msgid "Message"
 msgstr "Messaggio"
@@ -164,6 +199,18 @@ msgstr "Per favore scrivi una breve descrizione della tua richesta"
 #: src/Form/Contact.php:41
 msgid "Contact Request (no-template)"
 msgstr "Richiesta Contatto (senza-template)"
+
+#: src/Gallery/Flickity.php:38
+msgid "Post Slider"
+msgstr "Slider Articolo"
+
+#: src/Gallery/Tiled.php:31
+msgid "Tiled Gallery"
+msgstr "Galleria a Tile"
+
+#: src/Theme/Setup.php:74
+msgid "Compliance"
+msgstr "Conformità"
 
 #: src/Ads/AdSense.php:16
 msgid "Adaptive"
@@ -181,135 +228,17 @@ msgstr "Rettangolo grande"
 msgid "Large SkyScraper"
 msgstr "Skyscraper grande"
 
-#: src/Menu/ItemGroup.php:49
-msgid "Add to Menu"
-msgstr "Aggiungi al Menu"
-
-#: src/Mailing/GetResponse.php:91
-msgid "Unable to update the contact"
-msgstr "Impossibile aggiornare il contatto"
-
-#: src/Mailing/GetResponse.php:107
-msgid "Unable to subscribe the contact"
-msgstr "Impossibile inserire il contatto"
-
-#: src/Mailing/Mandrill.php:54
-msgid ""
-"This address has beed rejected, this sometimes is due to multiple tries to "
-"send to a full or disabled inbox. Please try again later"
-msgstr ""
-"Questo indirizzo è stato rifiutato. Questo spesso avviene a causa di troppi "
-"invii consecutivi a una casella disabilitata. Per favore riprova più tardi."
-
-#: src/Mailing/Mandrill.php:57
-msgid ""
-"The mailbox is non existent or disabled. Please check your email address is "
-"correct or your contact your mailbox provider."
-msgstr ""
-"L'indirizzo di posta specificato è inesistente o non attivo. Per favore "
-"controlla che l'indirizzo sia corretto oppure contatta il tuo provider di "
-"posta."
-
-#: src/Mailing/Mandrill.php:60
-msgid ""
-"Your mailbox isn't accepting our message. Please check your if mailbox your "
-"mailbox is full."
-msgstr ""
-"La tua casella di post non accetta il nostro messaggio. Per favore controlla "
-"se la tua casella è attiva ed ha spazio disponibile."
-
-#: src/Mailing/Mandrill.php:63 src/Mailing/Mandrill.php:84
-msgid "Your email address is invalid. Please check the address or use another."
-msgstr ""
-"Il tuo indirizzo email non è valido. Per favore controlla eventuali errori "
-"oppure utilizza un altro indirizzo."
-
-#: src/Mailing/Mandrill.php:66
-msgid ""
-"Your mailbox is reporting our message as spam. Please add our domain to "
-"trusted senders or contact the website tech support"
-msgstr ""
-"La tua casella di posta ha rilevato il nostro indirizzo come spam. Per "
-"favore aggiungi il nostro dominio nella lista dei mittenti verificati o "
-"contatta il supporto tecnico."
-
-#: src/Mailing/Mandrill.php:69
-msgid "This email address is a test account."
-msgstr "Questo indirizzo email è un account di prova."
-
-#: src/Mailing/Mandrill.php:72
-msgid "The test mode sending limit is beeing reached."
-msgstr "E' stato raggiunto il limite di invio per l'account di test."
-
-#: src/Mailing/Mandrill.php:75
-msgid "Invalid sender address."
-msgstr "Indirizzo del mittente non valido."
-
-#: src/Mailing/Mandrill.php:78
-#, php-format
-msgid ""
-"This email address has beeing rejected for an unknown reason [%s]. Please "
-"use another email address."
-msgstr ""
-"Questo indirizzo email é stato rifiutato per un motivo sconosciuto [%s]. Per "
-"favore utilizza un altro indirizzo email."
-
-#: src/Mailing/MailChimp.php:13
-msgid ""
-"You have already received this whitepaper, check your inbox, use another "
-"email or request it via email."
-msgstr ""
-"Hai già ricevuto questo documento, controlla la tua casella di posta oppure "
-"utilizza un altro indirizzo email."
-
-#: src/Mailing/MailChimp.php:14
-msgid "Your content is beeing delivered, please wait"
-msgstr "Il contenuto richiesto sta per essere inviato, rimani in attesa."
-
-#: src/Compliance/Iubenda.php:50 src/Compliance/Iubenda.php:191
-msgid "Cookie Policy"
-msgstr "Informativa Cookie"
-
-#: src/Compliance/Iubenda.php:51
-msgid ""
-"<p>Information</p><p>This site uses third party cookies necessary for the "
-"operation of the site and profiling cookies that keep track of the pages "
-"visits to understand your interests and provide customized informations. If "
-"you want to learn more or deny consent to all or some cookies, see "
-"%{cookie_policy_link}.</p><p> By accepting or closing this banner, you "
-"consent to use cookies including profiling. </p>"
-msgstr ""
-"<p>Informativa</p><p>Questo sito utilizza cookie anche di terze parti "
-"necessari al funzionamento del sito e cookie di profilazione che tengono "
-"traccia delle pagine che visiti per comprendere i tuoi interessi ed offrirti "
-"informazioni personalizzate. Se vuoi saperne di più o negare il consenso a "
-"tutti o ad alcuni cookie, consulta l’%{cookie_policy_link}.</p><p>Accettando "
-"o chiudendo questo banner, acconsenti all’uso dei cookie inclusa la "
-"profilazione.</p>"
-
-#: src/Compliance/Iubenda.php:52
-msgid "Accept"
-msgstr "Accetto"
-
-#: src/Compliance/Iubenda.php:53
-msgid "View the full policy"
-msgstr "Leggi l'informativa completa"
-
-#: src/Compliance/Iubenda.php:181
-msgid "Privacy Policy"
-msgstr "Informativa sulla privacy"
-
 #. Name of the plugin
 msgid "Silverback Helpers"
 msgstr "Silverback Helpers"
 
 #. Description of the plugin
-msgid "Silverback's  Helper Classes"
-msgstr "Silverback's  Helper Classes"
+msgid "Silverback's Helper Classes"
+msgstr "Silverback's Helper Classes"
 
 #. URI of the plugin
-msgid "https://gitlab.com/silverbackstudio/wp-themehelper"
-msgstr "https://gitlab.com/silverbackstudio/wp-themehelper"
+msgid "https://github.com/silverbackstudio/wp-helpers"
+msgstr "https://github.com/silverbackstudio/wp-helpers"
 
 #. Author of the plugin
 msgid "Silverback Studio"

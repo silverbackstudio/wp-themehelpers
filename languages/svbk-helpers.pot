@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-25 14:16+0000\n"
+"POT-Creation-Date: 2018-06-26 12:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -14,16 +14,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/"
 
-#: src/Theme/Setup.php:74
-msgid "Compliance"
+#: src/Compliance/Iubenda.php:50 src/Compliance/Iubenda.php:191
+msgid "Cookie Policy"
 msgstr ""
 
-#: src/Gallery/Flickity.php:38
-msgid "Post Slider"
+#: src/Compliance/Iubenda.php:51
+msgid ""
+"<p>Information</p><p>This site uses third party cookies necessary for the "
+"operation of the site and profiling cookies that keep track of the pages "
+"visits to understand your interests and provide customized informations. If "
+"you want to learn more or deny consent to all or some cookies, see "
+"%{cookie_policy_link}.</p><p> By accepting or closing this banner, you "
+"consent to use cookies including profiling. </p>"
 msgstr ""
 
-#: src/Gallery/Tiled.php:31
-msgid "Tiled Gallery"
+#: src/Compliance/Iubenda.php:52
+msgid "Accept"
+msgstr ""
+
+#: src/Compliance/Iubenda.php:53
+msgid "View the full policy"
+msgstr ""
+
+#: src/Compliance/Iubenda.php:181
+msgid "Privacy Policy"
+msgstr ""
+
+#: src/Menu/ItemGroup.php:49
+msgid "Add to Menu"
+msgstr ""
+
+#: src/Post/Rating.php:56
+#, php-format
+msgid "%d Stars"
 msgstr ""
 
 #: src/Post/Rating.php:59
@@ -34,6 +57,16 @@ msgstr ""
 #: src/Post/Rating.php:59
 msgctxt "submit the rating"
 msgid "Rate"
+msgstr ""
+
+#: src/Post/Rating.php:207
+#, php-format
+msgid "Rating: %d Stars"
+msgstr ""
+
+#: src/Form/Form.php:73
+#, php-format
+msgid "Empty or invalid field [%s]"
 msgstr ""
 
 #: src/Form/Submission.php:40
@@ -111,6 +144,17 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
+#: src/Form/Download.php:49
+#, php-format
+msgid ""
+" Thanks for your request, please download your file <a href=\"%s\">here</a>"
+msgstr ""
+
+#: src/Form/Download.php:70
+msgid ""
+"The specified download doesn't exists anymore. Please contact site owner"
+msgstr ""
+
 #: src/Form/Subscribe.php:58
 msgid ""
 "The requesto to our mail server failed, please try again later or contact "
@@ -125,22 +169,6 @@ msgstr ""
 msgid "Thanks! We will contact you as soon as possible."
 msgstr ""
 
-#: src/Form/Download.php:49
-#, php-format
-msgid ""
-" Thanks for your request, please download your file <a href=\"%s\">here</a>"
-msgstr ""
-
-#: src/Form/Download.php:70
-msgid ""
-"The specified download doesn't exists anymore. Please contact site owner"
-msgstr ""
-
-#: src/Form/Form.php:73
-#, php-format
-msgid "Empty or invalid field [%s]"
-msgstr ""
-
 #: src/Form/Contact.php:24
 msgid "Message"
 msgstr ""
@@ -151,6 +179,18 @@ msgstr ""
 
 #: src/Form/Contact.php:41
 msgid "Contact Request (no-template)"
+msgstr ""
+
+#: src/Gallery/Flickity.php:38
+msgid "Post Slider"
+msgstr ""
+
+#: src/Gallery/Tiled.php:31
+msgid "Tiled Gallery"
+msgstr ""
+
+#: src/Theme/Setup.php:74
+msgid "Compliance"
 msgstr ""
 
 #: src/Ads/AdSense.php:16
@@ -169,111 +209,16 @@ msgstr ""
 msgid "Large SkyScraper"
 msgstr ""
 
-#: src/Menu/ItemGroup.php:49
-msgid "Add to Menu"
-msgstr ""
-
-#: src/Mailing/GetResponse.php:91
-msgid "Unable to update the contact"
-msgstr ""
-
-#: src/Mailing/GetResponse.php:107
-msgid "Unable to subscribe the contact"
-msgstr ""
-
-#: src/Mailing/Mandrill.php:54
-msgid ""
-"This address has beed rejected, this sometimes is due to multiple tries to "
-"send to a full or disabled inbox. Please try again later"
-msgstr ""
-
-#: src/Mailing/Mandrill.php:57
-msgid ""
-"The mailbox is non existent or disabled. Please check your email address is "
-"correct or your contact your mailbox provider."
-msgstr ""
-
-#: src/Mailing/Mandrill.php:60
-msgid ""
-"Your mailbox isn't accepting our message. Please check your if mailbox your "
-"mailbox is full."
-msgstr ""
-
-#: src/Mailing/Mandrill.php:63 src/Mailing/Mandrill.php:84
-msgid "Your email address is invalid. Please check the address or use another."
-msgstr ""
-
-#: src/Mailing/Mandrill.php:66
-msgid ""
-"Your mailbox is reporting our message as spam. Please add our domain to "
-"trusted senders or contact the website tech support"
-msgstr ""
-
-#: src/Mailing/Mandrill.php:69
-msgid "This email address is a test account."
-msgstr ""
-
-#: src/Mailing/Mandrill.php:72
-msgid "The test mode sending limit is beeing reached."
-msgstr ""
-
-#: src/Mailing/Mandrill.php:75
-msgid "Invalid sender address."
-msgstr ""
-
-#: src/Mailing/Mandrill.php:78
-#, php-format
-msgid ""
-"This email address has beeing rejected for an unknown reason [%s]. Please "
-"use another email address."
-msgstr ""
-
-#: src/Mailing/MailChimp.php:13
-msgid ""
-"You have already received this whitepaper, check your inbox, use another "
-"email or request it via email."
-msgstr ""
-
-#: src/Mailing/MailChimp.php:14
-msgid "Your content is beeing delivered, please wait"
-msgstr ""
-
-#: src/Compliance/Iubenda.php:50 src/Compliance/Iubenda.php:191
-msgid "Cookie Policy"
-msgstr ""
-
-#: src/Compliance/Iubenda.php:51
-msgid ""
-"<p>Information</p><p>This site uses third party cookies necessary for the "
-"operation of the site and profiling cookies that keep track of the pages "
-"visits to understand your interests and provide customized informations. If "
-"you want to learn more or deny consent to all or some cookies, see "
-"%{cookie_policy_link}.</p><p> By accepting or closing this banner, you "
-"consent to use cookies including profiling. </p>"
-msgstr ""
-
-#: src/Compliance/Iubenda.php:52
-msgid "Accept"
-msgstr ""
-
-#: src/Compliance/Iubenda.php:53
-msgid "View the full policy"
-msgstr ""
-
-#: src/Compliance/Iubenda.php:181
-msgid "Privacy Policy"
-msgstr ""
-
 #. Name of the plugin
 msgid "Silverback Helpers"
 msgstr ""
 
 #. Description of the plugin
-msgid "Silverback's  Helper Classes"
+msgid "Silverback's Helper Classes"
 msgstr ""
 
 #. URI of the plugin
-msgid "https://gitlab.com/silverbackstudio/wp-themehelper"
+msgid "https://github.com/silverbackstudio/wp-helpers"
 msgstr ""
 
 #. Author of the plugin

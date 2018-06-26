@@ -7,7 +7,7 @@ use \Svbk\WP\Helpers;
 /**
  * iDevAffiliate connector class
  *
- * @package wp-themehelper
+ * @package wp-helpers
  * @subpackage Affiliate
  * @author Brando Meniconi <b.meniconi@silverbackstudio.it>
  * @since 3.1.15

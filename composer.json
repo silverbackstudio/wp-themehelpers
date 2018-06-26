@@ -1,5 +1,5 @@
 {
-    "name": "silverbackstudio/wp-themehelper",
+    "name": "silverback/wp-helpers",
     "type": "wordpress-muplugin",
     "authors": [
         {
@@ -11,14 +11,14 @@
         "psr-4": {"Svbk\\WP\\Helpers\\": "src/"}
     },   
     "suggest": {
-        "cloudflare/cf-ip-rewrite": "Allows automatic recognition of CloudFlare IPs"
+        "cloudflare/cf-ip-rewrite": "Allows automatic recognition of CloudFlare IPs",
+        "paypal/rest-api-sdk-php": "Required to use PayPal Payment platform"
+    },
+    "replace": {
+        "silverbackstudio/wp-themehelper": "4.1.*"
     },
     "require": {
-        "drewm/mailchimp-api": "^2.4",
-        "mandrill/mandrill": "^1.0",
-        "paypal/rest-api-sdk-php": "*",
-        "psr/log": "^1.0",
-        "getresponse/getresponse": "^0.0.2"        
+        "psr/log": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7"

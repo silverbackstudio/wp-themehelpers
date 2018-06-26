@@ -6,7 +6,7 @@ use \WP_Error;
 /**
  * IP Address Helper Class
  *
- * @package wp-themehelper
+ * @package wp-helper
  * @subpackage Networking
  * @author Brando Meniconi <b.meniconi@silverbackstudio.it>
  * @since 3.1.15

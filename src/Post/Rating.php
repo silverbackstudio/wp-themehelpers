@@ -53,7 +53,7 @@ class Rating  {
 				$rating_ID = 'rating-' .  $this->post_type . '-' . $this->type . '-' .  $rate;
 				?>
 			    <input type="radio" name="comment" value="<?php echo esc_attr($rate); ?>"  <?php checked( $current, $rate ); ?> id="<?php echo esc_attr($rating_ID); ?>" />
-			  	<label class="rate rate-<?php echo esc_attr($rate); ?>" for="<?php echo esc_attr($rating_ID); ?>"><span><?php echo apply_filters( 'post_rating_label', sprintf( __('%d Stars', 'svbk-helper'), $rate ), $rate, $post_id, $this ); ?></span></label>
+			  	<label class="rate rate-<?php echo esc_attr($rate); ?>" for="<?php echo esc_attr($rating_ID); ?>"><span><?php echo apply_filters( 'post_rating_label', sprintf( __('%d Stars', 'svbk-helpers'), $rate ), $rate, $post_id, $this ); ?></span></label>
 			<?php endfor; ?>
 			<?php echo get_comment_id_fields($post_id); ?>
 			<button type="submit" class="submit button" ><?php echo $rating ? _x('Save', 'save the rating', 'svbk-helpers' ) : _x('Rate', 'submit the rating', 'svbk-helpers' ); ?></button>
@@ -204,7 +204,7 @@ class Rating  {
 	public function render_rating( $rating, $count = null ) { 
 		
 		$output =  '<div id="rating" class="rating ' . esc_attr( $this->post_type ) .'-rating type-'. esc_attr( $this->type ) .' rating-'. esc_attr( $rating ). '" >' ;
-		$output .= '<span class="rating-value">' . sprintf( __('Rating: %d Stars', 'svbk-helper'), $rating ) . '</span>';
+		$output .= '<span class="rating-value">' . sprintf( __('Rating: %d Stars', 'svbk-helpers'), $rating ) . '</span>';
 		
 		if( null !== $count ) {
 			$output .= '&nbsp;<span class="rating-count">(' . $count . ')</span>';

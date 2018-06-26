@@ -14,7 +14,7 @@ class Config {
 
 		if ( file_exists( $file ) ) {
 			$newconfig = include_once( $file );
-			wp_cache_set( 'config', $newconfig, 'wpthemehelper', self::$expire );
+			wp_cache_set( 'config', $newconfig, 'svbkwphelpers', self::$expire );
 		}
 
 		return $newconfig;
@@ -24,7 +24,7 @@ class Config {
 	public static function get( $group, $param = null, $default = null ) {
 
 		$found = null;
-		$config = wp_cache_get( 'config', 'wpthemehelper', false, $found );
+		$config = wp_cache_get( 'config', 'svbkwphelpers', false, $found );
 
 		if ( ! $found ) {
 			$config = self::load_config();
@@ -45,7 +45,7 @@ class Config {
 	public static function set( $value, $group = null, $param = null ) {
 
 		$found = null;
-		$config = wp_cache_get( 'config', 'wpthemehelper', false, $found );
+		$config = wp_cache_get( 'config', 'svbkwphelpers', false, $found );
 
 		if ( ! $found ) {
 			$config = self::load_config();
@@ -62,7 +62,7 @@ class Config {
 			$config = $value;
 		}
 
-		wp_cache_replace( 'config', $config, 'wpthemehelper', self::$expire );
+		wp_cache_replace( 'config', $config, 'svbkwphelpers', self::$expire );
 
 	}
 

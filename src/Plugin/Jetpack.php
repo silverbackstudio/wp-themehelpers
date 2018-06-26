@@ -66,7 +66,7 @@ class Jetpack {
 
 		if ( class_exists( 'Jetpack_RelatedPosts' ) && method_exists( 'Jetpack_RelatedPosts', 'init_raw' ) ) {
 			return Jetpack_RelatedPosts::init_raw()
-			->set_query_name( 'svbk-jetpack-helper' )
+			->set_query_name( 'svbk-jetpack-helpers' )
 			->get_for_post_id(
 				get_the_ID(),
 				$options
