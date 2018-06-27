@@ -14,6 +14,7 @@ class Setup {
 	public function __construct() {
 		$this->register_hooks();
 		$this->register_shortcodes();
+		Compliance\Privacy::register_shortcodes();
 		
 		add_action( 'init', array( $this, 'register_compliance_menu_items' ), 10, 2 );
 	}

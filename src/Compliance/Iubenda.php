@@ -19,8 +19,8 @@ class Iubenda {
 		
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ) ); 
 		
-		add_filter( 'the_privacy_policy_link', array( $this, 'maybe_replace_privacy_policy_link' ), 20, 2 );
-		add_filter( 'the_cookie_policy_link', array( $this, 'maybe_replace_cookie_policy_link' ), 20, 2 );
+		add_filter( 'the_privacy_policy_link', array( $this, 'maybe_replace_privacy_policy_link' ), 20, 3 );
+		add_filter( 'the_cookie_policy_link', array( $this, 'maybe_replace_cookie_policy_link' ), 20, 3 );
 		add_filter( 'privacy_policy_url', array( $this, 'maybe_replace_privacy_policy_url' ), 20 );
 		add_filter( 'cookie_policy_url', array( $this, 'maybe_replace_cookie_policy_url' ), 20 );
 	}

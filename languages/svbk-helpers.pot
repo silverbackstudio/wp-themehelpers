@@ -3,22 +3,153 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-26 12:31+0000\n"
+"POT-Creation-Date: 2018-06-27 12:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
 "Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco https://localise.biz/"
+"X-Generator: Loco - https://localise.biz/"
 
-#: src/Compliance/Iubenda.php:50 src/Compliance/Iubenda.php:191
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Gallery/Tiled.php:31
+msgid "Tiled Gallery"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Gallery/Flickity.php:38
+msgid "Post Slider"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Menu/ItemGroup.php:49
+msgid "Add to Menu"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Form.php:73
+#, php-format
+msgid "Empty or invalid field [%s]"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:40
+msgid "First Name"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:42
+msgid "Please enter first name"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:46
+msgid "Email Address"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:49
+msgid "Invalid email address"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:77
+msgid ""
+"I have read and agree to the \"Terms and conditions\" and the \"Privacy "
+"Policy\""
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:80
+msgid "Privacy Policy terms must be accepted"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:84
+msgid ""
+"I accept the processing of the data referred to in Article 1 of the "
+"\"Privacy policy\""
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:90
+msgid ""
+"I accept the processing of the data referred to in Article 2 of the "
+"\"Privacy policy\""
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:128
+msgid "Input data error"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:211
+msgid "Privacy policy"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:216
+#, php-format
+msgid "<a href=\"%1$s\" target=\"_blank\">%2$s</a>"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:221
+#, php-format
+msgid ""
+"I declare I have read and accept the %s notification and I consent to "
+"process my personal data."
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:224
+msgid "click here"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:225
+#, php-format
+msgid "To select the consents partially %s."
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:243
+msgid "Required fields"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:274
+msgid "Close"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Subscribe.php:58
+msgid ""
+"The requesto to our mail server failed, please try again later or contact "
+"the site owner."
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Subscribe.php:71
+msgid "Unable to send email messages, please contact the site owner."
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Subscribe.php:98
+msgid "Thanks! We will contact you as soon as possible."
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:24
+msgid "Message"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:27
+msgid "Please write a brief description of your request"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:41
+msgid "Contact Request (no-template)"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Download.php:49
+#, php-format
+msgid ""
+" Thanks for your request, please download your file <a href=\"%s\">here</a>"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Download.php:70
+msgid ""
+"The specified download doesn't exists anymore. Please contact site owner"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Compliance/Iubenda.php:50
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Compliance/Iubenda.php:191
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Compliance/Policy.php:107
 msgid "Cookie Policy"
 msgstr ""
 
-#: src/Compliance/Iubenda.php:51
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Compliance/Iubenda.php:51
 msgid ""
 "<p>Information</p><p>This site uses third party cookies necessary for the "
 "operation of the site and profiling cookies that keep track of the pages "
@@ -28,184 +159,55 @@ msgid ""
 "consent to use cookies including profiling. </p>"
 msgstr ""
 
-#: src/Compliance/Iubenda.php:52
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Compliance/Iubenda.php:52
 msgid "Accept"
 msgstr ""
 
-#: src/Compliance/Iubenda.php:53
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Compliance/Iubenda.php:53
 msgid "View the full policy"
 msgstr ""
 
-#: src/Compliance/Iubenda.php:181
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Compliance/Iubenda.php:181
 msgid "Privacy Policy"
 msgstr ""
 
-#: src/Menu/ItemGroup.php:49
-msgid "Add to Menu"
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Theme/Setup.php:75
+msgid "Compliance"
 msgstr ""
 
-#: src/Post/Rating.php:56
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Post/Rating.php:56
 #, php-format
 msgid "%d Stars"
 msgstr ""
 
-#: src/Post/Rating.php:59
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Post/Rating.php:59
 msgctxt "save the rating"
 msgid "Save"
 msgstr ""
 
-#: src/Post/Rating.php:59
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Post/Rating.php:59
 msgctxt "submit the rating"
 msgid "Rate"
 msgstr ""
 
-#: src/Post/Rating.php:207
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Post/Rating.php:207
 #, php-format
 msgid "Rating: %d Stars"
 msgstr ""
 
-#: src/Form/Form.php:73
-#, php-format
-msgid "Empty or invalid field [%s]"
-msgstr ""
-
-#: src/Form/Submission.php:40
-msgid "First Name"
-msgstr ""
-
-#: src/Form/Submission.php:42
-msgid "Please enter first name"
-msgstr ""
-
-#: src/Form/Submission.php:46
-msgid "Email Address"
-msgstr ""
-
-#: src/Form/Submission.php:49
-msgid "Invalid email address"
-msgstr ""
-
-#: src/Form/Submission.php:77
-msgid ""
-"I have read and agree to the \"Terms and conditions\" and the \"Privacy "
-"Policy\""
-msgstr ""
-
-#: src/Form/Submission.php:80
-msgid "Privacy Policy terms must be accepted"
-msgstr ""
-
-#: src/Form/Submission.php:84
-msgid ""
-"I accept the processing of the data referred to in Article 1 of the "
-"\"Privacy policy\""
-msgstr ""
-
-#: src/Form/Submission.php:90
-msgid ""
-"I accept the processing of the data referred to in Article 2 of the "
-"\"Privacy policy\""
-msgstr ""
-
-#: src/Form/Submission.php:128
-msgid "Input data error"
-msgstr ""
-
-#: src/Form/Submission.php:211
-msgid "Privacy policy"
-msgstr ""
-
-#: src/Form/Submission.php:216
-#, php-format
-msgid "<a href=\"%1$s\" target=\"_blank\">%2$s</a>"
-msgstr ""
-
-#: src/Form/Submission.php:221
-#, php-format
-msgid ""
-"I declare I have read and accept the %s notification and I consent to "
-"process my personal data."
-msgstr ""
-
-#: src/Form/Submission.php:224
-msgid "click here"
-msgstr ""
-
-#: src/Form/Submission.php:225
-#, php-format
-msgid "To select the consents partially %s."
-msgstr ""
-
-#: src/Form/Submission.php:243
-msgid "Required fields"
-msgstr ""
-
-#: src/Form/Submission.php:274
-msgid "Close"
-msgstr ""
-
-#: src/Form/Download.php:49
-#, php-format
-msgid ""
-" Thanks for your request, please download your file <a href=\"%s\">here</a>"
-msgstr ""
-
-#: src/Form/Download.php:70
-msgid ""
-"The specified download doesn't exists anymore. Please contact site owner"
-msgstr ""
-
-#: src/Form/Subscribe.php:58
-msgid ""
-"The requesto to our mail server failed, please try again later or contact "
-"the site owner."
-msgstr ""
-
-#: src/Form/Subscribe.php:71
-msgid "Unable to send email messages, please contact the site owner."
-msgstr ""
-
-#: src/Form/Subscribe.php:98
-msgid "Thanks! We will contact you as soon as possible."
-msgstr ""
-
-#: src/Form/Contact.php:24
-msgid "Message"
-msgstr ""
-
-#: src/Form/Contact.php:27
-msgid "Please write a brief description of your request"
-msgstr ""
-
-#: src/Form/Contact.php:41
-msgid "Contact Request (no-template)"
-msgstr ""
-
-#: src/Gallery/Flickity.php:38
-msgid "Post Slider"
-msgstr ""
-
-#: src/Gallery/Tiled.php:31
-msgid "Tiled Gallery"
-msgstr ""
-
-#: src/Theme/Setup.php:74
-msgid "Compliance"
-msgstr ""
-
-#: src/Ads/AdSense.php:16
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Ads/AdSense.php:16
 msgid "Adaptive"
 msgstr ""
 
-#: src/Ads/AdSense.php:17
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Ads/AdSense.php:17
 msgid "Leaderboard"
 msgstr ""
 
-#: src/Ads/AdSense.php:18
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Ads/AdSense.php:18
 msgid "Large Rectangle"
 msgstr ""
 
-#: src/Ads/AdSense.php:19
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Ads/AdSense.php:19
 msgid "Large SkyScraper"
 msgstr ""
 
@@ -218,7 +220,7 @@ msgid "Silverback's Helper Classes"
 msgstr ""
 
 #. URI of the plugin
-msgid "https://github.com/silverbackstudio/wp-helpers"
+msgid "https://github.com/silverbackstudio/wp-themehelpers"
 msgstr ""
 
 #. Author of the plugin
