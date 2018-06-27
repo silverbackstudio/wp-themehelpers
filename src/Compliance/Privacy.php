@@ -15,10 +15,10 @@ class Privacy {
 			add_shortcode( 'cookie-policy-link', array( __CLASS__, 'shortcode' ) );
 		}
 
-		public static function shortcode( $atts, $content, $shortcode_id = '' ){
+		public static function shortcode( $atts, $content = '', $shortcode_id = '' ){
 			
 		   $attr = shortcode_atts( array(
-		        'label' => '',
+		        'label' => $content,
 		        'before' => '',
 		        'after' => '',
 		    ), $atts );
@@ -32,7 +32,7 @@ class Privacy {
 		    		return self::cookie_policy_link( $attr['before'], $attr['after'], $attr );
 		    		break;
 		    	case 'privacy-controller-name': 
-		    		return self::controller_name( $attr['before'], $attr['after'], $attr );
+		    		return self::controller_name( $attr['before'], $attr['after'] );
 		    		break;		    		
 		    }		    
 		    
@@ -51,7 +51,7 @@ class Privacy {
 		 * @return string Markup for the link and surrounding elements. Empty string if it
 		 *                doesn't exist.
 		 */
-		public static function controller_name( $before = '', $after = '', $attr = array() ) {
+		public static function controller_name( $before = '', $after = '') {
 			$controller_name =  apply_filters( 'privacy_policy_controller_name', get_bloginfo('name') );
 			
 			if ( $controller_name ) {
@@ -74,18 +74,14 @@ class Privacy {
 		 */
 		public static function privacy_policy_link( $before = '', $after = '', $attr = array() ) {
 			
-			if ( function_exists('get_the_privacy_policy_link') ) {
-				return get_the_privacy_policy_link( $before, $after);
-			}
-			
 			$link               = '';
 			$privacy_policy_url = self::privacy_policy_url();
 			
 			if ( $privacy_policy_url ) {
 				$link = sprintf(
-					'<a class="privacy-policy-link" href="%s">%s</a>',
+					'<a class="privacy-policy-link" target="_blank" href="%s">%s</a>',
 					esc_url( $privacy_policy_url ),
-					__( 'Privacy Policy', 'svbk-helpers' )
+					empty( $attr['label'] ) ? __( 'Privacy Policy', 'svbk-helpers' ) : $attr['label']
 				);
 			}
 
@@ -99,7 +95,7 @@ class Privacy {
 			 * @param string $privacy_policy_url The URL of the cookie policy. Empty string
 			 *                                   if it doesn't exist.
 			 */
-			$link = apply_filters( 'the_cookie_policy_link', $link, $privacy_policy_url );
+			$link = apply_filters( 'the_cookie_policy_link', $link, $privacy_policy_url, $attr );
 		
 			if ( $link ) {
 				return $before . $link . $after;
@@ -127,7 +123,7 @@ class Privacy {
 				$link = sprintf(
 					'<a class="cookie-policy-link" href="%s">%s</a>',
 					esc_url( $privacy_policy_url ),
-					__( 'Cookie Policy', 'svbk-helpers' )
+					empty( $attr['label'] ) ? __( 'Cookie Policy', 'svbk-helpers' ) : $attr['label']
 				);
 			}
 		
@@ -141,7 +137,7 @@ class Privacy {
 			 * @param string $cookie_policy_url The URL of the cookie policy. Empty string
 			 *                                   if it doesn't exist.
 			 */
-			$link = apply_filters( 'the_cookie_policy_link', $link, $cookie_policy_url );
+			$link = apply_filters( 'the_cookie_policy_link', $link, $cookie_policy_url, $attr );
 		
 			if ( $link ) {
 				return $before . $link . $after;
@@ -157,7 +153,7 @@ class Privacy {
 		 *
 		 * @return string The URL to the cookie policy page. Empty string if it doesn't exist.
 		 */
-		public static function privacy_policy_url( $before = '', $after = '', $attr = array() ) {
+		public static function privacy_policy_url( $before = '', $after = '' ) {
 			if( function_exists( 'get_privacy_policy_url' ) ) {
 				return get_privacy_policy_url( $before, $after );
 			} else {

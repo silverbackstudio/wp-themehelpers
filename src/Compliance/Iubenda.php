@@ -174,21 +174,21 @@ class Iubenda {
 		return $policy_url;
 	}	
 
-	public function maybe_replace_privacy_policy_link( $policy_link, $policy_url ) {
+	public function maybe_replace_privacy_policy_link( $policy_link, $policy_url, $attr = array()) {
 		
 		// if we are using iubenda policy, apply the styles
 		if ( $policy_url === $this->getPolicyUrl() ) {
-			$policy_link = $this->getPolicyLink( __( 'Privacy Policy', 'svbk-helpers') );
+			$policy_link = $this->getPolicyLink( empty( $attr['label'] ) ? __( 'Privacy Policy', 'svbk-helpers' ) : $attr['label'] );
 		}
 
 		return $policy_link;
 	}
 	
-	public function maybe_replace_cookie_policy_link( $policy_link, $policy_url ) {
+	public function maybe_replace_cookie_policy_link( $policy_link, $policy_url, $attr = array() ) {
 		
 		// if we are using iubenda policy, apply the styles
 		if ( $policy_url === $this->getPolicyUrl( array( 'type' => 'cookie-policy' ) ) ) {
-			$policy_link = $this->getPolicyLink( __( 'Cookie Policy', 'svbk-helpers'), array( 'type' => 'cookie-policy' ) );
+			$policy_link = $this->getPolicyLink( empty( $attr['label'] ) ? __( 'Cookie Policy', 'svbk-helpers' ) : $attr['label'], array( 'type' => 'cookie-policy' ) );
 		}
 
 		return $policy_link;

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-27 12:43+0000\n"
+"POT-Creation-Date: 2018-06-27 15:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -26,126 +26,14 @@ msgstr ""
 msgid "Add to Menu"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Form.php:73
-#, php-format
-msgid "Empty or invalid field [%s]"
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Compliance/Privacy.php:84
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Compliance/Iubenda.php:181
+msgid "Privacy Policy"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:40
-msgid "First Name"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:42
-msgid "Please enter first name"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:46
-msgid "Email Address"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:49
-msgid "Invalid email address"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:77
-msgid ""
-"I have read and agree to the \"Terms and conditions\" and the \"Privacy "
-"Policy\""
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:80
-msgid "Privacy Policy terms must be accepted"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:84
-msgid ""
-"I accept the processing of the data referred to in Article 1 of the "
-"\"Privacy policy\""
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:90
-msgid ""
-"I accept the processing of the data referred to in Article 2 of the "
-"\"Privacy policy\""
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:128
-msgid "Input data error"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:211
-msgid "Privacy policy"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:216
-#, php-format
-msgid "<a href=\"%1$s\" target=\"_blank\">%2$s</a>"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:221
-#, php-format
-msgid ""
-"I declare I have read and accept the %s notification and I consent to "
-"process my personal data."
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:224
-msgid "click here"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:225
-#, php-format
-msgid "To select the consents partially %s."
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:243
-msgid "Required fields"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Submission.php:274
-msgid "Close"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Subscribe.php:58
-msgid ""
-"The requesto to our mail server failed, please try again later or contact "
-"the site owner."
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Subscribe.php:71
-msgid "Unable to send email messages, please contact the site owner."
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Subscribe.php:98
-msgid "Thanks! We will contact you as soon as possible."
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:24
-msgid "Message"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:27
-msgid "Please write a brief description of your request"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Contact.php:41
-msgid "Contact Request (no-template)"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Download.php:49
-#, php-format
-msgid ""
-" Thanks for your request, please download your file <a href=\"%s\">here</a>"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Form/Download.php:70
-msgid ""
-"The specified download doesn't exists anymore. Please contact site owner"
-msgstr ""
-
+#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Compliance/Privacy.php:126
 #: ../../../../vendor/silverbackstudio/wp-themehelper/src/Compliance/Iubenda.php:50
 #: ../../../../vendor/silverbackstudio/wp-themehelper/src/Compliance/Iubenda.php:191
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Compliance/Policy.php:107
 msgid "Cookie Policy"
 msgstr ""
 
@@ -165,10 +53,6 @@ msgstr ""
 
 #: ../../../../vendor/silverbackstudio/wp-themehelper/src/Compliance/Iubenda.php:53
 msgid "View the full policy"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-themehelper/src/Compliance/Iubenda.php:181
-msgid "Privacy Policy"
 msgstr ""
 
 #: ../../../../vendor/silverbackstudio/wp-themehelper/src/Theme/Setup.php:75
