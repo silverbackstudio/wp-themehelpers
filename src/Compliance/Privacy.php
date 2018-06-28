@@ -52,7 +52,7 @@ class Privacy {
 		 *                doesn't exist.
 		 */
 		public static function controller_name( $before = '', $after = '') {
-			$controller_name =  apply_filters( 'privacy_policy_controller_name', get_bloginfo('name') );
+			$controller_name =  apply_filters( 'privacy_controller_name', get_bloginfo('name') );
 			
 			if ( $controller_name ) {
 				return $before . $controller_name . $after;
