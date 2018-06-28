@@ -122,7 +122,7 @@ class Privacy {
 			if ( $cookie_policy_url ) {
 				$link = sprintf(
 					'<a class="cookie-policy-link" href="%s">%s</a>',
-					esc_url( $privacy_policy_url ),
+					esc_url( $cookie_policy_url ),
 					empty( $attr['label'] ) ? __( 'Cookie Policy', 'svbk-helpers' ) : $attr['label']
 				);
 			}
