@@ -15,10 +15,11 @@ class Script {
 	public static $default_cdn = '\Svbk\WP\Helpers\CDN\JsDelivr';
 
 	public static function enqueue( $package, $files = '', $options = array() ) {
-			
-		self::register( $package, $files, $options );
+		$handle = self::register( $package, $files, $options );
 
-		wp_enqueue_script( $package );
+		wp_enqueue_script( $handle );
+		
+		return $handle;
 	}
 
 	public static function register( $package, $files, $options = array() ) {
@@ -33,13 +34,14 @@ class Script {
 			'async' => false,
 			'defer' => false,
 			'profiling' => false,
+			'handle' => $package,
 		);
 		
 		$opt = array_merge($defaults, $options);
 
-		if ( wp_script_is( $package , 'registered' ) ) {
+		if ( wp_script_is( $opt['handle'] , 'registered' ) ) {
 			if ( $opt['overwrite'] ) {
-				wp_deregister_script( $package );
+				wp_deregister_script( $opt['handle'] );
 			} else {
 				return false;
 			}
@@ -60,19 +62,21 @@ class Script {
 			return;
 		}
 		
-		wp_register_script( $package, $url, $opt['deps'], $opt['version'], $opt['in_footer'] );
+		wp_register_script( $opt['handle'], $url, $opt['deps'], $opt['version'], $opt['in_footer'] );
 		
 		if ( $opt['async'] ) {
-			self::set_async( $package );
+			self::set_async( $opt['handle'] );
 		}
 		
 		if ( $opt['defer'] ) {
-			self::set_defer( $package );
+			self::set_defer( $opt['handle'] );
 		}		
 		
 		if ( $opt['profiling'] ) {
-			self::set_tracking( $package );
-		}		
+			self::set_tracking( $opt['handle'] );
+		}
+		
+		return $opt['handle'];
 	}
 
 
