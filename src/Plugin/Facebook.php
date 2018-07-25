@@ -55,7 +55,7 @@ class Facebook {
 		     var js, fjs = d.getElementsByTagName(s)[0];
 		     if (d.getElementById(id)) {return;}
 		     js = d.createElement(s); js.id = id;
-		     js.src = "https://connect.facebook.net/<?php echo esc_attr(get_bloginfo('language'))?>/sdk.js";
+		     js.src = "https://connect.facebook.net/<?php echo esc_attr( str_replace( '-', '_', get_bloginfo('language') ) )?>/sdk.js";
 		     fjs.parentNode.insertBefore(js, fjs);
 		   }(document, 'script', 'facebook-jssdk'));
 		</script>
