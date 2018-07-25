@@ -17,6 +17,7 @@ class Rating  {
 	public $rating_max = 5;
 	public $type = 'rating';
 	public $post_type;
+	public $allow_edit = true;
 	
 	public function __construct( $post_type = '' ){
 		
@@ -56,7 +57,9 @@ class Rating  {
 			  	<label class="rate rate-<?php echo esc_attr($rate); ?>" for="<?php echo esc_attr($rating_ID); ?>"><span><?php echo apply_filters( 'post_rating_label', sprintf( __('%d Stars', 'svbk-helpers'), $rate ), $rate, $post_id, $this ); ?></span></label>
 			<?php endfor; ?>
 			<?php echo get_comment_id_fields($post_id); ?>
+			<?php if ( ! $rating || $this->allow_edit ) : ?>
 			<button type="submit" class="submit button" ><?php echo $rating ? _x('Save', 'save the rating', 'svbk-helpers' ) : _x('Rate', 'submit the rating', 'svbk-helpers' ); ?></button>
+			<?php endif; ?>
 		</form>
 		<?php do_action( 'post_rating_after_form', $post_id, $this );
 	}
@@ -65,6 +68,22 @@ class Rating  {
 		
 		if( filter_input( INPUT_GET, 'type' ) === $this->type ) {
 			$commentdata['comment_type'] = $this->type;
+			
+			$existing_comments = get_comments(  [
+				'type' => $this->type,
+				'post_type' => $this->post_type,			
+				'user_id' => get_current_user_id(),
+				'post_id' => $commentdata['comment_post_ID'],
+			 ] );		
+	
+			if ( $this->allow_edit && !empty( $existing_comments ) ) {
+				foreach ( $existing_comments as $comment ) {
+					wp_delete_comment( $comment->comment_ID, true );
+				}
+			} else if ( ! $this->allow_edit && ! empty( $existing_comments ) ) {
+				wp_die( __( 'You are not allowed to change your rating', 'svbk-helpers' ) );
+			}			
+			
 		}
 		
 		return $commentdata;
@@ -151,7 +170,7 @@ class Rating  {
 
 		$defaults = array(
 			'number' => 1,
-			'user_id' => $user_id,
+			'user_id' => array( $user_id ),
 			'post_id' => $post_id,
 			'orderby' => 'comment_date_gmt',
 			'order' => 'DESC',			
@@ -164,6 +183,23 @@ class Rating  {
 		}
 		
 		return false;
+	}
+
+	public function reset( $user_id, $post_id = null ){
+		
+		$existing_comments = get_comments(  [
+			'type' => $this->type,
+			'post_type' => $this->post_type,			
+			'user_id' =>  $user_id,
+			'post_id' => $post_id,
+		 ] );		
+
+		if ( !empty( $existing_comments ) ) {
+			foreach ( $existing_comments as $comment ) {
+				wp_delete_comment( $comment->comment_ID, true );
+			}
+		}		
+		
 	}
 
 	public function average( $ratings ){
