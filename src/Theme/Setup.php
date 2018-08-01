@@ -114,14 +114,14 @@ class Setup {
 			$script_options = array();
 
 			$script_options['key'] = $this->conf( 'googlemaps', 'key' );
-			$script_options['library'] = $this->conf( 'googlemaps', 'library' );
+			$script_options['libraries'] = $this->conf( 'googlemaps', 'libraries' );   // modified
 			$script_options['callback'] = $this->conf( 'googlemaps', 'callback', 'initGMaps' );
 
 			$script_options = array_filter( $script_options );
 
 			$script = http_build_query( $script_options );
-
-			Script::enqueue( 'googlemaps', 'https://maps.googleapis.com/maps/api/js?' . $script, array( 'cdn_class' => false, 'async' => true ) );
+                                                                                                                                                      // added defer
+			Script::enqueue( 'googlemaps', 'https://maps.googleapis.com/maps/api/js?' . $script, array( 'cdn_class' => false, 'async' => true, 'defer' => true ) );
 
 			$defaultOptions = array();
 
