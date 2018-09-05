@@ -69,7 +69,6 @@ class Flickity {
 		return $html;
 	}
 
-
 	public static function formatHtmlAttributes( $options = array() ) {
 
 		if ( ! isset( $this ) || empty( $this->options ) ) {
@@ -80,18 +79,60 @@ class Flickity {
 	}
 
 	public static function gallery( $image_ids, $options = array() ) {
+		return self::render($image_ids, 'medium', $options);
+	}
 
-		$extra_data = array(
-			'data-flickity-options' => $this->options,
+	public static function render( $image_ids, $size = 'medium', $flickity_options = array(), $html_options = array() ) {
+
+		$output = '';
+
+		$attributes = array();
+
+		$flickity_options = wp_parse_args( $flickity_options, array( 
+				'cellSelector' => isset( $flickity_options['cellClass'] ) ? ( '.' .$flickity_options['cellClass']) : '.carousel-cell-image' ,
+				'cellClass' => 'carousel-cell-image',
+			)
 		);
 
-		foreach ( (array) $extra_data as $data_key => $data_values ) {
-			$html = str_replace( '<div ', '<div ' . esc_attr( $data_key ) . "='" . json_encode( $data_values ) . "' ", $html );
+		$classes = array(
+			'js-flickity'
+		);
+
+		if ( !empty($html_options['class']) ){
+			$classes = array_merge( $classes, explode( ' ', $html_options['class'] ) );
+			unset( $html_options['class'] );
 		}
 
-		$html = str_replace( 'gallery ', 'gallery js-flickity ', $html );
+		foreach ( $html_options as $key => $value ) {
+			$attributes[] = esc_html( $value ) . '="' . esc_attr( $value ) . "'";
+		}
 
-		return $html;
+		$output .= '<div class="' . implode( ' ', $classes ) . '" ' . implode( ' ', $attributes ) . ' ' . self::formatHtmlAttributes($flickity_options) . '>';
+		
+		$image_index = 0;
+		
+		foreach ( $image_ids as $image_id ) {
+			$image_index++;
+			$image_src = wp_get_attachment_image_src( $image_id, $size );
+			
+			$output .= '<div class="' . esc_attr($flickity_options['cellClass']) . '">';
+			
+			if ( empty($flickity_options['lazyLoad']) /*|| $image_index <= $flickity_options['lazyLoad'] */ ) {
+				$output .=  wp_get_attachment_image( $image_id, $size );
+			} else {
+				$output .= '<img
+				  data-flickity-lazyload-srcset="' . wp_get_attachment_image_srcset( $image_id, $size ) . '"
+				  sizes="' . wp_calculate_image_sizes($size, $image_src[0], null, $image_id) . '"
+				  data-flickity-lazyload-src="' . $image_src[0] . '"
+				  />';				
+			}
+			
+			$output .= '</div>';
+		}
+		
+		$output .= '</div>';
+
+		return $output;
 	}
 
 
