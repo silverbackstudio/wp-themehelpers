@@ -49,19 +49,19 @@ class Setup {
 
 	public function register_scripts() {
 		
-		Script::register( 'waypoints', 'lib/jquery.waypoints.js', [ 'version' => '4', 'deps' => 'jquery' ] );
-		Script::register( 'waypoints-sticky', 'lib/shortcuts/sticky.js', [ 'version' => '4', 'deps' => ['jquery', 'waypoints'], 'package' => 'waypoints' ] );
-		Script::register( 'jquery.collapse', 'src/jquery.collapse.js', [ 'version' => '1', 'deps' => 'jquery', 'package' => 'jquery-collapse' ] );
+		Script::register( 'waypoints', 'lib/jquery.waypoints.min.js', [ 'version' => '4', 'deps' => 'jquery', 'defer' => true ] );
+		Script::register( 'waypoints-sticky', 'lib/shortcuts/sticky.min.js', [ 'version' => '4', 'deps' => ['jquery', 'waypoints'], 'package' => 'waypoints', 'defer' => true ] );
+		Script::register( 'jquery.collapse', 'src/jquery.collapse.js', [ 'version' => '1', 'deps' => 'jquery', 'package' => 'jquery-collapse', 'defer' => true ] );
 		
-		Script::register( 'flickity', 'dist/flickity.pkgd.js', [ 'version' => '2'] );
-		Style::register( 'flickity',  'dist/flickity.css' , [ 'version' => '2' ] );
+		Script::register( 'flickity', 'dist/flickity.pkgd.min.js', [ 'version' => '2', 'defer' => true] );
+		Style::register( 'flickity',  'dist/flickity.min.css' , [ 'version' => '2' ] );
 		
-		Script::register( 'masonry-native', 'dist/masonry.pkgd.min.js', ['version' => '4', 'package' => 'masonry-layout' ] );
-		Script::register( 'imagesloaded', 'imagesloaded.pkgd.min.js', ['version' => '4', 'package' => 'imagesloaded' ] );
-		Script::register( 'jquery.localscroll', 'jquery.localScrolljs', ['version' => '2', 'deps' => 'jquery']);
-		Script::register( 'jquery.scrollto', 'jquery.scrollTo.js', [ 'version' => '2.1', 'deps' => 'jquery' ] );
+		Script::register( 'masonry-native', 'dist/masonry.pkgd.min.js', ['version' => '4', 'package' => 'masonry-layout', 'defer' => true ] );
+		Script::register( 'imagesloaded', 'imagesloaded.pkgd.min.js', ['version' => '4', 'package' => 'imagesloaded', 'defer' => true ] );
+		Script::register( 'jquery.localscroll', 'jquery.localScroll.min.js', ['version' => '2', 'deps' => 'jquery', 'defer' => true]);
+		Script::register( 'jquery.scrollto', 'jquery.scrollTo.min.js', [ 'version' => '2.1', 'deps' => 'jquery', 'defer' => true ] );
 
-		Script::enqueue( 'object-fit-images', 'dist/ofi.js' , [ 'version' => '3' ] );
+		Script::enqueue( 'object-fit-images', 'dist/ofi.js' , [ 'version' => '3', 'defer' => true ] );
 		wp_add_inline_script( 'object-fit-images', 'objectFitImages();' );
 
 		Script::register( 'history.js', 'scripts/bundled/html4+html5/jquery.history.js', [ 'version' => '1.8', 'package' => 'historyjs', 'deps' => 'jquery' ] );
@@ -120,7 +120,7 @@ class Setup {
 			$script_options = array_filter( $script_options );
 
 			$script = http_build_query( $script_options );
-			
+
 			Script::enqueue( 'googlemaps', 'https://maps.googleapis.com/maps/api/js?' . $script, array( 'source' => false, 'async' => true, 'defer' => true ) );
 
 			$defaultOptions = array();
