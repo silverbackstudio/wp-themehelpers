@@ -12,7 +12,7 @@ class Script {
 	public static $defer_scripts = array();
 	public static $tracking_scripts = array();
 
-	public static $default_cdn = '\Svbk\WP\Helpers\CDN\JsDelivr';
+	public static $default_source = '\Svbk\WP\Helpers\CDN\JsDelivr';
 
 	public static function enqueue( $package, $files = '', $options = array() ) {
 		$handle = self::register( $package, $files, $options );
@@ -30,11 +30,14 @@ class Script {
 			'version' => 'latest', 
 			'in_footer' => true, 
 			'overwrite' => false,
-			'cdn_class' => self::$default_cdn,
+			'source' => self::$default_source,
 			'async' => false,
 			'defer' => false,
 			'profiling' => false,
 			'handle' => $package,
+			
+			// backward compat
+			'cdn_class' => '',
 		);
 		
 		$opt = array_merge($defaults, $options);
@@ -46,16 +49,16 @@ class Script {
 				return false;
 			}
 		}
+		
+		$source_class = $opt['cdn_class'] ?: $opt['source'];
 
-		$cdn_class = $opt['cdn_class'];
-
-		if ( false === $cdn_class ) {
+		if ( false === $source_class ) {
 			$url = $files;
-		} elseif ( class_exists( $cdn_class ) ) {
-			$cdn = new $cdn_class( $opt['package'], $options );
+		} elseif ( class_exists( $source_class ) ) {
+			$cdn = new $source_class( $opt['package'], $options );
 			$url = $cdn->url( $files );
 		} else {
-			throw new Exception('CDN Class ' . $cdn_class . ' doesn\'t exists');
+			throw new Exception('Script source class ' . $source_class . ' doesn\'t exists');
 		}
 		
 		if ( !$url ) {
@@ -100,6 +103,9 @@ class Script {
 
 		if ( in_array( $handle, self::$defer_scripts ) ) {
 			$tag = str_replace( ' src', ' defer src', $tag );
+			if ( ! in_array( $handle, self::$async_scripts ) ) {
+				$tag = preg_replace( "`<script type='text/javascript'>(.+)</script>`is", '<script type=\'text/javascript\'>window.addEventListener(\'DOMContentLoaded\', function() { $1 });</script>', $tag );
+			}
 		}
 		
 		if ( in_array( $handle, self::$tracking_scripts ) ) {

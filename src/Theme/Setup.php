@@ -120,8 +120,8 @@ class Setup {
 			$script_options = array_filter( $script_options );
 
 			$script = http_build_query( $script_options );
-                                                                                                                                                      // added defer
-			Script::enqueue( 'googlemaps', 'https://maps.googleapis.com/maps/api/js?' . $script, array( 'cdn_class' => false, 'async' => true, 'defer' => true ) );
+			
+			Script::enqueue( 'googlemaps', 'https://maps.googleapis.com/maps/api/js?' . $script, array( 'source' => false, 'async' => true, 'defer' => true ) );
 
 			$defaultOptions = array();
 
