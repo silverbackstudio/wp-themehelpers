@@ -28,9 +28,15 @@ class Style {
 			'media' => 'all', 
 			'overwrite' => false,
 			'handle' => $package,
+			'source_options' => array(),
 		);
 		
 		$opt = array_merge($defaults, $options);
+		$opt['source_options'] = array_merge(
+			array(
+				'version' => $opt['version']
+			),
+			$opt['source_options']);
 
 		$source_class =  $opt['source'];
 
@@ -45,7 +51,7 @@ class Style {
 		if ( false === $source_class ) {
 			$url = $files;
 		} elseif ( class_exists( $source_class ) ) {
-			$cdn = new $source_class( $opt['package'], $options );
+			$cdn = new $source_class( $opt['package'], $opt['source_options'] );
 			$url = $cdn->url( $files );
 		} else {
 			throw new Exception('Style source class ' . $source_class . ' doesn\'t exists');

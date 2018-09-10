@@ -35,12 +35,18 @@ class Script {
 			'defer' => false,
 			'profiling' => false,
 			'handle' => $package,
+			'source_options' => array(),
 			
 			// backward compat
 			'cdn_class' => '',
 		);
 		
 		$opt = array_merge($defaults, $options);
+		$opt['source_options'] = array_merge(
+			array(
+				'version' => $opt['version']
+			),
+			$opt['source_options']);
 
 		if ( wp_script_is( $opt['handle'] , 'registered' ) ) {
 			if ( $opt['overwrite'] ) {
@@ -55,7 +61,7 @@ class Script {
 		if ( false === $source_class ) {
 			$url = $files;
 		} elseif ( class_exists( $source_class ) ) {
-			$cdn = new $source_class( $opt['package'], $options );
+			$cdn = new $source_class( $opt['package'], $opt['source_options'] );
 			$url = $cdn->url( $files );
 		} else {
 			throw new Exception('Script source class ' . $source_class . ' doesn\'t exists');
