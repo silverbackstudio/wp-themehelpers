@@ -66,6 +66,10 @@ class Style {
 		return $opt['handle'];
 	}
 
+	public static function async() {
+		add_filter( 'style_loader_tag', array( Style::class, 'add_style_attributes' ), 10, 4 );
+	}
+
 	public static function set_sync( $handle ) {
 		self::$sync_styles = array_merge( self::$sync_styles, (array) $handle );
 	}
@@ -81,5 +85,3 @@ class Style {
 	}
 
 }
-
-add_filter( 'style_loader_tag', array( Style::class, 'add_style_attributes' ), 10, 4 );
