@@ -38,7 +38,7 @@ class Script {
 			'source_options' => array(),
 			
 			// backward compat
-			'cdn_class' => '',
+			'cdn_class' => null,
 		);
 		
 		$opt = array_merge($defaults, $options);
@@ -56,7 +56,7 @@ class Script {
 			}
 		}
 		
-		$source_class = $opt['cdn_class'] ?: $opt['source'];
+		$source_class = (null !== $opt['cdn_class']) ? $opt['cdn_class'] : $opt['source'];
 
 		if ( false === $source_class ) {
 			$url = $files;
