@@ -7,7 +7,7 @@ use Svbk\WP\Helpers;
 class Facebook {
 
 	public static $appId = "";
-	public static $sdkVersion = '2.11';
+	public static $sdkVersion = '3.0';
 	
 	public static function enableComments() {
 		self::enableSDK();
@@ -50,7 +50,7 @@ class Facebook {
 		      version          : 'v<?php echo self::$sdkVersion; ?>'
 		    });
 		  };
-		
+	
 		  (function(d, s, id){
 		     var js, fjs = d.getElementsByTagName(s)[0];
 		     if (d.getElementById(id)) {return;}

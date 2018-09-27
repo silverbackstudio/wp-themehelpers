@@ -97,8 +97,9 @@ class Iubenda {
 			$code .= json_encode( $this->config );
 			$code .= "		  
 		        _iub.csConfiguration.callback =  {
-		        onConsentGiven: function(){
+		        onConsentRead: function(){
 		                dataLayer.push({'event': 'iubenda_consent_given'});
+		                ga('set', 'anonymizeIp', false);
 		            }
 		        }
 		        ";
