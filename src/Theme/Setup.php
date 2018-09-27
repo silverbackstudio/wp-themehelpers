@@ -27,7 +27,7 @@ class Setup {
 
 		add_action( 'after_setup_theme', array( $this, 'load_texdomain' ) );
 
-		add_action( 'wp_head', array( $this, 'add_analytics' ), 1 );
+		add_action( 'wp_head', array( $this, 'add_analytics' ), 5 );
 		add_action( 'after_body_tag', array( $this, 'print_analytics_noscript' ) );
 		add_action( 'wp_footer', array( $this, 'print_analytics_noscript' ) );
 
