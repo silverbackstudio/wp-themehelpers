@@ -95,7 +95,7 @@ class Privacy {
 			 * @param string $privacy_policy_url The URL of the cookie policy. Empty string
 			 *                                   if it doesn't exist.
 			 */
-			$link = apply_filters( 'the_cookie_policy_link', $link, $privacy_policy_url, $attr );
+			$link = apply_filters( 'the_privacy_policy_link', $link, $privacy_policy_url, $attr );
 		
 			if ( $link ) {
 				return $before . $link . $after;
