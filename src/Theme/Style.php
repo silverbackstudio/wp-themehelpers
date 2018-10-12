@@ -76,6 +76,10 @@ class Style {
 
 	public static function add_style_attributes( $tag, $handle, $href, $media ) {
 
+		if ( is_admin() ) {
+			return $tag;
+		}
+
 		if ( !in_array( $handle, self::$sync_styles ) ) {
 			$tag =  "<link rel='preload' id='$handle-css' href='$href' type='text/css' media='$media' as='style' onload=\"this.onload=null;this.rel='stylesheet'\" />";
 			$tag .= "<noscript><link rel='stylesheet' id='$handle-css-noscript' media='$media' href='$href'></noscript>" . PHP_EOL;
