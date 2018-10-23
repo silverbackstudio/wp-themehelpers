@@ -60,6 +60,8 @@ class Script {
 
 		if ( false === $source_class ) {
 			$url = $files;
+		} elseif ( 'theme' === $source_class ) {
+			$url = get_theme_file_uri( $files );			
 		} elseif ( class_exists( $source_class ) ) {
 			$cdn = new $source_class( $opt['package'], $opt['source_options'] );
 			$url = $cdn->url( $files );
