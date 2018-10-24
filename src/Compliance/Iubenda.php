@@ -2,7 +2,7 @@
 
 namespace Svbk\WP\Helpers\Compliance;
 
-use Svbk\WP\Helpers\Theme\Script;
+use Svbk\WP\Helpers\Assets\Script;
 
 class Iubenda {
 

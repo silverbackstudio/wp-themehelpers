@@ -2,8 +2,8 @@
 
 namespace Svbk\WP\Helpers\Theme;
 
-use Svbk\WP\Helpers\Theme\Script;
-use Svbk\WP\Helpers\Theme\Style;
+use Svbk\WP\Helpers\Assets\Script;
+use Svbk\WP\Helpers\Assets\Style;
 use Svbk\WP\Helpers\Compliance;
 use Svbk\WP\Helpers\Menu;
 
@@ -33,10 +33,10 @@ class Setup {
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ), 8 );
 
-		add_action( 'wp_enqueue_scripts', array( $this, 'add_fonts' ), 8 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'add_google_maps' ), 8 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'add_instagram' ), 8 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'add_icons' ), 8 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'add_fonts' ), 20 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'add_google_maps' ), 20 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'add_instagram' ), 20 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'add_icons' ), 20 );
 
 		add_filter( 'bloginfo', array( $this, 'extend_bloginfo' ), 9, 2 );
 		add_filter( 'acf/fields/google_map/api', array( $this, 'acf_maps_api' ) );
