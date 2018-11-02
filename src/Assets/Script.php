@@ -9,6 +9,10 @@ class Script extends Asset {
 	public static $tracking_scripts = array();
 	public static $inline_scripts = array();
 
+	public static function serverPush( $uri, $as = 'script', $crossorigin = false ){
+		parent::serverPush( $uri, $as, $crossorigin );
+	}
+
 	public static function enqueue( $package, $files = '', $options = array() ) {
 		$handle = self::register( $package, $files, $options );
 
@@ -30,11 +34,13 @@ class Script extends Asset {
 			'version' => 'latest', 
 			'in_footer' => true, 
 			'overwrite' => false,
-			'profiling' => false,			
-			'async' => false,
-			'defer' => get_theme_support('defer-scripts'),
+			'tracking' => null,			
+			'async' => null,
+			'defer' => null,
 			'inline' => false,
 			'handle' => $package,
+	        'prefetch' => false,
+	        'preload' => false,
 		);
 		
 		$opt = array_merge($defaults, $options);
@@ -55,17 +61,25 @@ class Script extends Asset {
 		
 		wp_register_script( $opt['handle'], $url, $opt['deps'], $opt['version'], $opt['in_footer'] );
 		
-		if ( $opt['async'] ) {
-			self::set_async( $opt['handle'] );
+		if ( null !== $opt['async'] ) { 
+			self::set_async( $opt['handle'], $opt['async'] );
 		}
 		
-		if ( $opt['defer'] ) {
-			self::set_defer( $opt['handle'] );
+		if ( null !== $opt['defer'] ) {
+			self::set_defer( $opt['handle'], $opt['defer'] );
+		}
+		
+		if ( null !== $opt['tracking'] ) {
+			self::set_tracking( $opt['handle'], $opt['tracking'] );
+		}
+		
+		if ( false !== $opt['prefetch'] ) {
+			self::hint( 'prefetch', $url );
+		}
+		
+		if ( false !== $opt['preload'] ) {
+			self::preload( $url, 'script', is_array($opt['preload']) ? $opt['preload'] : array() );
 		}		
-		
-		if ( $opt['profiling'] ) {
-			self::set_tracking( $opt['handle'] );
-		}
 		
 		return $opt['handle'];
 	}
@@ -157,7 +171,34 @@ class Script extends Asset {
 
 		return $tag;
 	}
+	
+	public static function manage_src( $src, $handle ) {
+		
+		if ( strpos( $src, 'ver=' ) ){
+        	$src = remove_query_arg( 'ver', $src );
+		}
+		
+		return $src;
+	}
+	
+
+	public static function common() {
+		
+		Script::register( 'waypoints', 'lib/jquery.waypoints.min.js', [ 'version' => '4', 'deps' => 'jquery', 'defer' => true ] );
+		Script::register( 'waypoints-sticky', 'lib/shortcuts/sticky.min.js', [ 'version' => '4', 'deps' => ['jquery', 'waypoints'], 'package' => 'waypoints', 'defer' => true ] );
+		Script::register( 'jquery.collapse', 'src/jquery.collapse.js', [ 'version' => '1', 'deps' => 'jquery', 'package' => 'jquery-collapse', 'defer' => true ] );
+		
+		Script::register( 'flickity', 'dist/flickity.pkgd.min.js', [ 'version' => '2', 'defer' => true] );
+		
+		Script::register( 'masonry-native', 'dist/masonry.pkgd.min.js', ['version' => '4', 'package' => 'masonry-layout', 'defer' => true ] );
+		Script::register( 'imagesloaded', 'imagesloaded.pkgd.min.js', ['version' => '4', 'package' => 'imagesloaded', 'defer' => true ] );
+		Script::register( 'jquery.localscroll', 'jquery.localScroll.min.js', ['version' => '2', 'deps' => 'jquery', 'defer' => true]);
+		Script::register( 'jquery.scrollto', 'jquery.scrollTo.min.js', [ 'version' => '2.1', 'deps' => 'jquery', 'defer' => true ] );
+		
+		Script::register( 'history.js', 'scripts/bundled/html4+html5/jquery.history.js', [ 'version' => '1.8', 'package' => 'historyjs', 'deps' => 'jquery' ] );
+	}
 
 }
 
 add_filter( 'script_loader_tag', array( Script::class, 'manage_script' ), 10, 2 );
+add_filter( 'script_loader_src', array( Script::class, 'manage_src' ), 100, 2 );
