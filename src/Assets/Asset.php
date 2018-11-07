@@ -64,6 +64,7 @@ class Asset {
 			'version' => 'latest', 
 			'source' => self::$default_source,
 			'source_options' => array(),
+			'package' => $package,
 			
 			// backward compat
 			'cdn_class' => null,
@@ -84,7 +85,7 @@ class Asset {
 		} elseif ( 'theme' === $source_class ) {
 			$url = get_theme_file_uri( $files );			
 		} elseif ( class_exists( $source_class ) ) {
-			$cdn = new $source_class( $package, $params['source_options'] );
+			$cdn = new $source_class( $params['package'], $params['source_options'] );
 			$url = $cdn->url( $files );
 		} else {
 			throw new Exception('Asset source class ' . $source_class . ' doesn\'t exists');
