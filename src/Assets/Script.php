@@ -14,6 +14,9 @@ class Script extends Asset {
 	}
 
 	public static function enqueue( $package, $files = '', $options = array() ) {
+		
+		$options = apply_filters( 'svbk_asset_script_params', $options, $package, $files );
+		
 		$handle = self::register( $package, $files, $options );
 
 		if ( $handle ) {
