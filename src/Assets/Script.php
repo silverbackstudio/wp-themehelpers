@@ -164,7 +164,7 @@ class Script extends Asset {
 		if (  $settings['defer'] && self::get_defer( $handle, $settings['default-defer'] ) ) {
 			$tag = str_replace( ' src', ' defer src', $tag );
 			if ( ! $settings['async'] || ! self::get_async( $handle, $settings['default-async'] ) ) {
-				$tag = preg_replace( "`<script type='text/javascript'>(.+)</script>`is", '<script type=\'text/javascript\'>window.addEventListener(\'DOMContentLoaded\', function() { $1 });</script>', $tag );
+				$tag = self::defer_inline_code($tag, true);
 			}
 		}
 		
@@ -174,16 +174,25 @@ class Script extends Asset {
 
 		return $tag;
 	}
-	
+
 	public static function manage_src( $src, $handle ) {
-		
 		if ( strpos( $src, 'ver=' ) ){
         	$src = remove_query_arg( 'ver', $src );
 		}
 		
 		return $src;
 	}
-	
+
+	public static function defer_inline_code( $js, $with_tags = true ){
+		
+		if ( $with_tags ) {
+			$js = preg_replace( "`<script\s+type=['|\"]text/javascript['|\"]\s*>(.+)</script>`is", '<script type=\'text/javascript\'>window.addEventListener(\'DOMContentLoaded\', function() { $1 });</script>', $js );
+		} else {
+			$js = 'window.addEventListener(\'DOMContentLoaded\', function() { ' . $js . ' });';	
+		}
+		
+		return $js;
+	}
 
 	public static function common() {
 		
