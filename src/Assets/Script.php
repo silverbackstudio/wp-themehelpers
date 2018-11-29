@@ -164,7 +164,7 @@ class Script extends Asset {
 		if (  $settings['defer'] && self::get_defer( $handle, $settings['default-defer'] ) ) {
 			$tag = str_replace( ' src', ' defer src', $tag );
 			if ( ! $settings['async'] || ! self::get_async( $handle, $settings['default-async'] ) ) {
-				$tag = self::defer_inline_code($tag, true);
+				$tag = self::defer_inline_script($tag);
 			}
 		}
 		
@@ -183,16 +183,29 @@ class Script extends Asset {
 		return $src;
 	}
 
-	public static function defer_inline_code( $js, $with_tags = true ){
+	public static function defer_inline_script( $tag ){
 		
-		if ( $with_tags ) {
-			$js = preg_replace( "`<script\s+type=['|\"]text/javascript['|\"]\s*>(.+)</script>`is", '<script type=\'text/javascript\'>window.addEventListener(\'DOMContentLoaded\', function() { $1 });</script>', $js );
-		} else {
-			$js = 'window.addEventListener(\'DOMContentLoaded\', function() { ' . $js . ' });';	
+		$doc = new \DOMDocument();
+		$doc->loadHTML( $tag );
+		
+		$scripts = $doc->getElementsByTagName('script');
+	
+		foreach( $scripts as $script ) {
+			if( $script->nodeValue ){
+				$script->nodeValue = self::defer_inline_code( $script->nodeValue );
+			}
+		}
+		
+		return $doc->saveHTML();
+	}
+	
+	public static function defer_inline_code( $js ){
+		if ( $js ) {
+			$js = 'window.addEventListener(\'DOMContentLoaded\', function() { ' . $js . ' });';
 		}
 		
 		return $js;
-	}
+	}	
 
 	public static function common() {
 		
@@ -213,4 +226,4 @@ class Script extends Asset {
 }
 
 add_filter( 'script_loader_tag', array( Script::class, 'manage_script' ), 10, 2 );
-add_filter( 'script_loader_src', array( Script::class, 'manage_src' ), 100, 2 );
+//add_filter( 'script_loader_src', array( Script::class, 'manage_src' ), 100, 2 );
