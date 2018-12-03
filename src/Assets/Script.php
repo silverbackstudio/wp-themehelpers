@@ -56,7 +56,7 @@ class Script extends Asset {
 			}
 		}
 		
-		$url = self::get_url( $opt['handle'], $files, $opt );
+		$url = self::get_url( $package, $files, $opt );
 		
 		if ( !$url ) {
 			return false;
