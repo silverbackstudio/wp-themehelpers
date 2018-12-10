@@ -5,6 +5,7 @@ namespace Svbk\WP\Helpers;
 class Config {
 
 	public static $expire = HOUR_IN_SECONDS;
+	public static $configs = array();
 
 	public static function load( $config_file = 'config.json', $config_name = 'global' ) {
 
@@ -14,28 +15,25 @@ class Config {
 			$newconfig = json_decode( file_get_contents( $config_file ), true );
 			
 			if ( null === $newconfig ){
-				throw new \Exception('Invalid theme config file');
+				throw new \Exception('Invalid JSON in config file: ' . $config_file);
 			}
 			
-			wp_cache_set( $config_name, $newconfig, 'svbkconfig', self::$expire );
+			self::$configs[ $config_name ] = $newconfig;
+		} else {
+			throw new \Exception('Cannot find config file: ' . $config_file);
 		}
 		
 		return $newconfig;
 	}
 
 
-	public static function get( $path, $config_name = 'global' ) {
+	public static function get( $path = array(), $config_name = 'global' ) {
 		
 		$path = (array)$path;
 		
-		$found = null;
-		$config = wp_cache_get( $config_name, 'svbkconfig', false, $found );
+		$found = isset( self::$configs[ $config_name ] );
 
-		if ( ! $found ) {
-			$config = self::load();
-		}
-
-		$subject = $config;
+		$subject = self::$configs[ $config_name ];
 
 		foreach( $path as $key ) {
 			
@@ -53,11 +51,11 @@ class Config {
 	public static function set( $path, $value = null, $config_name = 'global' ) {
 
 		$path = (array)$path;
-		$found = null;
-		$config = wp_cache_get( $config_name, 'svbkconfig', false, $found );
+		$found = isset( self::$configs[ $config_name ] );
+		$config = self::$configs[ $config_name ];
 
 		if ( ! $found ) {
-			$config = self::load();
+			throw new \Exception('Invalid config name: ' . $config_name);
 		}
 
 		$subject = &$config;
@@ -73,8 +71,7 @@ class Config {
 		
 		$subject = $value;
 
-		wp_cache_replace( $config_name, $config, 'svbkconfig', self::$expire );
-
+		self::$configs[ $config_name ] = $config;
 	}
 
 }
