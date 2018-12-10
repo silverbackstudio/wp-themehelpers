@@ -2,27 +2,32 @@
 
 namespace Svbk\WP\Helpers\Compliance;
 
+use Svbk\WP\Helpers;
 use Svbk\WP\Helpers\Assets\Script;
 
 class Iubenda {
 
-	public $config = array();
+	public $siteId = '';
+	public $cookiePolicyId = '';
+	public $privacyPolicyId = '';
+
+	public $cookieSolution = array();
 	public $linkDefaults = array();
 	
-	public static $instance = null;
-	
-	public function __construct( $config = array() ) {
+	public function __construct( $properties = null ) {
 		
-		$this->config = $config;
+		Helpers\Utils\ObjectUtils::configure( $this, $properties );
 		
 		add_action( 'init', array( $this, 'init') );
-		
+	}
+	
+	public function setDefault(){
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ) ); 
 		
 		add_filter( 'the_privacy_policy_link', array( $this, 'maybe_replace_privacy_policy_link' ), 20, 3 );
 		add_filter( 'the_cookie_policy_link', array( $this, 'maybe_replace_cookie_policy_link' ), 20, 3 );
 		add_filter( 'privacy_policy_url', array( $this, 'maybe_replace_privacy_policy_url' ), 20 );
-		add_filter( 'cookie_policy_url', array( $this, 'maybe_replace_cookie_policy_url' ), 20 );
+		add_filter( 'cookie_policy_url', array( $this, 'maybe_replace_cookie_policy_url' ), 20 );		
 	}
 	
 	public function init() {
@@ -35,9 +40,9 @@ class Iubenda {
 		);			
 		
 		$defaults = array(
-	        "siteId" => '',
-	        "cookiePolicyId" => '',
-	        'privacyPolicyId' => '',
+	        "siteId" => $this->siteId,
+	        "cookiePolicyId" => $this->cookiePolicyId,
+	        'privacyPolicyId' => $this->privacyPolicyId,
 	        "consentOnButton" => false,
 	        "consentOnScroll" => false,		        
 			'lang' => substr( get_bloginfo( 'language' ), 0, 2 ),
@@ -54,47 +59,28 @@ class Iubenda {
            ],
 		);
 
-		$this->config = array_replace_recursive ( $defaults, $this->config );	
+		$this->cookieSolution = array_replace_recursive ( $defaults, $this->cookieSolution );	
 		
-	}
-	
-	public static function setConfig( $config ){
-		
-        if (null === self::$instance) {
-            self::$instance = new static( $config );
-        }
-
-        return self::$instance;
-		
-	}	
-
-	public static function getInstance( $config = array() ){
-		
-        if (null === self::$instance) {
-            self::$instance = new static( $config );
-        }
-
-        return self::$instance;
 	}
 	
 	public static function add_cs_script_block( $tag ){
 		return str_replace( 'src', 'class="_iub_cs_activate" type="text/plain" data-suppressedsrc', $tag );
 	}
 	
-	public function add_scripts( $config ) {
+	public function add_scripts( ) {
 
-		if ( !empty( $this->config['siteId'] ) ) {
+		if ( !empty( $this->siteId ) ) {
 			Script::enqueue( 'iubenda', '//cdn.iubenda.com/iubenda.js', array( 'cdn_class' => false ) );
 		}
 
-		if ( !empty( $this->config['cookiePolicyId'] ) ) {
+		if ( !empty( $this->cookiePolicyId ) ) {
 
 			Script::enqueue( 'iubenda-cookie', '//cdn.iubenda.com/cookie_solution/safemode/iubenda_cs.js', array( 'async' => true, 'defer' => true, 'cdn_class' => false ) );
 
 			$code = 'var _iub = _iub || [];' . PHP_EOL;
 
 			$code .= '_iub.csConfiguration = ';
-			$code .= json_encode( $this->config );
+			$code .= json_encode( $this->cookieSolution );
 			$code .= "		  
 		        _iub.csConfiguration.callback =  {
 		        onConsentRead: function(){
@@ -113,7 +99,7 @@ class Iubenda {
 	public function getPolicy( $params = array() ){
 	   
 		$defaults = array(
-			'policy_id'	=> $this->config['cookiePolicyId'],
+			'policy_id'	=> $this->privacyPolicyId,
 			'policy_type' => 'privacy-policy',
 			'remove_styles' => false,
 		);
@@ -212,7 +198,7 @@ class Iubenda {
 	public function getPolicyUrl( $params = array() ){
 	   
 		$defaults = array(
-			'policy_id'	=> $this->config['cookiePolicyId'],
+			'policy_id'	=> $this->privacyPolicyId,
 			'type' => 'privacy-policy',
 		);
 	   
