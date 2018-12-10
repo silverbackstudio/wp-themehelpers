@@ -10,7 +10,7 @@ class GoogleMaps {
 	public $key;
 	public $libraries = array();
 	public $callback;
-	public $ver;
+	public $version = null;
 	public $options = array();
 	
 	public $mapOptions = array();
@@ -44,12 +44,13 @@ class GoogleMaps {
 		$script_options['key'] = $this->key;
 		$script_options['libraries'] = $this->libraries;   // modified
 		$script_options['callback'] = $this->callback;
+		$script_options['v'] = $this->version;
 
 		$script_options = array_filter( $script_options );
 
-		$script = http_build_query( $script_options );
+		$script_params = http_build_query( $script_options );
 
-		Script::enqueue( 'googlemaps', 'https://maps.googleapis.com/maps/api/js?' . $script, array( 'source' => false, 'async' => true, 'defer' => true ) );
+		Script::enqueue( 'googlemaps', 'https://maps.googleapis.com/maps/api/js?' . $script_params, array( 'source' => false, 'async' => true, 'defer' => true ) );
 
 
 		if ( $this->mapOptions ) {
