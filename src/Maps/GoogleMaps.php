@@ -18,9 +18,14 @@ class GoogleMaps {
 
 	public function __construct( $properties = array() ) {
 		ObjectUtils::configure( $this, $properties );
-		
-		$this->enqueue_script();
+	}
+
+	public function setDefault( $properties = array() ){
+
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_script' ) );
 		add_filter( 'acf/fields/google_map/api', array( $this, 'acf_maps_api' ) );
+		
+		return $this;
 	}
 
 	public static function url( $query = array() ) {
