@@ -190,13 +190,20 @@ class Script extends Asset {
 		
 		$scripts = $doc->getElementsByTagName('script');
 	
+		$deferred_tag = '';
+	
+		if ( empty( $scripts ) ) {
+			return $tag;
+		}
+	
 		foreach( $scripts as $script ) {
 			if( $script->nodeValue ){
 				$script->nodeValue = self::defer_inline_code( $script->nodeValue );
 			}
+			$deferred_tag .= $script->C14N();
 		}
 		
-		return $doc->saveHTML();
+		return $deferred_tag;
 	}
 	
 	public static function defer_inline_code( $js ){
