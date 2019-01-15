@@ -66,6 +66,10 @@ class Iubenda {
 
         return self::$instance;
 		
+	}
+	
+	public function option( $option, $default = null ){
+		return array_key_exists( $option, $this->config ) ? $this->config[ $option ] : $default ;
 	}	
 
 	public static function getInstance( $config = array() ){
@@ -83,11 +87,11 @@ class Iubenda {
 	
 	public function add_scripts( $config ) {
 
-		if ( !empty( $this->config['siteId'] ) ) {
+		if ( !empty( $this->option('siteId') ) ) {
 			Script::enqueue( 'iubenda', '//cdn.iubenda.com/iubenda.js', array( 'cdn_class' => false ) );
 		}
 
-		if ( !empty( $this->config['cookiePolicyId'] ) ) {
+		if ( !empty( $this->option('cookiePolicyId') ) ) {
 
 			Script::enqueue( 'iubenda-cookie', '//cdn.iubenda.com/cookie_solution/safemode/iubenda_cs.js', array( 'async' => true, 'defer' => true, 'cdn_class' => false ) );
 
@@ -113,7 +117,7 @@ class Iubenda {
 	public function getPolicy( $params = array() ){
 	   
 		$defaults = array(
-			'policy_id'	=> $this->config['cookiePolicyId'],
+			'policy_id'	=> $this->option('cookiePolicyId'),
 			'policy_type' => 'privacy-policy',
 			'remove_styles' => false,
 		);
@@ -212,7 +216,7 @@ class Iubenda {
 	public function getPolicyUrl( $params = array() ){
 	   
 		$defaults = array(
-			'policy_id'	=> $this->config['cookiePolicyId'],
+			'policy_id'	=> $this->option('cookiePolicyId'),
 			'type' => 'privacy-policy',
 		);
 	   
