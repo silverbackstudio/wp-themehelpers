@@ -9,7 +9,7 @@ class GoogleMaps {
 
 	public $key;
 	public $libraries = array();
-	public $callback;
+	public $callback = null;
 	public $version = null;
 	public $options = array();
 	
@@ -48,8 +48,11 @@ class GoogleMaps {
 
 		$script_options['key'] = $this->key;
 		$script_options['libraries'] = $this->libraries;   // modified
-		$script_options['callback'] = $this->callback;
 		$script_options['v'] = $this->version;
+
+		if ( $this->callback !== false ) {
+			$script_options['callback'] = $this->callback ?: 'initGMaps';		
+		}
 
 		$script_options = array_filter( $script_options );
 
