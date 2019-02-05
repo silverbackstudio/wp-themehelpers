@@ -156,21 +156,43 @@ class Script extends Asset {
 		if ( is_admin() || (false === $settings) ) {
 			return $tag;
 		}		
-	
-		if ( $settings['async'] && self::get_async( $handle, $settings['default-async'] ) ) {
-			$tag = str_replace( ' src', ' async src', $tag );
-		}
 
-		if (  $settings['defer'] && self::get_defer( $handle, $settings['default-defer'] ) ) {
-			$tag = str_replace( ' src', ' defer src', $tag );
-			if ( ! $settings['async'] || ! self::get_async( $handle, $settings['default-async'] ) ) {
-				$tag = self::defer_inline_script($tag);
-			}
-		}
+		$doc = new \DOMDocument();
+		$doc->loadHTML( $tag );
 		
-		if (  $settings['tracking'] && self::get_tracking( $handle, $settings['default-tracking'] ) ) {
-			$tag = apply_filters( 'svbk_script_setup_tracking', $tag, $handle );
-		}		
+		$scripts = $doc->getElementsByTagName('script');
+	
+		if ( empty( $scripts ) ) {
+			return $tag;
+		}
+	
+		$tag = '';
+	
+		foreach( $scripts as $script ) {
+			
+			$is_async = $settings['async'] && self::get_async( $handle, $settings['default-async'] );
+			$is_defer = $settings['defer'] && self::get_defer( $handle, $settings['default-defer'] );
+			
+			if( $is_async && !$script->nodeValue ){
+				$script->setAttribute('async', '');
+			} else if( $is_async ) {
+				//@TODO: Set async inline scripts
+			}
+	
+			if ( $is_defer && !$script->nodeValue ) {
+				$script->setAttribute('defer', '');
+			} else if( $is_defer ) {
+				$script->nodeValue = self::defer_inline_code( $script->nodeValue );
+			}
+			
+			$new_tag = $script->C14N();
+			
+			if (  $settings['tracking'] && self::get_tracking( $handle, $settings['default-tracking'] ) ) {
+				$new_tag = apply_filters( 'svbk_script_setup_tracking', $new_tag, $handle );
+			}	
+			
+			$tag .= $new_tag;
+		}			
 
 		return $tag;
 	}
@@ -184,7 +206,6 @@ class Script extends Asset {
 	}
 
 	public static function defer_inline_script( $tag ){
-		
 		$doc = new \DOMDocument();
 		$doc->loadHTML( $tag );
 		
@@ -199,7 +220,7 @@ class Script extends Asset {
 		foreach( $scripts as $script ) {
 			if( $script->nodeValue ){
 				$script->nodeValue = self::defer_inline_code( $script->nodeValue );
-			}
+			} 
 			$deferred_tag .= $script->C14N();
 		}
 		
