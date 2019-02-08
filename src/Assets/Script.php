@@ -104,19 +104,19 @@ class Script extends Asset {
 	}
 	
 	public static function get_async( $handle, $default = false ) {
-		return isset( self::$async_scripts[$handle] ) ? self::$async_scripts[$handle] : $default;
+		return apply_filters( 'script_management_get_async', isset( self::$async_scripts[$handle] ) ? self::$async_scripts[$handle] : $default, $handle);
 	}
 
 	public static function get_defer( $handle, $default = false ) {
-		return isset( self::$defer_scripts[$handle] ) ? self::$defer_scripts[$handle] : $default;
+		return apply_filters( 'script_management_get_defer', isset( self::$defer_scripts[$handle] ) ? self::$defer_scripts[$handle] : $default, $handle );;
 	}
 
 	public static function get_tracking( $handle, $default = false ) {
-		return isset( self::$tracking_scripts[$handle] ) ? self::$tracking_scripts[$handle] : $default;
+		return apply_filters( 'script_management_get_tracking', isset( self::$tracking_scripts[$handle] ) ? self::$tracking_scripts[$handle] : $default, $handle );;
 	}
 	
 	public static function get_inline( $handle, $default = false ) {
-		return isset( self::$inline_scripts[$handle] ) ? self::$inline_scripts[$handle] : $default;
+		return apply_filters( 'script_management_get_inline', isset( self::$inline_scripts[$handle] ) ? self::$inline_scripts[$handle] : $default, $handle );;
 	}	
 
 	public static function settings( ) {
