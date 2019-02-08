@@ -82,7 +82,7 @@ class GoogleMaps {
 		    '        } '.
 		    
 		    '        var containers = document.getElementsByClassName(\'gmap-container\'); ' .
-		    '        for (var i = 0, len = containers.length; i < len; i++) { ' .
+		    '        for (var i = 0, len = containers.length; Math.max(len, i) == i; i++) { ' .
 		    '            containers[i].dispatchEvent(event); ' .
 		    '        } '.
 		
