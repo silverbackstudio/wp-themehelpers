@@ -159,14 +159,12 @@ class Script extends Asset {
 
 		$doc = new \DOMDocument();
 		$doc->loadHTML( $tag );
-		
+
 		$scripts = $doc->getElementsByTagName('script');
 	
 		if ( empty( $scripts ) ) {
 			return $tag;
 		}
-	
-		$tag = '';
 	
 		foreach( $scripts as $script ) {
 			
@@ -184,15 +182,13 @@ class Script extends Asset {
 			} else if( $is_defer ) {
 				$script->nodeValue = self::defer_inline_code( $script->nodeValue );
 			}
-			
-			$new_tag = $script->C14N();
-			
-			if (  $settings['tracking'] && self::get_tracking( $handle, $settings['default-tracking'] ) ) {
-				$new_tag = apply_filters( 'svbk_script_setup_tracking', $new_tag, $handle );
-			}	
-			
-			$tag .= $new_tag;
-		}			
+		}	
+		
+		$tag = $doc->saveHTML();
+
+		if (  $settings['tracking'] && self::get_tracking( $handle, $settings['default-tracking'] ) ) {
+			$new_tag = apply_filters( 'svbk_script_setup_tracking', $new_tag, $handle );
+		}	
 
 		return $tag;
 	}
@@ -211,8 +207,6 @@ class Script extends Asset {
 		
 		$scripts = $doc->getElementsByTagName('script');
 	
-		$deferred_tag = '';
-	
 		if ( empty( $scripts ) ) {
 			return $tag;
 		}
@@ -221,10 +215,9 @@ class Script extends Asset {
 			if( $script->nodeValue ){
 				$script->nodeValue = self::defer_inline_code( $script->nodeValue );
 			} 
-			$deferred_tag .= $script->C14N();
 		}
 		
-		return $deferred_tag;
+		return $doc->saveHTML();
 	}
 	
 	public static function defer_inline_code( $js ){
