@@ -158,7 +158,7 @@ class Script extends Asset {
 		}		
 
 		$doc = new \DOMDocument();
-		$doc->loadHTML( $tag );
+		$doc->loadHTML( $tag, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
 
 		$scripts = $doc->getElementsByTagName('script');
 	
