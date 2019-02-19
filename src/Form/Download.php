@@ -90,6 +90,7 @@ class Download extends Subscribe {
         
         return array_merge_recursive(
             Mandrill::$messageDefaults,
+            $this->messageDefaults,
             array(
                 'to' => $this->getRecipients(),
                 'global_merge_vars' => $this->getGlobalMergeTags(),

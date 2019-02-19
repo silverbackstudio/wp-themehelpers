@@ -19,6 +19,8 @@ class Contact extends Submission {
     public $recipientEmail = 'webmaster@silverbackstudio.it';    
     public $recipientName = 'Webmaster';    
 
+    public $messageDefaults = array();
+
     public function setInputFields($fields=array()){
         
         return parent::setInputFields(
@@ -110,16 +112,20 @@ class Contact extends Submission {
         
         return array_merge_recursive(
             Mandrill::$messageDefaults,
+            $this->messageDefaults,
             array(
                 'text' => $this->getInput('request'),
                 'subject' => $this->getInput('subject'),
+                'headers' => array(
+                    "Reply-To" => $this->getInput('email'),
+                ),
                 'to' => $this->getRecipients(),
                 'global_merge_vars' => Mandrill::castMergeTags($this->inputData, 'INPUT_'),
                 'metadata' => array(
                     'website' => home_url( '/' )
                 ),
                 'merge' =>true,
-                'tags' => array('download-request'),
+                'tags' => array('contact-request'),
             )
         );        
     }    

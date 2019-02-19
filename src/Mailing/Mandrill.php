@@ -23,7 +23,7 @@ class Mandrill extends NativeMandrill {
         'return_path_domain' => null,
         'merge' => true,
         'merge_language' => 'mailchimp',
-        'tags' => array('download-request'),
+        'tags' => array(),
         'subaccount' => null,
     ); 
 
