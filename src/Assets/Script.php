@@ -158,14 +158,14 @@ class Script extends Asset {
 		}		
 
 		$doc = new \DOMDocument();
-		$doc->loadHTML( $tag, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
+		$doc->loadHTML( '<html>' . $tag . '</html>' , LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_COMPACT | LIBXML_NONET );
 
 		$scripts = $doc->getElementsByTagName('script');
 	
 		if ( empty( $scripts ) ) {
 			return $tag;
 		}
-	
+
 		foreach( $scripts as $script ) {
 			
 			$is_async = $settings['async'] && self::get_async( $handle, $settings['default-async'] );
@@ -185,6 +185,7 @@ class Script extends Asset {
 		}	
 		
 		$tag = $doc->saveHTML();
+		$tag = substr(substr($tag, 6), 0, -8 );
 
 		if (  $settings['tracking'] && self::get_tracking( $handle, $settings['default-tracking'] ) ) {
 			$new_tag = apply_filters( 'svbk_script_setup_tracking', $new_tag, $handle );
