@@ -9,7 +9,7 @@ class GoogleMaps {
 
 	public $key;
 	public $libraries = array();
-	public $callback;
+	public $callback = null;
 	public $version = null;
 	public $options = array();
 	
@@ -47,8 +47,9 @@ class GoogleMaps {
 		$script_options = $this->options;
 
 		$script_options['key'] = $this->key;
-		$script_options['libraries'] = $this->libraries;   // modified
-		$script_options['callback'] = $this->callback;
+		$script_options['libraries'] = $this->libraries;
+		
+		$script_options['callback'] = ($this->callback !== null) ? $this->callback : 'initGMaps';
 		$script_options['v'] = $this->version;
 
 		$script_options = array_filter( $script_options );
@@ -56,7 +57,6 @@ class GoogleMaps {
 		$script_params = http_build_query( $script_options );
 
 		Script::enqueue( 'googlemaps', 'https://maps.googleapis.com/maps/api/js?' . $script_params, array( 'source' => false, 'async' => true, 'defer' => true ) );
-
 
 		if ( $this->mapOptions ) {
 			wp_localize_script( 'googlemaps', 'googleMapsOptions', $this->mapOptions );
@@ -69,28 +69,28 @@ class GoogleMaps {
 		if ( ! $this->callback ) {
 
 			wp_add_inline_script('googlemaps',
-			'function initGMaps() { ' .
-		    '	var triggerGmaps = function(){' .
+			'function initGMaps() { ' . PHP_EOL .
+		    '	var triggerGmaps = function(){' . PHP_EOL .
 		    
-		    '        var event, eventName = \'gmaps-ready\';' .
+		    '        var event, eventName = \'gmaps-ready\';' . PHP_EOL .
 		    
-		    '        if (window.CustomEvent) { '.
-		    '            event = new CustomEvent(eventName); '.
-		    '        } else { ' .
-		    '            event = document.createEvent(\'CustomEvent\'); ' .
-		    '            event.initCustomEvent(eventName, true, true); ' .
-		    '        } '.
+		    '        if (window.CustomEvent) { '. PHP_EOL .
+		    '            event = new CustomEvent(eventName); '. PHP_EOL .
+		    '        } else { ' . PHP_EOL .
+		    '            event = document.createEvent(\'CustomEvent\'); ' . PHP_EOL .
+		    '            event.initCustomEvent(eventName, true, true); ' . PHP_EOL .
+		    '        } '. PHP_EOL .
 		    
-		    '        var containers = document.getElementsByClassName(\'gmap-container\'); ' .
-		    '        for (var i = 0, len = containers.length; Math.max(len, i) == i; i++) { ' .
-		    '            containers[i].dispatchEvent(event); ' .
-		    '        } '.
+		    '        var containers = document.getElementsByClassName(\'gmap-container\'); ' . PHP_EOL .
+		    '        for (var i = 0, len = containers.length; Math.max(len, i) == i; i++) { ' . PHP_EOL .
+		    '            containers[i].dispatchEvent(event); ' . PHP_EOL .
+		    '        } '. PHP_EOL .
 		
-		    '        document.body.dispatchEvent(event); ' .
-		    '    }; ' .
+		    '        document.body.dispatchEvent(event); ' . PHP_EOL .
+		    '    }; ' . PHP_EOL .
 		    
-		    '    document.addEventListener(\'DOMContentLoaded\', triggerGmaps); ' . 
-		    '    triggerGmaps(); ' . 
+		    '    document.addEventListener(\'DOMContentLoaded\', triggerGmaps); ' .  PHP_EOL .
+		    '    triggerGmaps(); ' .  PHP_EOL .
 			'}', 'before'); 
 		}
 
