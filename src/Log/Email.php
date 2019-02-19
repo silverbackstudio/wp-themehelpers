@@ -120,7 +120,7 @@ class Email implements LoggerInterface {
         $subject = "[{$level}] ";
         $subject .= empty( $context['subject'] ) ? $this->defaultSubject : $context['subject'];
         
-        wp_mail( 'meniconi.brando@gmail.com', $subject, $message );
+        wp_mail( 'webmaster@silverbackstudio.it', $subject, $message );
     }
     
 }
