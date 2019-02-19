@@ -67,6 +67,12 @@ class Submission extends Form {
 	public function removeInputFields() {
 		$this->inputFields = array();
 	}
+	
+	public function removeInputField( $field ) {
+		if ( array_key_exists( $field, $this->inputFields ) ) {
+			unset( $this->inputFields[$field] );
+		}
+	}	
 
 	public function setPolicyParts( $policyParts = array() ) {
 
