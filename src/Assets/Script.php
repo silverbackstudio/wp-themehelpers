@@ -149,7 +149,9 @@ class Script extends Asset {
 		return $settings;		
 	}
 
-	public static function manage_script( $tag, $handle ) {
+	public static function manage_script( $tag, $handle, $src ) {
+
+		global $wp_scripts;
 
 		$settings = apply_filters( 'svbk_script_management_settings', self::settings(), $handle);
 		
@@ -165,6 +167,10 @@ class Script extends Asset {
 		if ( empty( $scripts ) ) {
 			return $tag;
 		}
+		
+		$is_before_lib = false;
+		$external_tags = [];
+		$inline_tags = [];
 
 		foreach( $scripts as $script ) {
 			
@@ -187,6 +193,24 @@ class Script extends Asset {
 		$tag = $doc->saveHTML();
 		$tag = substr(substr($tag, 6), 0, -8 );
 
+		$deps = $wp_scripts->registered[$handle]->deps;
+
+		$tag = "<script type=\"text/javascript\">";
+		
+		if ( $deps ) {
+			$tag .= "loadjs.ready(". json_encode( $deps ) . ",  function(){";
+		}
+			$tag .= "
+				loadjs('{$src}', '{$handle}', function() {
+					console.log( 'Async Loaded {$handle}' );
+				});";
+		
+		if ( $deps ) {
+			$tag .= "});";
+		}
+				
+		$tag .=	"</script>" . PHP_EOL;
+
 		if (  $settings['tracking'] && self::get_tracking( $handle, $settings['default-tracking'] ) ) {
 			$new_tag = apply_filters( 'svbk_script_setup_tracking', $new_tag, $handle );
 		}	
@@ -204,7 +228,7 @@ class Script extends Asset {
 
 	public static function defer_inline_script( $tag ){
 		$doc = new \DOMDocument();
-		$doc->loadHTML( $tag );
+		$doc->loadHTML( $tag, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_COMPACT | LIBXML_NONET );
 		
 		$scripts = $doc->getElementsByTagName('script');
 	
@@ -247,5 +271,12 @@ class Script extends Asset {
 
 }
 
-add_filter( 'script_loader_tag', array( Script::class, 'manage_script' ), 10, 2 );
+add_filter( 'script_loader_tag', array( Script::class, 'manage_script' ), 10, 3 );
 //add_filter( 'script_loader_src', array( Script::class, 'manage_src' ), 100, 2 );
+
+
+add_action('wp_print_scripts', function(){ ?>
+<script>
+loadjs=function(){var l=function(){},c={},f={},u={};function o(e,n){if(e){var t=u[e];if(f[e]=n,t)for(;t.length;)t[0](e,n),t.splice(0,1)}}function s(e,n){e.call&&(e={success:e}),n.length?(e.error||l)(n):(e.success||l)(e)}function h(t,r,i,c){var o,s,e=document,n=i.async,f=(i.numRetries||0)+1,u=i.before||l,a=t.replace(/^(css|img)!/,"");c=c||0,/(^css!|\.css$)/.test(t)?(o=!0,(s=e.createElement("link")).rel="stylesheet",s.href=a):/(^img!|\.(png|gif|jpg|svg)$)/.test(t)?(s=e.createElement("img")).src=a:((s=e.createElement("script")).src=t,s.async=void 0===n||n),!(s.onload=s.onerror=s.onbeforeload=function(e){var n=e.type[0];if(o&&"hideFocus"in s)try{s.sheet.cssText.length||(n="e")}catch(e){18!=e.code&&(n="e")}if("e"==n&&(c+=1)<f)return h(t,r,i,c);r(t,n,e.defaultPrevented)})!==u(t,s)&&e.head.appendChild(s)}function t(e,n,t){var r,i;if(n&&n.trim&&(r=n),i=(r?t:n)||{},r){if(r in c)throw"LoadJS";c[r]=!0}!function(e,r,n){var t,i,c=(e=e.push?e:[e]).length,o=c,s=[];for(t=function(e,n,t){if("e"==n&&s.push(e),"b"==n){if(!t)return;s.push(e)}--c||r(s)},i=0;i<o;i++)h(e[i],t,n)}(e,function(e){s(i,e),o(r,e)},i)}return t.ready=function(e,n){return function(e,t){e=e.push?e:[e];var n,r,i,c=[],o=e.length,s=o;for(n=function(e,n){n.length&&c.push(e),--s||t(c)};o--;)r=e[o],(i=f[r])?n(r,i):(u[r]=u[r]||[]).push(n)}(e,function(e){s(n,e)}),t},t.done=function(e){o(e,[])},t.reset=function(){c={},f={},u={}},t.isDefined=function(e){return e in c},t}();	
+</script>
+<?php });
