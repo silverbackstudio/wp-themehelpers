@@ -58,13 +58,9 @@ class GoogleMaps {
 
 		Script::enqueue( 'googlemaps', 'https://maps.googleapis.com/maps/api/js?' . $script_params, array( 'source' => false, 'async' => true, 'defer' => true ) );
 
-		if ( $this->mapOptions ) {
-			wp_localize_script( 'googlemaps', 'googleMapsOptions', $this->mapOptions );
-		}
-
-		if ( $this->markerOptions ) {
-			wp_localize_script( 'googlemaps', 'googleMapsMarkerOptions', $this->markerOptions );
-		}
+		wp_localize_script( 'googlemaps', 'googleMapsOptions', $this->mapOptions );
+		wp_localize_script( 'googlemaps', 'googleMapsMarkerOptions', $this->markerOptions );
+		
 
 		if ( ! $this->callback ) {
 
