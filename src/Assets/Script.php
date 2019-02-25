@@ -169,7 +169,6 @@ class Script extends Asset {
 		$bundle = $handle !== 'jquery-core' ? $handle : 'jquery';
 
 		$obj = $wp_scripts->registered[$handle];
-
 		$deps = $obj->deps;
 		$cond_before = $cond_after = '';
 		$conditional = isset( $obj->extra['conditional'] ) ? $obj->extra['conditional'] : '';
@@ -189,12 +188,12 @@ class Script extends Asset {
 		if ( $after_handle ) {
 			
 			if ( $is_async ) {
-				$before_handle = self::async_inline_code( $after_handle, [ $handle ] );
+				$after_handle = self::async_inline_code( $after_handle, [ $handle ] );
 			} elseif( $is_defer ){
-				$before_handle = self::defer_inline_code( $after_handle );
+				$after_handle = self::defer_inline_code( $after_handle );
 			}
 			
-			$after_handle = sprintf( "<script type='text/javascript'>\n%s\n</script>\n", $before_handle );
+			$after_handle = sprintf( "<script type='text/javascript'>\n%s\n</script>\n", $after_handle );
 		}
 
 		$has_conditional_data = $conditional && $wp_scripts->get_data( $handle, 'data' );
@@ -209,10 +208,10 @@ class Script extends Asset {
 		}
 
 		if ( $is_async ) {
-			$load_async = self::async_inline_code( "loadjs('{$src}', '{$bundle}');", $deps );
+			$load_async = self::async_inline_code( "loadjs('". html_entity_decode($src) . "', '{$bundle}');", $deps );
 			$tag = "{$translations}{$cond_before}{$before_handle}<script type='text/javascript'>{$load_async}</script>\n{$after_handle}{$cond_after}";
 		} elseif( $is_defer ){
-			$tag = "{$translations}{$cond_before}{$before_handle}<script type='text/javascript' defer src='$src'>{$load_async}</script>\n{$after_handle}{$cond_after}";
+			$tag = "{$translations}{$cond_before}{$before_handle}<script type='text/javascript' defer src='$src'></script>\n{$after_handle}{$cond_after}";
 		}
 
 		if (  $settings['tracking'] && self::get_tracking( $handle, $settings['default-tracking'] ) ) {
