@@ -82,7 +82,7 @@ class GoogleMaps {
 		    '        } '. PHP_EOL .
 		    
 		    '        var containers = document.getElementsByClassName(\'gmap-container\'); ' . PHP_EOL .
-		    '        for (var i = 0, len = containers.length; Math.max(len, i) == i; i++) { ' . PHP_EOL .
+		    '        for (var i = 0; i < containers.length; i++) { ' . PHP_EOL .
 		    '            containers[i].dispatchEvent(event); ' . PHP_EOL .
 		    '        } '. PHP_EOL .
 		

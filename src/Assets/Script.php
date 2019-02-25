@@ -62,7 +62,7 @@ class Script extends Asset {
 			return false;
 		}
 		
-		wp_register_script( $opt['handle'], $url, $opt['deps'], $opt['version'], $opt['in_footer'] );
+		wp_register_script( $opt['handle'], $url, (array) $opt['deps'], $opt['version'], $opt['in_footer'] );
 		
 		if ( null !== $opt['async'] ) { 
 			self::set_async( $opt['handle'], $opt['async'] );
@@ -159,60 +159,65 @@ class Script extends Asset {
 			return $tag;
 		}		
 
-		$doc = new \DOMDocument();
-		$doc->loadHTML( '<html>' . $tag . '</html>' , LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_COMPACT | LIBXML_NONET );
-
-		$scripts = $doc->getElementsByTagName('script');
-	
-		if ( empty( $scripts ) ) {
+		$is_async = $settings['async'] && self::get_async( $handle, $settings['default-async'] );
+		$is_defer = $settings['defer'] && self::get_defer( $handle, $settings['default-defer'] );
+		
+		if ( ! $is_async || $is_defer ) {
 			return $tag;
 		}
 		
-		$is_before_lib = false;
-		$external_tags = [];
-		$inline_tags = [];
+		$bundle = $handle !== 'jquery-core' ? $handle : 'jquery';
 
-		foreach( $scripts as $script ) {
-			
-			$is_async = $settings['async'] && self::get_async( $handle, $settings['default-async'] );
-			$is_defer = $settings['defer'] && self::get_defer( $handle, $settings['default-defer'] );
-			
-			if( $is_async && !$script->nodeValue ){
-				$script->setAttribute('async', '');
-			} else if( $is_async ) {
-				//@TODO: Set async inline scripts
-			}
-	
-			if ( $is_defer && !$script->nodeValue ) {
-				$script->setAttribute('defer', '');
-			} else if( $is_defer ) {
-				$script->nodeValue = self::defer_inline_code( $script->nodeValue );
-			}
-		}	
-		
-		$tag = $doc->saveHTML();
-		$tag = substr(substr($tag, 6), 0, -8 );
+		$obj = $wp_scripts->registered[$handle];
 
-		$deps = $wp_scripts->registered[$handle]->deps;
+		$deps = $obj->deps;
+		$src = $obj->src;
+		$cond_before = $cond_after = '';
+		$conditional = isset( $obj->extra['conditional'] ) ? $obj->extra['conditional'] : '';
 
-		$tag = "<script type=\"text/javascript\">";
-		
-		if ( $deps ) {
-			$tag .= "loadjs.ready(". json_encode( $deps ) . ",  function(){";
+		if ( $conditional ) {
+			$cond_before = "<!--[if {$conditional}]>\n";
+			$cond_after = "<![endif]-->\n";
 		}
-			$tag .= "
-				loadjs('{$src}', '{$handle}', function() {
-					console.log( 'Async Loaded {$handle}' );
-				});";
-		
-		if ( $deps ) {
-			$tag .= "});";
+
+		$before_handle = $wp_scripts->print_inline_script( $handle, 'before', false );
+		$after_handle = $wp_scripts->print_inline_script( $handle, 'after', false );
+
+		if ( $before_handle ) {
+			$before_handle = sprintf( "<script type='text/javascript'>\n%s\n</script>\n", $before_handle );
 		}
-				
-		$tag .=	"</script>" . PHP_EOL;
+
+		if ( $after_handle ) {
+			
+			if ( $is_async ) {
+				$before_handle = self::async_inline_code( $after_handle, [ $handle ] );
+			} elseif( $is_defer ){
+				$before_handle = self::defer_inline_code( $after_handle );
+			}
+			
+			$after_handle = sprintf( "<script type='text/javascript'>\n%s\n</script>\n", $before_handle );
+		}
+
+		$has_conditional_data = $conditional && $wp_scripts->get_data( $handle, 'data' );
+
+		$translations = $wp_scripts->print_translations( $handle, false );
+		if ( $translations ) {
+			$translations = sprintf( "<script type='text/javascript'>\n%s\n</script>\n", $translations );
+		}
+
+		if ( 'jquery-migrate' === $handle ) {
+			$deps[] = 'jquery';
+		}
+
+		if ( $is_async ) {
+			$load_async = self::async_inline_code( "loadjs('{$src}', '{$bundle}');", $deps );
+			$tag = "{$translations}{$cond_before}{$before_handle}<script type='text/javascript'>{$load_async}</script>\n{$after_handle}{$cond_after}";
+		} elseif( $is_defer ){
+			$tag = "{$translations}{$cond_before}{$before_handle}<script type='text/javascript' defer src='$src'>{$load_async}</script>\n{$after_handle}{$cond_after}";
+		}
 
 		if (  $settings['tracking'] && self::get_tracking( $handle, $settings['default-tracking'] ) ) {
-			$new_tag = apply_filters( 'svbk_script_setup_tracking', $new_tag, $handle );
+			$tag = apply_filters( 'svbk_script_setup_tracking', $tag, $handle );
 		}	
 
 		return $tag;
@@ -224,6 +229,39 @@ class Script extends Asset {
 		}
 		
 		return $src;
+	}
+
+	public static function async_inline_script( $tag, $deps = array()){
+		
+		if ( !$deps ) {
+			return $code;
+		}
+		
+		$doc = new \DOMDocument();
+		$doc->loadHTML( $tag, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_COMPACT | LIBXML_NONET );
+		
+		$scripts = $doc->getElementsByTagName('script');
+	
+		if ( empty( $scripts ) ) {
+			return $tag;
+		}
+	
+		foreach( $scripts as $script ) {
+			if( $script->nodeValue ){
+				$script->nodeValue = self::async_inline_code( $script->nodeValue, $deps );
+			} 
+		}
+		
+		return $doc->saveHTML();
+	}
+
+	public static function async_inline_code( $code, $deps = array() ){
+		
+		if ( !$deps ) {
+			return $code;
+		}
+		
+		return "loadjs.ready(". json_encode( $deps ) . ",  function(){" . PHP_EOL . $code . PHP_EOL . "});";
 	}
 
 	public static function defer_inline_script( $tag ){
@@ -245,6 +283,19 @@ class Script extends Asset {
 		return $doc->saveHTML();
 	}
 	
+	public static function parse_scripts( $tag ){
+		$doc = new \DOMDocument();
+		$doc->loadHTML( $tag, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_COMPACT | LIBXML_NONET );
+		
+		$scripts = $doc->getElementsByTagName('script');
+	
+		if ( empty( $scripts ) ) {
+			return false;
+		}
+	
+		return $scripts;
+	}	
+	
 	public static function defer_inline_code( $js ){
 		if ( $js ) {
 			$js = 'window.addEventListener(\'DOMContentLoaded\', function() { ' . $js . ' });';
@@ -255,9 +306,9 @@ class Script extends Asset {
 
 	public static function common() {
 		
-		Script::register( 'waypoints', 'lib/jquery.waypoints.min.js', [ 'version' => '4', 'deps' => 'jquery', 'defer' => true ] );
+		Script::register( 'waypoints', 'lib/jquery.waypoints.min.js', [ 'version' => '4', 'deps' => ['jquery'], 'defer' => true ] );
 		Script::register( 'waypoints-sticky', 'lib/shortcuts/sticky.min.js', [ 'version' => '4', 'deps' => ['jquery', 'waypoints'], 'package' => 'waypoints', 'defer' => true ] );
-		Script::register( 'jquery.collapse', 'src/jquery.collapse.js', [ 'version' => '1', 'deps' => 'jquery', 'package' => 'jquery-collapse', 'defer' => true ] );
+		Script::register( 'jquery.collapse', 'src/jquery.collapse.js', [ 'version' => '1', 'deps' => ['jquery'], 'package' => 'jquery-collapse', 'defer' => true ] );
 		
 		Script::register( 'flickity', 'dist/flickity.pkgd.min.js', [ 'version' => '2', 'defer' => true] );
 		
