@@ -11,7 +11,7 @@ class Iubenda {
 	public $cookiePolicyId = '';
 	public $privacyPolicyId = '';
 
-	public $cookieSolution = array();
+	public $cookieSolution;
 	public $linkDefaults = array();
 	
 	public function __construct( $properties = null ) {
@@ -39,7 +39,7 @@ class Iubenda {
 			'type' => 'privacy-policy',
 		);			
 		
-		$defaults = array(
+		$cookieSolution_defaults = array(
 	        "siteId" => $this->siteId,
 	        "cookiePolicyId" => $this->cookiePolicyId,
 	        'privacyPolicyId' => $this->privacyPolicyId,
@@ -59,7 +59,9 @@ class Iubenda {
            ],
 		);
 
-		$this->cookieSolution = array_replace_recursive ( $defaults, $this->cookieSolution );	
+		if ( false !== $this->cookieSolution ) {
+			$this->cookieSolution = array_replace_recursive ( $cookieSolution_defaults, (array)$this->cookieSolution );	
+		}
 		
 	}
 	
@@ -73,7 +75,7 @@ class Iubenda {
 			Script::enqueue( 'iubenda', '//cdn.iubenda.com/iubenda.js', array( 'cdn_class' => false ) );
 		}
 
-		if ( !empty( $this->cookiePolicyId ) ) {
+		if ( !empty( $this->cookiePolicyId ) && !empty( $this->cookieSolution ) ) {
 
 			Script::enqueue( 'iubenda-cookie', '//cdn.iubenda.com/cookie_solution/safemode/iubenda_cs.js', array( 'async' => true, 'defer' => true, 'cdn_class' => false ) );
 
