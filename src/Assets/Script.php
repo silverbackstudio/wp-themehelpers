@@ -166,6 +166,8 @@ class Script extends Asset {
 			return $tag;
 		}
 
+		$is_before = true;
+
 		foreach( $scripts as $script ) {
 			
 			$is_async = $settings['async'] && self::get_async( $handle, $settings['default-async'] );
@@ -173,13 +175,15 @@ class Script extends Asset {
 			
 			if( $is_async && !$script->nodeValue ){
 				$script->setAttribute('async', '');
+				$is_before = false;
 			} else if( $is_async ) {
 				//@TODO: Set async inline scripts
 			}
 	
 			if ( $is_defer && !$script->nodeValue ) {
 				$script->setAttribute('defer', '');
-			} else if( $is_defer ) {
+				$is_before = false;
+			} else if( $is_defer && !$is_before ) {
 				$script->nodeValue = self::defer_inline_code( $script->nodeValue );
 			}
 		}	
