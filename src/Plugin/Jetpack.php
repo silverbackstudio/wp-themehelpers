@@ -8,20 +8,11 @@ use WP_Query;
 class Jetpack {
 
 	public static function disableSharingCss() {
-		add_filter( 'pre_option_sharedaddy_disable_resources', '__return_true', 99 );
-		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'addSharingJS' ) );
+		//add_action( 'init', array( __CLASS__, 'disableSharingCssCallback' ) );
 	}
 
-	public static function addSharingJS() {
-		wp_enqueue_script( 'sharing-js', WP_SHARING_PLUGIN_URL . 'sharing.js', array(), 4 );
-
-		if ( function_exists( 'get_base_recaptcha_lang_code' ) ) {
-			$sharing_js_options = array(
-			'lang'   => get_base_recaptcha_lang_code(),
-			'counts' => apply_filters( 'jetpack_sharing_counts', true ),
-			);
-		}
-		wp_localize_script( 'sharing-js', 'sharing_js_options', $sharing_js_options );
+	public static function disableSharingCssCallback(){
+		remove_action( 'wp_head', 'sharing_add_header', 1 );
 	}
 
 	public static function contentShareRemove() {
