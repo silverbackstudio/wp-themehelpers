@@ -8,7 +8,7 @@ use WP_Query;
 class Jetpack {
 
 	public static function disableSharingCss() {
-		//add_action( 'init', array( __CLASS__, 'disableSharingCssCallback' ) );
+		add_action( 'init', array( __CLASS__, 'disableSharingCssCallback' ) );
 	}
 
 	public static function disableSharingCssCallback(){
