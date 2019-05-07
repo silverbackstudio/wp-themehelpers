@@ -6,11 +6,16 @@ use Svbk\WP\Helpers;
 
 class Facebook {
 
-	public static $appId = "";
-	public static $sdkVersion = '3.0';
+	public static $config = array(
+      "appId"            => '',
+      "autoLogAppEvents" => true,
+      "xfbml"            => false,
+      "version"          => 'v3.2',
+      "chat"			 => false
+	);
 	
 	public static function enableComments() {
-		self::enableSDK();
+		self::enableSDK( array( 'xfbml' => true ) );
 		add_filter( 'comments_template', array( __CLASS__, 'templateFile' ), 11 );
 	}
 
@@ -26,40 +31,26 @@ class Facebook {
 		echo '<div class="fb-comments" data-href="' . esc_attr( home_url( add_query_arg( null, null ) ) ) . '" data-numposts="' . esc_attr($count) . '" data-width="100%"></div>';
 	}
 
-	public static function enableSDK ($appId = null, $version = null) {
-		
-		if( $appId ) {
-			self::$appId = $appId;
+	public static function enableSDK ( $config = null ) {
+
+		if ( null !== $config ) {
+			self::$config = array_merge(self::$config, $config);
 		}
 		
-		if( $version ) {
-			self::$sdkVersion = $version;
-		}		
-		
-		add_action( 'after_body_tag', array( __CLASS__, 'printSDK' ) );
+		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueueSDK' ), 9 );
 	}
 
-	public static function printSDK() {
-	?>
-		<script>
-		  window.fbAsyncInit = function() {
-		    FB.init({
-		      appId            : '<?php echo esc_attr(self::$appId); ?>',
-		      autoLogAppEvents : true,
-		      xfbml            : true,
-		      version          : 'v<?php echo self::$sdkVersion; ?>'
-		    });
-		  };
-	
-		  (function(d, s, id){
-		     var js, fjs = d.getElementsByTagName(s)[0];
-		     if (d.getElementById(id)) {return;}
-		     js = d.createElement(s); js.id = id;
-		     js.src = "https://connect.facebook.net/<?php echo esc_attr( str_replace( '-', '_', get_bloginfo('language') ) )?>/sdk.js";
-		     fjs.parentNode.insertBefore(js, fjs);
-		   }(document, 'script', 'facebook-jssdk'));
-		</script>
-	<?php
+	public static function enqueueSDK() {
+		$lang = str_replace( '-', '_', get_bloginfo('language') );
+		$url = 'https://connect.facebook.net/' . esc_attr( $lang ) . '/sdk.js';
+		
+		if ( !empty( self::$config['chat'] ) ) {
+			$url = 'https://connect.facebook.net/' . esc_attr( $lang ) . '/sdk/xfbml.customerchat.js';
+		}
+		
+		Helpers\Assets\Script::enqueue('facebook-jssdk', apply_filters('svbk_facebook_sdk_url', $url, $lang, self::$config ), [ 'version' => self::$config['version'], 'async' => true, 'defer' => true, 'source' => false ] );		
+		wp_localize_script('facebook-jssdk', 'facebook_jssdk', self::$config );
+		wp_add_inline_script('facebook-jssdk', 'window.fbAsyncInit = function() { FB.init(facebook_jssdk); };', 'before');		
 	}
 
 }
