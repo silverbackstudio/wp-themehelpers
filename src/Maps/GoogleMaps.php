@@ -47,7 +47,7 @@ class GoogleMaps {
 		$script_options = $this->options;
 
 		$script_options['key'] = $this->key;
-		$script_options['libraries'] = $this->libraries;
+		$script_options['libraries'] = join( ',', $this->libraries);
 		
 		$script_options['callback'] = ($this->callback !== null) ? $this->callback : 'initGMaps';
 		$script_options['v'] = $this->version;
