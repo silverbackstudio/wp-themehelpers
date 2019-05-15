@@ -251,5 +251,7 @@ class Script extends Asset {
 
 }
 
-add_filter( 'script_loader_tag', array( Script::class, 'manage_script' ), 10, 2 );
+if ( !is_admin() && !is_customize_preview() ) {
+	add_filter( 'script_loader_tag', array( Script::class, 'manage_script' ), 10, 2 );
+}
 //add_filter( 'script_loader_src', array( Script::class, 'manage_src' ), 100, 2 );
