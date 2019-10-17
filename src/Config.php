@@ -26,13 +26,17 @@ class Config {
 		return $newconfig;
 	}
 
+	public static function exists( $config_name  ) {
+		return isset( self::$configs[ $config_name ] );
+	}
 
 	public static function get( $path = array(), $config_name = 'global' ) {
-		
-		$path = (array)$path;
-		
-		$found = isset( self::$configs[ $config_name ] );
 
+		if ( ! self::exists($config_name) ) {
+			throw new \Exception('Invalid config name: ' . $config_name);
+		}
+
+		$path = (array)$path;
 		$subject = self::$configs[ $config_name ];
 
 		foreach( $path as $key ) {
@@ -50,14 +54,12 @@ class Config {
 
 	public static function set( $path, $value = null, $config_name = 'global' ) {
 
-		$path = (array)$path;
-		$found = isset( self::$configs[ $config_name ] );
-		$config = self::$configs[ $config_name ];
-
-		if ( ! $found ) {
+		if ( ! self::exists($config_name) ) {
 			throw new \Exception('Invalid config name: ' . $config_name);
 		}
 
+		$path = (array)$path;
+		$config = self::$configs[ $config_name ];
 		$subject = &$config;
 
 		foreach( $path as $key ) {
