@@ -8,6 +8,9 @@ class Script extends Asset {
 	public static $defer_scripts = array();
 	public static $tracking_scripts = array();
 	public static $inline_scripts = array();
+	public static $exclude_scripts = array(
+		'wp-polyfill' // Messes with the DOM parser and should be loaded on page load.
+	);
 
 	public static function serverPush( $uri, $as = 'script', $crossorigin = false ){
 		parent::serverPush( $uri, $as, $crossorigin );
@@ -153,15 +156,15 @@ class Script extends Asset {
 
 		$settings = apply_filters( 'svbk_script_management_settings', self::settings(), $handle);
 		
-		if ( is_admin() || (false === $settings) ) {
+		if ( is_admin() || (false === $settings) || in_array($handle, self::$exclude_scripts ) ) {
 			return $tag;
 		}		
 
 		$doc = new \DOMDocument();
-		$doc->loadHTML( '<html>' . $tag . '</html>' , LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_COMPACT | LIBXML_NONET );
+		$doc->loadHTML( '<html>' . $tag . '</html>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_COMPACT | LIBXML_NONET | LIBXML_NOERROR | LIBXML_NOWARNING );
 
 		$scripts = $doc->getElementsByTagName('script');
-	
+
 		if ( empty( $scripts ) ) {
 			return $tag;
 		}
@@ -169,7 +172,7 @@ class Script extends Asset {
 		$is_before = true;
 
 		foreach( $scripts as $script ) {
-			
+
 			$is_async = $settings['async'] && self::get_async( $handle, $settings['default-async'] );
 			$is_defer = $settings['defer'] && self::get_defer( $handle, $settings['default-defer'] );
 			
@@ -192,7 +195,7 @@ class Script extends Asset {
 		$tag = substr(substr($tag, 6), 0, -8 );
 
 		if (  $settings['tracking'] && self::get_tracking( $handle, $settings['default-tracking'] ) ) {
-			$new_tag = apply_filters( 'svbk_script_setup_tracking', $new_tag, $handle );
+			$tag = apply_filters( 'svbk_script_setup_tracking', $tag, $handle );
 		}	
 
 		return $tag;
