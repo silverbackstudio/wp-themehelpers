@@ -97,14 +97,21 @@ class Jetpack {
 		}
 
 		$params = wp_parse_args( $args, $defaults );
-
 		$related = self::relatedPosts( $params );
+
+		/**
+		 * In development environments mock the response with latest posts
+		 */
+		if ( empty( $related ) && getenv('WP_ENV') != 'production' ) {
+			$related = wp_get_recent_posts( array( 'numberposts' => $params['size'] ), 'OBJECT' );
+		}
 
 		if ( empty( $related ) ) {
 			return;
 		}
 
 		$related_ids = wp_list_pluck( $related, 'id' );
+
 		$related_query = new WP_Query( array(
 			'post__in' => $related_ids,
 			'posts_per_page' => -1,
