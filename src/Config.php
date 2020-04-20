@@ -4,7 +4,7 @@ namespace Svbk\WP\Helpers;
 
 class Config {
 
-	public static $expire = HOUR_IN_SECONDS;
+	public static $expire = 3600; //an hour
 	public static $configs = array();
 
 	public static function load( $config_file = 'config.json', $config_name = 'global' ) {
