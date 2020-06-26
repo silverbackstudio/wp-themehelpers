@@ -5,7 +5,6 @@ namespace Svbk\WP\Helpers\Assets;
 class Style extends Asset {
 
 	public static $async_styles = array();
-	public static $inline_styles = array();
 	
 	public static function serverPush( $uri, $as = 'style', $crossorigin = false ){
 		parent::serverPush( $uri, $as, $crossorigin );
@@ -27,15 +26,6 @@ class Style extends Asset {
 		
 		return $handle;
 	}
-	
-	public static function inline( $package, $files = '', $options = array() ) {
-
-		if ( isset( $options['condition']) && !$options['condition'] ) {
-			wp_dequeue_style( $handle );
-		}
-		
-		return $handle;
-	}	
 
 	public static function register( $package, $files, $options = array() ) {
 
@@ -45,7 +35,6 @@ class Style extends Asset {
 			'media' => 'all', 
 			'overwrite' => false,
 			'handle' => $package,
-			'inline' => null,
 			'async' => null,
 	        'prefetch' => false,
 	        'preload' => false,			
@@ -69,11 +58,7 @@ class Style extends Asset {
 
 		if ( null !== $opt['async'] ) {
 			self::set_async( $opt['handle'], $opt['async'] );
-		}
-		
-		if ( null !== $opt['inline'] ) {
-			self::set_inline( $opt['handle'], $opt['inline'] ? $files : false );
-		}		
+		}	
 		
 		if ( false !== $opt['prefetch'] ) {
 			self::hint( 'prefetch', $url );
@@ -95,17 +80,10 @@ class Style extends Asset {
 	public static function set_async( $handle, $enable = true ) {
 		self::$async_styles[$handle] = $enable;
 	}
-	public static function set_inline( $handle, $enable = true ) {
-		self::$inline_styles[$handle] = $enable;
-	}
-	
+
 	public static function get_async( $handle, $default = false ) {
 		return isset( self::$async_styles[$handle] ) ? self::$async_styles[$handle] : $default;
 	}
-	
-	public static function get_inline( $handle, $default = false ) {
-		return isset( self::$inline_styles[$handle] ) ? self::$inline_styles[$handle] : $default;
-	}	
 
 	public static function settings( ) {
 		
@@ -123,9 +101,7 @@ class Style extends Asset {
 		
 		$defaults = array(
 			'async' => true,
-			'inline' => true,
 			'default-async' => false,
-			'default-inline' => false,
 		);		
 		
 		$settings = array_merge( $defaults, isset($theme_support[0]) ? $theme_support[0] : array() );			
@@ -142,15 +118,9 @@ class Style extends Asset {
 		if ( is_admin() || (false === $settings) ) {
 			return $tag;
 		}
-		
-		$filePath = self::get_inline( $handle, $settings['default-inline']);
-		
-		if ( $settings['inline'] && $filePath && file_exists( $filePath ) ) {
-			return '<style id="'.$handle.'-css" type="text/css" media="' . $media . '">' . wp_strip_all_tags( file_get_contents( $filePath ) ) . '</style>';
-		}
 
 		if ( $settings['async'] && self::get_async( $handle, $settings['default-async'] ) ) {
-			$tag =  "<link rel='preload' id='$handle-css' href='$href' type='text/css' media='$media' as='style' onload=\"this.onload=null;this.rel='stylesheet'\" />";
+			$tag =  "<link rel='preload' id='$handle-css' href='$href' media='$media' as='style' onload=\"this.onload=null;this.rel='stylesheet'\" />";
 			$tag .= "<noscript><link rel='stylesheet' id='$handle-noscript-css' media='$media' href='$href'></noscript>" . PHP_EOL;
 		}
 		
