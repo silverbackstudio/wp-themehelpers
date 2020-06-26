@@ -120,7 +120,7 @@ class Style extends Asset {
 		}
 
 		if ( $settings['async'] && self::get_async( $handle, $settings['default-async'] ) ) {
-			$tag =  "<link rel='preload' id='$handle-css' href='$href' media='$media' as='style' onload=\"this.onload=null;this.rel='stylesheet'\" />";
+			$tag =  sprintf('<link rel="stylesheet" id="%s-css" href="%s" media="print" onload="this.media=\'%s\'" />', $handle, $href, $media);
 			$tag .= "<noscript><link rel='stylesheet' id='$handle-noscript-css' media='$media' href='$href'></noscript>" . PHP_EOL;
 		}
 		
