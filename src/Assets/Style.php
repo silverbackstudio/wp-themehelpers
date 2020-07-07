@@ -31,7 +31,7 @@ class Style extends Asset {
 
 		$defaults = array(
 			'deps' => array(), 
-			'version' => 'latest', 
+			'version' => null, 
 			'media' => 'all', 
 			'overwrite' => false,
 			'handle' => $package,
@@ -126,16 +126,7 @@ class Style extends Asset {
 		
 		return $tag;
 	}
-	
-	public static function manage_src( $src, $handle ) {
-		
-		if ( strpos( $src, 'ver=' ) ){
-        	$src = remove_query_arg( 'ver', $src );
-		}
-		
-		return $src;
-	}	
-	
+
 	public static function common() {
 		Style::register( 'flickity',  'dist/flickity.min.css' , [ 'version' => '2' ] );
 	}
@@ -143,4 +134,3 @@ class Style extends Asset {
 }
 
 add_filter( 'style_loader_tag', array( Style::class, 'manage_style' ), 10, 4 );
-add_filter( 'style_loader_src', array( Style::class, 'manage_src' ), 100, 2 );
