@@ -80,11 +80,11 @@ class Script extends Asset {
 		}
 		
 		if ( false !== $opt['prefetch'] ) {
-			self::hint( 'prefetch', $url );
+			self::hint( 'prefetch', add_query_arg( 'ver', $opt['version'], $url ) );
 		}
 		
 		if ( false !== $opt['preload'] ) {
-			self::preload( $url, 'script', is_array($opt['preload']) ? $opt['preload'] : array() );
+			self::preload( add_query_arg( 'ver', $opt['version'], $url ), 'script', is_array($opt['preload']) ? $opt['preload'] : array() );
 		}		
 		
 		return $opt['handle'];

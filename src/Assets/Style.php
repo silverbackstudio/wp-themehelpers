@@ -61,11 +61,11 @@ class Style extends Asset {
 		}	
 		
 		if ( false !== $opt['prefetch'] ) {
-			self::hint( 'prefetch', $url );
+			self::hint( 'prefetch', add_query_arg( 'ver', $opt['version'], $url ) );
 		}
 		
 		if ( false !== $opt['preload'] ) {
-			self::preload( $url, 'style', is_array($opt['preload']) ? $opt['preload'] : array() );
+			self::preload( add_query_arg( 'ver', $opt['version'], $url ), 'style', is_array($opt['preload']) ? $opt['preload'] : array() );
 		}			
 
 		wp_register_style( $package, $url, $opt['deps'], $opt['version'], $opt['media'] );
