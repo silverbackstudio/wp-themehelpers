@@ -14,15 +14,18 @@ class Style extends Asset {
 		
 		$options = apply_filters( 'svbk_asset_style_params', $options, $package, $files );
 		
-		$handle = self::register( $package, $files, $options );
+		$handle = $package;
 
-		if ( $handle ) {
+		// If files are set, register the asset and replace handle
+		if ( !empty( $files ) ) {
+			$handle = self::register( $package, $files, $options );
+		}
+
+		$should_enqueue = ! isset( $options['condition'] ) || $options['condition'];
+		
+		if ( $handle && $should_enqueue ) {
 			wp_enqueue_style( $handle );
 		} 
-		
-		if ( isset( $options['condition']) && !$options['condition'] ) {
-			wp_dequeue_style( $handle );
-		}
 		
 		return $handle;
 	}
@@ -61,11 +64,11 @@ class Style extends Asset {
 		}	
 		
 		if ( false !== $opt['prefetch'] ) {
-			self::hint( 'prefetch', add_query_arg( 'ver', $opt['version'], $url ) );
+			self::hint( 'prefetch', $url );
 		}
 		
 		if ( false !== $opt['preload'] ) {
-			self::preload( add_query_arg( 'ver', $opt['version'], $url ), 'style', is_array($opt['preload']) ? $opt['preload'] : array() );
+			self::preload( $url, 'style', is_array($opt['preload']) ? $opt['preload'] : array() );
 		}			
 
 		wp_register_style( $package, $url, $opt['deps'], $opt['version'], $opt['media'] );

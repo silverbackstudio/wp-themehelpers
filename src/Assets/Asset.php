@@ -76,7 +76,8 @@ class Asset {
 			array(
 				'version' => $params['version']
 			),
-			$params['source_options']);		
+			$params['source_options']
+		);		
 		
 		$source_class = (null !== $params['cdn_class']) ? $params['cdn_class'] : $params['source'];
 
