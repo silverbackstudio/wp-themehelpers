@@ -20,14 +20,17 @@ class Script extends Asset {
 		
 		$options = apply_filters( 'svbk_asset_script_params', $options, $package, $files );
 		
-		$handle = self::register( $package, $files, $options );
+		$handle = $package;
 
-		if ( $handle ) {
-			wp_enqueue_script( $handle );
-		} 
+		// If files are set, register the asset and replace handle
+		if ( !empty( $files ) ) {
+			$handle = self::register( $package, $files, $options );
+		}
+
+		$should_enqueue = ! isset( $options['condition'] ) || $options['condition'];
 		
-		if ( isset( $options['condition']) && !$options['condition'] ) {
-			wp_dequeue_script( $handle );
+		if ( $handle && $should_enqueue ) {
+			wp_enqueue_script( $handle );
 		}
 		
 		return $handle;
@@ -80,11 +83,11 @@ class Script extends Asset {
 		}
 		
 		if ( false !== $opt['prefetch'] ) {
-			self::hint( 'prefetch', add_query_arg( 'ver', $opt['version'], $url ) );
+			self::hint( 'prefetch', $url );
 		}
 		
 		if ( false !== $opt['preload'] ) {
-			self::preload( add_query_arg( 'ver', $opt['version'], $url ), 'script', is_array($opt['preload']) ? $opt['preload'] : array() );
+			self::preload( $url, 'script', is_array($opt['preload']) ? $opt['preload'] : array() );
 		}		
 		
 		return $opt['handle'];
