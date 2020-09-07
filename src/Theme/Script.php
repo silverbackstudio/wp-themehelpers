@@ -123,6 +123,12 @@ class Script {
 		return $tag;
 	}
 
-}
+	public static function enable(){
+		add_filter( 'script_loader_tag', array( Script::class, 'add_script_attributes' ), 10, 2 );
+	}
 
-add_filter( 'script_loader_tag', array( Script::class, 'add_script_attributes' ), 10, 2 );
+	public static function disable(){
+		remove_filter( 'script_loader_tag', array( Script::class, 'add_script_attributes' ), 10, 2 );
+	}
+
+}
