@@ -124,12 +124,12 @@ class Local implements AffiliateInterface {
 
 		return $wpdb->insert(
 			$wpdb->prefix . self::TABLE_NAME,
-			$insert_data
+			$insert_data,
 			array(
 				'%s',
-				'%d'
+				'%d',
 				'%s',
-				)
+			)
 		);
 	}
 
