@@ -106,8 +106,8 @@ class IDevAffiliate implements AffiliateInterface {
 		return filter_input( INPUT_GET, 'idev_id', FILTER_VALIDATE_INT, array(
 			'options' => array(
 				'min_range' => 1,
-			),
-		);
+			)
+		));
 	}
 
 	/**
